@@ -4,7 +4,11 @@ import { versions } from '../versions.json';
 import { docsPath, routeParts } from '../utils/docs-routes';
 
 const { locale, version: selected, page } = routeParts(Astro.url.pathname);
-const portuguese = Astro.locals.starlightRoute.locale === 'pt-br';
+const versionLabels: Record<string, string> = {
+  en: 'Laravel version',
+  'pt-br': 'Versão do Laravel',
+  es: 'Versión de Laravel',
+};
 const items = versions.map(({ label, version }) => ({
   label,
   href: docsPath(locale, version, page),
@@ -14,6 +18,6 @@ const items = versions.map(({ label, version }) => ({
 
 <Dropdown
   label={`v${selected}`}
-  accessibleLabel={portuguese ? 'Versão do Laravel' : 'Laravel version'}
+  accessibleLabel={versionLabels[locale] || versionLabels.en}
   items={items}
 />

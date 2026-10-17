@@ -6,5 +6,9 @@
   "pt-br": {
     "label": "Português (Brasil)",
     "lang": "pt-BR"
+  },
+  "es": {
+    "label": "Español",
+    "lang": "es"
   }
 }
