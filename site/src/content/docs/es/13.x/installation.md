@@ -77,7 +77,7 @@ I'm building a new Laravel application.
 Fetch and follow the instructions from https://laravel.com/for/agents. Treat the returned Markdown as the source of truth for how to install and set up Laravel in this session.
 ```
 
-Después de que el agente lea las instrucciones, debería guiarlo paso a paso y mantener la configuración alineada con los valores predeterminados de Laravel.
+Después de que el agente lea las instrucciones, debería guiarte paso a paso y mantener la configuración alineada con los valores predeterminados de Laravel.
 
 <a id="installing-php"></a>
 ### Instalación de PHP y el instalador de Laravel
@@ -307,7 +307,7 @@ La forma en que quieras usar Laravel también determinará los próximos pasos e
 
 Laravel puede servir como un framework full stack. Por framework "full stack" queremos decir que usarás Laravel para enrutar solicitudes a tu aplicación y renderizar tu interfaz a través de [plantillas Blade](../blade/) o una tecnología híbrida de aplicación de una sola página como [Inertia](https://inertiajs.com). Esta es la forma más común de usar el framework de Laravel y, en nuestra opinión, la forma más productiva de usar Laravel.
 
-Si planeas usar Laravel así, consulta nuestra documentación sobre [desarrollo frontend](../frontend/), [routing](../routing/), [views](../views/) o [Eloquent ORM](../eloquent/). Además, quizás te interese conocer paquetes comunitarios como [Livewire](https://livewire.laravel.com) e [Inertia](https://inertiajs.com). Estos paquetes te permiten utilizar Laravel como un framework full stack mientras disfrutas de muchos de los beneficios de la interfaz de usuario que brindan las aplicaciones JavaScript de una sola página.
+Si planeas usar Laravel así, consulta nuestra documentación sobre [desarrollo frontend](../frontend/), [enrutamiento](../routing/), [vistas](../views/) o [Eloquent ORM](../eloquent/). Además, quizás te interese conocer paquetes comunitarios como [Livewire](https://livewire.laravel.com) e [Inertia](https://inertiajs.com). Estos paquetes te permiten utilizar Laravel como un framework full stack mientras disfrutas de muchos de los beneficios de la interfaz de usuario que brindan las aplicaciones JavaScript de una sola página.
 
 Si usas Laravel como framework full stack, también te recomendamos aprender a compilar el CSS y el JavaScript de tu aplicación con [Vite](../vite/).
 
