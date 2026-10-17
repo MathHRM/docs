@@ -348,7 +348,7 @@ if (Auth::guard('admin')->attempt($credentials)) {
 
 Muchas aplicaciones web incluyen una casilla de verificación "recordarme" en su formulario de inicio de sesión. Si desea proporcionar la funcionalidad "recordarme" en su aplicación, puede pasar un valor booleano como segundo argumento al método `attempt`.
 
-Cuando este valor es `true`, Laravel mantendrá al usuario autenticado indefinidamente o hasta que función anónima sesión manualmente. Su tabla `users` debe incluir la columna de cadena `remember_token`, que se utilizará para almacenar el token "recordarme". La migración de la tabla `users` incluida con las nuevas aplicaciones Laravel ya incluye esta columna:
+Cuando este valor es `true`, Laravel mantendrá al usuario autenticado indefinidamente o hasta que cierre la sesión manualmente. Su tabla `users` debe incluir la columna de cadena `remember_token`, que se utilizará para almacenar el token "recordarme". La migración de la tabla `users` incluida con las nuevas aplicaciones Laravel ya incluye esta columna:
 
 ```php
 use Illuminate\Support\Facades\Auth;
@@ -382,7 +382,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::login($user);
 ```
 
-Puede pasar un valor booleano como segundo argumento al método `login`. Este valor indica si se desea la funcionalidad "recordarme" para la sesión autenticada. Recuerde, esto significa que la sesión quedará autenticada indefinidamente o hasta que el usuario función anónima sesión manualmente en la aplicación:
+Puede pasar un valor booleano como segundo argumento al método `login`. Este valor indica si se desea la funcionalidad "recordarme" para la sesión autenticada. Recuerde, esto significa que la sesión quedará autenticada indefinidamente o hasta que el usuario cierre sesión manualmente en la aplicación:
 
 ```php
 Auth::login($user, $remember = true);
@@ -403,7 +403,7 @@ Para autenticar a un usuario utilizando la clave principal del registro de su ba
 Auth::loginUsingId(1);
 ```
 
-Puede pasar un valor booleano al argumento `remember` del método `loginUsingId`. Este valor indica si se desea la funcionalidad "recordarme" para la sesión autenticada. Recuerde, esto significa que la sesión quedará autenticada indefinidamente o hasta que el usuario función anónima sesión manualmente en la aplicación:
+Puede pasar un valor booleano al argumento `remember` del método `loginUsingId`. Este valor indica si se desea la funcionalidad "recordarme" para la sesión autenticada. Recuerde, esto significa que la sesión quedará autenticada indefinidamente o hasta que el usuario cierre sesión manualmente en la aplicación:
 
 ```php
 Auth::loginUsingId(1, remember: true);
