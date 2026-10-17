@@ -31,16 +31,33 @@ for (const { version, label } of versions) {
   if (!slugs.includes('')) throw new Error(`${version} needs an English index.md.`);
   pages[version] = slugs.sort();
   const groups = await readJSON(`src/navigation/${version}.json`);
+  const portugueseTranslations = await readJSON(`src/navigation/${version}.pt-br.json`);
   const listed = new Set();
   const items = groups.map(group => ({
     ...group,
+    ...(portugueseTranslations.groups?.[group.label] ? {
+      translations: { 'pt-BR': portugueseTranslations.groups[group.label] },
+    } : {}),
     items: group.items.filter(item => slugs.includes(item.slug)).map(item => {
       listed.add(item.slug);
-      return { ...item, slug: `${version}/${item.slug}` };
+      return {
+        ...item,
+        ...(portugueseTranslations.items?.[item.slug] ? {
+          translations: { 'pt-BR': portugueseTranslations.items[item.slug] },
+        } : {}),
+        slug: `${version}/${item.slug}`,
+      };
     }),
   })).filter(group => group.items.length);
   const unlisted = slugs.filter(slug => slug && !listed.has(slug));
-  if (unlisted.length) items.push({ label: 'More documentation', collapsed: true, items: unlisted.map(slug => ({ slug: `${version}/${slug}` })) });
+  if (unlisted.length) items.push({
+    label: portugueseTranslations.groups?.['More documentation'] ?? 'More documentation',
+    translations: portugueseTranslations.groups?.['More documentation']
+      ? { 'pt-BR': portugueseTranslations.groups['More documentation'] }
+      : undefined,
+    collapsed: true,
+    items: unlisted.map(slug => ({ slug: `${version}/${slug}` })),
+  });
   sidebar.push({ label, items });
 }
 
