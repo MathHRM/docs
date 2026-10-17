@@ -9,7 +9,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
     - [Livewire](#livewire)
     - [Kits de inicio](#php-starter-kits)
 - [Usando React, Svelte o Vue](#using-react-svelte-or-vue)
-    - [Inercia](#inertia)
+    - [Inertia](#inertia)
     - [Kits de inicio](#inertia-starter-kits)
 - [Agrupación de activos](#bundling-assets)
 
@@ -58,7 +58,7 @@ Otros, que prefieren seguir con el lenguaje de backend con el que se sienten có
 Dentro del ecosistema Laravel, la necesidad de crear interfaces modernas y dinámicas utilizando principalmente PHP ha llevado a la creación de [Laravel Livewire](https://livewire.laravel.com) y [Alpine.js](https://alpinejs.dev/).
 
 <a id="livewire"></a>
-### Cable vivo
+### Livewire
 
 [Laravel Livewire](https://livewire.laravel.com) es un marco para crear interfaces con tecnología Laravel que se sienten dinámicas, modernas y vivas al igual que las interfaces creadas con marcos de JavaScript modernos como React, Svelte y Vue.
 
@@ -108,11 +108,11 @@ Sin embargo, sin herramientas adicionales, combinar Laravel con React, Svelte o 
 Además, los desarrolladores deben mantener dos repositorios de código separados y, a menudo, necesitan coordinar el mantenimiento, los lanzamientos y las implementaciones en ambos repositorios. Si bien estos problemas no son insuperables, no creemos que sea una forma productiva o agradable de desarrollar aplicaciones.
 
 <a id="inertia"></a>
-### Inercia
+### Inertia
 
 Afortunadamente, Laravel ofrece lo mejor de ambos mundos. [Inertia](https://inertiajs.com) cierra la brecha entre su aplicación Laravel y su interfaz moderna de React, Svelte o Vue, permitiéndole crear interfaces modernas y completas utilizando React, Svelte o Vue mientras aprovecha las rutas y controladores de Laravel para enrutamiento, hidratación de datos y autenticación, todo dentro de un único repositorio de código. Con este enfoque, puede disfrutar de todo el poder de Laravel y React/Svelte/Vue sin perjudicar las capacidades de ninguna de las herramientas.
 
-Después de instalar Inertia en su aplicación Laravel, escribirá rutas y controladores como de costumbre. Sin embargo, en lugar de devolver una plantilla Blade de su controlador, devolverá una página de Inercia:
+Después de instalar Inertia en su aplicación Laravel, escribirá rutas y controladores como de costumbre. Sin embargo, en lugar de devolver una plantilla Blade de su controlador, devolverá una página de Inertia:
 
 ```php
 <?php

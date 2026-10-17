@@ -1,20 +1,20 @@
 ---
-title: "Vela Laravel"
+title: "Laravel Sail"
 translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ---
 
 - [Introducción](#introduction)
 - [Instalación y configuración](#installation)
-    - [Reconstrucción de imágenes de vela](#rebuilding-sail-images)
+    - [Reconstrucción de imágenes de Sail](#rebuilding-sail-images)
     - [Configuración de un alias de Shell](#configuring-a-shell-alias)
 - [Arrancar y detener Sail](#starting-and-stopping-sail)
 - [Ejecutando comandos](#executing-sail-commands)
     - [Ejecutando comandos PHP](#executing-php-commands)
     - [Ejecutando comandos de Composer](#executing-composer-commands)
-    - [Ejecutando comandos artesanales](#executing-artisan-commands)
+    - [Ejecutando comandos Artisan](#executing-artisan-commands)
     - [Ejecutando comandos de nodo/NPM](#executing-node-npm-commands)
 - [Interactuando con bases de datos](#interacting-with-sail-databases)
-    -[MySQL](#mysql)
+    - [MySQL](#mysql)
     - [MongoDB](#mongodb)
     - [Redis](#redis)
     - [Valkey](#valkey)
@@ -22,7 +22,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
     - [Typesense](#typesense)
 - [Almacenamiento de archivos](#file-storage)
 - [Ejecución de pruebas](#running-tests)
-    - [Laravel Anochecer](#laravel-dusk)
+    - [Laravel Dusk](#laravel-dusk)
 - [Vista previa de correos electrónicos](#previewing-emails)
 - [Contenedor CLI](#sail-container-cli)
 - [Versiones de PHP](#sail-php-versions)
@@ -86,7 +86,7 @@ php artisan sail:install --devcontainer
 ```
 
 <a id="rebuilding-sail-images"></a>
-### Reconstrucción de imágenes de velas
+### Reconstrucción de imágenes de Sail
 
 A veces es posible que desees reconstruir completamente tus imágenes de Sail para asegurarte de que todos los paquetes y el software de la imagen estén actualizados. Puede lograr esto usando el comando `build`:
 
@@ -182,7 +182,7 @@ sail composer require laravel/sanctum
 ```
 
 <a id="executing-artisan-commands"></a>
-### Ejecutando comandos artesanales
+### Ejecutando comandos Artisan
 
 Los comandos de Laravel Artisan se pueden ejecutar usando el comando `artisan`:
 
@@ -314,7 +314,7 @@ De forma predeterminada, Sail creará una base de datos `testing` dedicada para 
 ```
 
 <a id="laravel-dusk"></a>
-### Anochecer de Laravel
+### Laravel Dusk
 
 [Laravel Dusk](../dusk/) proporciona una API de prueba y automatización del navegador expresiva y fácil de usar. Gracias a Sail, puedes ejecutar estas pruebas sin tener que instalar Selenium u otras herramientas en tu equipo local. Para comenzar, descomente el servicio Selenium en el archivo `compose.yaml` de su aplicación:
 

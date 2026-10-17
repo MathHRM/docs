@@ -193,7 +193,7 @@ Puede determinar si una solicitud de envío de formulario está en proceso inspe
 ```
 
 <a id="using-react"></a>
-### Usando reaccionar
+### Usando React
 
 Con Laravel Precognition, puede ofrecer experiencias de validación en vivo a sus usuarios sin tener que duplicar sus reglas de validación en su aplicación frontend React. Para ilustrar cómo funciona, creemos un formulario para crear nuevos usuarios dentro de nuestra aplicación.
 

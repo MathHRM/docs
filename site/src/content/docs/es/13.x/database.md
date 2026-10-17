@@ -27,7 +27,7 @@ Casi todas las aplicaciones web modernas interactúan con una base de datos. Lar
 - MariaDB 10.3+ ([Política de versión](https://mariadb.org/about/#maintenance-policy))
 - MySQL 5.7+ ([Política de versión](https://en.wikipedia.org/wiki/MySQL#Release_history))
 - PostgreSQL 10.0+ ([Política de versión](https://www.postgresql.org/support/versioning/))
--SQLite 3.26.0+
+- SQLite 3.26.0+
 - SQL Server 2017+ ([Política de versión](https://docs.microsoft.com/en-us/lifecycle/products/?products=sql-server))
 
 </div>

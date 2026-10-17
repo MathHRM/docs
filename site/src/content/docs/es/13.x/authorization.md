@@ -25,7 +25,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
     - [A través de Middleware](#via-middleware)
     - [Vía Blade Templates](#via-blade-templates)
     - [Proporcionando contexto adicional](#supplying-additional-context)
-- [Autorización e Inercia](#authorization-and-inertia)
+- [Autorización e Inertia](#authorization-and-inertia)
 
 <a id="introduction"></a>
 ## Introducción
@@ -830,7 +830,7 @@ public function update(Request $request, Post $post): RedirectResponse
 ```
 
 <a id="authorization-and-inertia"></a>
-## Autorización e inercia
+## Autorización e Inertia
 
 Aunque la autorización siempre debe manejarse en el servidor, a menudo puede ser conveniente proporcionar a su aplicación frontend datos de autorización para representar correctamente la interfaz de usuario de su aplicación. Laravel no define una convención requerida para exponer información de autorización a una interfaz impulsada por Inertia.
 

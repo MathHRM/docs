@@ -15,7 +15,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
     - [Archivos de idioma](#language-files)
     - [Vistas](#views)
     - [Ver componentes](#view-components)
-    - ["Acerca de" Comando Artesano](#about-artisan-command)
+    - ["Acerca de" Comando Artisan](#about-artisan-command)
 - [Comandos](#commands)
     - [Optimizar comandos](#optimize-commands)
     - [Recargar comandos](#reload-commands)
@@ -347,7 +347,7 @@ Si su paquete contiene componentes anónimos, deben colocarse dentro de un direc
 ```
 
 <a id="about-artisan-command"></a>
-### "Acerca de" Comando Artesano
+### "Acerca de" Comando Artisan
 
 El comando `about` Artisan integrado de Laravel proporciona una sinopsis del entorno y la configuración de la aplicación. Los paquetes pueden enviar información adicional a la salida de este comando a través de la clase `AboutCommand`. Normalmente, esta información se puede agregar desde el método `boot` de su proveedor de servicios de paquetes:
 

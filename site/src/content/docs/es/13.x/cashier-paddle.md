@@ -234,7 +234,7 @@ Como puede ver en el ejemplo anterior, utilizaremos el método `checkout` propor
 
 Si es necesario, el método `checkout` creará automáticamente un cliente en Paddle y conectará ese registro de cliente de Paddle con el usuario correspondiente en la base de datos de su aplicación. Después de completar la sesión de pago, el cliente será redirigido a una página de éxito dedicada donde podrá mostrarle un mensaje informativo.
 
-En la vista `buy`, incluiremos un botón para mostrar la superposición de pago. El componente de hoja `paddle-button` se incluye con Cashier Paddle; sin embargo, también puede [presentar manualmente un pago superpuesto](#manually-rendering-an-overlay-checkout):
+En la vista `buy`, incluiremos un botón para mostrar la superposición de pago. El componente Blade `paddle-button` se incluye con Cashier Paddle; sin embargo, también puede [presentar manualmente un pago superpuesto](#manually-rendering-an-overlay-checkout):
 
 ```html
 <x-paddle-button :checkout="$checkout" class="px-8 py-4">
@@ -338,7 +338,7 @@ Route::get('/subscribe', function (Request $request) {
 })->name('subscribe');
 ```
 
-En la vista `subscribe`, incluiremos un botón para mostrar la superposición de pago. El componente de hoja `paddle-button` se incluye con Cashier Paddle; sin embargo, también puede [presentar manualmente un pago superpuesto](#manually-rendering-an-overlay-checkout):
+En la vista `subscribe`, incluiremos un botón para mostrar la superposición de pago. El componente Blade `paddle-button` se incluye con Cashier Paddle; sin embargo, también puede [presentar manualmente un pago superpuesto](#manually-rendering-an-overlay-checkout):
 
 ```html
 <x-paddle-button :checkout="$checkout" class="px-8 py-4">
@@ -464,7 +464,7 @@ Route::get('/buy', function (Request $request) {
 });
 ```
 
-El cajero incluye un `paddle-button` [Componente de la hoja](../blade/#components). Puede pasar la sesión de pago a este componente como "prop". Luego, cuando se hace clic en este botón, se mostrará el widget de pago de Paddle:
+El cajero incluye un `paddle-button` [Componente Blade](../blade/#components). Puede pasar la sesión de pago a este componente como "prop". Luego, cuando se hace clic en este botón, se mostrará el widget de pago de Paddle:
 
 ```html
 <x-paddle-button :checkout="$checkout" class="px-8 py-4">

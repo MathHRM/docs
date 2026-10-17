@@ -31,7 +31,7 @@ El marco Laravel tiene algunos requisitos de sistema. Debe asegurarse de que su 
 
 <div class="content-list" markdown="1">
 
--PHP >= 8.3
+- PHP >= 8.3
 - Extensión PHP Ctype
 - Extensión PHP cURL
 - Extensión PHP DOM

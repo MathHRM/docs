@@ -26,7 +26,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 - [Representación](#rendering)
     - [Blade](#blade)
     - [Livewire](#livewire)
-    - [Inercia](#inertia)
+    - [Inertia](#inertia)
 
 <a id="introduction"></a>
 ## Introducción
@@ -644,7 +644,7 @@ Laravel Head resuelve los metadatos de la página en etiquetas para la respuesta
 El renderizador HTML impulsa la directiva `@head` y los elementos renderizados que Laravel Head comparte con Inertia a través del accesorio `head`. El procesador de matrices impulsa `Head::toArray()` para aplicaciones que necesitan los metadatos resueltos como datos estructurados.
 
 <a id="blade"></a>
-### Hoja
+### Blade
 
 Renderice las etiquetas acumuladas en el `<head>` de su diseño con la directiva `@head`:
 
@@ -658,7 +658,7 @@ Renderice las etiquetas acumuladas en el `<head>` de su diseño con la directiva
 La directiva `@head` se representa de forma sincrónica, por lo que debes definir los metadatos de la página antes de que se represente el diseño.
 
 <a id="livewire"></a>
-### Cable vivo
+### Livewire
 
 Las aplicaciones Livewire utilizan la misma directiva `@head` en el diseño de sus documentos:
 
@@ -677,7 +677,7 @@ Las aplicaciones Livewire utilizan la misma directiva `@head` en el diseño de s
 No se requiere ninguna configuración específica de Livewire. Los metadatos de Laravel Head se resuelven por solicitud y el solucionador tiene un alcance de solicitud. Por lo tanto, cada visita a `wire:navigate` recupera un documento nuevo cuya salida `@head` refleja los metadatos de la ruta de destino. Las páginas visitadas con `wire:navigate` reciben los metadatos de ruta, tiempo de ejecución y error adecuados sin necesidad de código principal a nivel de componente.
 
 <a id="inertia"></a>
-### Inercia
+### Inertia
 
 Utilice la misma directiva `@head` en su plantilla raíz de Inertia, junto con los componentes propios de Inertia:
 
@@ -737,10 +737,10 @@ public function boot(): void
 }
 ```
 
-Luego apunte Inercia al mismo accesorio con `serverHead: '_head'`.
+Luego apunte Inertia al mismo accesorio con `serverHead: '_head'`.
 
 <a id="static-inertia-tags"></a>
-#### Etiquetas de inercia estática
+#### Etiquetas de Inertia estática
 
 La mayoría de las etiquetas deben vivir en valores predeterminados, metadatos de ruta o metadatos de tiempo de ejecución para que Laravel Head pueda resolver el valor correcto para cada página. Utilice globales de Inertia solo para etiquetas de documentos representadas en la primera respuesta HTML y que Inertia no modifique durante el resto de la sesión.
 
@@ -760,6 +760,6 @@ Head::inertiaGlobals(function (HeadBuilder $head) {
 });
 ```
 
-Los globales de inercia están excluidos de la propiedad `head`, se representan sin los atributos de propiedad de `data-inertia` y nunca se actualizan después de la primera respuesta. Estos globales son adecuados para sugerencias estables del navegador, como ventana gráfica, combinación de colores, favicons, íconos táctiles y manifiestos. Si una etiqueta es específica de una página, relevante para SEO o puede anularse más adelante, colóquela en `defaults`, metadatos de ruta o metadatos de tiempo de ejecución.
+Los globales de Inertia están excluidos de la propiedad `head`, se representan sin los atributos de propiedad de `data-inertia` y nunca se actualizan después de la primera respuesta. Estos globales son adecuados para sugerencias estables del navegador, como ventana gráfica, combinación de colores, favicons, íconos táctiles y manifiestos. Si una etiqueta es específica de una página, relevante para SEO o puede anularse más adelante, colóquela en `defaults`, metadatos de ruta o metadatos de tiempo de ejecución.
 
 Las aplicaciones que necesitan los metadatos resueltos como datos estructurados en lugar de etiquetas representadas pueden llamar a `Head::toArray()`. Los datos devueltos incluyen títulos, valores de Open Graph, esquemas JSON-LD y otros metadatos resueltos.

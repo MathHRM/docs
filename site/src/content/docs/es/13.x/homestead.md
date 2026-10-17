@@ -64,27 +64,27 @@ Homestead se ejecuta en cualquier sistema Windows, macOS o Linux e incluye Nginx
 
 <div id="software-list" markdown="1">
 
--Ubuntu 22.04
--Git
--PHP 8.3
--PHP 8.2
--PHP 8.1
--PHP 8.0
--PHP 7.4
--PHP 7.3
--PHP 7.2
--PHP 7.1
--PHP 7.0
--PHP 5.6
--Nginx
+- Ubuntu 22.04
+- Git
+- PHP 8.3
+- PHP 8.2
+- PHP 8.1
+- PHP 8.0
+- PHP 7.4
+- PHP 7.3
+- PHP 7.2
+- PHP 7.1
+- PHP 7.0
+- PHP 5.6
+- Nginx
 - MySQL 8.0
 - mmm
 - Sqlite3
--PostgreSQL 15
+- PostgreSQL 15
 - Compositor
 - acoplador
 - Nodo (con hilo, glorieta, gruñido y trago)
--Redis
+- Redis
 - Memcached
 - tallo de habichuelas
 - Buzón de correo
@@ -109,7 +109,7 @@ Homestead se ejecuta en cualquier sistema Windows, macOS o Linux e incluye Nginx
 
 <div id="software-list" markdown="1">
 
--Apache
+- Apache
 - Fuego negro
 - Casandra
 - Cronógrafo
@@ -120,19 +120,19 @@ Homestead se ejecuta en cualquier sistema Windows, macOS o Linux e incluye Nginx
 - Ruta migratoria
 - Gearman
 - Ir
--Grafana
+- Grafana
 - InfluenciaDB
 - Logstash
--MariaDB
+- MariaDB
 - Meilibúsqueda
--MinIO
--MongoDB
--Neo4j
+- MinIO
+- MongoDB
+- Neo4j
 - Oh Dios mío
 - Abierto Resty
 - PM2
 - Pitón
--R
+- R
 - ConejoMQ
 - Óxido
 - RVM (Administrador de versiones de Ruby)

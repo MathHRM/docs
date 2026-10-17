@@ -6,13 +6,13 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 - [Introducción](#introduction)
 - [Creación de una aplicación utilizando un kit de inicio](#creating-an-application)
 - [Kits de inicio disponibles](#available-starter-kits)
-    - [Reaccionar](#react)
-    - [Esbelto](#svelte)
+    - [React](#react)
+    - [Svelte](#svelte)
     - [Vue](#vue)
     - [Livewire](#livewire)
 - [Personalización del kit de inicio](#starter-kit-customization)
-    - [Reaccionar](#react-customization)
-    - [Esbelto](#svelte-customization)
+    - [React](#react-customization)
+    - [Svelte](#svelte-customization)
     - [Vue](#vue-customization)
     - [Livewire](#livewire-customization)
 - [Autenticación](#authentication)
@@ -23,7 +23,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 - [Equipos](#teams)
 - [Autenticación de WorkOS AuthKit](#workos)
     - [Configuración de su kit de inicio de WorkOS](#configuring-your-workos-starter-kit)
-- [Inercia SSR](#inertia-ssr)
+- [Inertia SSR](#inertia-ssr)
 - [Kits de inicio mantenidos por la comunidad](#community-maintained-starter-kits)
 - [Preguntas frecuentes](#faqs)
 
@@ -63,7 +63,7 @@ Una vez que haya iniciado el servidor de desarrollo Laravel, podrá acceder a su
 ## Kits de inicio disponibles
 
 <a id="react"></a>
-### Reaccionar
+### React
 
 Nuestro kit de inicio React proporciona un punto de partida robusto y moderno para crear aplicaciones Laravel con una interfaz React usando [Inertia](https://inertiajs.com).
 
@@ -72,7 +72,7 @@ Inertia le permite crear aplicaciones React modernas de una sola página utiliza
 El kit de inicio de React utiliza React 19, TypeScript, Tailwind y la biblioteca de componentes [shadcn/ui](https://ui.shadcn.com).
 
 <a id="svelte"></a>
-### Esbelto
+### Svelte
 
 Nuestro kit de inicio Svelte proporciona un punto de partida robusto y moderno para crear aplicaciones Laravel con una interfaz Svelte usando [Inertia](https://inertiajs.com).
 
@@ -81,7 +81,7 @@ Inertia le permite crear aplicaciones Svelte modernas de una sola página utiliz
 El kit de inicio de Svelte utiliza Svelte 5, TypeScript, Tailwind y la biblioteca de componentes [shadcn-svelte](https://www.shadcn-svelte.com/).
 
 <a id="vue"></a>
-### vista
+### Vue
 
 Nuestro kit de inicio de Vue proporciona un excelente punto de partida para crear aplicaciones Laravel con una interfaz Vue usando [Inertia](https://inertiajs.com).
 
@@ -90,7 +90,7 @@ Inertia le permite crear aplicaciones Vue modernas de una sola página utilizand
 El kit de inicio de Vue utiliza la API de composición de Vue, TypeScript, Tailwind y la biblioteca de componentes [shadcn-vue](https://www.shadcn-vue.com/).
 
 <a id="livewire"></a>
-### Cable vivo
+### Livewire
 
 Nuestro kit de inicio Livewire proporciona el punto de partida perfecto para crear aplicaciones Laravel con una interfaz [Laravel Livewire](https://livewire.laravel.com).
 
@@ -102,7 +102,7 @@ El kit de inicio Livewire utiliza Livewire, Tailwind y la biblioteca de componen
 ## Personalización del kit de inicio
 
 <a id="react-customization"></a>
-### Reaccionar
+### React
 
 Nuestro kit inicial de React está construido con Inertia 3, React 19, Tailwind 4 y [shadcn/ui](https://ui.shadcn.com). Al igual que con todos nuestros kits de inicio, todo el código de backend y frontend existe dentro de su aplicación para permitir una personalización completa.
 
@@ -173,7 +173,7 @@ import AuthLayoutTemplate from '@/layouts/auth/auth-split-layout'; // [tl! add]
 ```
 
 <a id="svelte-customization"></a>
-### Esbelto
+### Svelte
 
 Nuestro kit de inicio Svelte está construido con Inertia 3, Svelte 5, Tailwind y [shadcn-svelte](https://www.shadcn-svelte.com/). Al igual que con todos nuestros kits de inicio, todo el código de backend y frontend existe dentro de su aplicación para permitir una personalización completa.
 
@@ -239,7 +239,7 @@ import AuthLayout from '@/layouts/auth/AuthSplitLayout.svelte'; // [tl! add]
 ```
 
 <a id="vue-customization"></a>
-### vista
+### Vue
 
 Nuestro kit de inicio de Vue está construido con Inertia 3, Vue 3 Composition API, Tailwind y [shadcn-vue](https://www.shadcn-vue.com/). Al igual que con todos nuestros kits de inicio, todo el código de backend y frontend existe dentro de su aplicación para permitir una personalización completa.
 
@@ -308,7 +308,7 @@ import AuthLayout from '@/layouts/auth/AuthSplitLayout.vue'; // [tl! add]
 ```
 
 <a id="livewire-customization"></a>
-### Cable vivo
+### Livewire
 
 Nuestro kit de inicio Livewire está construido con Livewire 4, Tailwind y [Flux UI](https://fluxui.dev/). Al igual que con todos nuestros kits de inicio, todo el código de backend y frontend existe dentro de su aplicación para permitir una personalización completa.
 
@@ -516,7 +516,7 @@ Cuando utilice un kit de inicio con tecnología WorkOS, le recomendamos que desh
 Además, le recomendamos que configure el tiempo de espera de inactividad de su sesión de WorkOS AuthKit para que coincida con el umbral de tiempo de espera de sesión configurado de su aplicación Laravel, que normalmente es de dos horas.
 
 <a id="inertia-ssr"></a>
-### Inercia SSR
+### Inertia SSR
 
 Los kits de inicio React, Svelte y Vue son compatibles con las capacidades de renderizado del lado del servidor ](https://inertiajs.com/server-side-rendering) de Inertia. Para crear un paquete compatible con Inertia SSR para su aplicación, ejecute el comando `build:ssr`:
 

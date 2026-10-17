@@ -1135,7 +1135,7 @@ Pennant envía una variedad de eventos que pueden resultar útiles al realizar u
 
 ### `Laravel\Pennant\Events\FeatureRetrieved`
 
-Este evento se envía cada vez que se marca una [función](#checking-features). Este evento puede ser útil para crear y rastrear métricas contra el uso de un indicador de función en toda su aplicación.
+Este evento se envía cada vez que se consulta una [característica](#checking-features). Este evento puede ser útil para crear y rastrear métricas contra el uso de un indicador de función en toda su aplicación.
 
 ### `Laravel\Pennant\Events\FeatureResolved`
 

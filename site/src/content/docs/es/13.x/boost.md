@@ -182,26 +182,26 @@ Laravel Boost incluye pautas de IA para los siguientes paquetes y marcos. Las pa
 
 | Paquete | Versiones compatibles |
 | ----------------- | ---------------------- |
-| Núcleo y impulso | núcleo |
-| Marco Laravel | núcleo, 10.x, 11.x, 12.x, 13.x |
-| Cable vivo | núcleo, 2.x, 3.x, 4.x |
-| Interfaz de usuario de flujo | núcleo, gratis, pro |
+| Core & Boost | núcleo |
+| Laravel Framework | núcleo, 10.x, 11.x, 12.x, 13.x |
+| Livewire | núcleo, 2.x, 3.x, 4.x |
+| Flux UI | núcleo, gratis, pro |
 | Folio | núcleo |
-| manada | núcleo |
-| Inercia Laravel | núcleo, 1.x, 2.x, 3.x |
-| La inercia reacciona | núcleo, 1.x, 2.x, 3.x |
-| Vista de inercia | núcleo, 1.x, 2.x, 3.x |
-| Inercia Esbelta | núcleo, 1.x, 2.x, 3.x |
-| PCM | núcleo |
-| Banderín | núcleo |
-| Plagas | núcleo, 3.x, 4.x |
-| Unidad PHP | núcleo |
-| Pinta | núcleo |
-| Vela | núcleo |
-| CSS de viento de cola | núcleo, 3.x, 4.x |
-| Voltio Livewire | núcleo |
-| Buscador de caminos | núcleo |
-| Hacer cumplir las pruebas | condicional |
+| Herd | núcleo |
+| Inertia Laravel | núcleo, 1.x, 2.x, 3.x |
+| Inertia React | núcleo, 1.x, 2.x, 3.x |
+| Inertia Vue | núcleo, 1.x, 2.x, 3.x |
+| Inertia Svelte | núcleo, 1.x, 2.x, 3.x |
+| MCP | núcleo |
+| Pennant | núcleo |
+| Pest | núcleo, 3.x, 4.x |
+| PHPUnit | núcleo |
+| Pint | núcleo |
+| Sail | núcleo |
+| Tailwind CSS | núcleo, 3.x, 4.x |
+| Livewire Volt | núcleo |
+| Wayfinder | núcleo |
+| Enforce Tests | condicional |
 
 </div>
 
@@ -257,19 +257,19 @@ Cuando ejecuta `boost:install` y selecciona habilidades como característica, la
 
 | Habilidad | Paquete |
 | -------------------------- | -------------- |
-| flujo-desarrollo | Interfaz de usuario de flujo |
-| enrutamiento de folios | Folio |
-| inferir convenciones | Impulso |
-| inercia-reaccionar-desarrollo | La inercia reacciona |
-| inercia-esbelto-desarrollo | Inercia Esbelta |
-| inercia-vue-desarrollo | Vista de inercia |
-| desarrollo-livewire | Cable vivo |
-| desarrollo-mcp | PCM |
-| banderín-desarrollo | Banderín |
-| pruebas de plagas | Plagas |
-| desarrollo-tailwindcss | CSS de viento de cola |
-| desarrollo de voltios | voltio |
-| desarrollo-wayfinder | Buscador de caminos |
+| fluxui-development | Flux UI |
+| folio-routing | Folio |
+| infer-conventions | Boost |
+| inertia-react-development | Inertia React |
+| inertia-svelte-development | Inertia Svelte |
+| inertia-vue-development | Inertia Vue |
+| livewire-development | Livewire |
+| mcp-development | MCP |
+| pennant-development | Pennant |
+| pest-testing | Pest |
+| tailwindcss-development | Tailwind CSS |
+| volt-development | Volt |
+| wayfinder-development | Wayfinder |
 
 </div>
 
@@ -436,14 +436,14 @@ La herramienta MCP `Search Docs` permite a los agentes consultar el servicio API
 
 | Paquete | Versiones compatibles |
 | ----------------- | ------------------ |
-| Marco Laravel | 10.x, 11.x, 12.x, 13.x |
-| Filamento | 2.x, 3.x, 4.x, 5.x |
-| Interfaz de usuario de flujo | 2.x Gratis, 2.x Pro |
-| Inercia | 1.x, 2.x |
-| Cable vivo | 1.x, 2.x, 3.x, 4.x |
-| nueva | 4.x, 5.x |
-| Plagas | 3.x, 4.x |
-| CSS de viento de cola | 3.x, 4.x |
+| Laravel Framework | 10.x, 11.x, 12.x, 13.x |
+| Filament | 2.x, 3.x, 4.x, 5.x |
+| Flux UI | 2.x Gratis, 2.x Pro |
+| Inertia | 1.x, 2.x |
+| Livewire | 1.x, 2.x, 3.x, 4.x |
+| Nova | 4.x, 5.x |
+| Pest | 3.x, 4.x |
+| Tailwind CSS | 3.x, 4.x |
 
 </div>
 

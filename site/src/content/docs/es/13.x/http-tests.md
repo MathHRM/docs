@@ -14,7 +14,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
     - [Pruebas JSON fluidas](#fluent-json-testing)
 - [Cargas de archivos de prueba](#testing-file-uploads)
 - [Vistas de prueba](#testing-views)
-    - [Hoja de renderizado y componentes](#rendering-blade-and-components)
+    - [Renderizado de Blade y componentes](#rendering-blade-and-components)
 - [Rutas de almacenamiento en caché](#caching-routes)
 - [Aseveraciones disponibles](#available-assertions)
     - [Aseveraciones de respuesta](#response-assertions)
