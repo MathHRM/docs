@@ -999,7 +999,7 @@ public function test_it_can_control_feature_values()
 }
 ```
 
-Si su función devuelve una instancia `Lottery`, hay varios [ayudantes de prueba] útiles disponibles](../helpers/#testing-lotteries).
+Si su función devuelve una instancia `Lottery`, hay varios [ayudantes de prueba útiles disponibles](../helpers/#testing-lotteries).
 
 <a id="store-configuration"></a>
 #### Configuración de la tienda

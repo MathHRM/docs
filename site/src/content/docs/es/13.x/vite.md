@@ -188,7 +188,7 @@ export default defineConfig({
 });
 ```
 
-Si los cambios en sus archivos no se reflejan en el navegador mientras se ejecuta el servidor de desarrollo, es posible que también necesite configurar la opción [server.watch.usePolling] de Vite](https://vitejs.dev/config/server-options.html#server-watch).
+Si los cambios en sus archivos no se reflejan en el navegador mientras se ejecuta el servidor de desarrollo, es posible que también necesite configurar la opción [server.watch.usePolling de Vite](https://vitejs.dev/config/server-options.html#server-watch).
 
 <a id="loading-your-scripts-and-styles"></a>
 ### Cargando tus scripts y estilos
@@ -483,7 +483,7 @@ El CSS de su aplicación se puede colocar dentro del archivo `resources/css/app.
 <a id="working-with-fonts"></a>
 ## Trabajar con fuentes
 
-El complemento Laravel Vite puede ofrecer fuentes optimizadas y autohospedadas para su aplicación. Cuando se configuran las fuentes, el complemento resuelve los archivos de fuentes solicitados, los emite como recursos de Vite, genera CSS de fuentes y escribe un manifiesto de fuentes que puede ser consumido por la directiva `@fonts`](../blade/#fonts) de Blade.
+El complemento Laravel Vite puede ofrecer fuentes optimizadas y autohospedadas para su aplicación. Cuando se configuran las fuentes, el complemento resuelve los archivos de fuentes solicitados, los emite como recursos de Vite, genera CSS de fuentes y escribe un manifiesto de fuentes que puede ser consumido por la directiva [`@fonts`](../blade/#fonts) de Blade.
 
 Para configurar fuentes, importe uno o más asistentes de proveedor desde `laravel-vite-plugin/fonts` y agréguelos a la opción `fonts` del complemento Laravel:
 
@@ -916,7 +916,7 @@ php artisan inertia:start-ssr
 <a id="content-security-policy-csp-nonce"></a>
 ### Política de seguridad de contenido (CSP) Nonce
 
-Si desea incluir un atributo [nonce](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) en su secuencia de comandos y etiquetas de estilo como parte de su [Política de seguridad de contenido](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), puede generar o especificar un nonce utilizando el método `useCspNonce` dentro de un [middleware](../middleware/):] personalizado.
+Si desea incluir un atributo [nonce](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) en su secuencia de comandos y etiquetas de estilo como parte de su [Política de seguridad de contenido](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), puede generar o especificar un nonce utilizando el método `useCspNonce` dentro de un [middleware](../middleware/) personalizado:
 
 ```php
 <?php
@@ -948,7 +948,7 @@ class AddContentSecurityPolicyHeaders
 
 Después de invocar el método `useCspNonce`, Laravel incluirá automáticamente los atributos `nonce` en todas las etiquetas de estilo y script generadas.
 
-Si necesita especificar el nonce en otro lugar, incluida la [directiva Ziggy `@route`](https://github.com/tighten/ziggy#using-routes-with-a-content-security-policy) incluida con los [kits de inicio](../starter-kits/)] de Laravel, puede recuperarlo usando el método `cspNonce`:
+Si necesita especificar el nonce en otro lugar, incluida la [directiva Ziggy `@route`](https://github.com/tighten/ziggy#using-routes-with-a-content-security-policy) incluida con los [kits de inicio](../starter-kits/) de Laravel, puede recuperarlo usando el método `cspNonce`:
 
 ```blade
 @routes(nonce: Vite::cspNonce())
@@ -963,7 +963,7 @@ Vite::useCspNonce($nonce);
 <a id="subresource-integrity-sri"></a>
 ### Integridad de los subrecursos (SRI)
 
-Si su manifiesto de Vite incluye hashes `integrity` para sus activos, Laravel agregará automáticamente el atributo `integrity` en cualquier script y etiqueta de estilo que genere para aplicar [Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity). De forma predeterminada, Vite no incluye el hash `integrity` en su manifiesto, pero puede habilitarlo instalando el complemento NPM [vite-plugin-manifest-sri](https://www.npmjs.com/package/vite-plugin-manifest-sri)]:
+Si su manifiesto de Vite incluye hashes `integrity` para sus activos, Laravel agregará automáticamente el atributo `integrity` en cualquier script y etiqueta de estilo que genere para aplicar [Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity). De forma predeterminada, Vite no incluye el hash `integrity` en su manifiesto, pero puede habilitarlo instalando el complemento NPM [vite-plugin-manifest-sri](https://www.npmjs.com/package/vite-plugin-manifest-sri):
 
 ```shell
 npm install --save-dev vite-plugin-manifest-sri

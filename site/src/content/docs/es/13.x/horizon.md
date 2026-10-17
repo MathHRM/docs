@@ -29,9 +29,9 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ## Introducción
 
 > **Nota:**
-> Antes de profundizar en Laravel Horizon, debe familiarizarse con los [servicios de cola] básicos de Laravel](../queues/). Horizon aumenta la cola de Laravel con características adicionales que pueden resultar confusas si aún no está familiarizado con las características básicas de la cola que ofrece Laravel.
+> Antes de profundizar en Laravel Horizon, debe familiarizarse con los [servicios básicos de colas de Laravel](../queues/). Horizon aumenta la cola de Laravel con características adicionales que pueden resultar confusas si aún no está familiarizado con las características básicas de la cola que ofrece Laravel.
 
-[Laravel Horizon](https://github.com/laravel/horizon) proporciona un hermoso panel y una configuración basada en código para sus colas de Redis con tecnología Laravel](../queues/). Horizon le permite monitorear fácilmente métricas clave de su sistema de colas, como el rendimiento del trabajo, el tiempo de ejecución y las fallas del trabajo.
+[Laravel Horizon](https://github.com/laravel/horizon) proporciona un hermoso panel y una configuración basada en código para sus [colas de Redis con tecnología Laravel](../queues/). Horizon le permite monitorear fácilmente métricas clave de su sistema de colas, como el rendimiento del trabajo, el tiempo de ejecución y las fallas del trabajo.
 
 Cuando usa Horizon, toda la configuración de su trabajador de cola se almacena en un archivo de configuración único y simple. Al definir la configuración de los trabajadores de su aplicación en un archivo de versión controlada, puede escalar o modificar fácilmente los trabajadores de la cola de su aplicación al implementarla.
 

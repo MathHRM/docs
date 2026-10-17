@@ -15,7 +15,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 - [Otros tipos de respuesta](#other-response-types)
     - [Ver respuestas](#view-responses)
     - [Respuestas JSON](#json-responses)
-    - [Respuestas de rebajas](#markdown-responses)
+    - [Respuestas Markdown](#markdown-responses)
     - [Descargas de archivos](#file-downloads)
     - [Respuestas de archivo](#file-responses)
 - [Respuestas transmitidas](#streamed-responses)
@@ -136,7 +136,7 @@ return response('Hello World')->cookie(
 );
 ```
 
-El método `cookie` también acepta algunos argumentos más que se utilizan con menos frecuencia. Generalmente, estos argumentos tienen el mismo propósito y significado que los argumentos que se darían al método [setcookie](https://secure.php.net/manual/en/function.setcookie.php)] nativo de PHP:
+El método `cookie` también acepta algunos argumentos más que se utilizan con menos frecuencia. Generalmente, estos argumentos tienen el mismo propósito y significado que los argumentos que se darían al método [setcookie](https://secure.php.net/manual/en/function.setcookie.php) nativo de PHP:
 
 ```php
 return response('Hello World')->cookie(
@@ -360,7 +360,7 @@ return response()
 ```
 
 <a id="markdown-responses"></a>
-### Respuestas de rebajas
+### Respuestas Markdown
 
 El método `markdown` se puede utilizar para devolver contenido de Markdown con el encabezado `Content-Type` configurado en `text/markdown`:
 

@@ -34,7 +34,7 @@ Por otro lado, otros paquetes están diseñados específicamente para usarse con
 <a id="creating-a-package"></a>
 ### Creando un paquete
 
-La forma más sencilla de empezar a crear un nuevo paquete Laravel es el [esqueleto del paquete Laravel] oficial](https://github.com/laravel/package-skeleton). El esqueleto proporciona todo lo que necesita para crear un paquete Laravel, incluido un proveedor de servicios, pruebas mediante Pest, análisis estático mediante Larastan, formato de código mediante Pint y una aplicación de banco de trabajo para el desarrollo de paquetes de un extremo a otro. Puede crear un nuevo paquete usando el comando `package` del [instalador de Laravel CLI](../installation/#creating-a-laravel-project):
+La forma más sencilla de empezar a crear un nuevo paquete Laravel es el [esqueleto oficial de paquetes Laravel](https://github.com/laravel/package-skeleton). El esqueleto proporciona todo lo que necesita para crear un paquete Laravel, incluido un proveedor de servicios, pruebas mediante Pest, análisis estático mediante Larastan, formato de código mediante Pint y una aplicación de banco de trabajo para el desarrollo de paquetes de un extremo a otro. Puede crear un nuevo paquete usando el comando `package` del [instalador de Laravel CLI](../installation/#creating-a-laravel-project):
 
 ```shell
 laravel package my-package
@@ -409,7 +409,7 @@ public function boot(): void
 <a id="reload-commands"></a>
 ### Recargar comandos
 
-El comando de recarga [](../deployment/#reloading-services)] de Laravel finaliza cualquier servicio en ejecución para que un monitor de proceso del sistema pueda reiniciarlo automáticamente. Usando el método `reloads`, puede registrar los comandos Artisan propios de su paquete que deben invocarse cuando se ejecuta el comando `reload`:
+El [comando de recarga](../deployment/#reloading-services) de Laravel finaliza cualquier servicio en ejecución para que un monitor de proceso del sistema pueda reiniciarlo automáticamente. Usando el método `reloads`, puede registrar los comandos Artisan propios de su paquete que deben invocarse cuando se ejecuta el comando `reload`:
 
 ```php
 /**

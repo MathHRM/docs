@@ -19,7 +19,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
     - [Oyentes de eventos únicos](#unique-event-listeners)
         - [Mantener a los oyentes únicos hasta que comience el procesamiento](#keeping-listeners-unique-until-processing-begins)
         - [Bloqueos de oyente únicos](#unique-listener-locks)
-    - [Oyentes de eventos rechazados](#debounced-event-listeners)
+    - [Listeners de eventos con debounce](#debounced-event-listeners)
     - [Manejo de trabajos fallidos](#handling-failed-jobs)
 - [Envío de eventos](#dispatching-events)
     - [Envío de eventos después de transacciones de base de datos](#dispatching-events-after-database-transactions)
@@ -654,10 +654,10 @@ class AcquireProductKey implements ShouldQueue, ShouldBeUnique
 ```
 
 > **Nota:**
-> Si solo necesita limitar el procesamiento simultáneo de un oyente, utilice el middleware de trabajo [WithoutOverlapping](../queues/#preventing-job-overlaps)].
+> Si solo necesita limitar el procesamiento simultáneo de un oyente, utilice el middleware de trabajo [WithoutOverlapping](../queues/#preventing-job-overlaps).
 
 <a id="debounced-event-listeners"></a>
-### Oyentes de eventos rechazados
+### Listeners de eventos con debounce
 
 A veces, es posible que desee manejar solo la última instancia de un evento enviado repetidamente en un período corto. Puede hacerlo agregando el atributo `DebounceFor` a un oyente en cola:
 
@@ -691,7 +691,7 @@ class UpdateProductSearchIndex implements ShouldQueue
 }
 ```
 
-En el ejemplo anterior, enviar repetidamente eventos `ProductUpdated` para el mismo producto en segundos `30` eliminará el rebote del oyente para que solo se maneje el último evento. Los diferentes ID de rebote se manejan de forma independiente.
+En el ejemplo anterior, enviar repetidamente eventos `ProductUpdated` para el mismo producto en un intervalo de `30` segundos aplicará debounce al listener para que solo se maneje el último evento. Los diferentes ID de debounce se manejan de forma independiente.
 
 Si desea limitar el tiempo que un evento enviado con frecuencia puede aplazar a un oyente, puede proporcionar el argumento `maxWait` al atributo `DebounceFor`:
 
@@ -703,7 +703,7 @@ class UpdateProductSearchIndex implements ShouldQueue
 }
 ```
 
-Puede personalizar el almacén de caché utilizado para el seguimiento antirrebote definiendo un método `debounceVia` en su oyente. El método recibe la instancia del evento y debería devolver un repositorio de caché:
+Puede personalizar el almacén de caché utilizado para el seguimiento de debounce definiendo un método `debounceVia` en su oyente. El método recibe la instancia del evento y debería devolver un repositorio de caché:
 
 ```php
 use Illuminate\Contracts\Cache\Repository;
@@ -715,7 +715,7 @@ public function debounceVia(ProductUpdated $event): Repository
 }
 ```
 
-Los oyentes rechazados y los oyentes únicos se excluyen mutuamente. Un oyente que utilice el atributo `DebounceFor` no debería implementar `ShouldBeUnique`.
+Los listeners con debounce y los oyentes únicos se excluyen mutuamente. Un oyente que utilice el atributo `DebounceFor` no debería implementar `ShouldBeUnique`.
 
 > **Advertencia:**
 > Si su aplicación envía eventos desde múltiples servidores web o contenedores, debe asegurarse de que todos sus servidores se comuniquen con el mismo servidor de caché central.

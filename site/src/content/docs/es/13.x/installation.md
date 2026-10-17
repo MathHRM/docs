@@ -59,7 +59,7 @@ Para obtener más información sobre por qué Laravel es la elección perfecta p
 
 #### Un marco comunitario
 
-Laravel combina los mejores paquetes del ecosistema PHP para ofrecer el marco más robusto y fácil de usar para desarrolladores disponible. Además, miles de desarrolladores talentosos de todo el mundo han contribuido al marco](https://github.com/laravel/framework). Quién sabe, tal vez incluso te conviertas en colaborador de Laravel.
+Laravel combina los mejores paquetes del ecosistema PHP para ofrecer el marco más robusto y fácil de usar para desarrolladores disponible. Además, miles de desarrolladores talentosos de todo el mundo han [contribuido al marco](https://github.com/laravel/framework). Quién sabe, tal vez incluso te conviertas en colaborador de Laravel.
 
 <a id="creating-a-laravel-project"></a>
 ## Creando una aplicación Laravel
@@ -147,7 +147,7 @@ Dado que muchos de los valores de las opciones de configuración de Laravel pued
 Su archivo `.env` no debe enviarse al control de fuente de su aplicación, ya que cada desarrollador/servidor que utilice su aplicación podría requerir una configuración de entorno diferente. Además, esto sería un riesgo de seguridad en caso de que un intruso obtenga acceso a su repositorio de control de fuente, ya que cualquier credencial confidencial quedaría expuesta.
 
 > **Nota:**
-> Para obtener más información sobre el archivo `.env` y la configuración basada en el entorno, consulte la [documentación de configuración](../configuration/#environment-configuration)] completa.
+> Para obtener más información sobre el archivo `.env` y la configuración basada en el entorno, consulte la [documentación de configuración completa](../configuration/#environment-configuration).
 
 <a id="databases-and-migrations"></a>
 ### Bases de datos y Migraciones
@@ -312,7 +312,7 @@ Si así es como planeas usar Laravel, quizás quieras consultar nuestra document
 Si está utilizando Laravel como marco de trabajo completo, también le recomendamos encarecidamente que aprenda a compilar CSS y JavaScript de su aplicación utilizando [Vite](../vite/).
 
 > **Nota:**
-> Si desea comenzar a crear su aplicación, consulte uno de nuestros [kits de inicio de aplicaciones] oficiales](../starter-kits/).
+> Si desea comenzar a crear su aplicación, consulte uno de nuestros [kits de inicio de aplicaciones oficiales](../starter-kits/).
 
 <a id="laravel-the-api-backend"></a>
 ### Laravel el backend de la API

@@ -24,11 +24,11 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
     - [Enrutamiento](#password-confirmation-routing)
     - [Protegiendo Rutas](#password-confirmation-protecting-routes)
 - [Añadiendo guardias personalizados](#adding-custom-guards)
-    - [Guardias de Solicitud de Cierre](#closure-request-guards)
+    - [Guardias de solicitud mediante funciones anónimas](#closure-request-guards)
 - [Agregar proveedores de usuarios personalizados](#adding-custom-user-providers)
     - [El Contrato Usuario-Proveedor](#the-user-provider-contract)
     - [El Contrato Autenticable](#the-authenticatable-contract)
-- [Repetición automática de contraseña](#automatic-password-rehashing)
+- [Recálculo automático del hash de las contraseñas](#automatic-password-rehashing)
 - [Autenticación social](../socialite/)
 - [Eventos](#events)
 
@@ -58,7 +58,7 @@ El archivo de configuración de autenticación de su aplicación se encuentra en
 
 De forma predeterminada, Laravel incluye un `App\Models\User` [modelo Eloquent](../eloquent/) en su directorio `app/Models`. Este modelo se puede utilizar con el controlador de autenticación predeterminado de Eloquent.
 
-Si su aplicación no utiliza Eloquent, puede utilizar el proveedor de autenticación `database` que utiliza el generador de consultas Laravel. Si su aplicación utiliza MongoDB, consulte la [documentación de autenticación de usuario de Laravel] oficial de MongoDB](https://www.mongodb.com/docs/drivers/php/laravel-mongodb/current/user-authentication/).
+Si su aplicación no utiliza Eloquent, puede utilizar el proveedor de autenticación `database` que utiliza el generador de consultas Laravel. Si su aplicación utiliza MongoDB, consulte la [documentación oficial de MongoDB sobre autenticación de usuarios de Laravel](https://www.mongodb.com/docs/drivers/php/laravel-mongodb/current/user-authentication/).
 
 Al crear el esquema de base de datos para el modelo `App\Models\User`, asegúrese de que la columna de contraseña tenga al menos 60 caracteres de longitud. Por supuesto, la migración de la tabla `users` que se incluye en las nuevas aplicaciones de Laravel ya crea una columna que excede esta longitud.
 
@@ -95,7 +95,7 @@ Passport es un proveedor de autenticación OAuth2 que ofrece una variedad de "ti
 
 En respuesta a la complejidad de OAuth2 y la confusión de los desarrolladores, nos propusimos crear un paquete de autenticación más simple y optimizado que pudiera manejar tanto solicitudes web propias desde un navegador web como solicitudes API a través de tokens. Este objetivo se logró con el lanzamiento de [Laravel Sanctum](../sanctum/), que debe considerarse el paquete de autenticación preferido y recomendado para aplicaciones que ofrecerán una interfaz de usuario web propia además de una API, o que funcionarán con una aplicación de página única (SPA) que existe por separado de la aplicación backend de Laravel, o aplicaciones que ofrecen un cliente móvil.
 
-Laravel Sanctum es un paquete de autenticación híbrido web/API que puede gestionar todo el proceso de autenticación de su aplicación. Esto es posible porque cuando las aplicaciones basadas en Sanctum reciben una solicitud, Sanctum primero determinará si la solicitud incluye una cookie de sesión que haga referencia a una sesión autenticada. Sanctum logra esto llamando a los servicios de autenticación integrados de Laravel que comentamos anteriormente. Si la solicitud no se autentica mediante una cookie de sesión, Sanctum inspeccionará la solicitud en busca de un token API. Si hay un token API presente, Sanctum autenticará la solicitud utilizando ese token. Para obtener más información sobre este proceso, consulte la documentación ](../sanctum/#how-it-works) de Sanctum ["cómo funciona".
+Laravel Sanctum es un paquete de autenticación híbrido web/API que puede gestionar todo el proceso de autenticación de su aplicación. Esto es posible porque cuando las aplicaciones basadas en Sanctum reciben una solicitud, Sanctum primero determinará si la solicitud incluye una cookie de sesión que haga referencia a una sesión autenticada. Sanctum logra esto llamando a los servicios de autenticación integrados de Laravel que comentamos anteriormente. Si la solicitud no se autentica mediante una cookie de sesión, Sanctum inspeccionará la solicitud en busca de un token API. Si hay un token API presente, Sanctum autenticará la solicitud utilizando ese token. Para obtener más información sobre este proceso, consulte la [documentación de Sanctum sobre cómo funciona](../sanctum/#how-it-works).
 
 <a id="summary-choosing-your-stack"></a>
 #### Resumen y elección de su pila
@@ -300,7 +300,7 @@ if (Auth::attempt(['email' => $email, 'password' => $password, 'active' => 1])) 
 }
 ```
 
-Para condiciones de consulta complejas, puede proporcionar un cierre en su conjunto de credenciales. Este cierre se invocará con la instancia de consulta, lo que le permitirá personalizar la consulta según las necesidades de su aplicación:
+Para condiciones de consulta complejas, puede proporcionar una función anónima en su conjunto de credenciales. Esta función anónima se invocará con la instancia de consulta, lo que le permitirá personalizar la consulta según las necesidades de su aplicación:
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
@@ -317,7 +317,7 @@ if (Auth::attempt([
 > **Advertencia:**
 > En estos ejemplos, `email` no es una opción obligatoria, simplemente se utiliza como ejemplo. Debe utilizar cualquier nombre de columna que corresponda a un "nombre de usuario" en la tabla de su base de datos.
 
-El método `attemptWhen`, que recibe un cierre como segundo argumento, se puede utilizar para realizar una inspección más exhaustiva del usuario potencial antes de autenticarlo. El cierre recibe al usuario potencial y debe devolver `true` o `false` para indicar si el usuario puede estar autenticado:
+El método `attemptWhen`, que recibe una función anónima como segundo argumento, se puede utilizar para realizar una inspección más exhaustiva del usuario potencial antes de autenticarlo. La función anónima recibe al usuario potencial y debe devolver `true` o `false` para indicar si el usuario puede estar autenticado:
 
 ```php
 if (Auth::attemptWhen([
@@ -646,11 +646,11 @@ Como puede ver en el ejemplo anterior, la devolución de llamada pasada al méto
 ```
 
 <a id="closure-request-guards"></a>
-### Guardias de solicitud de cierre
+### Guardias de solicitud mediante funciones anónimas
 
-La forma más sencilla de implementar un sistema de autenticación personalizado basado en solicitudes HTTP es mediante el método `Auth::viaRequest`. Este método le permite definir rápidamente su proceso de autenticación mediante un único cierre.
+La forma más sencilla de implementar un sistema de autenticación personalizado basado en solicitudes HTTP es mediante el método `Auth::viaRequest`. Este método le permite definir rápidamente su proceso de autenticación mediante una única función anónima.
 
-Para comenzar, llame al método `Auth::viaRequest` dentro del método `boot` del `AppServiceProvider` de su aplicación. El método `viaRequest` acepta un nombre de controlador de autenticación como primer argumento. Este nombre puede ser cualquier cadena que describa su guardia personalizada. El segundo argumento pasado al método debe ser un cierre que reciba la solicitud HTTP entrante y devuelva una instancia de usuario o, si falla la autenticación, `null`:
+Para comenzar, llame al método `Auth::viaRequest` dentro del método `boot` del `AppServiceProvider` de su aplicación. El método `viaRequest` acepta un nombre de controlador de autenticación como primer argumento. Este nombre puede ser cualquier cadena que describa su guardia personalizada. El segundo argumento pasado al método debe ser una función anónima que reciba la solicitud HTTP entrante y devuelva una instancia de usuario o, si falla la autenticación, `null`:
 
 ```php
 use App\Models\User;
@@ -773,7 +773,7 @@ El método `retrieveByCredentials` recibe la matriz de credenciales pasadas al m
 
 El método `validateCredentials` debe comparar el `$user` dado con el `$credentials` para autenticar al usuario. Por ejemplo, este método normalmente utilizará el método `Hash::check` para comparar el valor de `$user->getAuthPassword()` con el valor de `$credentials['password']`. Este método debería devolver `true` o `false` indicando si la contraseña es válida.
 
-El método `rehashPasswordIfRequired` debe repetir la contraseña de `$user` proporcionada si es necesario y es compatible. Por ejemplo, este método normalmente utilizará el método `Hash::needsRehash` para determinar si es necesario repetir el valor de `$credentials['password']`. Si es necesario repetir la contraseña, el método debe utilizar el método `Hash::make` para repetir la contraseña y actualizar el registro del usuario en el almacenamiento persistente subyacente.
+El método `rehashPasswordIfRequired` debe recalcular el hash de la contraseña del `$user` proporcionado si es necesario y se admite esta operación. Por ejemplo, este método normalmente utilizará el método `Hash::needsRehash` para determinar si es necesario recalcular el hash del valor de `$credentials['password']`. Si es necesario, el método debe utilizar `Hash::make` para recalcular el hash de la contraseña y actualizar el registro del usuario en el almacenamiento persistente subyacente.
 
 <a id="the-authenticatable-contract"></a>
 ### El contrato autentificable
@@ -802,13 +802,13 @@ Esta interfaz es sencilla. El método `getAuthIdentifierName` debe devolver el n
 Esta interfaz permite que el sistema de autenticación funcione con cualquier clase de "usuario", independientemente del ORM o capa de abstracción de almacenamiento que esté utilizando. De forma predeterminada, Laravel incluye una clase `App\Models\User` en el directorio `app/Models` que implementa esta interfaz.
 
 <a id="automatic-password-rehashing"></a>
-## Repetición automática de contraseña
+## Recálculo automático del hash de las contraseñas
 
 El algoritmo de hash de contraseña predeterminado de Laravel es bcrypt. El "factor de trabajo" para los hashes de bcrypt se puede ajustar mediante el archivo de configuración `config/hashing.php` de su aplicación o la variable de entorno `BCRYPT_ROUNDS`.
 
-Normalmente, el factor de trabajo de bcrypt debe aumentarse con el tiempo a medida que aumenta la potencia de procesamiento de la CPU/GPU. Si aumenta el factor de trabajo de bcrypt para su aplicación, Laravel repetirá elegante y automáticamente las contraseñas de los usuarios a medida que los usuarios se autentiquen con su aplicación a través de los kits de inicio de Laravel o cuando usted [autentique manualmente a los usuarios](#authenticating-users) mediante el método `attempt`.
+Normalmente, el factor de trabajo de bcrypt debe aumentarse con el tiempo a medida que aumenta la potencia de procesamiento de la CPU/GPU. Si aumenta el factor de trabajo de bcrypt para su aplicación, Laravel recalculará automáticamente el hash de las contraseñas de los usuarios a medida que los usuarios se autentiquen con su aplicación a través de los kits de inicio de Laravel o cuando usted [autentique manualmente a los usuarios](#authenticating-users) mediante el método `attempt`.
 
-Normalmente, la repetición automática de contraseñas no debería interrumpir su aplicación; sin embargo, puede desactivar este comportamiento publicando el archivo de configuración `hashing`:
+Normalmente, el recálculo automático del hash de las contraseñas no debería interrumpir su aplicación; sin embargo, puede desactivar este comportamiento publicando el archivo de configuración `hashing`:
 
 ```shell
 php artisan config:publish hashing

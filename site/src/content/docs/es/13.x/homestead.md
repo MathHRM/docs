@@ -425,7 +425,7 @@ git fetch
 git pull origin release
 ```
 
-Estos comandos extraen el código de Homestead más reciente del repositorio de GitHub, obtienen las etiquetas más recientes y luego revisan la última versión etiquetada. Puede encontrar la última versión estable en la [página de lanzamientos de GitHub] de Homestead](https://github.com/laravel/homestead/releases).
+Estos comandos extraen el código de Homestead más reciente del repositorio de GitHub, obtienen las etiquetas más recientes y luego revisan la última versión etiquetada. Puede encontrar la última versión estable en la [página de lanzamientos de Homestead en GitHub](https://github.com/laravel/homestead/releases).
 
 Si instaló Homestead a través del archivo `composer.json` de su proyecto, debe asegurarse de que su archivo `composer.json` contenga `"laravel/homestead": "^12"` y actualizar sus dependencias:
 

@@ -23,7 +23,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 
 Dado que las aplicaciones controladas por HTTP no tienen estado, las sesiones proporcionan una forma de almacenar información sobre el usuario en múltiples solicitudes. Esa información del usuario generalmente se coloca en un almacén/backend persistente al que se puede acceder desde solicitudes posteriores.
 
-Laravel se entrega con una variedad de backends de sesión a los que se accede a través de una API expresiva y unificada. Se incluye soporte para backends populares como [Memcached](https://memcached.org), [Redis](https://redis.io)] y bases de datos.
+Laravel se entrega con una variedad de backends de sesión a los que se accede a través de una API expresiva y unificada. Se incluye soporte para backends populares como [Memcached](https://memcached.org), [Redis](https://redis.io) y bases de datos.
 
 <a id="configuration"></a>
 ### Configuración
@@ -44,7 +44,7 @@ La opción de configuración de sesión `driver` define dónde se almacenarán l
 </div>
 
 > **Nota:**
-> El controlador de matriz se utiliza principalmente durante las pruebas](../testing/) y evita que los datos almacenados en la sesión persistan.
+> El controlador de matriz se utiliza principalmente durante las [pruebas](../testing/) y evita que los datos almacenados en la sesión persistan.
 
 <a id="driver-prerequisites"></a>
 ### Requisitos previos del controlador
@@ -194,7 +194,7 @@ session(['key' => 'value']);
 ```
 
 <a id="pushing-to-array-session-values"></a>
-#### Empujando para ordenar los valores de la sesión
+#### Añadir elementos a valores de sesión de tipo array
 
 El método `push` se puede utilizar para insertar un nuevo valor en un valor de sesión que es una matriz. Por ejemplo, si la clave `user.teams` contiene una matriz de nombres de equipos, puede insertar un nuevo valor en la matriz de la siguiente manera:
 
@@ -284,7 +284,7 @@ $request->session()->invalidate();
 <a id="session-cache"></a>
 ## Caché de sesión
 
-El caché de sesión de Laravel proporciona una manera conveniente de almacenar en caché datos que se limitan a una sesión de usuario individual. A diferencia del caché de aplicación global, los datos del caché de sesión se aíslan automáticamente por sesión y se limpian cuando la sesión caduca o se destruye. El caché de sesión admite todos los métodos familiares de caché de Laravel ](../cache/) como `get`, `put`, `remember`, `forget` y más, pero con alcance para la sesión actual.
+El caché de sesión de Laravel proporciona una manera conveniente de almacenar en caché datos que se limitan a una sesión de usuario individual. A diferencia del caché de aplicación global, los datos del caché de sesión se aíslan automáticamente por sesión y se limpian cuando la sesión caduca o se destruye. El caché de sesión admite todos los [métodos familiares de caché de Laravel](../cache/) como `get`, `put`, `remember`, `forget` y más, pero con alcance para la sesión actual.
 
 La caché de sesión es perfecta para almacenar datos temporales específicos del usuario que desea conservar en múltiples solicitudes dentro de la misma sesión, pero que no necesita almacenar de forma permanente. Esto incluye cosas como datos de formularios, cálculos temporales, respuestas API o cualquier otro dato efímero que deba vincularse a la sesión de un usuario específico.
 
