@@ -1,5 +1,5 @@
 ---
-title: "Elocuente: fábricas"
+title: "Eloquent: fábricas"
 translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ---
 
@@ -144,7 +144,7 @@ class FlightFactory extends Factory
 
 Los métodos de manipulación de estados le permiten definir modificaciones discretas que se pueden aplicar a sus fábricas modelo en cualquier combinación. Por ejemplo, su fábrica `Database\Factories\UserFactory` podría contener un método de estado `suspended` que modifica uno de sus valores de atributo predeterminados.
 
-Los métodos de transformación de estado normalmente llaman al método `state` proporcionado por la clase de fábrica base de Laravel. El método `state` acepta un cierre que recibirá la matriz de atributos sin procesar definidos para la fábrica y debería devolver una matriz de atributos para modificar:
+Los métodos de transformación de estado normalmente llaman al método `state` proporcionado por la clase de fábrica base de Laravel. El método `state` acepta una función anónima que recibirá la matriz de atributos sin procesar definidos para la fábrica y debería devolver una matriz de atributos para modificar:
 
 ```php
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -319,7 +319,7 @@ $users = User::factory()
 
 En este ejemplo, se crearán cinco usuarios con un valor `admin` de `Y` y se crearán cinco usuarios con un valor `admin` de `N`.
 
-Si es necesario, puede incluir un cierre como valor de secuencia. El cierre se invocará cada vez que la secuencia necesite un nuevo valor:
+Si es necesario, puede incluir una función anónima como valor de secuencia. La función anónima se invocará cada vez que la secuencia necesite un nuevo valor:
 
 ```php
 use Illuminate\Database\Eloquent\Factories\Sequence;
@@ -332,7 +332,7 @@ $users = User::factory()
     ->create();
 ```
 
-Dentro de un cierre de secuencia, puede acceder a la propiedad `$index` en la instancia de secuencia que se inyecta en el cierre. La propiedad `$index` contiene el número de iteraciones de la secuencia que se han producido hasta el momento:
+Dentro de una función anónima de secuencia, puede acceder a la propiedad `$index` en la instancia de secuencia que se inyecta en la función anónima. La propiedad `$index` contiene el número de iteraciones de la secuencia que se han producido hasta el momento:
 
 ```php
 $users = User::factory()
@@ -343,7 +343,7 @@ $users = User::factory()
     ->create();
 ```
 
-Por conveniencia, las secuencias también se pueden aplicar usando el método `sequence`, que simplemente invoca el método `state` internamente. El método `sequence` acepta un cierre o matrices de atributos secuenciados:
+Por conveniencia, las secuencias también se pueden aplicar usando el método `sequence`, que simplemente invoca el método `state` internamente. El método `sequence` acepta una función anónima o matrices de atributos secuenciados:
 
 ```php
 $users = User::factory()
@@ -380,7 +380,7 @@ $user = User::factory()
     ->create();
 ```
 
-Por supuesto, puedes realizar manipulaciones de estado en los modelos relacionados. Además, puede pasar una transformación de estado basada en cierre si su cambio de estado requiere acceso al modelo principal:
+Por supuesto, puedes realizar manipulaciones de estado en los modelos relacionados. Además, puede pasar una transformación de estado basada en función anónima si su cambio de estado requiere acceso al modelo principal:
 
 ```php
 $user = User::factory()
@@ -427,7 +427,7 @@ $user = User::factory()
     ->create();
 ```
 
-Puede proporcionar una transformación de estado basada en cierre si su cambio de estado requiere acceso al modelo principal:
+Puede proporcionar una transformación de estado basada en función anónima si su cambio de estado requiere acceso al modelo principal:
 
 ```php
 $user = User::factory()
@@ -510,7 +510,7 @@ $user = User::factory()
     ->create();
 ```
 
-Puede proporcionar una transformación de estado basada en cierre si su cambio de estado requiere acceso al modelo relacionado:
+Puede proporcionar una transformación de estado basada en función anónima si su cambio de estado requiere acceso al modelo relacionado:
 
 ```php
 $user = User::factory()
@@ -633,7 +633,7 @@ public function definition(): array
 }
 ```
 
-Si las columnas de la relación dependen de la fábrica que la define puedes asignar un cierre a un atributo. El cierre recibirá la matriz de atributos evaluados de la fábrica:
+Si las columnas de la relación dependen de la fábrica que la define puedes asignar una función anónima a un atributo. La función anónima recibirá la matriz de atributos evaluados de la fábrica:
 
 ```php
 /**

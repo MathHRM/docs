@@ -105,7 +105,7 @@ $name = text(
 <a id="text-validation"></a>
 #### Validación adicional
 
-Finalmente, si desea realizar una lógica de validación adicional, puede pasar un cierre al argumento `validate`:
+Finalmente, si desea realizar una lógica de validación adicional, puede pasar una función anónima al argumento `validate`:
 
 ```php
 $name = text(
@@ -118,7 +118,7 @@ $name = text(
 );
 ```
 
-El cierre recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
+la función anónima recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
 
 Alternativamente, puede aprovechar el poder de [validator](../validation/). Para hacerlo, proporcione una matriz que contenga el nombre del atributo y las reglas de validación deseadas para el argumento `validate`:
 
@@ -174,7 +174,7 @@ $story = textarea(
 <a id="textarea-validation"></a>
 #### Validación adicional
 
-Finalmente, si desea realizar una lógica de validación adicional, puede pasar un cierre al argumento `validate`:
+Finalmente, si desea realizar una lógica de validación adicional, puede pasar una función anónima al argumento `validate`:
 
 ```php
 $story = textarea(
@@ -187,7 +187,7 @@ $story = textarea(
 );
 ```
 
-El cierre recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
+la función anónima recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
 
 Alternativamente, puede aprovechar el poder de [validator](../validation/). Para hacerlo, proporcione una matriz que contenga el nombre del atributo y las reglas de validación deseadas para el argumento `validate`:
 
@@ -244,7 +244,7 @@ $copies = number(
 <a id="number-validation"></a>
 #### Validación adicional
 
-Finalmente, si desea realizar una lógica de validación adicional, puede pasar un cierre al argumento `validate`:
+Finalmente, si desea realizar una lógica de validación adicional, puede pasar una función anónima al argumento `validate`:
 
 ```php
 $copies = number(
@@ -257,7 +257,7 @@ $copies = number(
 );
 ```
 
-El cierre recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
+la función anónima recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
 
 Alternativamente, puede aprovechar el poder de [validator](../validation/). Para hacerlo, proporcione una matriz que contenga el nombre del atributo y las reglas de validación deseadas para el argumento `validate`:
 
@@ -313,7 +313,7 @@ $password = password(
 <a id="password-validation"></a>
 #### Validación adicional
 
-Finalmente, si desea realizar una lógica de validación adicional, puede pasar un cierre al argumento `validate`:
+Finalmente, si desea realizar una lógica de validación adicional, puede pasar una función anónima al argumento `validate`:
 
 ```php
 $password = password(
@@ -325,7 +325,7 @@ $password = password(
 );
 ```
 
-El cierre recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
+la función anónima recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
 
 Alternativamente, puede aprovechar el poder de [validator](../validation/). Para hacerlo, proporcione una matriz que contenga el nombre del atributo y las reglas de validación deseadas para el argumento `validate`:
 
@@ -432,7 +432,7 @@ $role = select(
 <a id="select-info"></a>
 #### Información secundaria
 
-El argumento `info` se puede utilizar para mostrar información adicional sobre la opción actualmente resaltada. Cuando se proporciona un cierre, recibirá el valor de la opción resaltada actualmente y debería devolver una cadena o `null`:
+El argumento `info` se puede utilizar para mostrar información adicional sobre la opción actualmente resaltada. Cuando se proporciona una función anónima, recibirá el valor de la opción resaltada actualmente y debería devolver una cadena o `null`:
 
 ```php
 $role = select(
@@ -464,7 +464,7 @@ $role = select(
 <a id="select-validation"></a>
 #### Validación adicional
 
-A diferencia de otras funciones de solicitud, la función `select` no acepta el argumento `required` porque no es posible seleccionar nada. Sin embargo, puede pasar un cierre al argumento `validate` si necesita presentar una opción pero evitar que se seleccione:
+A diferencia de otras funciones de solicitud, la función `select` no acepta el argumento `required` porque no es posible seleccionar nada. Sin embargo, puede pasar una función anónima al argumento `validate` si necesita presentar una opción pero evitar que se seleccione:
 
 ```php
 $role = select(
@@ -481,7 +481,7 @@ $role = select(
 );
 ```
 
-Si el argumento `options` es una matriz asociativa, entonces el cierre recibirá la clave seleccionada; de lo contrario, recibirá el valor seleccionado. El cierre puede devolver un mensaje de error, o `null` si se pasa la validación.
+Si el argumento `options` es una matriz asociativa, entonces la función anónima recibirá la clave seleccionada; de lo contrario, recibirá el valor seleccionado. La función anónima puede devolver un mensaje de error, o `null` si se pasa la validación.
 
 <a id="multiselect"></a>
 ### Selección múltiple
@@ -538,7 +538,7 @@ $categories = multiselect(
 <a id="multiselect-info"></a>
 #### Información secundaria
 
-El argumento `info` se puede utilizar para mostrar información adicional sobre la opción actualmente resaltada. Cuando se proporciona un cierre, recibirá el valor de la opción resaltada actualmente y debería devolver una cadena o `null`:
+El argumento `info` se puede utilizar para mostrar información adicional sobre la opción actualmente resaltada. Cuando se proporciona una función anónima, recibirá el valor de la opción resaltada actualmente y debería devolver una cadena o `null`:
 
 ```php
 $permissions = multiselect(
@@ -585,7 +585,7 @@ $categories = multiselect(
 <a id="multiselect-validation"></a>
 #### Validación adicional
 
-Puede pasar un cierre al argumento `validate` si necesita presentar una opción pero evitar que se seleccione:
+Puede pasar una función anónima al argumento `validate` si necesita presentar una opción pero evitar que se seleccione:
 
 ```php
 $permissions = multiselect(
@@ -602,7 +602,7 @@ $permissions = multiselect(
 );
 ```
 
-Si el argumento `options` es una matriz asociativa, entonces el cierre recibirá las claves seleccionadas; de lo contrario, recibirá los valores seleccionados. El cierre puede devolver un mensaje de error, o `null` si se pasa la validación.
+Si el argumento `options` es una matriz asociativa, entonces la función anónima recibirá las claves seleccionadas; de lo contrario, recibirá los valores seleccionados. La función anónima puede devolver un mensaje de error, o `null` si se pasa la validación.
 
 <a id="suggest"></a>
 ### Sugerir
@@ -615,7 +615,7 @@ use function Laravel\Prompts\suggest;
 $name = suggest('What is your name?', ['Taylor', 'Dayle']);
 ```
 
-Alternativamente, puede pasar un cierre como segundo argumento a la función `suggest`. El cierre se llamará cada vez que el usuario escriba un carácter de entrada. El cierre debe aceptar un parámetro de cadena que contenga la entrada del usuario hasta el momento y devolver una serie de opciones para autocompletar:
+Alternativamente, puede pasar una función anónima como segundo argumento a la función `suggest`. La función anónima se llamará cada vez que el usuario escriba un carácter de entrada. La función anónima debe aceptar un parámetro de cadena que contenga la entrada del usuario hasta el momento y devolver una serie de opciones para autocompletar:
 
 ```php
 $name = suggest(
@@ -640,7 +640,7 @@ $name = suggest(
 <a id="suggest-info"></a>
 #### Información secundaria
 
-El argumento `info` se puede utilizar para mostrar información adicional sobre la opción actualmente resaltada. Cuando se proporciona un cierre, recibirá el valor de la opción resaltada actualmente y debería devolver una cadena o `null`:
+El argumento `info` se puede utilizar para mostrar información adicional sobre la opción actualmente resaltada. Cuando se proporciona una función anónima, recibirá el valor de la opción resaltada actualmente y debería devolver una cadena o `null`:
 
 ```php
 $name = suggest(
@@ -680,7 +680,7 @@ $name = suggest(
 <a id="suggest-validation"></a>
 #### Validación adicional
 
-Finalmente, si desea realizar una lógica de validación adicional, puede pasar un cierre al argumento `validate`:
+Finalmente, si desea realizar una lógica de validación adicional, puede pasar una función anónima al argumento `validate`:
 
 ```php
 $name = suggest(
@@ -694,7 +694,7 @@ $name = suggest(
 );
 ```
 
-El cierre recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
+la función anónima recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
 
 Alternativamente, puede aprovechar el poder de [validator](../validation/). Para hacerlo, proporcione una matriz que contenga el nombre del atributo y las reglas de validación deseadas para el argumento `validate`:
 
@@ -722,7 +722,7 @@ $id = search(
 );
 ```
 
-El cierre recibirá el texto que ha escrito el usuario hasta el momento y debe devolver una serie de opciones. Si devuelve una matriz asociativa, se devolverá la clave de la opción seleccionada; de lo contrario, se devolverá su valor.
+la función anónima recibirá el texto que ha escrito el usuario hasta el momento y debe devolver una serie de opciones. Si devuelve una matriz asociativa, se devolverá la clave de la opción seleccionada; de lo contrario, se devolverá su valor.
 
 Al filtrar una matriz donde desea devolver el valor, debe usar la función `array_values` o el método Colección `values` para asegurarse de que la matriz no se vuelva asociativa:
 
@@ -766,7 +766,7 @@ $id = search(
 <a id="search-info"></a>
 #### Información secundaria
 
-El argumento `info` se puede utilizar para mostrar información adicional sobre la opción actualmente resaltada. Cuando se proporciona un cierre, recibirá el valor de la opción resaltada actualmente y debería devolver una cadena o `null`:
+El argumento `info` se puede utilizar para mostrar información adicional sobre la opción actualmente resaltada. Cuando se proporciona una función anónima, recibirá el valor de la opción resaltada actualmente y debería devolver una cadena o `null`:
 
 ```php
 $id = search(
@@ -781,7 +781,7 @@ $id = search(
 <a id="search-validation"></a>
 #### Validación adicional
 
-Si desea realizar una lógica de validación adicional, puede pasar un cierre al argumento `validate`:
+Si desea realizar una lógica de validación adicional, puede pasar una función anónima al argumento `validate`:
 
 ```php
 $id = search(
@@ -799,7 +799,7 @@ $id = search(
 );
 ```
 
-Si el cierre `options` devuelve una matriz asociativa, entonces el cierre recibirá la clave seleccionada; de lo contrario, recibirá el valor seleccionado. El cierre puede devolver un mensaje de error, o `null` si se pasa la validación.
+Si la función anónima `options` devuelve una matriz asociativa, entonces la función anónima recibirá la clave seleccionada; de lo contrario, recibirá el valor seleccionado. La función anónima puede devolver un mensaje de error, o `null` si se pasa la validación.
 
 <a id="multisearch"></a>
 ### Búsqueda múltiple
@@ -817,7 +817,7 @@ $ids = multisearch(
 );
 ```
 
-El cierre recibirá el texto que ha escrito el usuario hasta el momento y debe devolver una serie de opciones. Si devuelve una matriz asociativa, se devolverán las claves de las opciones seleccionadas; de lo contrario, se devolverán sus valores.
+la función anónima recibirá el texto que ha escrito el usuario hasta el momento y debe devolver una serie de opciones. Si devuelve una matriz asociativa, se devolverán las claves de las opciones seleccionadas; de lo contrario, se devolverán sus valores.
 
 Al filtrar una matriz donde desea devolver el valor, debe usar la función `array_values` o el método Colección `values` para asegurarse de que la matriz no se vuelva asociativa:
 
@@ -861,7 +861,7 @@ $ids = multisearch(
 <a id="multisearch-info"></a>
 #### Información secundaria
 
-El argumento `info` se puede utilizar para mostrar información adicional sobre la opción actualmente resaltada. Cuando se proporciona un cierre, recibirá el valor de la opción resaltada actualmente y debería devolver una cadena o `null`:
+El argumento `info` se puede utilizar para mostrar información adicional sobre la opción actualmente resaltada. Cuando se proporciona una función anónima, recibirá el valor de la opción resaltada actualmente y debería devolver una cadena o `null`:
 
 ```php
 $ids = multisearch(
@@ -903,7 +903,7 @@ $ids = multisearch(
 <a id="multisearch-validation"></a>
 #### Validación adicional
 
-Si desea realizar una lógica de validación adicional, puede pasar un cierre al argumento `validate`:
+Si desea realizar una lógica de validación adicional, puede pasar una función anónima al argumento `validate`:
 
 ```php
 $ids = multisearch(
@@ -921,7 +921,7 @@ $ids = multisearch(
 );
 ```
 
-Si el cierre `options` devuelve una matriz asociativa, entonces el cierre recibirá las claves seleccionadas; de lo contrario, recibirá los valores seleccionados. El cierre puede devolver un mensaje de error, o `null` si se pasa la validación.
+Si la función anónima `options` devuelve una matriz asociativa, entonces la función anónima recibirá las claves seleccionadas; de lo contrario, recibirá los valores seleccionados. La función anónima puede devolver un mensaje de error, o `null` si se pasa la validación.
 
 <a id="pause"></a>
 ### Pausa
@@ -963,7 +963,7 @@ $name = autocomplete(
 <a id="autocomplete-closure"></a>
 #### Opciones dinámicas
 
-También puede pasar un cierre para generar opciones dinámicamente según la entrada del usuario. El cierre se llamará cada vez que el usuario escriba un carácter y debería devolver una serie de opciones para autocompletar:
+También puede pasar una función anónima para generar opciones dinámicamente según la entrada del usuario. La función anónima se llamará cada vez que el usuario escriba un carácter y debería devolver una serie de opciones para autocompletar:
 
 ```php
 $file = autocomplete(
@@ -1001,7 +1001,7 @@ $name = autocomplete(
 <a id="autocomplete-validation"></a>
 #### Validación adicional
 
-Finalmente, si desea realizar una lógica de validación adicional, puede pasar un cierre al argumento `validate`:
+Finalmente, si desea realizar una lógica de validación adicional, puede pasar una función anónima al argumento `validate`:
 
 ```php
 $name = autocomplete(
@@ -1015,12 +1015,12 @@ $name = autocomplete(
 );
 ```
 
-El cierre recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
+la función anónima recibirá el valor que se ha ingresado y puede devolver un mensaje de error, o `null` si se pasa la validación.
 
 <a id="transforming-input-before-validation"></a>
 ## Transformar la entrada antes de la validación
 
-A veces es posible que desee transformar la entrada del mensaje antes de que se realice la validación. Por ejemplo, es posible que desee eliminar espacios en blanco de cualquier cadena proporcionada. Para lograr esto, muchas de las funciones de solicitud proporcionan un argumento `transform`, que acepta un cierre:
+A veces es posible que desee transformar la entrada del mensaje antes de que se realice la validación. Por ejemplo, es posible que desee eliminar espacios en blanco de cualquier cadena proporcionada. Para lograr esto, muchas de las funciones de solicitud proporcionan un argumento `transform`, que acepta una función anónima:
 
 ```php
 $name = text(
@@ -1526,7 +1526,7 @@ Prompt::fallbackWhen(
 <a id="fallback-behavior"></a>
 #### Comportamiento alternativo
 
-Si no está utilizando Laravel o necesita personalizar el comportamiento alternativo, puede pasar un cierre al método estático `fallbackUsing` en cada clase de solicitud:
+Si no está utilizando Laravel o necesita personalizar el comportamiento alternativo, puede pasar una función anónima al método estático `fallbackUsing` en cada clase de solicitud:
 
 ```php
 use Laravel\Prompts\TextPrompt;
@@ -1558,7 +1558,7 @@ TextPrompt::fallbackUsing(function (TextPrompt $prompt) use ($input, $output) {
 });
 ```
 
-Los respaldos deben configurarse individualmente para cada clase de solicitud. El cierre recibirá una instancia de la clase de mensaje y debe devolver un tipo apropiado para el mensaje.
+Los respaldos deben configurarse individualmente para cada clase de solicitud. La función anónima recibirá una instancia de la clase de mensaje y debe devolver un tipo apropiado para el mensaje.
 
 <a id="testing"></a>
 ## Pruebas

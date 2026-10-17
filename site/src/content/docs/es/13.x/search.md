@@ -217,7 +217,7 @@ $response = Reranking::of([
 $response->first()->document; // "Laravel is a PHP web application framework."
 ```
 
-Las colecciones de Laravel también tienen una macro `rerank` que acepta un nombre de campo (o cierre) y una consulta, lo que facilita la reclasificación de los resultados de Eloquent:
+Las colecciones de Laravel también tienen una macro `rerank` que acepta un nombre de campo (o función anónima) y una consulta, lo que facilita la reclasificación de los resultados de Eloquent:
 
 ```php
 $articles = Article::all()

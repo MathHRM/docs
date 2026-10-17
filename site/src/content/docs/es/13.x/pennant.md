@@ -71,9 +71,9 @@ Pennant incluye soporte para almacenar valores de indicadores de característica
 <a id="defining-features"></a>
 ## Definición de características
 
-Para definir una característica, puede utilizar el método `define` que ofrece la fachada `Feature`. Deberá proporcionar un nombre para la función, así como un cierre que se invocará para resolver el valor inicial de la función.
+Para definir una característica, puede utilizar el método `define` que ofrece la fachada `Feature`. Deberá proporcionar un nombre para la función, así como una función anónima que se invocará para resolver el valor inicial de la función.
 
-Normalmente, las características se definen en un proveedor de servicios utilizando la fachada `Feature`. El cierre recibirá el "alcance" para la verificación de características. Lo más habitual es que el ámbito sea el usuario actualmente autenticado. En este ejemplo, definiremos una función para implementar incrementalmente una nueva API para los usuarios de nuestra aplicación:
+Normalmente, las características se definen en un proveedor de servicios utilizando la fachada `Feature`. La función anónima recibirá el "alcance" para la verificación de características. Lo más habitual es que el ámbito sea el usuario actualmente autenticado. En este ejemplo, definiremos una función para implementar incrementalmente una nueva API para los usuarios de nuestra aplicación:
 
 ```php
 <?php
@@ -107,16 +107,16 @@ Como puede ver, tenemos las siguientes reglas para nuestra función:
 - Los clientes con mucho tráfico no deberían utilizar la nueva API.
 - De lo contrario, la función debe asignarse aleatoriamente a usuarios con una probabilidad de 1 entre 100 de estar activa.
 
-La primera vez que se verifica la función `new-api` para un usuario determinado, el controlador de almacenamiento almacenará el resultado del cierre. La próxima vez que se verifique la función con el mismo usuario, el valor se recuperará del almacenamiento y no se invocará el cierre.
+La primera vez que se verifica la función `new-api` para un usuario determinado, el controlador de almacenamiento almacenará el resultado de la función anónima. La próxima vez que se verifique la función con el mismo usuario, el valor se recuperará del almacenamiento y no se invocará la función anónima.
 
-Por conveniencia, si una definición de característica solo devuelve una lotería, puede omitir el cierre por completo:
+Por conveniencia, si una definición de característica solo devuelve una lotería, puede omitir la función anónima por completo:
 
     Característica::define('rediseño del sitio', Lotería::probabilidades(1, 1000));
 
 <a id="class-based-features"></a>
 ### Funciones basadas en clases
 
-Pennant también le permite definir características basadas en clases. A diferencia de las definiciones de características basadas en cierres, no es necesario registrar una característica basada en clases en un proveedor de servicios. Para crear una característica basada en clases, puede invocar el comando `pennant:feature` Artisan. De forma predeterminada, la clase de entidad se colocará en el directorio `app/Features` de su aplicación:
+Pennant también le permite definir características basadas en clases. A diferencia de las definiciones de características basadas en funciones anónimas, no es necesario registrar una característica basada en clases en un proveedor de servicios. Para crear una característica basada en clases, puede invocar el comando `pennant:feature` Artisan. De forma predeterminada, la clase de entidad se colocará en el directorio `app/Features` de su aplicación:
 
 ```shell
 php artisan pennant:feature NewApi
@@ -272,7 +272,7 @@ class PodcastController
 <a id="conditional-execution"></a>
 ### Ejecución condicional
 
-El método `when` se puede utilizar para ejecutar con fluidez un cierre determinado si una función está activa. Además, se puede proporcionar un segundo cierre que se ejecutará si la función está inactiva:
+El método `when` se puede utilizar para ejecutar con fluidez una función anónima determinada si una función está activa. Además, se puede proporcionar un segunda función anónima que se ejecutará si la función está inactiva:
 
 ```php
 <?php
@@ -301,7 +301,7 @@ class PodcastController
 }
 ```
 
-El método `unless` sirve como inverso del método `when`, ejecutando el primer cierre si la característica está inactiva:
+El método `unless` sirve como inverso del método `when`, ejecutando el primera función anónima si la característica está inactiva:
 
 ```php
 return Feature::unless(NewApi::class,
@@ -520,7 +520,7 @@ return Feature::for($user)->active('new-api')
     : $this->resolveLegacyApiResponse($request);
 ```
 
-Por supuesto, el alcance de las funciones no se limita a los "usuarios". Imagine que ha creado una nueva experiencia de facturación que está implementando para equipos completos en lugar de usuarios individuales. Quizás le gustaría que los equipos más antiguos tuvieran un lanzamiento más lento que los equipos más nuevos. El cierre de resolución de su función podría verse así:
+Por supuesto, el alcance de las funciones no se limita a los "usuarios". Imagine que ha creado una nueva experiencia de facturación que está implementando para equipos completos en lugar de usuarios individuales. Quizás le gustaría que los equipos más antiguos tuvieran un lanzamiento más lento que los equipos más nuevos. La función anónima de resolución de su función podría verse así:
 
 ```php
 use App\Models\Team;
@@ -541,7 +541,7 @@ Feature::define('billing-v2', function (Team $team) {
 });
 ```
 
-Notará que el cierre que hemos definido no espera un modelo `User`, sino un modelo `Team`. Para determinar si esta característica está activa para el equipo de un usuario, se debe pasar el equipo al método `for` que ofrece la fachada `Feature`:
+Notará que la función anónima que hemos definido no espera un modelo `User`, sino un modelo `Team`. Para determinar si esta característica está activa para el equipo de un usuario, se debe pasar el equipo al método `for` que ofrece la fachada `Feature`:
 
 ```php
 if (Feature::for($user->team)->active('billing-v2')) {
@@ -714,7 +714,7 @@ La directiva Blade incluida en Pennant también facilita la representación cond
 > **Nota:**
 > Cuando se utilizan valores enriquecidos, es importante saber que una característica se considera "activa" cuando tiene cualquier valor distinto de `false`.
 
-Al llamar al [método `when`](#conditional-execution) condicional, el valor enriquecido de la característica se proporcionará al primer cierre:
+Al llamar al [método `when`](#conditional-execution) condicional, el valor enriquecido de la característica se proporcionará al primera función anónima:
 
 ```php
 Feature::when('purchase-button',
@@ -723,7 +723,7 @@ Feature::when('purchase-button',
 );
 ```
 
-Del mismo modo, al llamar al método condicional `unless`, el valor enriquecido de la característica se proporcionará al segundo cierre opcional:
+Del mismo modo, al llamar al método condicional `unless`, el valor enriquecido de la característica se proporcionará al segunda función anónima opcional:
 
 ```php
 Feature::unless('purchase-button',

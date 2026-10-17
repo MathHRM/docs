@@ -465,7 +465,7 @@ public function register(): void
 
 En este ejemplo, si la instancia `Service` se resuelve durante el proceso de inicio de la aplicación, el contenedor se inyectará en el servicio y la instancia `Service` retendrá ese mismo contenedor en solicitudes posteriores. Esto **puede** no ser un problema para su aplicación particular; sin embargo, puede provocar que al contenedor le falten enlaces inesperados que se agregaron más adelante en el ciclo de arranque o mediante una solicitud posterior.
 
-Como solución alternativa, puede dejar de registrar el enlace como singleton o inyectar un cierre de resolución de contenedor en el servicio que siempre resuelve la instancia de contenedor actual:
+Como solución alternativa, puede dejar de registrar el enlace como singleton o inyectar una función anónima de resolución de contenedor en el servicio que siempre resuelve la instancia de contenedor actual:
 
 ```php
 use App\Service;
@@ -505,7 +505,7 @@ public function register(): void
 
 En este ejemplo, si la instancia `Service` se resuelve durante el proceso de inicio de la aplicación, la solicitud HTTP se inyectará en el servicio y la instancia `Service` retendrá esa misma solicitud en solicitudes posteriores. Por lo tanto, todos los datos de encabezados, entradas y cadenas de consulta serán incorrectos, así como todos los demás datos de la solicitud.
 
-Como solución alternativa, podría dejar de registrar el enlace como un singleton o podría inyectar un cierre de resolución de solicitudes en el servicio que siempre resuelve la instancia de solicitud actual. O bien, el enfoque más recomendado es simplemente pasar la información de solicitud específica que su objeto necesita a uno de los métodos del objeto en tiempo de ejecución:
+Como solución alternativa, podría dejar de registrar el enlace como un singleton o podría inyectar una función anónima de resolución de solicitudes en el servicio que siempre resuelve la instancia de solicitud actual. O bien, el enfoque más recomendado es simplemente pasar la información de solicitud específica que su objeto necesita a uno de los métodos del objeto en tiempo de ejecución:
 
 ```php
 use App\Service;
@@ -527,7 +527,7 @@ $service->method($request->input('name'));
 El asistente global `request` siempre devolverá la solicitud que la aplicación está manejando actualmente y, por lo tanto, es seguro usarlo dentro de su aplicación.
 
 > **Advertencia:**
-> Es aceptable escribir sugerencias sobre la instancia `Illuminate\Http\Request` en los métodos de su controlador y cierres de rutas.
+> Es aceptable escribir sugerencias sobre la instancia `Illuminate\Http\Request` en los métodos de su controlador y funciones anónimas de rutas.
 
 <a id="configuration-repository-injection"></a>
 ### Inyección del repositorio de configuración
@@ -551,7 +551,7 @@ public function register(): void
 
 En este ejemplo, si los valores de configuración cambian entre solicitudes, ese servicio no tendrá acceso a los nuevos valores porque depende de la instancia del repositorio original.
 
-Como solución alternativa, puede dejar de registrar el enlace como singleton o puede inyectar un cierre de resolución del repositorio de configuración a la clase:
+Como solución alternativa, puede dejar de registrar el enlace como singleton o puede inyectar una función anónima de resolución del repositorio de configuración a la clase:
 
 ```php
 use App\Service;
@@ -629,7 +629,7 @@ Al invocar el método `concurrently`, no debe proporcionar más de 1024 tareas d
 
 Al utilizar Swoole, puede registrar operaciones de "tick" que se ejecutarán cada número de segundos especificado. Puede registrar devoluciones de llamada "tick" mediante el método `tick`. El primer argumento proporcionado al método `tick` debe ser una cadena que represente el nombre del ticker. El segundo argumento debe ser un invocable que se invocará en el intervalo especificado.
 
-En este ejemplo, registraremos un cierre que se invocará cada 10 segundos. Normalmente, el método `tick` se debe llamar dentro del método `boot` de uno de los proveedores de servicios de su aplicación:
+En este ejemplo, registraremos una función anónima que se invocará cada 10 segundos. Normalmente, el método `tick` se debe llamar dentro del método `boot` de uno de los proveedores de servicios de su aplicación:
 
 ```php
 Octane::tick('simple-ticker', fn () => ray('Ticking...'))

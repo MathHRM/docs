@@ -271,7 +271,7 @@ Si desea que el cliente HTTP reintente automáticamente la solicitud si se produ
 $response = Http::retry(3, 100)->post(/* ... */);
 ```
 
-Si desea calcular manualmente la cantidad de milisegundos para dormir entre intentos, puede pasar un cierre como segundo argumento del método `retry`:
+Si desea calcular manualmente la cantidad de milisegundos para dormir entre intentos, puede pasar una función anónima como segundo argumento del método `retry`:
 
 ```php
 use Exception;
@@ -395,7 +395,7 @@ El método `throw` devuelve la instancia de respuesta si no se produjo ningún e
 return Http::post(/* ... */)->throw()->json();
 ```
 
-Si desea realizar alguna lógica adicional antes de que se produzca la excepción, puede pasar un cierre al método `throw`. La excepción se lanzará automáticamente después de invocar el cierre, por lo que no es necesario volver a lanzar la excepción desde el cierre:
+Si desea realizar alguna lógica adicional antes de que se produzca la excepción, puede pasar una función anónima al método `throw`. La excepción se lanzará automáticamente después de invocar la función anónima, por lo que no es necesario volver a lanzar la excepción desde la función anónima:
 
 ```php
 use Illuminate\Http\Client\Response;
@@ -514,7 +514,7 @@ A veces, es posible que desee realizar varias solicitudes HTTP al mismo tiempo. 
 <a id="request-pooling"></a>
 ### Solicitar agrupación
 
-Afortunadamente, puedes lograr esto usando el método `pool`. El método `pool` acepta un cierre que recibe una instancia `Illuminate\Http\Client\Pool`, lo que le permite agregar fácilmente solicitudes al grupo de solicitudes para su envío:
+Afortunadamente, puedes lograr esto usando el método `pool`. El método `pool` acepta una función anónima que recibe una instancia `Illuminate\Http\Client\Pool`, lo que le permite agregar fácilmente solicitudes al grupo de solicitudes para su envío:
 
 ```php
 use Illuminate\Http\Client\Pool;
@@ -589,7 +589,7 @@ $responses = Http::pool(fn (Pool $pool) => [
 <a id="request-batching"></a>
 ### Solicitar procesamiento por lotes
 
-Otra forma de trabajar con solicitudes simultáneas en Laravel es utilizar el método `batch`. Al igual que el método `pool`, acepta un cierre que recibe una instancia `Illuminate\Http\Client\Batch`, lo que le permite agregar fácilmente solicitudes al grupo de solicitudes para su envío, pero también le permite definir devoluciones de llamada de finalización:
+Otra forma de trabajar con solicitudes simultáneas en Laravel es utilizar el método `batch`. Al igual que el método `pool`, acepta una función anónima que recibe una instancia `Illuminate\Http\Client\Batch`, lo que le permite agregar fácilmente solicitudes al grupo de solicitudes para su envío, pero también le permite definir devoluciones de llamada de finalización:
 
 ```php
 use Illuminate\Http\Client\Batch;
@@ -818,7 +818,7 @@ Http::fakeSequence()
 <a id="fake-callback"></a>
 #### Devolución de llamada falsa
 
-Si necesita una lógica más complicada para determinar qué respuestas devolver para determinados puntos finales, puede pasar un cierre al método `fake`. Este cierre recibirá una instancia de `Illuminate\Http\Client\Request` y debería devolver una instancia de respuesta. Dentro de su cierre, puede realizar cualquier lógica que sea necesaria para determinar qué tipo de respuesta devolver:
+Si necesita una lógica más complicada para determinar qué respuestas devolver para determinados puntos finales, puede pasar una función anónima al método `fake`. esta función anónima recibirá una instancia de `Illuminate\Http\Client\Request` y debería devolver una instancia de respuesta. Dentro de su función anónima, puede realizar cualquier lógica que sea necesaria para determinar qué tipo de respuesta devolver:
 
 ```php
 use Illuminate\Http\Client\Request;
@@ -833,7 +833,7 @@ Http::fake(function (Request $request) {
 
 Al falsificar respuestas, es posible que en ocasiones desee inspeccionar las solicitudes que recibe el cliente para asegurarse de que su aplicación envíe los datos o encabezados correctos. Puede lograr esto llamando al método `Http::assertSent` después de llamar a `Http::fake`.
 
-El método `assertSent` acepta un cierre que recibirá una instancia `Illuminate\Http\Client\Request` y debería devolver un valor booleano que indique si la solicitud coincide con sus expectativas. Para que se supere la prueba, se debe haber emitido al menos una solicitud que cumpla con las expectativas dadas:
+El método `assertSent` acepta una función anónima que recibirá una instancia `Illuminate\Http\Client\Request` y debería devolver un valor booleano que indique si la solicitud coincide con sus expectativas. Para que se supere la prueba, se debe haber emitido al menos una solicitud que cumpla con las expectativas dadas:
 
 ```php
 use Illuminate\Http\Client\Request;
@@ -909,7 +909,7 @@ $recorded = Http::recorded();
 [$request, $response] = $recorded[0];
 ```
 
-Además, el método `recorded` acepta un cierre que recibirá una instancia de `Illuminate\Http\Client\Request` y `Illuminate\Http\Client\Response` y puede usarse para filtrar pares de solicitud/respuesta según sus expectativas:
+Además, el método `recorded` acepta una función anónima que recibirá una instancia de `Illuminate\Http\Client\Request` y `Illuminate\Http\Client\Response` y puede usarse para filtrar pares de solicitud/respuesta según sus expectativas:
 
 ```php
 use Illuminate\Http\Client\Request;

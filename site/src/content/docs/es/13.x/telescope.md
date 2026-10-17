@@ -215,7 +215,7 @@ Para mantener los activos actualizados y evitar problemas en futuras actualizaci
 <a id="filtering-entries"></a>
 ### Entradas
 
-Puede filtrar los datos que registra Telescope a través del cierre `filter` que está definido en su clase `App\Providers\TelescopeServiceProvider`. De forma predeterminada, este cierre registra todos los datos en el entorno `local` y las excepciones, trabajos fallidos, tareas programadas y datos con etiquetas monitoreadas en todos los demás entornos:
+Puede filtrar los datos que registra Telescope a través de la función anónima `filter` que está definido en su clase `App\Providers\TelescopeServiceProvider`. De forma predeterminada, esta función anónima registra todos los datos en el entorno `local` y las excepciones, trabajos fallidos, tareas programadas y datos con etiquetas monitoreadas en todos los demás entornos:
 
 ```php
 use Laravel\Telescope\IncomingEntry;
@@ -245,7 +245,7 @@ public function register(): void
 <a id="filtering-batches"></a>
 ### lotes
 
-Si bien el cierre `filter` filtra datos para entradas individuales, puede usar el método `filterBatch` para registrar un cierre que filtre todos los datos para una solicitud o comando de consola determinado. Si el cierre devuelve `true`, Telescope registra todas las entradas:
+Si bien la función anónima `filter` filtra datos para entradas individuales, puede usar el método `filterBatch` para registrar una función anónima que filtre todos los datos para una solicitud o comando de consola determinado. Si la función anónima devuelve `true`, Telescope registra todas las entradas:
 
 ```php
 use Illuminate\Support\Collection;
@@ -278,7 +278,7 @@ public function register(): void
 <a id="tagging"></a>
 ## Etiquetado
 
-Telescope le permite buscar entradas por "etiqueta". A menudo, las etiquetas son nombres de clases de modelos de Eloquent o ID de usuario autenticados que Telescope agrega automáticamente a las entradas. En ocasiones, es posible que desees adjuntar tus propias etiquetas personalizadas a las entradas. Para lograr esto, puede utilizar el método `Telescope::tag`. El método `tag` acepta un cierre que debería devolver una serie de etiquetas. Las etiquetas devueltas por el cierre se fusionarán con cualquier etiqueta que Telescope adjunte automáticamente a la entrada. Normalmente, debes llamar al método `tag` dentro del método `register` de tu clase `App\Providers\TelescopeServiceProvider`:
+Telescope le permite buscar entradas por "etiqueta". A menudo, las etiquetas son nombres de clases de modelos de Eloquent o ID de usuario autenticados que Telescope agrega automáticamente a las entradas. En ocasiones, es posible que desees adjuntar tus propias etiquetas personalizadas a las entradas. Para lograr esto, puede utilizar el método `Telescope::tag`. El método `tag` acepta una función anónima que debería devolver una serie de etiquetas. Las etiquetas devueltas por la función anónima se fusionarán con cualquier etiqueta que Telescope adjunte automáticamente a la entrada. Normalmente, debes llamar al método `tag` dentro del método `register` de tu clase `App\Providers\TelescopeServiceProvider`:
 
 ```php
 use Laravel\Telescope\EntryType;

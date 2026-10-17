@@ -42,7 +42,7 @@ Si está utilizando las vistas de paginación predeterminadas de Tailwind de Lar
 <a id="paginating-query-builder-results"></a>
 ### Paginación de los resultados del Generador de consultas
 
-Hay varias formas de paginar elementos. La más sencilla es utilizar el método `paginate` en el [generador de consultas](../queries/) o una [consulta elocuente](../eloquent/). El método `paginate` se encarga automáticamente de establecer el "límite" y el "desplazamiento" de la consulta en función de la página actual que está viendo el usuario. De forma predeterminada, la página actual se detecta mediante el valor del argumento de cadena de consulta `page` en la solicitud HTTP. Laravel detecta automáticamente este valor y también se inserta automáticamente en los enlaces generados por el paginador.
+Hay varias formas de paginar elementos. La más sencilla es utilizar el método `paginate` en el [generador de consultas](../queries/) o una [consulta Eloquent](../eloquent/). El método `paginate` se encarga automáticamente de establecer el "límite" y el "desplazamiento" de la consulta en función de la página actual que está viendo el usuario. De forma predeterminada, la página actual se detecta mediante el valor del argumento de cadena de consulta `page` en la solicitud HTTP. Laravel detecta automáticamente este valor y también se inserta automáticamente en los enlaces generados por el paginador.
 
 En este ejemplo, el único argumento pasado al método `paginate` es la cantidad de elementos que desea que se muestren "por página". En este caso, especifiquemos que nos gustaría mostrar elementos `15` por página:
 

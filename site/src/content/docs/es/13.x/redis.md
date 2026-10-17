@@ -379,7 +379,7 @@ $redis = Redis::connection();
 <a id="transactions"></a>
 ### Transacciones
 
-El método `transaction` de la fachada `Redis` proporciona un contenedor conveniente para los comandos nativos `MULTI` y `EXEC` de Redis. El método `transaction` acepta un cierre como único argumento. Este cierre recibirá una instancia de conexión de Redis y podrá emitir cualquier comando que desee para esta instancia. Todos los comandos de Redis emitidos dentro del cierre se ejecutarán en una única transacción atómica:
+El método `transaction` de la fachada `Redis` proporciona un contenedor conveniente para los comandos nativos `MULTI` y `EXEC` de Redis. El método `transaction` acepta una función anónima como único argumento. Esta función anónima recibirá una instancia de conexión de Redis y podrá emitir cualquier comando que desee para esta instancia. Todos los comandos de Redis emitidos dentro de la función anónima se ejecutarán en una única transacción atómica:
 
 ```php
 use Redis;
@@ -392,7 +392,7 @@ Facades\Redis::transaction(function (Redis $redis) {
 ```
 
 > **Advertencia:**
-> Al definir una transacción de Redis, no puede recuperar ningún valor de la conexión de Redis. Recuerde, su transacción se ejecuta como una operación única y atómica y esa operación no se ejecuta hasta que todo su cierre haya terminado de ejecutar sus comandos.
+> Al definir una transacción de Redis, no puede recuperar ningún valor de la conexión de Redis. Recuerde, su transacción se ejecuta como una operación única y atómica y esa operación no se ejecuta hasta que todo su función anónima haya terminado de ejecutar sus comandos.
 
 #### Secuencias de comandos Lua
 
@@ -420,7 +420,7 @@ LUA, 2, 'first-counter', 'second-counter');
 <a id="pipelining-commands"></a>
 ### Comandos de canalización
 
-A veces es posible que necesites ejecutar docenas de comandos de Redis. En lugar de realizar un viaje de red a su servidor Redis para cada comando, puede utilizar el método `pipeline`. El método `pipeline` acepta un argumento: un cierre que recibe una instancia de Redis. Puede emitir todos sus comandos a esta instancia de Redis y todos se enviarán al servidor de Redis al mismo tiempo para reducir los viajes de red al servidor. Los comandos se seguirán ejecutando en el orden en que fueron emitidos:
+A veces es posible que necesites ejecutar docenas de comandos de Redis. En lugar de realizar un viaje de red a su servidor Redis para cada comando, puede utilizar el método `pipeline`. El método `pipeline` acepta un argumento: una función anónima que recibe una instancia de Redis. Puede emitir todos sus comandos a esta instancia de Redis y todos se enviarán al servidor de Redis al mismo tiempo para reducir los viajes de red al servidor. Los comandos se seguirán ejecutando en el orden en que fueron emitidos:
 
 ```php
 use Redis;
@@ -493,7 +493,7 @@ Route::get('/publish', function () {
 <a id="wildcard-subscriptions"></a>
 #### Suscripciones comodín
 
-Con el método `psubscribe`, puede suscribirse a un canal comodín, que puede resultar útil para captar todos los mensajes en todos los canales. El nombre del canal se pasará como segundo argumento del cierre proporcionado:
+Con el método `psubscribe`, puede suscribirse a un canal comodín, que puede resultar útil para captar todos los mensajes en todos los canales. El nombre del canal se pasará como segundo argumento de la función anónima proporcionada:
 
 ```php
 Redis::psubscribe(['*'], function (string $message, string $channel) {

@@ -154,7 +154,7 @@ El `PADDLE_RETAIN_KEY` es opcional y solo debe configurarse si usa Paddle con [R
 <a id="paddle-js"></a>
 ### Paleta JS
 
-Paddle se basa en su propia biblioteca de JavaScript para iniciar el widget de pago de Paddle. Puede cargar la biblioteca JavaScript colocando la directiva Blade `@paddleJS` justo antes de la etiqueta `</head>` de cierre del diseño de su aplicación:
+Paddle se basa en su propia biblioteca de JavaScript para iniciar el widget de pago de Paddle. Puede cargar la biblioteca JavaScript colocando la directiva Blade `@paddleJS` justo antes de la etiqueta `</head>` de función anónima del diseño de su aplicación:
 
 ```blade
 <head>

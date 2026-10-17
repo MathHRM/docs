@@ -141,7 +141,7 @@ Para las tarjetas que muestran información sobre sus usuarios, como la tarjeta 
 
 Puede personalizar los campos y el avatar invocando el método `Pulse::user` dentro de la clase `App\Providers\AppServiceProvider` de su aplicación.
 
-El método `user` acepta un cierre que recibirá el modelo `Authenticatable` que se mostrará y debe devolver una matriz que contenga información de `name`, `extra` y `avatar` para el usuario:
+El método `user` acepta una función anónima que recibirá el modelo `Authenticatable` que se mostrará y debe devolver una matriz que contenga información de `name`, `extra` y `avatar` para el usuario:
 
 ```php
 use Laravel\Pulse\Facades\Pulse;
@@ -434,7 +434,7 @@ Opcionalmente, puede ajustar la [frecuencia de muestreo](#sampling) y los patron
 <a id="filtering"></a>
 ### Filtrado
 
-Como hemos visto, muchos [recorders](#recorders) ofrecen la posibilidad de, mediante configuración, "ignorar" las entradas entrantes en función de su valor, como la URL de una solicitud. Sin embargo, a veces puede resultar útil filtrar registros en función de otros factores, como el usuario actualmente autenticado. Para filtrar estos registros, puede pasar un cierre al método `filter` de Pulse. Normalmente, el método `filter` debe invocarse dentro del método `boot` del `AppServiceProvider` de su aplicación:
+Como hemos visto, muchos [recorders](#recorders) ofrecen la posibilidad de, mediante configuración, "ignorar" las entradas entrantes en función de su valor, como la URL de una solicitud. Sin embargo, a veces puede resultar útil filtrar registros en función de otros factores, como el usuario actualmente autenticado. Para filtrar estos registros, puede pasar una función anónima al método `filter` de Pulse. Normalmente, el método `filter` debe invocarse dentro del método `boot` del `AppServiceProvider` de su aplicación:
 
 ```php
 use Illuminate\Support\Facades\Auth;
@@ -529,7 +529,7 @@ Pulse recortará automáticamente sus entradas almacenadas una vez que estén fu
 
 Si se produce una excepción al capturar datos de Pulse, como por ejemplo no poder conectarse a la base de datos de almacenamiento, Pulse silenciosamente fallará para evitar afectar su aplicación.
 
-Si desea personalizar cómo se manejan estas excepciones, puede proporcionar un cierre al método `handleExceptionsUsing`:
+Si desea personalizar cómo se manejan estas excepciones, puede proporcionar una función anónima al método `handleExceptionsUsing`:
 
 ```php
 use Laravel\Pulse\Facades\Pulse;

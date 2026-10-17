@@ -131,7 +131,7 @@ use App\Http\Middleware\EnsureTokenIsValid;
 })
 ```
 
-El objeto `$middleware` proporcionado al cierre `withMiddleware` es una instancia de `Illuminate\Foundation\Configuration\Middleware` y es responsable de administrar el middleware asignado a las rutas de su aplicación. El método `append` agrega el middleware al final de la lista de middleware global. Si desea agregar un middleware al principio de la lista, debe utilizar el método `prepend`.
+El objeto `$middleware` proporcionado a la función anónima `withMiddleware` es una instancia de `Illuminate\Foundation\Configuration\Middleware` y es responsable de administrar el middleware asignado a las rutas de su aplicación. El método `append` agrega el middleware al final de la lista de middleware global. Si desea agregar un middleware al principio de la lista, debe utilizar el método `prepend`.
 
 <a id="manually-managing-laravels-default-global-middleware"></a>
 #### Administrar manualmente el middleware global predeterminado de Laravel

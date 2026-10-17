@@ -16,10 +16,10 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
     - [Nombrar procesos de grupo](#naming-pool-processes)
     - [ID de proceso de grupo y señales](#pool-process-ids-and-signals)
 - [Prueba](#testing)
-    - [Procesos de falsificación](#faking-processes)
-    - [Falsificación de procesos específicos](#faking-specific-processes)
-    - [Secuencias de proceso falsificadas](#faking-process-sequences)
-    - [Falsificación de ciclos de vida de procesos asincrónicos](#faking-asynchronous-process-lifecycles)
+    - [Simulación de procesos](#faking-processes)
+    - [Simulación de procesos específicos](#faking-specific-processes)
+    - [Secuencias de procesos simulados](#faking-process-sequences)
+    - [Simulación de ciclos de vida de procesos asincrónicos](#faking-asynchronous-process-lifecycles)
     - [Afirmaciones disponibles](#available-assertions)
     - [Prevención de procesos perdidos](#preventing-stray-processes)
 
@@ -162,7 +162,7 @@ echo $result->output();
 echo $result->errorOutput();
 ```
 
-Sin embargo, la salida también se puede recopilar en tiempo real pasando un cierre como segundo argumento del método `run`. El cierre recibirá dos argumentos: el "tipo" de salida (`stdout` o `stderr`) y la cadena de salida misma:
+Sin embargo, la salida también se puede recopilar en tiempo real pasando una función anónima como segundo argumento del método `run`. La función anónima recibirá dos argumentos: el "tipo" de salida (`stdout` o `stderr`) y la cadena de salida misma:
 
 ```php
 $result = Process::run('ls -la', function (string $type, string $output) {
@@ -217,7 +217,7 @@ $result = Process::pipe([
 ]);
 ```
 
-El resultado del proceso se puede recopilar en tiempo real pasando un cierre como segundo argumento del método `pipe`. El cierre recibirá dos argumentos: el "tipo" de salida (`stdout` o `stderr`) y la cadena de salida misma:
+El resultado del proceso se puede recopilar en tiempo real pasando una función anónima como segundo argumento del método `pipe`. La función anónima recibirá dos argumentos: el "tipo" de salida (`stdout` o `stderr`) y la cadena de salida misma:
 
 ```php
 $result = Process::pipe(function (Pipe $pipe) {
@@ -228,7 +228,7 @@ $result = Process::pipe(function (Pipe $pipe) {
 });
 ```
 
-Laravel también le permite asignar claves de cadena a cada proceso dentro de una canalización mediante el método `as`. Esta clave también se pasará al cierre de salida proporcionado al método `pipe`, lo que le permitirá determinar a qué proceso pertenece la salida:
+Laravel también le permite asignar claves de cadena a cada proceso dentro de una canalización mediante el método `as`. Esta clave también se pasará a la función anónima de salida proporcionada al método `pipe`, lo que le permitirá determinar a qué proceso pertenece la salida:
 
 ```php
 $result = Process::pipe(function (Pipe $pipe) {
@@ -297,7 +297,7 @@ while ($process->running()) {
 }
 ```
 
-Al igual que el método `run`, la salida también se puede recopilar en tiempo real a partir de procesos asincrónicos pasando un cierre como segundo argumento del método `start`. El cierre recibirá dos argumentos: el "tipo" de salida (`stdout` o `stderr`) y la cadena de salida misma:
+Al igual que el método `run`, la salida también se puede recopilar en tiempo real a partir de procesos asincrónicos pasando una función anónima como segundo argumento del método `start`. La función anónima recibirá dos argumentos: el "tipo" de salida (`stdout` o `stderr`) y la cadena de salida misma:
 
 ```php
 $process = Process::start('bash import.sh', function (string $type, string $output) {
@@ -307,7 +307,7 @@ $process = Process::start('bash import.sh', function (string $type, string $outp
 $result = $process->wait();
 ```
 
-En lugar de esperar hasta que el proceso haya finalizado, puede utilizar el método `waitUntil` para dejar de esperar según el resultado del proceso. Laravel dejará de esperar a que finalice el proceso cuando el cierre dado al método `waitUntil` devuelva `true`:
+En lugar de esperar hasta que el proceso haya finalizado, puede utilizar el método `waitUntil` para dejar de esperar según el resultado del proceso. Laravel dejará de esperar a que finalice el proceso cuando la función anónima dada al método `waitUntil` devuelva `true`:
 
 ```php
 $process = Process::start('bash import.sh');
@@ -337,9 +337,9 @@ while ($process->running()) {
 <a id="concurrent-processes"></a>
 ## Procesos concurrentes
 
-Laravel también facilita la gestión de un conjunto de procesos asincrónicos y simultáneos, lo que le permite ejecutar fácilmente muchas tareas simultáneamente. Para comenzar, invoque el método `pool`, que acepta un cierre que recibe una instancia de `Illuminate\Process\Pool`.
+Laravel también facilita la gestión de un conjunto de procesos asincrónicos y simultáneos, lo que le permite ejecutar fácilmente muchas tareas simultáneamente. Para comenzar, invoque el método `pool`, que acepta una función anónima que recibe una instancia de `Illuminate\Process\Pool`.
 
-Dentro de este cierre se pueden definir los procesos que pertenecen al pool. Una vez que se inicia un grupo de procesos mediante el método `start`, puede acceder a la [colección](../collections/) de procesos en ejecución mediante el método `running`:
+Dentro de esta función anónima se pueden definir los procesos que pertenecen al pool. Una vez que se inicia un grupo de procesos mediante el método `start`, puede acceder a la [colección](../collections/) de procesos en ejecución mediante el método `running`:
 
 ```php
 use Illuminate\Process\Pool;
@@ -383,7 +383,7 @@ echo $first->output();
 <a id="naming-pool-processes"></a>
 ### Nombrar procesos de grupo
 
-Acceder a los resultados del grupo de procesos mediante una clave numérica no es muy expresivo; por lo tanto, Laravel le permite asignar claves de cadena a cada proceso dentro de un grupo mediante el método `as`. Esta clave también se pasará al cierre proporcionado al método `start`, lo que le permitirá determinar a qué proceso pertenece la salida:
+Acceder a los resultados del grupo de procesos mediante una clave numérica no es muy expresivo; por lo tanto, Laravel le permite asignar claves de cadena a cada proceso dentro de un grupo mediante el método `as`. Esta clave también se pasará a la función anónima proporcionada al método `start`, lo que le permitirá determinar a qué proceso pertenece la salida:
 
 ```php
 $pool = Process::pool(function (Pool $pool) {
@@ -417,12 +417,12 @@ $pool->signal(SIGUSR2);
 <a id="testing"></a>
 ## Pruebas
 
-Muchos servicios de Laravel brindan funcionalidad para ayudarlo a escribir pruebas de manera fácil y expresiva, y el servicio de procesos de Laravel no es una excepción. El método `fake` de la fachada `Process` le permite indicarle a Laravel que devuelva resultados simulados o simulados cuando se invocan procesos.
+Muchos servicios de Laravel brindan funcionalidad para ayudarlo a escribir pruebas de manera fácil y expresiva, y el servicio de procesos de Laravel no es una excepción. El método `fake` de la fachada `Process` le permite indicarle a Laravel que devuelva resultados simulados cuando se invocan procesos.
 
 <a id="faking-processes"></a>
-### Procesos falsos
+### Simulación de procesos
 
-Para explorar la capacidad de Laravel para falsificar procesos, imaginemos una ruta que invoca un proceso:
+Para explorar la capacidad de Laravel para simular procesos, imaginemos una ruta que invoca un proceso:
 
 ```php
 use Illuminate\Support\Facades\Process;
@@ -435,7 +435,7 @@ Route::get('/import', function () {
 });
 ```
 
-Al probar esta ruta, podemos indicarle a Laravel que devuelva un resultado de proceso falso y exitoso para cada proceso invocado llamando al método `fake` en la fachada `Process` sin argumentos. Además, podemos incluso [afirmar](#available-assertions) que se "ejecutó" un proceso determinado:
+Al probar esta ruta, podemos indicarle a Laravel que devuelva un resultado de proceso simulado y exitoso para cada proceso invocado llamando al método `fake` en la fachada `Process` sin argumentos. Además, podemos incluso [afirmar](#available-assertions) que se "ejecutó" un proceso determinado:
 
 ```php tab=Pest
 <?php
@@ -490,7 +490,7 @@ class ExampleTest extends TestCase
 }
 ```
 
-Como se analizó, invocar el método `fake` en la fachada `Process` le indicará a Laravel que siempre devuelva un resultado de proceso exitoso sin salida. Sin embargo, puede especificar fácilmente la salida y el código de salida para procesos falsos utilizando el método `result` de la fachada `Process`:
+Como se analizó, invocar el método `fake` en la fachada `Process` le indicará a Laravel que siempre devuelva un resultado de proceso exitoso sin salida. Sin embargo, puede especificar fácilmente la salida y el código de salida para procesos simulados utilizando el método `result` de la fachada `Process`:
 
 ```php
 Process::fake([
@@ -503,11 +503,11 @@ Process::fake([
 ```
 
 <a id="faking-specific-processes"></a>
-### Falsificar procesos específicos
+### Simulación de procesos específicos
 
-Como habrás notado en un ejemplo anterior, la fachada `Process` te permite especificar diferentes resultados falsos por proceso pasando una matriz al método `fake`.
+Como habrás notado en un ejemplo anterior, la fachada `Process` te permite especificar diferentes resultados simulados por proceso pasando una matriz al método `fake`.
 
-Las claves de la matriz deben representar patrones de comando que desea falsificar y sus resultados asociados. El carácter `*` se puede utilizar como carácter comodín. En realidad, se invocará cualquier comando de proceso que no haya sido falsificado. Puede utilizar el método `result` de la fachada `Process` para construir resultados stub/falso para estos comandos:
+Las claves de la matriz deben representar patrones de comando que desea simular y sus resultados asociados. El carácter `*` se puede utilizar como carácter comodín. En realidad, se invocará cualquier comando de proceso que no haya sido simulado. Puede utilizar el método `result` de la fachada `Process` para construir resultados simulados para estos comandos:
 
 ```php
 Process::fake([
@@ -520,7 +520,7 @@ Process::fake([
 ]);
 ```
 
-Si no necesita personalizar el código de salida o la salida de error de un proceso falso, puede que le resulte más conveniente especificar los resultados del proceso falso como cadenas simples:
+Si no necesita personalizar el código de salida o la salida de error de un proceso simulado, puede que le resulte más conveniente especificar los resultados del proceso simulado como cadenas simples:
 
 ```php
 Process::fake([
@@ -530,9 +530,9 @@ Process::fake([
 ```
 
 <a id="faking-process-sequences"></a>
-### Secuencias de procesos falsificadas
+### Secuencias de procesos simulados
 
-Si el código que está probando invoca varios procesos con el mismo comando, es posible que desee asignar un resultado de proceso falso diferente a cada invocación de proceso. Puede lograr esto mediante el método `sequence` de la fachada `Process`:
+Si el código que está probando invoca varios procesos con el mismo comando, es posible que desee asignar un resultado de proceso simulado diferente a cada invocación de proceso. Puede lograr esto mediante el método `sequence` de la fachada `Process`:
 
 ```php
 Process::fake([
@@ -543,9 +543,9 @@ Process::fake([
 ```
 
 <a id="faking-asynchronous-process-lifecycles"></a>
-### Falsificar ciclos de vida de procesos asincrónicos
+### Simulación de los ciclos de vida de procesos asincrónicos
 
-Hasta ahora, hemos analizado principalmente procesos de falsificación que se invocan sincrónicamente utilizando el método `run`. Sin embargo, si intenta probar código que interactúa con procesos asincrónicos invocados mediante `start`, es posible que necesite un enfoque más sofisticado para describir sus procesos falsos.
+Hasta ahora, hemos analizado principalmente la simulación de procesos que se invocan sincrónicamente utilizando el método `run`. Sin embargo, si intenta probar código que interactúa con procesos asincrónicos invocados mediante `start`, es posible que necesite un enfoque más sofisticado para describir sus procesos simulados.
 
 Por ejemplo, imaginemos la siguiente ruta que interactúa con un proceso asincrónico:
 
@@ -578,7 +578,7 @@ Process::fake([
 ]);
 ```
 
-Profundicemos en el ejemplo anterior. Usando los métodos `output` y `errorOutput`, podemos especificar múltiples líneas de salida que se devolverán en secuencia. Se puede utilizar el método `exitCode` para especificar el código de salida final del proceso falso. Finalmente, el método `iterations` se puede utilizar para especificar cuántas veces el método `running` debe devolver `true`.
+Profundicemos en el ejemplo anterior. Usando los métodos `output` y `errorOutput`, podemos especificar múltiples líneas de salida que se devolverán en secuencia. Se puede utilizar el método `exitCode` para especificar el código de salida final del proceso simulado. Finalmente, el método `iterations` se puede utilizar para especificar cuántas veces el método `running` debe devolver `true`.
 
 <a id="available-assertions"></a>
 ### Afirmaciones disponibles
@@ -604,7 +604,7 @@ Process::assertRan(['php', 'artisan', 'migrate']);
 
 Los métodos `assertRanTimes` y `assertDidntRun` también aceptan comandos de matriz.
 
-El método `assertRan` también acepta un cierre, que recibirá una instancia de un proceso y un resultado del proceso, lo que le permitirá inspeccionar las opciones configuradas del proceso. Si este cierre devuelve `true`, la aserción "pasará":
+El método `assertRan` también acepta una función anónima, que recibirá una instancia de un proceso y un resultado del proceso, lo que le permitirá inspeccionar las opciones configuradas del proceso. Si esta función anónima devuelve `true`, la aserción "pasará":
 
 ```php
 Process::assertRan(fn ($process, $result) =>
@@ -614,7 +614,7 @@ Process::assertRan(fn ($process, $result) =>
 );
 ```
 
-El `$process` pasado al cierre `assertRan` es una instancia de `Illuminate\Process\PendingProcess`, mientras que el `$result` es una instancia de `Illuminate\Contracts\Process\ProcessResult`.
+El `$process` pasado a la función anónima `assertRan` es una instancia de `Illuminate\Process\PendingProcess`, mientras que el `$result` es una instancia de `Illuminate\Contracts\Process\ProcessResult`.
 
 <a id="assert-process-didnt-run"></a>
 #### assertDidntRun
@@ -627,7 +627,7 @@ use Illuminate\Support\Facades\Process;
 Process::assertDidntRun('ls -la');
 ```
 
-Al igual que el método `assertRan`, el método `assertDidntRun` también acepta un cierre, que recibirá una instancia de un proceso y el resultado del proceso, lo que le permitirá inspeccionar las opciones configuradas del proceso. Si este cierre devuelve `true`, la aserción "fallará":
+Al igual que el método `assertRan`, el método `assertDidntRun` también acepta una función anónima, que recibirá una instancia de un proceso y el resultado del proceso, lo que le permitirá inspeccionar las opciones configuradas del proceso. Si esta función anónima devuelve `true`, la aserción "fallará":
 
 ```php
 Process::assertDidntRun(fn (PendingProcess $process, ProcessResult $result) =>
@@ -646,7 +646,7 @@ use Illuminate\Support\Facades\Process;
 Process::assertRanTimes('ls -la', times: 3);
 ```
 
-El método `assertRanTimes` también acepta un cierre, que recibirá una instancia de `PendingProcess` y `ProcessResult`, lo que le permitirá inspeccionar las opciones configuradas del proceso. Si este cierre devuelve `true` y el proceso se invocó la cantidad especificada de veces, la aserción "pasará":
+El método `assertRanTimes` también acepta una función anónima, que recibirá una instancia de `PendingProcess` y `ProcessResult`, lo que le permitirá inspeccionar las opciones configuradas del proceso. Si esta función anónima devuelve `true` y el proceso se invocó la cantidad especificada de veces, la aserción "pasará":
 
 ```php
 Process::assertRanTimes(function (PendingProcess $process, ProcessResult $result) {
@@ -666,12 +666,12 @@ Process::assertRanInOrder([
 ]);
 ```
 
-El método `assertRanInOrder` acepta cadenas de comandos, matrices de argumentos de comandos o cierres como las demás afirmaciones del proceso.
+El método `assertRanInOrder` acepta cadenas de comandos, matrices de argumentos de comandos o funciones anónimas como las demás afirmaciones del proceso.
 
 <a id="preventing-stray-processes"></a>
 ### Prevención de procesos perdidos
 
-Si desea asegurarse de que todos los procesos invocados hayan sido falsificados durante su prueba individual o conjunto de pruebas completo, puede llamar al método `preventStrayProcesses`. Después de llamar a este método, cualquier proceso que no tenga un resultado falso correspondiente generará una excepción en lugar de iniciar un proceso real:
+Si desea asegurarse de que todos los procesos invocados tengan resultados simulados durante una prueba o un conjunto completo de pruebas, puede llamar al método `preventStrayProcesses`. Después de llamar a este método, cualquier proceso que no tenga un resultado simulado correspondiente generará una excepción en lugar de iniciar un proceso real:
 
 ```php
 use Illuminate\Support\Facades\Process;

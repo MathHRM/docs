@@ -87,11 +87,11 @@ Como se analiza en esta documentación, puede interactuar con estos servicios de
 
 Laravel proporciona dos paquetes opcionales para ayudarle a administrar tokens API y autenticar solicitudes realizadas con tokens API: [Passport](../passport/) y [Sanctum](../sanctum/). Tenga en cuenta que estas bibliotecas y las bibliotecas de autenticación basadas en cookies integradas de Laravel no son mutuamente excluyentes. Estas bibliotecas se centran principalmente en la autenticación de tokens API, mientras que los servicios de autenticación integrados se centran en la autenticación del navegador basada en cookies. Muchas aplicaciones utilizarán tanto los servicios de autenticación basados ​​en cookies integrados de Laravel como uno de los paquetes de autenticación API de Laravel.
 
-**Pasaporte**
+**Passport**
 
 Passport es un proveedor de autenticación OAuth2 que ofrece una variedad de "tipos de concesión" de OAuth2 que le permiten emitir varios tipos de tokens. En general, este es un paquete robusto y complejo para la autenticación API. Sin embargo, la mayoría de las aplicaciones no requieren las funciones complejas que ofrece la especificación OAuth2, lo que puede resultar confuso tanto para los usuarios como para los desarrolladores. Además, históricamente los desarrolladores han estado confundidos acerca de cómo autenticar aplicaciones SPA o aplicaciones móviles utilizando proveedores de autenticación OAuth2 como Passport.
 
-**Santuario**
+**Sanctum**
 
 En respuesta a la complejidad de OAuth2 y la confusión de los desarrolladores, nos propusimos crear un paquete de autenticación más simple y optimizado que pudiera manejar tanto solicitudes web propias desde un navegador web como solicitudes API a través de tokens. Este objetivo se logró con el lanzamiento de [Laravel Sanctum](../sanctum/), que debe considerarse el paquete de autenticación preferido y recomendado para aplicaciones que ofrecerán una interfaz de usuario web propia además de una API, o que funcionarán con una aplicación de página única (SPA) que existe por separado de la aplicación backend de Laravel, o aplicaciones que ofrecen un cliente móvil.
 
@@ -104,7 +104,7 @@ En resumen, si se accederá a su aplicación mediante un navegador y está crean
 
 A continuación, si su aplicación ofrece una API que será consumida por terceros, podrá elegir entre [Passport](../passport/) o [Sanctum](../sanctum/) para proporcionar autenticación de token API para su aplicación. En general, se debe preferir Sanctum cuando sea posible, ya que es una solución simple y completa para la autenticación API, la autenticación SPA y la autenticación móvil, incluida la compatibilidad con "ámbitos" o "habilidades".
 
-Si está creando una aplicación de una sola página (SPA) que funcionará con un backend de Laravel, debe usar [Laravel Sanctum](../sanctum/). Cuando utilice Sanctum, necesitará [implementar manualmente sus propias rutas de autenticación de backend](#authenticating-users) o utilizar [Laravel Fortify](../fortify/) como un servicio de autenticación sin cabeza que proporciona rutas y controladores para funciones como registro, restablecimiento de contraseña, verificación de correo electrónico y más.
+Si está creando una aplicación de una sola página (SPA) que funcionará con un backend de Laravel, debe usar [Laravel Sanctum](../sanctum/). Cuando utilice Sanctum, necesitará [implementar manualmente sus propias rutas de autenticación de backend](#authenticating-users) o utilizar [Laravel Fortify](../fortify/) como un servicio de autenticación sin interfaz de usuario que proporciona rutas y controladores para funciones como registro, restablecimiento de contraseña, verificación de correo electrónico y más.
 
 Se puede elegir Passport cuando su aplicación necesita absolutamente todas las funciones proporcionadas por la especificación OAuth2. Además, si está creando un [servidor MCP](../mcp/) al que accederán los clientes AI, debe usar Passport, ya que los clientes MCP normalmente esperan [autenticarse usando OAuth](../mcp/#oauth).
 
@@ -348,7 +348,7 @@ if (Auth::guard('admin')->attempt($credentials)) {
 
 Muchas aplicaciones web incluyen una casilla de verificación "recordarme" en su formulario de inicio de sesión. Si desea proporcionar la funcionalidad "recordarme" en su aplicación, puede pasar un valor booleano como segundo argumento al método `attempt`.
 
-Cuando este valor es `true`, Laravel mantendrá al usuario autenticado indefinidamente o hasta que cierre sesión manualmente. Su tabla `users` debe incluir la columna de cadena `remember_token`, que se utilizará para almacenar el token "recordarme". La migración de la tabla `users` incluida con las nuevas aplicaciones Laravel ya incluye esta columna:
+Cuando este valor es `true`, Laravel mantendrá al usuario autenticado indefinidamente o hasta que función anónima sesión manualmente. Su tabla `users` debe incluir la columna de cadena `remember_token`, que se utilizará para almacenar el token "recordarme". La migración de la tabla `users` incluida con las nuevas aplicaciones Laravel ya incluye esta columna:
 
 ```php
 use Illuminate\Support\Facades\Auth;
@@ -382,7 +382,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::login($user);
 ```
 
-Puede pasar un valor booleano como segundo argumento al método `login`. Este valor indica si se desea la funcionalidad "recordarme" para la sesión autenticada. Recuerde, esto significa que la sesión quedará autenticada indefinidamente o hasta que el usuario cierre sesión manualmente en la aplicación:
+Puede pasar un valor booleano como segundo argumento al método `login`. Este valor indica si se desea la funcionalidad "recordarme" para la sesión autenticada. Recuerde, esto significa que la sesión quedará autenticada indefinidamente o hasta que el usuario función anónima sesión manualmente en la aplicación:
 
 ```php
 Auth::login($user, $remember = true);
@@ -403,7 +403,7 @@ Para autenticar a un usuario utilizando la clave principal del registro de su ba
 Auth::loginUsingId(1);
 ```
 
-Puede pasar un valor booleano al argumento `remember` del método `loginUsingId`. Este valor indica si se desea la funcionalidad "recordarme" para la sesión autenticada. Recuerde, esto significa que la sesión quedará autenticada indefinidamente o hasta que el usuario cierre sesión manualmente en la aplicación:
+Puede pasar un valor booleano al argumento `remember` del método `loginUsingId`. Este valor indica si se desea la funcionalidad "recordarme" para la sesión autenticada. Recuerde, esto significa que la sesión quedará autenticada indefinidamente o hasta que el usuario función anónima sesión manualmente en la aplicación:
 
 ```php
 Auth::loginUsingId(1, remember: true);

@@ -8,7 +8,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 - [Escribir comandos](#writing-commands)
     - [Generando Comandos](#generating-commands)
     - [Estructura de comando](#command-structure)
-    - [Comandos de cierre](#closure-commands)
+    - [Comandos de función anónima](#closure-commands)
     - [Comandos aislables](#isolatable-commands)
 - [Definición de expectativas de entrada](#defining-input-expectations)
     - [Argumentos](#arguments)
@@ -178,11 +178,11 @@ $this->fail('Something went wrong.');
 ```
 
 <a id="closure-commands"></a>
-### Comandos de cierre
+### Comandos de función anónima
 
-Los comandos basados ​​en cierres proporcionan una alternativa a la definición de comandos de consola como clases. De la misma manera que los cierres de rutas son una alternativa a los controladores, piense en los cierres de comandos como una alternativa a las clases de comandos.
+Los comandos basados ​​en funciones anónimas proporcionan una alternativa a la definición de comandos de consola como clases. De la misma manera que las funciones anónimas de rutas son una alternativa a los controladores, piense en las funciones anónimas de comandos como una alternativa a las clases de comandos.
 
-Aunque el archivo `routes/console.php` no define rutas HTTP, define puntos de entrada (rutas) basados ​​en consola en su aplicación. Dentro de este archivo, puede definir todos los comandos de su consola basada en cierres utilizando el método `Artisan::command`. El método `command` acepta dos argumentos: la [firma del comando](#defining-input-expectations) y un cierre que recibe los argumentos y opciones del comando:
+Aunque el archivo `routes/console.php` no define rutas HTTP, define puntos de entrada (rutas) basados ​​en consola en su aplicación. Dentro de este archivo, puede definir todos los comandos de su consola basada en funciones anónimas utilizando el método `Artisan::command`. El método `command` acepta dos argumentos: la [firma del comando](#defining-input-expectations) y una función anónima que recibe los argumentos y opciones del comando:
 
 ```php
 Artisan::command('mail:send {user}', function (string $user) {
@@ -190,12 +190,12 @@ Artisan::command('mail:send {user}', function (string $user) {
 });
 ```
 
-El cierre está vinculado a la instancia de comando subyacente, por lo que tiene acceso completo a todos los métodos auxiliares a los que normalmente podría acceder en una clase de comando completa.
+la función anónima está vinculado a la instancia de comando subyacente, por lo que tiene acceso completo a todos los métodos auxiliares a los que normalmente podría acceder en una clase de comando completa.
 
 <a id="type-hinting-dependencies"></a>
 #### Dependencias de sugerencias de tipo
 
-Además de recibir los argumentos y opciones de su comando, los cierres de comandos también pueden indicar dependencias adicionales que le gustaría resolver desde el [contenedor de servicios](../container/):
+Además de recibir los argumentos y opciones de su comando, las funciones anónimas de comandos también pueden indicar dependencias adicionales que le gustaría resolver desde el [contenedor de servicios](../container/):
 
 ```php
 use App\Models\User;
@@ -208,9 +208,9 @@ Artisan::command('mail:send {user}', function (DripEmailer $drip, string $user) 
 ```
 
 <a id="closure-command-descriptions"></a>
-#### Descripciones de comandos de cierre
+#### Descripciones de comandos de función anónima
 
-Al definir un comando basado en cierre, puede usar el método `purpose` para agregar una descripción al comando. Esta descripción se mostrará cuando ejecute los comandos `php artisan list` o `php artisan help`:
+Al definir un comando basado en función anónima, puede usar el método `purpose` para agregar una descripción al comando. Esta descripción se mostrará cuando ejecute los comandos `php artisan list` o `php artisan help`:
 
 ```php
 Artisan::command('mail:send {user}', function (string $user) {
@@ -477,7 +477,7 @@ return [
 ];
 ```
 
-Si desea tener un control total sobre el mensaje, puede proporcionar un cierre que debería avisar al usuario y devolverle su respuesta:
+Si desea tener un control total sobre el mensaje, puede proporcionar una función anónima que debería avisar al usuario y devolverle su respuesta:
 
 ```php
 use App\Models\User;
@@ -636,7 +636,7 @@ El método `anticipate` se puede utilizar para proporcionar autocompletado de po
 $name = $this->anticipate('What is your name?', ['Taylor', 'Dayle']);
 ```
 
-Alternativamente, puede pasar un cierre como segundo argumento del método `anticipate`. El cierre se llamará cada vez que el usuario escriba un carácter de entrada. El cierre debe aceptar un parámetro de cadena que contenga la entrada del usuario hasta el momento y devolver una serie de opciones para autocompletar:
+Alternativamente, puede pasar una función anónima como segundo argumento del método `anticipate`. La función anónima se llamará cada vez que el usuario escriba un carácter de entrada. La función anónima debe aceptar un parámetro de cadena que contenga la entrada del usuario hasta el momento y devolver una serie de opciones para autocompletar:
 
 ```php
 use App\Models\Address;

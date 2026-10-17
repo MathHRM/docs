@@ -242,7 +242,7 @@ Route::post('/unsubscribe/{user}', function (Request $request) {
 <a id="responding-to-invalid-signed-routes"></a>
 #### Responder a rutas firmadas no válidas
 
-Cuando alguien visita una URL firmada que ha caducado, recibirá una página de error genérica para el código de estado HTTP `403`. Sin embargo, puede personalizar este comportamiento definiendo un cierre de "renderización" personalizado para la excepción `InvalidSignatureException` en el archivo `bootstrap/app.php` de su aplicación:
+Cuando alguien visita una URL firmada que ha caducado, recibirá una página de error genérica para el código de estado HTTP `403`. Sin embargo, puede personalizar este comportamiento definiendo una función anónima de "renderización" personalizado para la excepción `InvalidSignatureException` en el archivo `bootstrap/app.php` de su aplicación:
 
 ```php
 use Illuminate\Routing\Exceptions\InvalidSignatureException;

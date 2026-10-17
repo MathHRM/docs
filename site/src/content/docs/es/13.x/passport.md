@@ -1,13 +1,13 @@
 ---
-title: "Pasaporte Laravel"
+title: "Passport Laravel"
 translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ---
 
 - [Introducción](#introduction)
-    - [¿Pasaporte o Santuario?](#passport-or-sanctum)
+    - [¿Passport o Sanctum?](#passport-or-sanctum)
 - [Instalación](#installation)
     - [Implementación de Passport](#deploying-passport)
-    - [Actualización de Pasaporte](#upgrading-passport)
+    - [Actualización de Passport](#upgrading-passport)
 - [Configuración](#configuration)
     - [Vida útil del token](#token-lifetimes)
     - [Anulación de modelos predeterminados](#overriding-default-models)
@@ -60,7 +60,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 > Esta documentación supone que ya está familiarizado con OAuth2. Si no sabe nada sobre OAuth2, considere familiarizarse con la [terminología](https://oauth2.thephpleague.com/terminology/) general y las características de OAuth2 antes de continuar.
 
 <a id="passport-or-sanctum"></a>
-### ¿Pasaporte o Santuario?
+### ¿Passport o Sanctum?
 
 Antes de comenzar, es posible que desee determinar si su solicitud sería mejor atendida por Laravel Passport o [Laravel Sanctum](../sanctum/). Si es absolutamente necesario que su aplicación sea compatible con OAuth2, entonces debería utilizar Laravel Passport.
 
@@ -113,7 +113,7 @@ Finalmente, en el archivo de configuración `config/auth.php` de su aplicación,
 ```
 
 <a id="deploying-passport"></a>
-### Implementación de Pasaporte
+### Implementación de Passport
 
 Al implementar Passport en los servidores de su aplicación por primera vez, probablemente necesitará ejecutar el comando `passport:keys`. Este comando genera las claves de cifrado que Passport necesita para generar tokens de acceso. Las claves generadas normalmente no se mantienen en el control de código fuente:
 
@@ -155,7 +155,7 @@ PASSPORT_PUBLIC_KEY="-----BEGIN PUBLIC KEY-----
 ```
 
 <a id="upgrading-passport"></a>
-### Actualización de pasaporte
+### Actualización de Passport
 
 Al actualizar a una nueva versión principal de Passport, es importante que revise cuidadosamente [la guía de actualización](https://github.com/laravel/passport/blob/master/UPGRADE.md).
 

@@ -8,7 +8,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 - [Registro de eventos y oyentes](#registering-events-and-listeners)
     - [Descubrimiento de eventos](#event-discovery)
     - [Registro manual de eventos](#manually-registering-events)
-    - [Oyentes de cierre](#closure-listeners)
+    - [Oyentes de función anónima](#closure-listeners)
 - [Definición de eventos](#defining-events)
 - [Definición de oyentes](#defining-listeners)
 - [Oyentes de eventos en cola](#queued-event-listeners)
@@ -176,9 +176,9 @@ php artisan event:list
 ```
 
 <a id="closure-listeners"></a>
-### Oyentes de cierre
+### Oyentes de función anónima
 
-Normalmente, los oyentes se definen como clases; sin embargo, también puede registrar manualmente detectores de eventos basados ​​en cierres en el método `boot` del `AppServiceProvider` de su aplicación:
+Normalmente, los oyentes se definen como clases; sin embargo, también puede registrar manualmente detectores de eventos basados ​​en funciones anónimas en el método `boot` del `AppServiceProvider` de su aplicación:
 
 ```php
 use App\Events\PodcastProcessed;
@@ -198,7 +198,7 @@ public function boot(): void
 <a id="queueable-anonymous-event-listeners"></a>
 #### Oyentes de eventos anónimos en cola
 
-Al registrar detectores de eventos basados ​​en cierres, puede incluir el cierre del detector dentro de la función `Illuminate\Events\queueable` para indicarle a Laravel que ejecute el detector usando [queue](../queues/):
+Al registrar detectores de eventos basados ​​en funciones anónimas, puede incluir la función anónima del detector dentro de la función `Illuminate\Events\queueable` para indicarle a Laravel que ejecute el detector usando [queue](../queues/):
 
 ```php
 use App\Events\PodcastProcessed;
@@ -224,7 +224,7 @@ Event::listen(queueable(function (PodcastProcessed $event) {
 })->onConnection('redis')->onQueue('podcasts')->delay(now()->plus(seconds: 10)));
 ```
 
-Si desea gestionar errores de escucha anónimos en cola, puede proporcionar un cierre al método `catch` mientras define el escucha `queueable`. Este cierre recibirá la instancia del evento y la instancia `Throwable` que provocó el error del oyente:
+Si desea gestionar errores de escucha anónimos en cola, puede proporcionar una función anónima al método `catch` mientras define el escucha `queueable`. esta función anónima recibirá la instancia del evento y la instancia `Throwable` que provocó el error del oyente:
 
 ```php
 use App\Events\PodcastProcessed;
@@ -998,7 +998,7 @@ class OrderShipped implements ShouldDispatchAfterCommit
 
 Los eventos diferidos le permiten retrasar el envío de eventos del modelo y la ejecución de detectores de eventos hasta que se haya completado un bloque de código específico. Esto es particularmente útil cuando necesita asegurarse de que todos los registros relacionados se creen antes de que se activen los detectores de eventos.
 
-Para aplazar eventos, proporcione un cierre al método `Event::defer()`:
+Para aplazar eventos, proporcione una función anónima al método `Event::defer()`:
 
 ```php
 use App\Models\User;
@@ -1011,7 +1011,7 @@ Event::defer(function () {
 });
 ```
 
-Todos los eventos desencadenados dentro del cierre se enviarán después de que se ejecute el cierre. Esto garantiza que los detectores de eventos tengan acceso a todos los registros relacionados que se crearon durante la ejecución diferida. Si ocurre una excepción dentro del cierre, los eventos diferidos no se enviarán.
+Todos los eventos desencadenados dentro de la función anónima se enviarán después de que se ejecute la función anónima. Esto garantiza que los detectores de eventos tengan acceso a todos los registros relacionados que se crearon durante la ejecución diferida. Si ocurre una excepción dentro de la función anónima, los eventos diferidos no se enviarán.
 
 Para posponer solo eventos específicos, pase una serie de eventos como segundo argumento al método `defer`:
 
@@ -1212,7 +1212,7 @@ class ExampleTest extends TestCase
 }
 ```
 
-Puede pasar un cierre a los métodos `assertDispatched` o `assertNotDispatched` para afirmar que se envió un evento que pasa una "prueba de verdad" determinada. Si se envió al menos un evento que pasa la prueba de verdad dada, entonces la afirmación será exitosa:
+Puede pasar una función anónima a los métodos `assertDispatched` o `assertNotDispatched` para afirmar que se envió un evento que pasa una "prueba de verdad" determinada. Si se envió al menos un evento que pasa la prueba de verdad dada, entonces la afirmación será exitosa:
 
 ```php
 Event::assertDispatched(function (OrderShipped $event) use ($order) {

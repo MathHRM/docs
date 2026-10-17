@@ -244,7 +244,7 @@ public function test_time_can_be_manipulated(): void
 }
 ```
 
-También puedes pasar una función anónima a los distintos métodos de viaje en el tiempo. La función se ejecutará con el tiempo congelado en el momento especificado. Una vez ejecutado el cierre, el tiempo se reanudará con normalidad:
+También puedes pasar una función anónima a los distintos métodos de viaje en el tiempo. La función se ejecutará con el tiempo congelado en el momento especificado. Una vez ejecutado la función anónima, el tiempo se reanudará con normalidad:
 
 ```php
 $this->travel(5)->days(function () {

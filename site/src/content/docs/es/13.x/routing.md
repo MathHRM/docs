@@ -36,7 +36,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 <a id="basic-routing"></a>
 ## Enrutamiento básico
 
-Las rutas Laravel más básicas aceptan un URI y un cierre, proporcionando un método muy simple y expresivo para definir rutas y comportamiento sin archivos de configuración de enrutamiento complicados:
+Las rutas Laravel más básicas aceptan un URI y una función anónima, proporcionando un método muy simple y expresivo para definir rutas y comportamiento sin archivos de configuración de enrutamiento complicados:
 
 ```php
 use Illuminate\Support\Facades\Route;
@@ -237,7 +237,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )->create();
 ```
 
-Sin embargo, a veces es posible que desee definir un archivo completamente nuevo para que contenga un subconjunto de las rutas de su aplicación. Para lograr esto, puede proporcionar un cierre `then` al método `withRouting`. Dentro de este cierre, podrá registrar cualquier ruta adicional que sea necesaria para su aplicación:
+Sin embargo, a veces es posible que desee definir un archivo completamente nuevo para que contenga un subconjunto de las rutas de su aplicación. Para lograr esto, puede proporcionar una función anónima `then` al método `withRouting`. Dentro de esta función anónima, podrá registrar cualquier ruta adicional que sea necesaria para su aplicación:
 
 ```php
 use Illuminate\Support\Facades\Route;
@@ -255,7 +255,7 @@ use Illuminate\Support\Facades\Route;
 )
 ```
 
-O incluso puede tomar control total sobre el registro de rutas proporcionando un cierre `using` al método `withRouting`. Cuando se pasa este argumento, el marco no registrará ninguna ruta HTTP y usted es responsable de registrar manualmente todas las rutas:
+O incluso puede tomar control total sobre el registro de rutas proporcionando una función anónima `using` al método `withRouting`. Cuando se pasa este argumento, el marco no registrará ninguna ruta HTTP y usted es responsable de registrar manualmente todas las rutas:
 
 ```php
 use Illuminate\Support\Facades\Route;
@@ -701,7 +701,7 @@ Route::get('/users/{user}/posts/{post:slug}', function (User $user, Post $post) 
 <a id="customizing-missing-model-behavior"></a>
 #### Personalización del comportamiento del modelo faltante
 
-Normalmente, se generará una respuesta HTTP 404 si no se encuentra un modelo vinculado implícitamente. Sin embargo, puede personalizar este comportamiento llamando al método `missing` al definir su ruta. El método `missing` acepta un cierre que se invocará si no se puede encontrar un modelo vinculado implícitamente:
+Normalmente, se generará una respuesta HTTP 404 si no se encuentra un modelo vinculado implícitamente. Sin embargo, puede personalizar este comportamiento llamando al método `missing` al definir su ruta. El método `missing` acepta una función anónima que se invocará si no se puede encontrar un modelo vinculado implícitamente:
 
 ```php
 use App\Http\Controllers\LocationsController;
@@ -778,7 +778,7 @@ Si no se encuentra una instancia de modelo coincidente en la base de datos, se g
 <a id="customizing-the-resolution-logic"></a>
 #### Personalización de la lógica de resolución
 
-Si desea definir su propia lógica de resolución de enlace de modelo, puede utilizar el método `Route::bind`. El cierre que pase al método `bind` recibirá el valor del segmento URI y deberá devolver la instancia de la clase que debe inyectarse en la ruta. Nuevamente, esta personalización debe realizarse en el método `boot` del `AppServiceProvider` de su aplicación:
+Si desea definir su propia lógica de resolución de enlace de modelo, puede utilizar el método `Route::bind`. La función anónima que pase al método `bind` recibirá el valor del segmento URI y deberá devolver la instancia de la clase que debe inyectarse en la ruta. Nuevamente, esta personalización debe realizarse en el método `boot` del `AppServiceProvider` de su aplicación:
 
 ```php
 use App\Models\User;
@@ -865,7 +865,7 @@ public function boot(): void
 }
 ```
 
-Los limitadores de velocidad se definen utilizando el método `for` de la fachada `RateLimiter`. El método `for` acepta un nombre de limitador de velocidad y un cierre que devuelve la configuración de límite que debe aplicarse a las rutas asignadas al limitador de velocidad. La configuración de límites son instancias de la clase `Illuminate\Cache\RateLimiting\Limit`. Esta clase contiene métodos "constructores" útiles para que pueda definir rápidamente su límite. El nombre del limitador de velocidad puede ser cualquier cadena que desee:
+Los limitadores de velocidad se definen utilizando el método `for` de la fachada `RateLimiter`. El método `for` acepta un nombre de limitador de velocidad y una función anónima que devuelve la configuración de límite que debe aplicarse a las rutas asignadas al limitador de velocidad. La configuración de límites son instancias de la clase `Illuminate\Cache\RateLimiting\Limit`. Esta clase contiene métodos "constructores" útiles para que pueda definir rápidamente su límite. El nombre del limitador de velocidad puede ser cualquier cadena que desee:
 
 ```php
 use Illuminate\Cache\RateLimiting\Limit;
@@ -956,7 +956,7 @@ RateLimiter::for('uploads', function (Request $request) {
 
 Además de limitar la velocidad de las solicitudes entrantes, Laravel le permite limitar la velocidad en función de la respuesta utilizando el método `after`. Esto es útil cuando solo desea contar ciertas respuestas para el límite de tasa, como errores de validación, respuestas 404 u otros códigos de estado HTTP específicos.
 
-El método `after` acepta un cierre que recibe la respuesta y debe devolver `true` si la respuesta debe contarse para el límite de tasa, o `false` si debe ignorarse. Esto es particularmente útil para prevenir ataques de enumeración al limitar las respuestas 404 consecutivas o permitir a los usuarios reintentar solicitudes que fallan en la validación sin agotar su límite de velocidad en un punto final que solo debería limitar las operaciones exitosas:
+El método `after` acepta una función anónima que recibe la respuesta y debe devolver `true` si la respuesta debe contarse para el límite de tasa, o `false` si debe ignorarse. Esto es particularmente útil para prevenir ataques de enumeración al limitar las respuestas 404 consecutivas o permitir a los usuarios reintentar solicitudes que fallan en la validación sin agotar su límite de velocidad en un punto final que solo debería limitar las operaciones exitosas:
 
 ```php
 use Illuminate\Cache\RateLimiting\Limit;

@@ -964,7 +964,7 @@ Order::removeAllFromSearch();
 <a id="pausing-indexing"></a>
 ### Pausar la indexación
 
-A veces es posible que necesites realizar un lote de operaciones de Eloquent en un modelo sin sincronizar los datos del modelo con tu índice de búsqueda. Puede hacer esto usando el método `withoutSyncingToSearch`. Este método acepta un cierre único que se ejecutará inmediatamente. Cualquier operación de modelo que ocurra dentro del cierre no se sincronizará con el índice del modelo:
+A veces es posible que necesites realizar un lote de operaciones de Eloquent en un modelo sin sincronizar los datos del modelo con tu índice de búsqueda. Puede hacer esto usando el método `withoutSyncingToSearch`. Este método acepta una función anónima única que se ejecutará inmediatamente. Cualquier operación de modelo que ocurra dentro de la función anónima no se sincronizará con el índice del modelo:
 
 ```php
 use App\Models\Order;
@@ -1108,7 +1108,7 @@ $orders = Order::search('Star Trek')->whereNotIn(
 <a id="customizing-the-eloquent-results-query"></a>
 #### Personalización de la consulta de resultados elocuentes
 
-Después de que Scout recupera una lista de modelos Eloquent coincidentes del motor de búsqueda de su aplicación, Eloquent se utiliza para recuperar todos los modelos coincidentes por sus claves principales. Puede personalizar esta consulta invocando el método `query`. El método `query` acepta un cierre que recibirá la instancia del generador de consultas Eloquent como argumento:
+Después de que Scout recupera una lista de modelos Eloquent coincidentes del motor de búsqueda de su aplicación, Eloquent se utiliza para recuperar todos los modelos coincidentes por sus claves principales. Puede personalizar esta consulta invocando el método `query`. El método `query` acepta una función anónima que recibirá la instancia del generador de consultas Eloquent como argumento:
 
 ```php
 use App\Models\Order;
@@ -1197,7 +1197,7 @@ $orders = Order::search('Star Trek')->onlyTrashed()->get();
 <a id="customizing-engine-searches"></a>
 ### Personalización de las búsquedas en el motor
 
-Si necesita realizar una personalización avanzada del comportamiento de búsqueda de un motor, puede pasar un cierre como segundo argumento del método `search`. Por ejemplo, podría utilizar esta devolución de llamada para agregar datos de ubicación geográfica a sus opciones de búsqueda antes de que la consulta de búsqueda se pase a Algolia:
+Si necesita realizar una personalización avanzada del comportamiento de búsqueda de un motor, puede pasar una función anónima como segundo argumento del método `search`. Por ejemplo, podría utilizar esta devolución de llamada para agregar datos de ubicación geográfica a sus opciones de búsqueda antes de que la consulta de búsqueda se pase a Algolia:
 
 ```php
 use Algolia\AlgoliaSearch\SearchIndex;

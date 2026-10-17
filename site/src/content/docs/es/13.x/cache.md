@@ -200,7 +200,7 @@ $value = Cache::get('key');
 $value = Cache::get('key', 'default');
 ```
 
-Incluso puede pasar un cierre como valor predeterminado. El resultado del cierre se devolverá si el elemento especificado no existe en la memoria caché. Pasar un cierre le permite diferir la recuperación de valores predeterminados de una base de datos u otro servicio externo:
+Incluso puede pasar una función anónima como valor predeterminado. El resultado de la función anónima se devolverá si el elemento especificado no existe en la memoria caché. Pasar una función anónima le permite diferir la recuperación de valores predeterminados de una base de datos u otro servicio externo:
 
 ```php
 $value = Cache::get('key', function () {
@@ -246,9 +246,9 @@ $value = Cache::remember('users', $seconds, function () {
 });
 ```
 
-Si el elemento no existe en la caché, se ejecutará el cierre pasado al método `remember` y su resultado se colocará en la caché.
+Si el elemento no existe en la caché, se ejecutará la función anónima pasada al método `remember` y su resultado se colocará en la caché.
 
-Si necesita saber si el elemento se recuperó del caché en lugar de ejecutar el cierre indicado, puede utilizar el método `rememberWithWarmth`. Este método devuelve una matriz que contiene el valor almacenado en caché y un valor booleano que indica si el elemento estaba "activo", lo que significa que se recuperó del caché y no se resolvió desde el cierre:
+Si necesita saber si el elemento se recuperó del caché en lugar de ejecutar la función anónima indicado, puede utilizar el método `rememberWithWarmth`. Este método devuelve una matriz que contiene el valor almacenado en caché y un valor booleano que indica si el elemento estaba "activo", lo que significa que se recuperó del caché y no se resolvió desde la función anónima:
 
 ```php
 [$value, $warm] = Cache::rememberWithWarmth('users', $seconds, function () {
@@ -518,7 +518,7 @@ if ($lock->get()) {
 }
 ```
 
-El método `get` también acepta un cierre. Después de ejecutar el cierre, Laravel liberará automáticamente el bloqueo:
+El método `get` también acepta una función anónima. Después de ejecutar la función anónima, Laravel liberará automáticamente el bloqueo:
 
 ```php
 Cache::lock('foo', 10)->get(function () {
@@ -544,7 +544,7 @@ try {
 }
 ```
 
-El ejemplo anterior se puede simplificar pasando un cierre al método `block`. Cuando se pasa un cierre a este método, Laravel intentará adquirir el bloqueo durante el número de segundos especificado y lo liberará automáticamente una vez que se haya ejecutado el cierre:
+El ejemplo anterior se puede simplificar pasando una función anónima al método `block`. Cuando se pasa una función anónima a este método, Laravel intentará adquirir el bloqueo durante el número de segundos especificado y lo liberará automáticamente una vez que se haya ejecutado la función anónima:
 
 ```php
 Cache::lock('foo', 10)->block(5, function () {
@@ -604,7 +604,7 @@ if ($lock->get()) {
 <a id="concurrency-limiting"></a>
 ### Limitación de concurrencia
 
-La funcionalidad de bloqueo atómico de Laravel también proporciona algunas formas de limitar la ejecución simultánea de cierres. Utilice `withoutOverlapping` cuando desee permitir solo una instancia en ejecución en su infraestructura:
+La funcionalidad de bloqueo atómico de Laravel también proporciona algunas formas de limitar la ejecución simultánea de funciones anónimas. Utilice `withoutOverlapping` cuando desee permitir solo una instancia en ejecución en su infraestructura:
 
 ```php
 Cache::withoutOverlapping('foo', function () {
@@ -612,7 +612,7 @@ Cache::withoutOverlapping('foo', function () {
 });
 ```
 
-De forma predeterminada, el bloqueo se mantiene hasta que el cierre termina de ejecutarse y el método espera hasta 10 segundos para adquirir el bloqueo. Puede personalizar estos valores utilizando argumentos adicionales:
+De forma predeterminada, el bloqueo se mantiene hasta que la función anónima termina de ejecutarse y el método espera hasta 10 segundos para adquirir el bloqueo. Puede personalizar estos valores utilizando argumentos adicionales:
 
 ```php
 Cache::withoutOverlapping('foo', function () {
@@ -638,7 +638,7 @@ Cache::funnel('foo')
 
 La clave `funnel` identifica el recurso que se está limitando. El método `limit` define las ejecuciones simultáneas máximas. El método `releaseAfter` establece un tiempo de espera de seguridad en segundos antes de que una ranura adquirida se libere automáticamente. El método `block` establece cuántos segundos esperar hasta que haya una ranura disponible.
 
-Si prefiere manejar el tiempo de espera mediante excepciones en lugar de proporcionar un cierre de falla, puede omitir el segundo cierre. Se generará un `Illuminate\Cache\Limiters\LimiterTimeoutException` si no se puede adquirir el bloqueo dentro del tiempo de espera especificado:
+Si prefiere manejar el tiempo de espera mediante excepciones en lugar de proporcionar una función anónima de falla, puede omitir el segunda función anónima. Se generará un `Illuminate\Cache\Limiters\LimiterTimeoutException` si no se puede adquirir el bloqueo dentro del tiempo de espera especificado:
 
 ```php
 use Illuminate\Cache\Limiters\LimiterTimeoutException;
@@ -776,7 +776,7 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-El primer argumento pasado al método `extend` es el nombre del controlador. Esto corresponderá a su opción `driver` en el archivo de configuración `config/cache.php`. El segundo argumento es un cierre que debería devolver una instancia `Illuminate\Cache\Repository`. Al cierre se le pasará una instancia `$app`, que es una instancia del [contenedor de servicio](../container/).
+El primer argumento pasado al método `extend` es el nombre del controlador. Esto corresponderá a su opción `driver` en el archivo de configuración `config/cache.php`. El segundo argumento es una función anónima que debería devolver una instancia `Illuminate\Cache\Repository`. a la función anónima se le pasará una instancia `$app`, que es una instancia del [contenedor de servicio](../container/).
 
 Una vez registrada su extensión, actualice la variable de entorno `CACHE_STORE` o la opción `default` dentro del archivo de configuración `config/cache.php` de su aplicación con el nombre de su extensión.
 

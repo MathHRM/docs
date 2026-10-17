@@ -152,7 +152,7 @@ Context::decrement('records_added', 5);
 <a id="conditional-context"></a>
 #### Contexto condicional
 
-El método `when` se puede utilizar para agregar datos al contexto en función de una condición determinada. El primer cierre proporcionado al método `when` se invocará si la condición dada se evalúa como `true`, mientras que se invocará el segundo cierre si la condición se evalúa como `false`:
+El método `when` se puede utilizar para agregar datos al contexto en función de una condición determinada. El primera función anónima proporcionada al método `when` se invocará si la condición dada se evalúa como `true`, mientras que se invocará el segunda función anónima si la condición se evalúa como `false`:
 
 ```php
 use Illuminate\Support\Facades\Auth;
@@ -168,7 +168,7 @@ Context::when(
 <a id="scoped-context"></a>
 #### Contexto de ámbito
 
-El método `scope` proporciona una manera de modificar temporalmente el contexto durante la ejecución de una devolución de llamada determinada y restaurar el contexto a su estado original cuando la devolución de llamada termina de ejecutarse. Además, puede pasar datos adicionales que deben fusionarse en el contexto (como el segundo y tercer argumento) mientras se ejecuta el cierre.
+El método `scope` proporciona una manera de modificar temporalmente el contexto durante la ejecución de una devolución de llamada determinada y restaurar el contexto a su estado original cuando la devolución de llamada termina de ejecutarse. Además, puede pasar datos adicionales que deben fusionarse en el contexto (como el segundo y tercer argumento) mientras se ejecuta la función anónima.
 
 ```php
 use Illuminate\Support\Facades\Context;
@@ -202,7 +202,7 @@ Context::allHidden();
 ```
 
 > **Advertencia:**
-> Si un objeto dentro del contexto se modifica dentro del cierre del ámbito, esa mutación se reflejará fuera del ámbito.
+> Si un objeto dentro del contexto se modifica dentro de la función anónima del ámbito, esa mutación se reflejará fuera del ámbito.
 
 <a id="stacks"></a>
 ### Pilas
@@ -248,7 +248,7 @@ if (Context::hiddenStackContains('secrets', 'first_value')) {
 }
 ```
 
-Los métodos `stackContains` y `hiddenStackContains` también aceptan un cierre como segundo argumento, lo que permite un mayor control sobre la operación de comparación de valores:
+Los métodos `stackContains` y `hiddenStackContains` también aceptan una función anónima como segundo argumento, lo que permite un mayor control sobre la operación de comparación de valores:
 
 ```php
 use Illuminate\Support\Facades\Context;
@@ -296,7 +296,7 @@ Context::get('breadcrumbs');
 // ['first_value']
 ```
 
-Los métodos `remember` y `rememberHidden` se pueden usar para recuperar información del contexto, mientras se establece el valor del contexto en el valor devuelto por el cierre dado si la información solicitada no existe:
+Los métodos `remember` y `rememberHidden` se pueden usar para recuperar información del contexto, mientras se establece el valor del contexto en el valor devuelto por la función anónima dada si la información solicitada no existe:
 
 ```php
 $permissions = Context::remember(
@@ -404,7 +404,7 @@ Para ilustrar cómo se pueden usar estos eventos, imagine que en un middleware d
 <a id="dehydrating"></a>
 ### Deshidratar
 
-Cada vez que se envía un trabajo a la cola, los datos en el contexto se "deshidratan" y se capturan junto con la carga útil del trabajo. El método `Context::dehydrating` le permite registrar un cierre que será invocado durante el proceso de deshidratación. Dentro de este cierre, puede realizar cambios en los datos que se compartirán con el trabajo en cola.
+Cada vez que se envía un trabajo a la cola, los datos en el contexto se "deshidratan" y se capturan junto con la carga útil del trabajo. El método `Context::dehydrating` le permite registrar una función anónima que será invocado durante el proceso de deshidratación. Dentro de esta función anónima, puede realizar cambios en los datos que se compartirán con el trabajo en cola.
 
 Normalmente, debes registrar devoluciones de llamadas `dehydrating` dentro del método `boot` de la clase `AppServiceProvider` de tu aplicación:
 
@@ -430,7 +430,7 @@ public function boot(): void
 <a id="hydrated"></a>
 ### Hidratado
 
-Siempre que un trabajo en cola comience a ejecutarse en la cola, cualquier contexto que se haya compartido con el trabajo se "hidratará" nuevamente al contexto actual. El método `Context::hydrated` le permite registrar un cierre que será invocado durante el proceso de hidratación.
+Siempre que un trabajo en cola comience a ejecutarse en la cola, cualquier contexto que se haya compartido con el trabajo se "hidratará" nuevamente al contexto actual. El método `Context::hydrated` le permite registrar una función anónima que será invocado durante el proceso de hidratación.
 
 Normalmente, debes registrar devoluciones de llamadas `hydrated` dentro del método `boot` de la clase `AppServiceProvider` de tu aplicación:
 

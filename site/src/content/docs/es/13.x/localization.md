@@ -222,7 +222,7 @@ Si su marcador de posición contiene todas las letras mayúsculas, o solo tiene 
 
 Si intenta proporcionar un objeto como marcador de posición de traducción, se invocará el método `__toString` del objeto. El método [__toString](https://www.php.net/manual/en/language.oop5.magic.php#object.tostring) es uno de los "métodos mágicos" integrados de PHP. Sin embargo, a veces es posible que no tenga control sobre el método `__toString` de una clase determinada, como cuando la clase con la que está interactuando pertenece a una biblioteca de terceros.
 
-En estos casos, Laravel le permite registrar un controlador de formato personalizado para ese tipo particular de objeto. Para lograr esto, debe invocar el método `stringable` del traductor. El método `stringable` acepta un cierre, que debería indicar el tipo de objeto que es responsable de formatear. Normalmente, el método `stringable` debe invocarse dentro del método `boot` de la clase `AppServiceProvider` de su aplicación:
+En estos casos, Laravel le permite registrar un controlador de formato personalizado para ese tipo particular de objeto. Para lograr esto, debe invocar el método `stringable` del traductor. El método `stringable` acepta una función anónima, que debería indicar el tipo de objeto que es responsable de formatear. Normalmente, el método `stringable` debe invocarse dentro del método `boot` de la clase `AppServiceProvider` de su aplicación:
 
 ```php
 use Illuminate\Support\Facades\Lang;

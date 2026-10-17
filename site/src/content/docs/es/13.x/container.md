@@ -113,7 +113,7 @@ Primero, si escribe una clase que implementa una interfaz y desea escribir una s
 
 Casi todos los enlaces de su contenedor de servicios se registrarán en [proveedores de servicios](../providers/), por lo que la mayoría de estos ejemplos demostrarán el uso del contenedor en ese contexto.
 
-Dentro de un proveedor de servicios, siempre tiene acceso al contenedor a través de la propiedad `$this->app`. Podemos registrar un enlace usando el método `bind`, pasando el nombre de la clase o interfaz que deseamos registrar junto con un cierre que devuelva una instancia de la clase:
+Dentro de un proveedor de servicios, siempre tiene acceso al contenedor a través de la propiedad `$this->app`. Podemos registrar un enlace usando el método `bind`, pasando el nombre de la clase o interfaz que deseamos registrar junto con una función anónima que devuelva una instancia de la clase:
 
 ```php
 use App\Services\Transistor;
@@ -147,7 +147,7 @@ $this->app->bindIf(Transistor::class, function (Application $app) {
 });
 ```
 
-Para mayor comodidad, puede omitir proporcionar el nombre de clase o interfaz que desea registrar como un argumento separado y en su lugar permitir que Laravel infiera el tipo del tipo de retorno del cierre que proporciona al método `bind`:
+Para mayor comodidad, puede omitir proporcionar el nombre de clase o interfaz que desea registrar como un argumento separado y en su lugar permitir que Laravel infiera el tipo del tipo de retorno de la función anónima que proporciona al método `bind`:
 
 ```php
 App::bind(function (Application $app): Transistor {
@@ -320,7 +320,7 @@ interface EventPusher
 }
 ```
 
-Para enlaces que dependen de una condición arbitraria, puede utilizar el atributo `BindWhen`. El cierre puede recibir el contenedor y debe devolver `true` cuando se debe aplicar la vinculación. Los atributos `Bind` y `BindWhen` se evalúan en el orden en que se declaran:
+Para enlaces que dependen de una condición arbitraria, puede utilizar el atributo `BindWhen`. La función anónima puede recibir el contenedor y debe devolver `true` cuando se debe aplicar la vinculación. Los atributos `Bind` y `BindWhen` se evalúan en el orden en que se declaran:
 
 ```php
 use App\Services\BetaEventPusher;
@@ -549,7 +549,7 @@ class Firewall
 }
 ```
 
-Usando el enlace contextual, puede resolver esta dependencia proporcionando al método `give` un cierre que devuelva una matriz de instancias `Filter` resueltas:
+Usando el enlace contextual, puede resolver esta dependencia proporcionando al método `give` una función anónima que devuelva una matriz de instancias `Filter` resueltas:
 
 ```php
 $this->app->when(Firewall::class)
@@ -614,7 +614,7 @@ $this->app->bind(ReportAnalyzer::class, function (Application $app) {
 <a id="extending-bindings"></a>
 ### Ampliar enlaces
 
-El método `extend` permite la modificación de servicios resueltos. Por ejemplo, cuando se resuelve un servicio, puede ejecutar código adicional para decorar o configurar el servicio. El método `extend` acepta dos argumentos, la clase de servicio que está extendiendo y un cierre que debería devolver el servicio modificado. El cierre recibe el servicio que se está resolviendo y la instancia del contenedor:
+El método `extend` permite la modificación de servicios resueltos. Por ejemplo, cuando se resuelve un servicio, puede ejecutar código adicional para decorar o configurar el servicio. El método `extend` acepta dos argumentos, la clase de servicio que está extendiendo y una función anónima que debería devolver el servicio modificado. La función anónima recibe el servicio que se está resolviendo y la instancia del contenedor:
 
 ```php
 $this->app->extend(Service::class, function (Service $service, Application $app) {
@@ -744,7 +744,7 @@ use Illuminate\Support\Facades\App;
 $stats = App::call([new PodcastStats, 'generate']);
 ```
 
-El método `call` acepta cualquier PHP invocable. El método `call` del contenedor puede incluso usarse para invocar un cierre mientras se inyectan automáticamente sus dependencias:
+El método `call` acepta cualquier PHP invocable. El método `call` del contenedor puede incluso usarse para invocar una función anónima mientras se inyectan automáticamente sus dependencias:
 
 ```php
 use App\Services\AppleMusic;

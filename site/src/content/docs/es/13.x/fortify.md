@@ -128,7 +128,7 @@ Si elige deshabilitar las vistas de Fortify e implementará funciones de restabl
 <a id="authentication"></a>
 ## Autenticación
 
-Para comenzar, debemos indicarle a Fortify cómo regresar a nuestra vista de "inicio de sesión". Recuerde, Fortify es una biblioteca de autenticación sin cabeza. Si desea una implementación de interfaz de las funciones de autenticación de Laravel que ya están completadas para usted, debe usar un [kit de inicio de aplicación](../starter-kits/).
+Para comenzar, debemos indicarle a Fortify cómo regresar a nuestra vista de "inicio de sesión". Recuerde, Fortify es una biblioteca de autenticación sin interfaz de usuario. Si desea una implementación de interfaz de las funciones de autenticación de Laravel que ya están completadas para usted, debe usar un [kit de inicio de aplicación](../starter-kits/).
 
 Toda la lógica de representación de la vista de autenticación se puede personalizar utilizando los métodos apropiados disponibles a través de la clase `Laravel\Fortify\Fortify`. Normalmente, deberías llamar a este método desde el método `boot` de la clase `App\Providers\FortifyServiceProvider` de tu aplicación. Fortify se encargará de definir la ruta `/login` que devuelve esta vista:
 
@@ -159,7 +159,7 @@ Si la solicitud no fue exitosa, el usuario será redirigido nuevamente a la pant
 
 Fortify recuperará y autenticará automáticamente al usuario según las credenciales proporcionadas y la protección de autenticación configurada para su aplicación. Sin embargo, es posible que en ocasiones desee tener una personalización completa sobre cómo se autentican las credenciales de inicio de sesión y se recuperan los usuarios. Afortunadamente, Fortify le permite lograr esto fácilmente utilizando el método `Fortify::authenticateUsing`.
 
-Este método acepta un cierre que recibe la solicitud HTTP entrante. El cierre es responsable de validar las credenciales de inicio de sesión adjuntas a la solicitud y devolver la instancia de usuario asociada. Si las credenciales no son válidas o no se puede encontrar ningún usuario, el cierre debe devolver `null` o `false`. Normalmente, este método debe llamarse desde el método `boot` de su `FortifyServiceProvider`:
+Este método acepta una función anónima que recibe la solicitud HTTP entrante. La función anónima es responsable de validar las credenciales de inicio de sesión adjuntas a la solicitud y devolver la instancia de usuario asociada. Si las credenciales no son válidas o no se puede encontrar ningún usuario, la función anónima debe devolver `null` o `false`. Normalmente, este método debe llamarse desde el método `boot` de su `FortifyServiceProvider`:
 
 ```php
 use App\Models\User;
@@ -195,7 +195,7 @@ Puede personalizar la protección de autenticación utilizada por Fortify dentro
 
 Laravel Fortify autentica las solicitudes de inicio de sesión a través de una canalización de clases invocables. Si lo desea, puede definir una canalización personalizada de clases a través de las cuales se deben canalizar las solicitudes de inicio de sesión. Cada clase debe tener un método `__invoke` que reciba la instancia `Illuminate\Http\Request` entrante y, como [middleware](../middleware/), una variable `$next` que se invoca para pasar la solicitud a la siguiente clase en la canalización.
 
-Para definir su canalización personalizada, puede utilizar el método `Fortify::authenticateThrough`. Este método acepta un cierre que debería devolver la matriz de clases para canalizar la solicitud de inicio de sesión. Normalmente, este método debe llamarse desde el método `boot` de su clase `App\Providers\FortifyServiceProvider`.
+Para definir su canalización personalizada, puede utilizar el método `Fortify::authenticateThrough`. Este método acepta una función anónima que debería devolver la matriz de clases para canalizar la solicitud de inicio de sesión. Normalmente, este método debe llamarse desde el método `boot` de su clase `App\Providers\FortifyServiceProvider`.
 
 El siguiente ejemplo contiene la definición de canalización predeterminada que puede utilizar como punto de partida al realizar sus propias modificaciones:
 
@@ -533,7 +533,7 @@ Si la solicitud tiene éxito, Fortify devolverá:
 <a id="registration"></a>
 ## Registro
 
-Para comenzar a implementar la funcionalidad de registro de nuestra aplicación, debemos indicarle a Fortify cómo devolver nuestra vista de "registro". Recuerde, Fortify es una biblioteca de autenticación sin cabeza. Si desea una implementación de interfaz de las funciones de autenticación de Laravel que ya están completadas para usted, debe usar un [kit de inicio de aplicación](../starter-kits/).
+Para comenzar a implementar la funcionalidad de registro de nuestra aplicación, debemos indicarle a Fortify cómo devolver nuestra vista de "registro". Recuerde, Fortify es una biblioteca de autenticación sin interfaz de usuario. Si desea una implementación de interfaz de las funciones de autenticación de Laravel que ya están completadas para usted, debe usar un [kit de inicio de aplicación](../starter-kits/).
 
 Toda la lógica de representación de vistas de Fortify se puede personalizar utilizando los métodos apropiados disponibles a través de la clase `Laravel\Fortify\Fortify`. Normalmente, deberías llamar a este método desde el método `boot` de tu clase `App\Providers\FortifyServiceProvider`:
 
@@ -572,7 +572,7 @@ El proceso de validación y creación de usuarios se puede personalizar modifica
 <a id="requesting-a-password-reset-link"></a>
 ### Solicitar un enlace para restablecer la contraseña
 
-Para comenzar a implementar la funcionalidad de restablecimiento de contraseña de nuestra aplicación, debemos indicarle a Fortify cómo recuperar nuestra vista de "contraseña olvidada". Recuerde, Fortify es una biblioteca de autenticación sin cabeza. Si desea una implementación de interfaz de las funciones de autenticación de Laravel que ya están completadas para usted, debe usar un [kit de inicio de aplicación](../starter-kits/).
+Para comenzar a implementar la funcionalidad de restablecimiento de contraseña de nuestra aplicación, debemos indicarle a Fortify cómo recuperar nuestra vista de "contraseña olvidada". Recuerde, Fortify es una biblioteca de autenticación sin interfaz de usuario. Si desea una implementación de interfaz de las funciones de autenticación de Laravel que ya están completadas para usted, debe usar un [kit de inicio de aplicación](../starter-kits/).
 
 Toda la lógica de representación de vistas de Fortify se puede personalizar utilizando los métodos apropiados disponibles a través de la clase `Laravel\Fortify\Fortify`. Normalmente, debes llamar a este método desde el método `boot` de la clase `App\Providers\FortifyServiceProvider` de tu aplicación:
 
@@ -725,7 +725,7 @@ Route::get('/dashboard', function () {
 
 Mientras crea su aplicación, es posible que ocasionalmente tenga acciones que requieran que el usuario confirme su contraseña antes de realizar la acción. Normalmente, estas rutas están protegidas por el middleware `password.confirm` integrado de Laravel.
 
-Para comenzar a implementar la funcionalidad de confirmación de contraseña, debemos indicarle a Fortify cómo devolver la vista de "confirmación de contraseña" de nuestra aplicación. Recuerde, Fortify es una biblioteca de autenticación sin cabeza. Si desea una implementación de interfaz de las funciones de autenticación de Laravel que ya están completadas para usted, debe usar un [kit de inicio de aplicación](../starter-kits/).
+Para comenzar a implementar la funcionalidad de confirmación de contraseña, debemos indicarle a Fortify cómo devolver la vista de "confirmación de contraseña" de nuestra aplicación. Recuerde, Fortify es una biblioteca de autenticación sin interfaz de usuario. Si desea una implementación de interfaz de las funciones de autenticación de Laravel que ya están completadas para usted, debe usar un [kit de inicio de aplicación](../starter-kits/).
 
 Toda la lógica de representación de vistas de Fortify se puede personalizar utilizando los métodos apropiados disponibles a través de la clase `Laravel\Fortify\Fortify`. Normalmente, debes llamar a este método desde el método `boot` de la clase `App\Providers\FortifyServiceProvider` de tu aplicación:
 

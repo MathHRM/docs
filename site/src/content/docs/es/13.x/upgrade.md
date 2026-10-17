@@ -219,7 +219,7 @@ Laravel ahora compila consultas `DELETE ... JOIN` completas, incluidas `ORDER BY
 En versiones anteriores, las cláusulas `ORDER BY`/`LIMIT` se podían ignorar silenciosamente en eliminaciones unidas. En Laravel 13, estas cláusulas se incluyen en el SQL generado. Como resultado, los motores de bases de datos que no admiten esta sintaxis (MySQL y MariaDB anteriores a 11.8.1) ahora pueden generar un `QueryException` en lugar de ejecutar una eliminación ilimitada.
 
 <a id="eloquent"></a>
-### Elocuente
+### Eloquent
 
 <a id="model-booting-and-nested-instantiation"></a>
 #### Arranque del modelo y creación de instancias anidadas
@@ -424,9 +424,9 @@ La API de configuración de middleware ahora también proporciona `preventReques
 
 **Probabilidad de impacto: baja**
 
-Los cierres de controladores personalizados registrados mediante los métodos del administrador `extend` ahora están vinculados a la instancia del administrador.
+las funciones anónimas de controladores personalizados registrados mediante los métodos del administrador `extend` ahora están vinculados a la instancia del administrador.
 
-Si anteriormente confiaba en otro objeto vinculado (como una instancia de proveedor de servicios) como `$this` dentro de estas devoluciones de llamada, debe mover esos valores a capturas de cierre usando `use (...)`.
+Si anteriormente confiaba en otro objeto vinculado (como una instancia de proveedor de servicios) como `$this` dentro de estas devoluciones de llamada, debe mover esos valores a capturas de función anónima usando `use (...)`.
 
 <a id="str-factories-reset-between-tests"></a>
 #### `Str` Restablecimiento de fábricas entre pruebas

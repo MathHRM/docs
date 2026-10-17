@@ -152,7 +152,7 @@ foreach ($titles as $name => $title) {
 <a id="chunking-results"></a>
 ### Resultados de fragmentación
 
-Si necesita trabajar con miles de registros de bases de datos, considere utilizar el método `chunk` proporcionado por la fachada `DB`. Este método recupera una pequeña porción de resultados a la vez y introduce cada porción en un cierre para su procesamiento. Por ejemplo, recuperemos la tabla `users` completa en fragmentos de 100 registros a la vez:
+Si necesita trabajar con miles de registros de bases de datos, considere utilizar el método `chunk` proporcionado por la fachada `DB`. Este método recupera una pequeña porción de resultados a la vez y introduce cada porción en una función anónima para su procesamiento. Por ejemplo, recuperemos la tabla `users` completa en fragmentos de 100 registros a la vez:
 
 ```php
 use Illuminate\Support\Collection;
@@ -165,7 +165,7 @@ DB::table('users')->orderBy('id')->chunk(100, function (Collection $users) {
 });
 ```
 
-Puede detener el procesamiento de más fragmentos devolviendo `false` desde el cierre:
+Puede detener el procesamiento de más fragmentos devolviendo `false` desde la función anónima:
 
 ```php
 DB::table('users')->orderBy('id')->chunk(100, function (Collection $users) {
@@ -188,7 +188,7 @@ DB::table('users')->where('active', false)
     });
 ```
 
-Dado que los métodos `chunkById` y `lazyById` agregan sus propias condiciones "dónde" a la consulta que se está ejecutando, normalmente deberías [agrupar lógicamente](#logical-grouping) tus propias condiciones dentro de un cierre:
+Dado que los métodos `chunkById` y `lazyById` agregan sus propias condiciones "dónde" a la consulta que se está ejecutando, normalmente deberías [agrupar lógicamente](#logical-grouping) tus propias condiciones dentro de una función anónima:
 
 ```php
 DB::table('users')->where(function ($query) {
@@ -424,7 +424,7 @@ $sizes = DB::table('sizes')
 <a id="advanced-join-clauses"></a>
 #### Cláusulas de unión avanzada
 
-También puede especificar cláusulas de unión más avanzadas. Para comenzar, pase un cierre como segundo argumento al método `join`. El cierre recibirá una instancia `Illuminate\Database\Query\JoinClause` que le permitirá especificar restricciones en la cláusula "join":
+También puede especificar cláusulas de unión más avanzadas. Para comenzar, pase una función anónima como segundo argumento al método `join`. La función anónima recibirá una instancia `Illuminate\Database\Query\JoinClause` que le permitirá especificar restricciones en la cláusula "join":
 
 ```php
 DB::table('users')
@@ -448,7 +448,7 @@ DB::table('users')
 <a id="subquery-joins"></a>
 #### Uniones de subconsultas
 
-Puede utilizar los métodos `joinSub`, `leftJoinSub` y `rightJoinSub` para unir una consulta a una subconsulta. Cada uno de estos métodos recibe tres argumentos: la subconsulta, su alias de tabla y un cierre que define las columnas relacionadas. En este ejemplo, recuperaremos una colección de usuarios donde cada registro de usuario también contiene la marca de tiempo `created_at` de la publicación de blog más reciente del usuario:
+Puede utilizar los métodos `joinSub`, `leftJoinSub` y `rightJoinSub` para unir una consulta a una subconsulta. Cada uno de estos métodos recibe tres argumentos: la subconsulta, su alias de tabla y una función anónima que define las columnas relacionadas. En este ejemplo, recuperaremos una colección de usuarios donde cada registro de usuario también contiene la marca de tiempo `created_at` de la publicación de blog más reciente del usuario:
 
 ```php
 $latestPosts = DB::table('posts')
@@ -578,7 +578,7 @@ $users = DB::table('users')
     ->get();
 ```
 
-Si necesita agrupar una condición "o" entre paréntesis, puede pasar un cierre como primer argumento del método `orWhere`:
+Si necesita agrupar una condición "o" entre paréntesis, puede pasar una función anónima como primer argumento del método `orWhere`:
 
 ```php
 use Illuminate\Database\Query\Builder;
@@ -1058,7 +1058,7 @@ $users = DB::table('users')
 <a id="logical-grouping"></a>
 ### Agrupación lógica
 
-A veces es posible que necesite agrupar varias cláusulas "dónde" entre paréntesis para lograr la agrupación lógica deseada de su consulta. De hecho, generalmente siempre debe agrupar las llamadas al método `orWhere` entre paréntesis para evitar un comportamiento de consulta inesperado. Para lograr esto, puede pasar un cierre al método `where`:
+A veces es posible que necesite agrupar varias cláusulas "dónde" entre paréntesis para lograr la agrupación lógica deseada de su consulta. De hecho, generalmente siempre debe agrupar las llamadas al método `orWhere` entre paréntesis para evitar un comportamiento de consulta inesperado. Para lograr esto, puede pasar una función anónima al método `where`:
 
 ```php
 $users = DB::table('users')
@@ -1070,7 +1070,7 @@ $users = DB::table('users')
     ->get();
 ```
 
-Como puede ver, pasar un cierre al método `where` le indica al generador de consultas que comience un grupo de restricciones. El cierre recibirá una instancia del generador de consultas que puede usar para establecer las restricciones que deben estar contenidas dentro del grupo de paréntesis. El ejemplo anterior producirá el siguiente SQL:
+Como puede ver, pasar una función anónima al método `where` le indica al generador de consultas que comience un grupo de restricciones. La función anónima recibirá una instancia del generador de consultas que puede usar para establecer las restricciones que deben estar contenidas dentro del grupo de paréntesis. El ejemplo anterior producirá el siguiente SQL:
 
 ```sql
 select * from users where name = 'John' and (votes > 100 or title = 'Admin')
@@ -1085,7 +1085,7 @@ select * from users where name = 'John' and (votes > 100 or title = 'Admin')
 <a id="where-exists-clauses"></a>
 ### Cláusulas donde existen
 
-El método `whereExists` le permite escribir cláusulas SQL "donde existen". El método `whereExists` acepta un cierre que recibirá una instancia del generador de consultas, lo que le permitirá definir la consulta que debe colocarse dentro de la cláusula "exists":
+El método `whereExists` le permite escribir cláusulas SQL "donde existen". El método `whereExists` acepta una función anónima que recibirá una instancia del generador de consultas, lo que le permitirá definir la consulta que debe colocarse dentro de la cláusula "exists":
 
 ```php
 $users = DB::table('users')
@@ -1097,7 +1097,7 @@ $users = DB::table('users')
     ->get();
 ```
 
-Alternativamente, puede proporcionar un objeto de consulta al método `whereExists` en lugar de un cierre:
+Alternativamente, puede proporcionar un objeto de consulta al método `whereExists` en lugar de una función anónima:
 
 ```php
 $orders = DB::table('orders')
@@ -1123,7 +1123,7 @@ where exists (
 <a id="subquery-where-clauses"></a>
 ### Subconsulta Cláusulas Where
 
-A veces es posible que necesites construir una cláusula "dónde" que compare los resultados de una subconsulta con un valor determinado. Puede lograr esto pasando un cierre y un valor al método `where`. Por ejemplo, la siguiente consulta recuperará todos los usuarios que tengan una "membresía" reciente de un tipo determinado;
+A veces es posible que necesites construir una cláusula "dónde" que compare los resultados de una subconsulta con un valor determinado. Puede lograr esto pasando una función anónima y un valor al método `where`. Por ejemplo, la siguiente consulta recuperará todos los usuarios que tengan una "membresía" reciente de un tipo determinado;
 
 ```php
 use App\Models\User;
@@ -1138,7 +1138,7 @@ $users = User::where(function (Builder $query) {
 }, 'Pro')->get();
 ```
 
-O bien, es posible que necesite crear una cláusula "dónde" que compare una columna con los resultados de una subconsulta. Puede lograr esto pasando una columna, un operador y un cierre al método `where`. Por ejemplo, la siguiente consulta recuperará todos los registros de ingresos donde el monto sea menor que el promedio;
+O bien, es posible que necesite crear una cláusula "dónde" que compare una columna con los resultados de una subconsulta. Puede lograr esto pasando una columna, un operador y una función anónima al método `where`. Por ejemplo, la siguiente consulta recuperará todos los registros de ingresos donde el monto sea menor que el promedio;
 
 ```php
 use App\Models\Income;
@@ -1370,9 +1370,9 @@ $users = DB::table('users')
     ->get();
 ```
 
-El método `when` solo ejecuta el cierre dado cuando el primer argumento es `true`. Si el primer argumento es `false`, no se ejecutará el cierre. Entonces, en el ejemplo anterior, el cierre dado al método `when` solo se invocará si el campo `role` está presente en la solicitud entrante y se evalúa como `true`.
+El método `when` solo ejecuta la función anónima dada cuando el primer argumento es `true`. Si el primer argumento es `false`, no se ejecutará la función anónima. Entonces, en el ejemplo anterior, la función anónima dada al método `when` solo se invocará si el campo `role` está presente en la solicitud entrante y se evalúa como `true`.
 
-Puede pasar otro cierre como tercer argumento del método `when`. Este cierre solo se ejecutará si el primer argumento se evalúa como `false`. Para ilustrar cómo se puede utilizar esta característica, la usaremos para configurar el orden predeterminado de una consulta:
+Puede pasar otro función anónima como tercer argumento del método `when`. esta función anónima solo se ejecutará si el primer argumento se evalúa como `false`. Para ilustrar cómo se puede utilizar esta característica, la usaremos para configurar el orden predeterminado de una consulta:
 
 ```php
 $sortByVotes = $request->boolean('sort_by_votes');
@@ -1487,7 +1487,7 @@ DB::table('users')
     );
 ```
 
-Puede proporcionar un cierre al método `updateOrInsert` para personalizar los atributos que se actualizan o insertan en la base de datos en función de la existencia de un registro coincidente:
+Puede proporcionar una función anónima al método `updateOrInsert` para personalizar los atributos que se actualizan o insertan en la base de datos en función de la existencia de un registro coincidente:
 
 ```php
 DB::table('users')->updateOrInsert(

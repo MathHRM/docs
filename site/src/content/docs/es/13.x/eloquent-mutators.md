@@ -1,5 +1,5 @@
 ---
-title: "Elocuente: mutadores y casting"
+title: "Eloquent: mutadores y casting"
 translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ---
 
@@ -78,7 +78,7 @@ $firstName = $user->first_name;
 <a id="building-value-objects-from-multiple-attributes"></a>
 #### Creación de objetos de valor a partir de múltiples atributos
 
-A veces, es posible que su descriptor de acceso necesite transformar varios atributos del modelo en un único "objeto de valor". Para hacerlo, su cierre `get` puede aceptar un segundo argumento de `$attributes`, que se proporcionará automáticamente al cierre y contendrá una matriz de todos los atributos actuales del modelo:
+A veces, es posible que su descriptor de acceso necesite transformar varios atributos del modelo en un único "objeto de valor". Para hacerlo, su función anónima `get` puede aceptar un segundo argumento de `$attributes`, que se proporcionará automáticamente a la función anónima y contendrá una matriz de todos los atributos actuales del modelo:
 
 ```php
 use App\Support\Address;
@@ -170,7 +170,7 @@ class User extends Model
 }
 ```
 
-El cierre del mutador recibirá el valor que se establece en el atributo, lo que le permitirá manipular el valor y devolver el valor manipulado. Para usar nuestro mutador, solo necesitamos configurar el atributo `first_name` en un modelo Eloquent:
+la función anónima del mutador recibirá el valor que se establece en el atributo, lo que le permitirá manipular el valor y devolver el valor manipulado. Para usar nuestro mutador, solo necesitamos configurar el atributo `first_name` en un modelo Eloquent:
 
 ```php
 use App\Models\User;
@@ -185,7 +185,7 @@ En este ejemplo, se llamará a la devolución de llamada `set` con el valor `Sal
 <a id="mutating-multiple-attributes"></a>
 #### Mutando múltiples atributos
 
-A veces, es posible que su mutador necesite establecer múltiples atributos en el modelo subyacente. Para hacerlo, puede devolver una matriz del cierre `set`. Cada clave en la matriz debe corresponder con un atributo subyacente/columna de base de datos asociada con el modelo:
+A veces, es posible que su mutador necesite establecer múltiples atributos en el modelo subyacente. Para hacerlo, puede devolver una matriz de la función anónima `set`. Cada clave en la matriz debe corresponder con un atributo subyacente/columna de base de datos asociada con el modelo:
 
 ```php
 use App\Support\Address;

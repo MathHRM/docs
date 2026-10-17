@@ -128,7 +128,7 @@ $value = config('courier.option');
 ```
 
 > **Advertencia:**
-> No debes definir cierres en tus archivos de configuración. No se pueden serializar correctamente cuando los usuarios ejecutan el comando `config:cache` Artisan.
+> No debes definir funciones anónimas en tus archivos de configuración. No se pueden serializar correctamente cuando los usuarios ejecutan el comando `config:cache` Artisan.
 
 <a id="default-package-configuration"></a>
 #### Configuración del paquete predeterminado

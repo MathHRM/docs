@@ -185,7 +185,7 @@ protected function gate(): void
 <a id="alternative-authentication-strategies"></a>
 #### Estrategias de autenticación alternativas
 
-Recuerde que Laravel inyecta automáticamente al usuario autenticado en el cierre de la puerta. Si su aplicación proporciona seguridad de Horizon a través de otro método, como restricciones de IP, es posible que sus usuarios de Horizon no necesiten "iniciar sesión". Por lo tanto, deberá cambiar la firma de cierre `function (User $user)` anterior a `function (User $user = null)` para obligar a Laravel a no requerir autenticación.
+Recuerde que Laravel inyecta automáticamente al usuario autenticado en la función anónima de la puerta. Si su aplicación proporciona seguridad de Horizon a través de otro método, como restricciones de IP, es posible que sus usuarios de Horizon no necesiten "iniciar sesión". Por lo tanto, deberá cambiar la firma de función anónima `function (User $user)` anterior a `function (User $user = null)` para obligar a Laravel a no requerir autenticación.
 
 <a id="max-job-attempts"></a>
 ### Máximo de intentos de trabajo

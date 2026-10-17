@@ -282,7 +282,7 @@ php artisan migrate:fresh --database=admin
 <a id="creating-tables"></a>
 ### Creando tablas
 
-Para crear una nueva tabla de base de datos, utilice el método `create` en la fachada `Schema`. El método `create` acepta dos argumentos: el primero es el nombre de la tabla, mientras que el segundo es un cierre que recibe un objeto `Blueprint` que puede usarse para definir la nueva tabla:
+Para crear una nueva tabla de base de datos, utilice el método `create` en la fachada `Schema`. El método `create` acepta dos argumentos: el primero es el nombre de la tabla, mientras que el segundo es una función anónima que recibe un objeto `Blueprint` que puede usarse para definir la nueva tabla:
 
 ```php
 use Illuminate\Database\Schema\Blueprint;
@@ -372,7 +372,7 @@ Schema::create('calculations', function (Blueprint $table) {
 <a id="updating-tables"></a>
 ### Actualizando tablas
 
-El método `table` en la fachada `Schema` se puede utilizar para actualizar tablas existentes. Al igual que el método `create`, el método `table` acepta dos argumentos: el nombre de la tabla y un cierre que recibe una instancia de `Blueprint` que puede usar para agregar columnas o índices a la tabla:
+El método `table` en la fachada `Schema` se puede utilizar para actualizar tablas existentes. Al igual que el método `create`, el método `table` acepta dos argumentos: el nombre de la tabla y una función anónima que recibe una instancia de `Blueprint` que puede usar para agregar columnas o índices a la tabla:
 
 ```php
 use Illuminate\Database\Schema\Blueprint;
@@ -413,7 +413,7 @@ Antes de cambiar el nombre de una tabla, debe verificar que cualquier restricci�
 <a id="creating-columns"></a>
 ### Creando columnas
 
-El método `table` en la fachada `Schema` se puede utilizar para actualizar tablas existentes. Al igual que el método `create`, el método `table` acepta dos argumentos: el nombre de la tabla y un cierre que recibe una instancia de `Illuminate\Database\Schema\Blueprint` que puede usar para agregar columnas a la tabla:
+El método `table` en la fachada `Schema` se puede utilizar para actualizar tablas existentes. Al igual que el método `create`, el método `table` acepta dos argumentos: el nombre de la tabla y una función anónima que recibe una instancia de `Illuminate\Database\Schema\Blueprint` que puede usar para agregar columnas a la tabla:
 
 ```php
 use Illuminate\Database\Schema\Blueprint;
@@ -906,7 +906,7 @@ $table->mediumText('data')->charset('binary'); // MEDIUMBLOB
 
 El método `morphs` es un método conveniente que agrega una columna equivalente `{column}_type` `VARCHAR` y una columna equivalente `{column}_id`. El tipo de columna para `{column}_id` será `UNSIGNED BIGINT`, `CHAR(36)` o `CHAR(26)` según el tipo de clave del modelo.
 
-Este método está destinado a utilizarse al definir las columnas necesarias para una [Relación elocuente](../eloquent-relationships/). En el siguiente ejemplo, se crearían las columnas `taggable_type` y `taggable_id`:
+Este método está destinado a utilizarse al definir las columnas necesarias para una [Relación Eloquent](../eloquent-relationships/). En el siguiente ejemplo, se crearían las columnas `taggable_type` y `taggable_id`:
 
 ```php
 $table->morphs('taggable');
@@ -1154,7 +1154,7 @@ $table->unsignedTinyInteger('votes');
 
 El método `ulidMorphs` es un método conveniente que agrega una columna equivalente `{column}_type` `VARCHAR` y una columna equivalente `{column}_id` `CHAR(26)`.
 
-Este método está destinado a utilizarse al definir las columnas necesarias para una [Relación elocuente](../eloquent-relationships/) polimórfica que utiliza identificadores ULID. En el siguiente ejemplo, se crearían las columnas `taggable_type` y `taggable_id`:
+Este método está destinado a utilizarse al definir las columnas necesarias para una [Relación Eloquent](../eloquent-relationships/) polimórfica que utiliza identificadores ULID. En el siguiente ejemplo, se crearían las columnas `taggable_type` y `taggable_id`:
 
 ```php
 $table->ulidMorphs('taggable');
@@ -1165,7 +1165,7 @@ $table->ulidMorphs('taggable');
 
 El método `uuidMorphs` es un método conveniente que agrega una columna equivalente `{column}_type` `VARCHAR` y una columna equivalente `{column}_id` `CHAR(36)`.
 
-Este método está destinado a utilizarse al definir las columnas necesarias para una [relación Elocuente polimórfica](../eloquent-relationships/#polymorphic-relationships) que utiliza identificadores UUID. En el siguiente ejemplo, se crearían las columnas `taggable_type` y `taggable_id`:
+Este método está destinado a utilizarse al definir las columnas necesarias para una [relación Eloquent polimórfica](../eloquent-relationships/#polymorphic-relationships) que utiliza identificadores UUID. En el siguiente ejemplo, se crearían las columnas `taggable_type` y `taggable_id`:
 
 ```php
 $table->uuidMorphs('taggable');

@@ -75,7 +75,7 @@ El directorio `routes` contiene todas las definiciones de ruta para su aplicaci�
 
 El archivo `web.php` contiene rutas que Laravel coloca en el grupo de middleware `web`, que proporciona estado de sesión, protección CSRF y cifrado de cookies. Si su aplicación no ofrece una API RESTful sin estado, lo más probable es que todas sus rutas se definan en el archivo `web.php`.
 
-El archivo `console.php` es donde puede definir todos los comandos de la consola basados ​​en cierres. Cada cierre está vinculado a una instancia de comando, lo que permite un enfoque simple para interactuar con los métodos IO de cada comando. Aunque este archivo no define rutas HTTP, define puntos de entrada (rutas) basados ​​en la consola a su aplicación. También puede [programar tareas ](../scheduling/) en el archivo `console.php`.
+El archivo `console.php` es donde puede definir todos los comandos de la consola basados ​​en funciones anónimas. Cada función anónima está vinculado a una instancia de comando, lo que permite un enfoque simple para interactuar con los métodos IO de cada comando. Aunque este archivo no define rutas HTTP, define puntos de entrada (rutas) basados ​​en la consola a su aplicación. También puede [programar tareas ](../scheduling/) en el archivo `console.php`.
 
 Opcionalmente, puede instalar archivos de ruta adicionales para rutas API (`api.php`) y canales de transmisión (`channels.php`), mediante los comandos `install:api` y `install:broadcasting` Artisan.
 

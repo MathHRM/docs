@@ -1,5 +1,5 @@
 ---
-title: "Elocuente: recursos API"
+title: "Eloquent: recursos API"
 translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ---
 
@@ -647,7 +647,7 @@ public function toArray(Request $request): array
 
 En este ejemplo, la clave `secret` solo se devolverá en la respuesta final del recurso si el método `isAdmin` del usuario autenticado devuelve `true`. Si el método devuelve `false`, la clave `secret` se eliminará de la respuesta del recurso antes de enviarla al cliente. El método `when` le permite definir expresivamente sus recursos sin recurrir a declaraciones condicionales al crear la matriz.
 
-El método `when` también acepta un cierre como segundo argumento, lo que le permite calcular el valor resultante solo si la condición dada es `true`:
+El método `when` también acepta una función anónima como segundo argumento, lo que le permite calcular el valor resultante solo si la condición dada es `true`:
 
 ```php
 'secret' => $this->when($request->user()->isAdmin(), function () {
@@ -773,7 +773,7 @@ Otros tipos de agregados, como `avg`, `sum`, `min` y `max` también se pueden ca
 <a id="conditional-pivot-information"></a>
 #### Información de pivote condicional
 
-Además de incluir condicionalmente información de relaciones en sus respuestas de recursos, puede incluir condicionalmente datos de las tablas intermedias de relaciones de muchos a muchos utilizando el método `whenPivotLoaded`. El método `whenPivotLoaded` acepta el nombre de la tabla dinámica como primer argumento. El segundo argumento debe ser un cierre que devuelva el valor que se devolverá si la información dinámica está disponible en el modelo:
+Además de incluir condicionalmente información de relaciones en sus respuestas de recursos, puede incluir condicionalmente datos de las tablas intermedias de relaciones de muchos a muchos utilizando el método `whenPivotLoaded`. El método `whenPivotLoaded` acepta el nombre de la tabla dinámica como primer argumento. El segundo argumento debe ser una función anónima que devuelva el valor que se devolverá si la información dinámica está disponible en el modelo:
 
 ```php
 /**
@@ -1001,7 +1001,7 @@ public $attributes = [
 ];
 ```
 
-Si un atributo es costoso de calcular, puede devolverlo desde `toAttributes` como cierre, de modo que solo se evalúe cuando el atributo sea realmente necesario en la respuesta.
+Si un atributo es costoso de calcular, puede devolverlo desde `toAttributes` como función anónima, de modo que solo se evalúe cuando el atributo sea realmente necesario en la respuesta.
 
 O, para tener control total sobre los atributos del recurso, puede anular el método `toAttributes` en el recurso:
 
@@ -1069,7 +1069,7 @@ public function toRelationships(Request $request): array
 }
 ```
 
-El uso de cierres le brinda más control sobre la carga útil de la relación y, al mismo tiempo, solo resuelve la relación cuando el cliente lo solicita.
+El uso de funciones anónimas le brinda más control sobre la carga útil de la relación y, al mismo tiempo, solo resuelve la relación cuando el cliente lo solicita.
 
 #### Incluyendo relaciones
 

@@ -33,7 +33,7 @@ El programador de comandos de Laravel ofrece un nuevo enfoque para administrar t
 <a id="defining-schedules"></a>
 ## Definición de horarios
 
-Puede definir todas sus tareas programadas en el archivo `routes/console.php` de su aplicación. Para empezar, echemos un vistazo a un ejemplo. En este ejemplo, programaremos un cierre que se realizará todos los días a medianoche. Dentro del cierre ejecutaremos una consulta a la base de datos para borrar una tabla:
+Puede definir todas sus tareas programadas en el archivo `routes/console.php` de su aplicación. Para empezar, echemos un vistazo a un ejemplo. En este ejemplo, programaremos una función anónima que se realizará todos los días a medianoche. Dentro de la función anónima ejecutaremos una consulta a la base de datos para borrar una tabla:
 
 ```php
 <?php
@@ -46,13 +46,13 @@ Schedule::call(function () {
 })->daily();
 ```
 
-Además de programar mediante cierres, también puede programar [objetos invocables](https://secure.php.net/manual/en/language.oop5.magic.php#object.invoke). Los objetos invocables son clases PHP simples que contienen un método `__invoke`:
+Además de programar mediante funciones anónimas, también puede programar [objetos invocables](https://secure.php.net/manual/en/language.oop5.magic.php#object.invoke). Los objetos invocables son clases PHP simples que contienen un método `__invoke`:
 
 ```php
 Schedule::call(new DeleteRecentUsers)->daily();
 ```
 
-Si prefiere reservar su archivo `routes/console.php` solo para definiciones de comandos, puede usar el método `withSchedule` en el archivo `bootstrap/app.php` de su aplicación para definir sus tareas programadas. Este método acepta un cierre que recibe una instancia del planificador:
+Si prefiere reservar su archivo `routes/console.php` solo para definiciones de comandos, puede usar el método `withSchedule` en el archivo `bootstrap/app.php` de su aplicación para definir sus tareas programadas. Este método acepta una función anónima que recibe una instancia del planificador:
 
 ```php
 use Illuminate\Console\Scheduling\Schedule;
@@ -71,7 +71,7 @@ php artisan schedule:list
 <a id="scheduling-artisan-commands"></a>
 ### Programación de comandos artesanales
 
-Además de programar cierres, también puede programar [comandos artesanales](../artisan/) y comandos del sistema. Por ejemplo, puede utilizar el método `command` para programar un comando Artisan utilizando el nombre o la clase del comando.
+Además de programar funciones anónimas, también puede programar [comandos artesanales](../artisan/) y comandos del sistema. Por ejemplo, puede utilizar el método `command` para programar un comando Artisan utilizando el nombre o la clase del comando.
 
 Al programar comandos de Artisan utilizando el nombre de clase del comando, puede pasar una serie de argumentos de línea de comandos adicionales que se deben proporcionar al comando cuando se invoca:
 
@@ -85,9 +85,9 @@ Schedule::command(SendEmailsCommand::class, ['Taylor', '--force'])->daily();
 ```
 
 <a id="scheduling-artisan-closure-commands"></a>
-#### Programación de comandos de cierre artesanal
+#### Programación de comandos de función anónima artesanal
 
-Si desea programar un comando Artisan definido por un cierre, puede encadenar los métodos relacionados con la programación después de la definición del comando:
+Si desea programar un comando Artisan definido por una función anónima, puede encadenar los métodos relacionados con la programación después de la definición del comando:
 
 ```php
 Artisan::command('delete:recent-users', function () {
@@ -95,7 +95,7 @@ Artisan::command('delete:recent-users', function () {
 })->purpose('Delete recent users')->daily();
 ```
 
-Si necesita pasar argumentos al comando de cierre, puede proporcionárselos al método `schedule`:
+Si necesita pasar argumentos al comando de función anónima, puede proporcionárselos al método `schedule`:
 
 ```php
 Artisan::command('emails:send {user} {--force}', function ($user) {
@@ -106,7 +106,7 @@ Artisan::command('emails:send {user} {--force}', function ($user) {
 <a id="scheduling-queued-jobs"></a>
 ### Programación de trabajos en cola
 
-El método `job` se puede utilizar para programar un [trabajo en cola](../queues/). Este método proporciona una forma cómoda de programar trabajos en cola sin utilizar el método `call` para definir cierres para poner en cola el trabajo:
+El método `job` se puede utilizar para programar un [trabajo en cola](../queues/). Este método proporciona una forma cómoda de programar trabajos en cola sin utilizar el método `call` para definir funciones anónimas para poner en cola el trabajo:
 
 ```php
 use App\Jobs\Heartbeat;
@@ -274,7 +274,7 @@ Schedule::command('emails:send')
 <a id="truth-test-constraints"></a>
 #### Restricciones de la prueba de verdad
 
-El método `when` se puede utilizar para limitar la ejecución de una tarea en función del resultado de una prueba de verdad determinada. En otras palabras, si el cierre dado devuelve `true`, la tarea se ejecutará siempre que ninguna otra condición restrictiva impida que se ejecute:
+El método `when` se puede utilizar para limitar la ejecución de una tarea en función del resultado de una prueba de verdad determinada. En otras palabras, si la función anónima dada devuelve `true`, la tarea se ejecutará siempre que ninguna otra condición restrictiva impida que se ejecute:
 
 ```php
 Schedule::command('emails:send')->daily()->when(function () {
@@ -378,7 +378,7 @@ public function boot(): void
 }
 ```
 
-Los cierres programados sin [name](#naming-unique-jobs) están excluidos y continuarán ejecutándose en todos los servidores.
+las funciones anónimas programados sin [name](#naming-unique-jobs) están excluidos y continuarán ejecutándose en todos los servidores.
 
 Puede utilizar el método `useCache` para personalizar el almacén de caché utilizado por el programador para obtener los bloqueos atómicos necesarios para las tareas de un solo servidor:
 
@@ -403,7 +403,7 @@ Schedule::job(new CheckUptime('https://vapor.laravel.com'))
     ->onOneServer();
 ```
 
-De manera similar, a los cierres programados se les debe asignar un nombre si se pretende ejecutarlos en un servidor:
+De manera similar, a las funciones anónimas programados se les debe asignar un nombre si se pretende ejecutarlos en un servidor:
 
 ```php
 Schedule::call(fn () => User::resetApiRequestCount())
@@ -463,7 +463,7 @@ Schedule::command('emails:send')->evenWhenPaused();
 
 Al definir múltiples tareas programadas con configuraciones similares, puede usar la función de agrupación de tareas de Laravel para evitar repetir la misma configuración para cada tarea. Agrupar tareas simplifica su código y garantiza la coherencia entre las tareas relacionadas.
 
-Para crear un grupo de tareas programadas, invoque los métodos de configuración de tareas deseados, seguidos del método `group`. El método `group` acepta un cierre que se encarga de definir las tareas que comparten la configuración especificada:
+Para crear un grupo de tareas programadas, invoque los métodos de configuración de tareas deseados, seguidos del método `group`. El método `group` acepta una función anónima que se encarga de definir las tareas que comparten la configuración especificada:
 
 ```php
 use Illuminate\Support\Facades\Schedule;
@@ -605,7 +605,7 @@ Schedule::command('emails:send')
     });
 ```
 
-Si el resultado está disponible desde su comando, puede acceder a él en sus ganchos `after`, `onSuccess` o `onFailure` escribiendo una sugerencia de una instancia de `Illuminate\Support\Stringable` como el argumento `$output` de la definición de cierre de su gancho:
+Si el resultado está disponible desde su comando, puede acceder a él en sus ganchos `after`, `onSuccess` o `onFailure` escribiendo una sugerencia de una instancia de `Illuminate\Support\Stringable` como el argumento `$output` de la definición de función anónima de su gancho:
 
 ```php
 use Illuminate\Support\Stringable;

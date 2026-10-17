@@ -191,7 +191,7 @@ Route::post('/reset-password', function (Request $request) {
 
 Antes de continuar, examinemos esta ruta con más detalle. Primero, se validan los atributos `token`, `email` y `password` de la solicitud. A continuación, utilizaremos el "agente de contraseñas" integrado de Laravel (a través de la fachada `Password`) para validar las credenciales de solicitud de restablecimiento de contraseña.
 
-Si el token, la dirección de correo electrónico y la contraseña proporcionados al agente de contraseñas son válidos, se invocará el cierre pasado al método `reset`. Dentro de este cierre, que recibe la instancia de usuario y la contraseña en texto plano proporcionada en el formulario de restablecimiento de contraseña, podemos actualizar la contraseña del usuario en la base de datos.
+Si el token, la dirección de correo electrónico y la contraseña proporcionados al agente de contraseñas son válidos, se invocará la función anónima pasada al método `reset`. Dentro de esta función anónima, que recibe la instancia de usuario y la contraseña en texto plano proporcionada en el formulario de restablecimiento de contraseña, podemos actualizar la contraseña del usuario en la base de datos.
 
 El método `reset` devuelve un slug de "estado". Este estado se puede traducir utilizando los ayudantes [localization](../localization/) de Laravel para mostrar un mensaje fácil de usar al usuario sobre el estado de su solicitud. La traducción del estado de restablecimiento de contraseña está determinada por el archivo de idioma `lang/{lang}/passwords.php` de su aplicación. Una entrada para cada valor posible del slug de estado se encuentra dentro del archivo de idioma `passwords`. Si su aplicación no contiene un directorio `lang`, puede crearlo usando el comando `lang:publish` Artisan.
 
@@ -220,7 +220,7 @@ Schedule::command('auth:clear-resets')->everyFifteenMinutes();
 <a id="reset-link-customization"></a>
 #### Restablecer personalización del enlace
 
-Puede personalizar la URL del enlace de restablecimiento de contraseña utilizando el método `createUrlUsing` proporcionado por la clase de notificación `ResetPassword`. Este método acepta un cierre que recibe la instancia de usuario que recibe la notificación, así como el token de enlace de restablecimiento de contraseña. Normalmente, debe llamar a este método desde el método `boot` del `AppServiceProvider` de su aplicación:
+Puede personalizar la URL del enlace de restablecimiento de contraseña utilizando el método `createUrlUsing` proporcionado por la clase de notificación `ResetPassword`. Este método acepta una función anónima que recibe la instancia de usuario que recibe la notificación, así como el token de enlace de restablecimiento de contraseña. Normalmente, debe llamar a este método desde el método `boot` del `AppServiceProvider` de su aplicación:
 
 ```php
 use App\Models\User;

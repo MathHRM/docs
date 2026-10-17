@@ -74,7 +74,7 @@ Antes de usar sesiones de Redis con Laravel, deberá instalar la extensión PHP 
 <a id="retrieving-data"></a>
 ### Recuperando datos
 
-Hay dos formas principales de trabajar con datos de sesión en Laravel: el asistente global `session` y mediante una instancia `Request`. Primero, veamos cómo acceder a la sesión a través de una instancia `Request`, que puede recibir sugerencias de tipo en un método de cierre de ruta o de controlador. Recuerde, las dependencias del método del controlador se inyectan automáticamente a través de Laravel [contenedor de servicio](../container/):
+Hay dos formas principales de trabajar con datos de sesión en Laravel: el asistente global `session` y mediante una instancia `Request`. Primero, veamos cómo acceder a la sesión a través de una instancia `Request`, que puede recibir sugerencias de tipo en un método de función anónima de ruta o de controlador. Recuerde, las dependencias del método del controlador se inyectan automáticamente a través de Laravel [contenedor de servicio](../container/):
 
 ```php
 <?php
@@ -102,7 +102,7 @@ class UserController extends Controller
 }
 ```
 
-Cuando recupera un elemento de la sesión, también puede pasar un valor predeterminado como segundo argumento al método `get`. Este valor predeterminado se devolverá si la clave especificada no existe en la sesión. Si pasa un cierre como valor predeterminado al método `get` y la clave solicitada no existe, el cierre se ejecutará y se devolverá su resultado:
+Cuando recupera un elemento de la sesión, también puede pasar un valor predeterminado como segundo argumento al método `get`. Este valor predeterminado se devolverá si la clave especificada no existe en la sesión. Si pasa una función anónima como valor predeterminado al método `get` y la clave solicitada no existe, la función anónima se ejecutará y se devolverá su resultado:
 
 ```php
 $value = $request->session()->get('key', 'default');

@@ -35,7 +35,7 @@ La clase `Illuminate\Http\Request` de Laravel proporciona una forma orientada a 
 <a id="accessing-the-request"></a>
 ### Accediendo a la Solicitud
 
-Para obtener una instancia de la solicitud HTTP actual mediante inyección de dependencia, debe escribir una sugerencia de la clase `Illuminate\Http\Request` en su método de cierre de ruta o de controlador. Laravel [contenedor de servicio](../container/)] inyectará automáticamente la instancia de solicitud entrante:
+Para obtener una instancia de la solicitud HTTP actual mediante inyección de dependencia, debe escribir una sugerencia de la clase `Illuminate\Http\Request` en su método de función anónima de ruta o de controlador. Laravel [contenedor de servicio](../container/)] inyectará automáticamente la instancia de solicitud entrante:
 
 ```php
 <?php
@@ -61,7 +61,7 @@ class UserController extends Controller
 }
 ```
 
-Como se mencionó, también puede escribir una pista sobre la clase `Illuminate\Http\Request` en el cierre de una ruta. El contenedor de servicios inyectará automáticamente la solicitud entrante en el cierre cuando se ejecute:
+Como se mencionó, también puede escribir una pista sobre la clase `Illuminate\Http\Request` en la función anónima de una ruta. El contenedor de servicios inyectará automáticamente la solicitud entrante en la función anónima cuando se ejecute:
 
 ```php
 use Illuminate\Http\Request;
@@ -282,7 +282,7 @@ composer require symfony/psr-http-message-bridge
 composer require nyholm/psr7
 ```
 
-Una vez que haya instalado estas bibliotecas, puede obtener una solicitud PSR-7 escribiendo sugerencias en la interfaz de solicitud en su método de cierre de ruta o controlador:
+Una vez que haya instalado estas bibliotecas, puede obtener una solicitud PSR-7 escribiendo sugerencias en la interfaz de solicitud en su método de función anónima de ruta o controlador:
 
 ```php
 use Psr\Http\Message\ServerRequestInterface;
@@ -538,7 +538,7 @@ if ($request->hasAny(['name', 'email'])) {
 }
 ```
 
-El método `whenHas` ejecutará el cierre dado si hay un valor presente en la solicitud:
+El método `whenHas` ejecutará la función anónima dada si hay un valor presente en la solicitud:
 
 ```php
 $request->whenHas('name', function (string $input) {
@@ -546,7 +546,7 @@ $request->whenHas('name', function (string $input) {
 });
 ```
 
-Se puede pasar un segundo cierre al método `whenHas` que se ejecutará si el valor especificado no está presente en la solicitud:
+Se puede pasar un segunda función anónima al método `whenHas` que se ejecutará si el valor especificado no está presente en la solicitud:
 
 ```php
 $request->whenHas('name', function (string $input) {
@@ -588,7 +588,7 @@ if ($request->anyFilled(['name', 'email'])) {
 }
 ```
 
-El método `whenFilled` ejecutará el cierre dado si hay un valor presente en la solicitud y no es una cadena vacía:
+El método `whenFilled` ejecutará la función anónima dada si hay un valor presente en la solicitud y no es una cadena vacía:
 
 ```php
 $request->whenFilled('name', function (string $input) {
@@ -596,7 +596,7 @@ $request->whenFilled('name', function (string $input) {
 });
 ```
 
-Se puede pasar un segundo cierre al método `whenFilled` que se ejecutará si el valor especificado no se "completa":
+Se puede pasar un segunda función anónima al método `whenFilled` que se ejecutará si el valor especificado no se "completa":
 
 ```php
 $request->whenFilled('name', function (string $input) {
@@ -720,7 +720,7 @@ use Illuminate\Foundation\Http\Middleware\TrimStrings;
 })
 ```
 
-Si desea deshabilitar el recorte de cadenas y la conversión de cadenas vacías para un subconjunto de solicitudes a su aplicación, puede usar los métodos de middleware `trimStrings` y `convertEmptyStringsToNull` dentro del archivo `bootstrap/app.php` de su aplicación. Ambos métodos aceptan una serie de cierres, que deberían devolver `true` o `false` para indicar si se debe omitir la normalización de entrada:
+Si desea deshabilitar el recorte de cadenas y la conversión de cadenas vacías para un subconjunto de solicitudes a su aplicación, puede usar los métodos de middleware `trimStrings` y `convertEmptyStringsToNull` dentro del archivo `bootstrap/app.php` de su aplicación. Ambos métodos aceptan una serie de funciones anónimas, que deberían devolver `true` o `false` para indicar si se debe omitir la normalización de entrada:
 
 ```php
 ->withMiddleware(function (Middleware $middleware): void {
@@ -883,7 +883,7 @@ De forma predeterminada, las solicitudes provenientes de subdominios de la URL d
 })
 ```
 
-Si necesita acceder a los archivos de configuración o la base de datos de su aplicación para determinar sus hosts confiables, puede proporcionar un cierre al argumento `at`:
+Si necesita acceder a los archivos de configuración o la base de datos de su aplicación para determinar sus hosts confiables, puede proporcionar una función anónima al argumento `at`:
 
 ```php
 ->withMiddleware(function (Middleware $middleware): void {

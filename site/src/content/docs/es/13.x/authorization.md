@@ -32,7 +32,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 
 Además de proporcionar servicios [authentication](../authentication/) integrados, Laravel también proporciona una forma sencilla de autorizar acciones del usuario contra un recurso determinado. Por ejemplo, aunque un usuario esté autenticado, es posible que no esté autorizado a actualizar o eliminar ciertos modelos de Eloquent o registros de bases de datos administrados por su aplicación. Las funciones de autorización de Laravel proporcionan una forma sencilla y organizada de gestionar este tipo de comprobaciones de autorización.
 
-Laravel proporciona dos formas principales de autorizar acciones: [gates](#gates) y [policies](#creating-policies). Piense en puertas y políticas como rutas y controladores. Las puertas proporcionan un enfoque de autorización simple y basado en cierres, mientras que las políticas, como los controladores, agrupan la lógica en torno a un modelo o recurso en particular. En esta documentación, primero exploraremos las puertas y luego examinaremos las políticas.
+Laravel proporciona dos formas principales de autorizar acciones: [gates](#gates) y [policies](#creating-policies). Piense en puertas y políticas como rutas y controladores. Las puertas proporcionan un enfoque de autorización simple y basado en funciones anónimas, mientras que las políticas, como los controladores, agrupan la lógica en torno a un modelo o recurso en particular. En esta documentación, primero exploraremos las puertas y luego examinaremos las políticas.
 
 No es necesario elegir entre utilizar exclusivamente puertas o utilizar exclusivamente políticas al crear una aplicación. Lo más probable es que la mayoría de las aplicaciones contengan alguna combinación de puertas y políticas, ¡y eso está perfectamente bien! Las puertas son más aplicables a acciones que no están relacionadas con ningún modelo o recurso, como ver un panel de administrador. Por el contrario, las políticas deben usarse cuando se desea autorizar una acción para un modelo o recurso en particular.
 
@@ -45,7 +45,7 @@ No es necesario elegir entre utilizar exclusivamente puertas o utilizar exclusiv
 > **Advertencia:**
 > Las puertas son una excelente manera de aprender los conceptos básicos de las funciones de autorización de Laravel; sin embargo, al crear aplicaciones Laravel sólidas, debería considerar usar [policies](#creating-policies) para organizar sus reglas de autorización.
 
-Las puertas son simplemente cierres que determinan si un usuario está autorizado a realizar una acción determinada. Normalmente, las puertas se definen dentro del método `boot` de la clase `App\Providers\AppServiceProvider` utilizando la fachada `Gate`. Gates siempre recibe una instancia de usuario como primer argumento y, opcionalmente, puede recibir argumentos adicionales, como un modelo Eloquent relevante.
+Las puertas son simplemente funciones anónimas que determinan si un usuario está autorizado a realizar una acción determinada. Normalmente, las puertas se definen dentro del método `boot` de la clase `App\Providers\AppServiceProvider` utilizando la fachada `Gate`. Gates siempre recibe una instancia de usuario como primer argumento y, opcionalmente, puede recibir argumentos adicionales, como un modelo Eloquent relevante.
 
 En este ejemplo, definiremos una puerta para determinar si un usuario puede actualizar un modelo `App\Models\Post` determinado. La puerta logrará esto comparando el `id` del usuario con el `user_id` del usuario que creó la publicación:
 
@@ -83,7 +83,7 @@ public function boot(): void
 <a id="authorizing-actions-via-gates"></a>
 ### Autorizar acciones
 
-Para autorizar una acción mediante puertas se deben utilizar los métodos `allows` o `denies` proporcionados por la fachada `Gate`. Tenga en cuenta que no es necesario que pase el usuario actualmente autenticado a estos métodos. Laravel se encargará automáticamente de pasar al usuario al cierre de la puerta. Es típico llamar a los métodos de autorización de puerta dentro de los controladores de su aplicación antes de realizar una acción que requiera autorización:
+Para autorizar una acción mediante puertas se deben utilizar los métodos `allows` o `denies` proporcionados por la fachada `Gate`. Tenga en cuenta que no es necesario que pase el usuario actualmente autenticado a estos métodos. Laravel se encargará automáticamente de pasar al usuario a la función anónima de la puerta. Es típico llamar a los métodos de autorización de puerta dentro de los controladores de su aplicación antes de realizar una acción que requiera autorización:
 
 ```php
 <?php
@@ -151,7 +151,7 @@ Gate::authorize('update-post', $post);
 <a id="gates-supplying-additional-context"></a>
 #### Proporcionar contexto adicional
 
-Los métodos de puerta para autorizar capacidades (`allows`, `denies`, `check`, `any`, `none`, `authorize`, `can`, `cannot`) y la autorización [Directivas Blade](#via-blade-templates) (`@can`, `@cannot`, `@canany`) pueden recibir una matriz como segundo argumento. Estos elementos de la matriz se pasan como parámetros para el cierre de la puerta y se pueden usar como contexto adicional al tomar decisiones de autorización:
+Los métodos de puerta para autorizar capacidades (`allows`, `denies`, `check`, `any`, `none`, `authorize`, `can`, `cannot`) y la autorización [Directivas Blade](#via-blade-templates) (`@can`, `@cannot`, `@canany`) pueden recibir una matriz como segundo argumento. Estos elementos de la matriz se pasan como parámetros para la función anónima de la puerta y se pueden usar como contexto adicional al tomar decisiones de autorización:
 
 ```php
 use App\Models\Category;
@@ -244,7 +244,7 @@ Gate::define('edit-settings', function (User $user) {
 <a id="intercepting-gate-checks"></a>
 ### Intercepción de controles de puerta
 
-A veces, es posible que desees otorgar todas las habilidades a un usuario específico. Puede utilizar el método `before` para definir un cierre que se ejecuta antes de todas las demás comprobaciones de autorización:
+A veces, es posible que desees otorgar todas las habilidades a un usuario específico. Puede utilizar el método `before` para definir una función anónima que se ejecuta antes de todas las demás comprobaciones de autorización:
 
 ```php
 use App\Models\User;
@@ -257,9 +257,9 @@ Gate::before(function (User $user, string $ability) {
 });
 ```
 
-Si el cierre `before` devuelve un resultado no nulo, ese resultado se considerará el resultado de la verificación de autorización.
+Si la función anónima `before` devuelve un resultado no nulo, ese resultado se considerará el resultado de la verificación de autorización.
 
-Puede utilizar el método `after` para definir un cierre que se ejecutará después de todas las demás comprobaciones de autorización:
+Puede utilizar el método `after` para definir una función anónima que se ejecutará después de todas las demás comprobaciones de autorización:
 
 ```php
 use App\Models\User;
@@ -271,7 +271,7 @@ Gate::after(function (User $user, string $ability, bool|null $result, mixed $arg
 });
 ```
 
-Los valores devueltos por los cierres `after` no anularán el resultado de la verificación de autorización a menos que la puerta o la política devuelvan `null`.
+Los valores devueltos por las funciones anónimas `after` no anularán el resultado de la verificación de autorización a menos que la puerta o la política devuelvan `null`.
 
 <a id="inline-authorization"></a>
 ### Autorización en línea
@@ -584,7 +584,7 @@ class PostController extends Controller
 }
 ```
 
-Si se registra una [política](#registering-policies) para el modelo dado, el método `can` llamará automáticamente a la política apropiada y devolverá el resultado booleano. Si no se registra ninguna política para el modelo, el método `can` intentará llamar a la puerta basada en cierre que coincida con el nombre de acción dado.
+Si se registra una [política](#registering-policies) para el modelo dado, el método `can` llamará automáticamente a la política apropiada y devolverá el resultado booleano. Si no se registra ninguna política para el modelo, el método `can` intentará llamar a la puerta basada en función anónima que coincida con el nombre de acción dado.
 
 <a id="user-model-actions-that-dont-require-models"></a>
 #### Acciones que no requieren modelos

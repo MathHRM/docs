@@ -2223,7 +2223,7 @@ $resource->collection->all();
 <a id="method-pipethrough"></a>
 #### `pipeThrough()` {.collection-method}
 
-El método `pipeThrough` pasa la colección al array de funciones anónimas dado y devuelve el resultado de su ejecución:
+El método `pipeThrough` pasa la colección al array dado de funciones anónimas y devuelve el resultado de su ejecución:
 
 ```php
 use Illuminate\Support\Collection;

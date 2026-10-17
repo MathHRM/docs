@@ -952,6 +952,6 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-El primer argumento del método `extend` es el nombre del controlador y el segundo es un cierre que recibe las variables `$app` y `$config`. El cierre debe devolver una instancia de `Illuminate\Filesystem\FilesystemAdapter`. La variable `$config` contiene los valores definidos en `config/filesystems.php` para el disco especificado.
+El primer argumento del método `extend` es el nombre del controlador y el segundo es una función anónima que recibe las variables `$app` y `$config`. La función anónima debe devolver una instancia de `Illuminate\Filesystem\FilesystemAdapter`. La variable `$config` contiene los valores definidos en `config/filesystems.php` para el disco especificado.
 
 Una vez que haya creado y registrado el proveedor de servicios de la extensión, puede utilizar el controlador `dropbox` en su archivo de configuración `config/filesystems.php`.

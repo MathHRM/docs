@@ -25,7 +25,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 <a id="introduction"></a>
 ## Introducción
 
-En lugar de definir toda la lógica de manejo de solicitudes como cierres en sus archivos de ruta, es posible que desee organizar este comportamiento utilizando clases de "controlador". Los controladores pueden agrupar la lógica de manejo de solicitudes relacionadas en una sola clase. Por ejemplo, una clase `UserController` podría manejar todas las solicitudes entrantes relacionadas con los usuarios, incluidas mostrar, crear, actualizar y eliminar usuarios. De forma predeterminada, los controladores se almacenan en el directorio `app/Http/Controllers`.
+En lugar de definir toda la lógica de manejo de solicitudes como funciones anónimas en sus archivos de ruta, es posible que desee organizar este comportamiento utilizando clases de "controlador". Los controladores pueden agrupar la lógica de manejo de solicitudes relacionadas en una sola clase. Por ejemplo, una clase `UserController` podría manejar todas las solicitudes entrantes relacionadas con los usuarios, incluidas mostrar, crear, actualizar y eliminar usuarios. De forma predeterminada, los controladores se almacenan en el directorio `app/Http/Controllers`.
 
 <a id="writing-controllers"></a>
 ## Controladores de escritura
@@ -152,7 +152,7 @@ class UserController implements HasMiddleware
 }
 ```
 
-También puede definir el middleware del controlador como cierres, lo que proporciona una manera conveniente de definir un middleware en línea sin escribir una clase de middleware completa:
+También puede definir el middleware del controlador como funciones anónimas, lo que proporciona una manera conveniente de definir un middleware en línea sin escribir una clase de middleware completa:
 
 ```php
 use Closure;
@@ -344,7 +344,7 @@ Route::softDeletableResources([
 <a id="customizing-missing-model-behavior"></a>
 #### Personalización del comportamiento del modelo faltante
 
-Normalmente, se generará una respuesta HTTP 404 si no se encuentra un modelo de recurso vinculado implícitamente. Sin embargo, puede personalizar este comportamiento llamando al método `missing` al definir su ruta de recursos. El método `missing` acepta un cierre que se invocará si no se puede encontrar un modelo vinculado implícitamente para alguna de las rutas del recurso:
+Normalmente, se generará una respuesta HTTP 404 si no se encuentra un modelo de recurso vinculado implícitamente. Sin embargo, puede personalizar este comportamiento llamando al método `missing` al definir su ruta de recursos. El método `missing` acepta una función anónima que se invocará si no se puede encontrar un modelo vinculado implícitamente para alguna de las rutas del recurso:
 
 ```php
 use App\Http\Controllers\PhotoController;

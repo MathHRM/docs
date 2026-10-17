@@ -417,7 +417,7 @@ Route::get('/stream', function () {
 });
 ```
 
-Para mayor comodidad, si el cierre que proporciona al método `stream` devuelve un [Generator](https://www.php.net/manual/en/language.generators.overview.php), Laravel vaciará automáticamente el búfer de salida entre las cadenas devueltas por el generador, además de desactivar el búfer de salida de Nginx:
+Para mayor comodidad, si la función anónima que proporciona al método `stream` devuelve un [Generator](https://www.php.net/manual/en/language.generators.overview.php), Laravel vaciará automáticamente el búfer de salida entre las cadenas devueltas por el generador, además de desactivar el búfer de salida de Nginx:
 
 ```php
 Route::post('/chat', function () {
@@ -892,7 +892,7 @@ const loadUsers = () => {
 <a id="event-streams"></a>
 ### Flujos de eventos (SSE)
 
-El método `eventStream` se puede utilizar para devolver una respuesta transmitida de eventos enviados por el servidor (SSE) utilizando el tipo de contenido `text/event-stream`. El método `eventStream` acepta un cierre que debería [producir respuestas](https://www.php.net/manual/en/language.generators.overview.php) a la secuencia a medida que las respuestas estén disponibles:
+El método `eventStream` se puede utilizar para devolver una respuesta transmitida de eventos enviados por el servidor (SSE) utilizando el tipo de contenido `text/event-stream`. El método `eventStream` acepta una función anónima que debería [producir respuestas](https://www.php.net/manual/en/language.generators.overview.php) a la secuencia a medida que las respuestas estén disponibles:
 
 ```php
 Route::get('/chat', function () {
@@ -1102,7 +1102,7 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-La función `macro` acepta un nombre como primer argumento y un cierre como segundo argumento. El cierre de la macro se ejecutará al llamar al nombre de la macro desde una implementación `ResponseFactory` o el asistente `response`:
+La función `macro` acepta un nombre como primer argumento y una función anónima como segundo argumento. La función anónima de la macro se ejecutará al llamar al nombre de la macro desde una implementación `ResponseFactory` o el asistente `response`:
 
 ```php
 return response()->caps('foo');

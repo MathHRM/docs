@@ -631,7 +631,7 @@ public function attachments(): array
 <a id="raw-data-attachments"></a>
 #### Datos adjuntos sin procesar
 
-El método de archivo adjunto `fromData` se puede utilizar para adjuntar una cadena sin formato de bytes como archivo adjunto. Por ejemplo, puede utilizar este método si ha generado un PDF en la memoria y desea adjuntarlo al correo electrónico sin escribirlo en el disco. El método `fromData` acepta un cierre que resuelve los bytes de datos sin procesar, así como el nombre que se debe asignar al archivo adjunto:
+El método de archivo adjunto `fromData` se puede utilizar para adjuntar una cadena sin formato de bytes como archivo adjunto. Por ejemplo, puede utilizar este método si ha generado un PDF en la memoria y desea adjuntarlo al correo electrónico sin escribirlo en el disco. El método `fromData` acepta una función anónima que resuelve los bytes de datos sin procesar, así como el nombre que se debe asignar al archivo adjunto:
 
 ```php
 /**
@@ -729,7 +729,7 @@ return Attachment::fromStorage($this->path);
 return Attachment::fromStorageDisk('backblaze', $this->path);
 ```
 
-Además, puede crear instancias de archivos adjuntos a través de datos que tenga en la memoria. Para lograr esto, proporcione un cierre al método `fromData`. El cierre debe devolver los datos sin procesar que representan el archivo adjunto:
+Además, puede crear instancias de archivos adjuntos a través de datos que tenga en la memoria. Para lograr esto, proporcione una función anónima al método `fromData`. La función anónima debe devolver los datos sin procesar que representan el archivo adjunto:
 
 ```php
 return Attachment::fromData(fn () => $this->content, 'Photo Name');
@@ -1160,7 +1160,7 @@ return (new InvoicePaid($invoice))->render();
 <a id="previewing-mailables-in-the-browser"></a>
 ### Vista previa de mensajes de correo en el navegador
 
-Al diseñar una plantilla de envío por correo, es conveniente obtener una vista previa rápida del envío por correo renderizado en su navegador como una plantilla Blade típica. Por esta razón, Laravel le permite devolver cualquier envío por correo directamente desde un cierre de ruta o un controlador. Cuando se devuelve un correo, se representará y mostrará en el navegador, lo que le permitirá obtener una vista previa rápida de su diseño sin necesidad de enviarlo a una dirección de correo electrónico real:
+Al diseñar una plantilla de envío por correo, es conveniente obtener una vista previa rápida del envío por correo renderizado en su navegador como una plantilla Blade típica. Por esta razón, Laravel le permite devolver cualquier envío por correo directamente desde una función anónima de ruta o un controlador. Cuando se devuelve un correo, se representará y mostrará en el navegador, lo que le permitirá obtener una vista previa rápida de su diseño sin necesidad de enviarlo a una dirección de correo electrónico real:
 
 ```php
 Route::get('/mailable', function () {
@@ -1398,7 +1398,7 @@ También puede afirmar el número total de mensajes de correo que se han enviado
 Mail::assertOutgoingCount(3);
 ```
 
-Puede pasar un cierre a los métodos `assertSent`, `assertNotSent`, `assertQueued` o `assertNotQueued` para afirmar que se envió un correo que pasa una "prueba de veracidad" determinada. Si se envió al menos un correo que pasa la prueba de verdad dada, entonces la afirmación será exitosa:
+Puede pasar una función anónima a los métodos `assertSent`, `assertNotSent`, `assertQueued` o `assertNotQueued` para afirmar que se envió un correo que pasa una "prueba de veracidad" determinada. Si se envió al menos un correo que pasa la prueba de verdad dada, entonces la afirmación será exitosa:
 
 ```php
 Mail::assertSent(function (OrderShipped $mail) use ($order) {
@@ -1406,7 +1406,7 @@ Mail::assertSent(function (OrderShipped $mail) use ($order) {
 });
 ```
 
-Al llamar a los métodos de aserción de la fachada `Mail`, la instancia de envío por correo aceptada por el cierre proporcionado expone métodos útiles para examinar el envío por correo:
+Al llamar a los métodos de aserción de la fachada `Mail`, la instancia de envío por correo aceptada por la función anónima proporcionada expone métodos útiles para examinar el envío por correo:
 
 ```php
 Mail::assertSent(OrderShipped::class, function (OrderShipped $mail) use ($user) {
@@ -1570,7 +1570,7 @@ class MailchimpTransport extends AbstractTransport
 }
 ```
 
-Una vez que haya definido su transporte personalizado, podrá registrarlo a través del método `extend` proporcionado por la fachada `Mail`. Normalmente, esto se debe hacer dentro del método `boot` del `AppServiceProvider` de su aplicación. Se pasará un argumento `$config` al cierre proporcionado al método `extend`. Este argumento contendrá la matriz de configuración definida para el correo en el archivo de configuración `config/mail.php` de la aplicación:
+Una vez que haya definido su transporte personalizado, podrá registrarlo a través del método `extend` proporcionado por la fachada `Mail`. Normalmente, esto se debe hacer dentro del método `boot` del `AppServiceProvider` de su aplicación. Se pasará un argumento `$config` a la función anónima proporcionada al método `extend`. Este argumento contendrá la matriz de configuración definida para el correo en el archivo de configuración `config/mail.php` de la aplicación:
 
 ```php
 use App\Mail\MailchimpTransport;

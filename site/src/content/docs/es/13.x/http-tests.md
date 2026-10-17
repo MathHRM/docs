@@ -429,7 +429,7 @@ Además, si desea asegurarse de que su aplicación no utilice funciones que han 
 $response = $this->withoutDeprecationHandling()->get('/');
 ```
 
-El método `assertThrows` se puede utilizar para afirmar que el código dentro de un cierre determinado genera una excepción del tipo especificado:
+El método `assertThrows` se puede utilizar para afirmar que el código dentro de una función anónima determinada genera una excepción del tipo especificado:
 
 ```php
 $this->assertThrows(
@@ -438,7 +438,7 @@ $this->assertThrows(
 );
 ```
 
-Si desea inspeccionar y hacer afirmaciones contra la excepción que se genera, puede proporcionar un cierre como segundo argumento del método `assertThrows`:
+Si desea inspeccionar y hacer afirmaciones contra la excepción que se genera, puede proporcionar una función anónima como segundo argumento del método `assertThrows`:
 
 ```php
 $this->assertThrows(
@@ -447,7 +447,7 @@ $this->assertThrows(
 );
 ```
 
-El método `assertDoesntThrow` se puede utilizar para afirmar que el código dentro de un cierre determinado no genera ninguna excepción:
+El método `assertDoesntThrow` se puede utilizar para afirmar que el código dentro de una función anónima determinada no genera ninguna excepción:
 
 ```php
 $this->assertDoesntThrow(fn () => (new ProcessOrder)->execute());
@@ -594,13 +594,13 @@ class ExampleTest extends TestCase
 }
 ```
 
-El método `assertJsonPath` también acepta un cierre, que puede usarse para determinar dinámicamente si la afirmación debe pasar:
+El método `assertJsonPath` también acepta una función anónima, que puede usarse para determinar dinámicamente si la afirmación debe pasar:
 
 ```php
 $response->assertJsonPath('team.owner.name', fn (string $name) => strlen($name) >= 3);
 ```
 
-Si necesita afirmar varias rutas JSON a la vez, puede utilizar el método `assertJsonPaths`. El valor esperado para cada camino también puede ser un cierre:
+Si necesita afirmar varias rutas JSON a la vez, puede utilizar el método `assertJsonPaths`. El valor esperado para cada camino también puede ser una función anónima:
 
 ```php
 $response->assertJsonPaths([
@@ -622,7 +622,7 @@ $response->assertJsonMissingPaths([
 <a id="fluent-json-testing"></a>
 ### Pruebas JSON fluidas
 
-Laravel también ofrece una hermosa manera de probar con fluidez las respuestas JSON de su aplicación. Para comenzar, pase un cierre al método `assertJson`. Este cierre se invocará con una instancia de `Illuminate\Testing\Fluent\AssertableJson` que se puede utilizar para realizar afirmaciones contra el JSON que devolvió su aplicación. El método `where` se puede usar para hacer afirmaciones sobre un atributo particular del JSON, mientras que el método `missing` se puede usar para afirmar que falta un atributo particular en el JSON:
+Laravel también ofrece una hermosa manera de probar con fluidez las respuestas JSON de su aplicación. Para comenzar, pase una función anónima al método `assertJson`. esta función anónima se invocará con una instancia de `Illuminate\Testing\Fluent\AssertableJson` que se puede utilizar para realizar afirmaciones contra el JSON que devolvió su aplicación. El método `where` se puede usar para hacer afirmaciones sobre un atributo particular del JSON, mientras que el método `missing` se puede usar para afirmar que falta un atributo particular en el JSON:
 
 ```php tab=Pest
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -713,7 +713,7 @@ Route::get('/users', function () {
 });
 ```
 
-En estas situaciones, podemos utilizar el método `has` del objeto JSON fluido para hacer afirmaciones contra los usuarios incluidos en la respuesta. Por ejemplo, supongamos que la respuesta JSON contiene tres usuarios. A continuación, haremos algunas afirmaciones sobre el primer usuario de la colección utilizando el método `first`. El método `first` acepta un cierre que recibe otra cadena JSON afirmable que podemos usar para hacer afirmaciones sobre el primer objeto de la colección JSON:
+En estas situaciones, podemos utilizar el método `has` del objeto JSON fluido para hacer afirmaciones contra los usuarios incluidos en la respuesta. Por ejemplo, supongamos que la respuesta JSON contiene tres usuarios. A continuación, haremos algunas afirmaciones sobre el primer usuario de la colección utilizando el método `first`. El método `first` acepta una función anónima que recibe otra cadena JSON afirmable que podemos usar para hacer afirmaciones sobre el primer objeto de la colección JSON:
 
 ```php
 $response
@@ -776,7 +776,7 @@ $response
     );
 ```
 
-Sin embargo, en lugar de realizar dos llamadas separadas al método `has` para hacer valer la colección `users`, puede realizar una única llamada que proporcione un cierre como tercer parámetro. Al hacerlo, el cierre se invocará automáticamente y su alcance será el primer elemento de la colección:
+Sin embargo, en lugar de realizar dos llamadas separadas al método `has` para hacer valer la colección `users`, puede realizar una única llamada que proporcione una función anónima como tercer parámetro. Al hacerlo, la función anónima se invocará automáticamente y su alcance será el primer elemento de la colección:
 
 ```php
 $response
@@ -1827,7 +1827,7 @@ Afirme que la sesión contiene el dato dado:
 $response->assertSessionHas($key, $value = null);
 ```
 
-Si es necesario, se puede proporcionar un cierre como segundo argumento del método `assertSessionHas`. La afirmación pasará si el cierre devuelve `true`:
+Si es necesario, se puede proporcionar una función anónima como segundo argumento del método `assertSessionHas`. La afirmación pasará si la función anónima devuelve `true`:
 
 ```php
 $response->assertSessionHas($key, function (User $value) {
@@ -1844,7 +1844,7 @@ Afirme que la sesión tiene un valor determinado en el [matriz de entrada parpad
 $response->assertSessionHasInput($key, $value = null);
 ```
 
-Si es necesario, se puede proporcionar un cierre como segundo argumento del método `assertSessionHasInput`. La afirmación pasará si el cierre devuelve `true`:
+Si es necesario, se puede proporcionar una función anónima como segundo argumento del método `assertSessionHasInput`. La afirmación pasará si la función anónima devuelve `true`:
 
 ```php
 use Illuminate\Support\Facades\Crypt;
@@ -2048,7 +2048,7 @@ Afirme que la vista de respuesta contiene un dato determinado:
 $response->assertViewHas($key, $value = null);
 ```
 
-Pasar un cierre como segundo argumento del método `assertViewHas` le permitirá inspeccionar y hacer afirmaciones sobre un dato de vista en particular:
+Pasar una función anónima como segundo argumento del método `assertViewHas` le permitirá inspeccionar y hacer afirmaciones sobre un dato de vista en particular:
 
 ```php
 $response->assertViewHas('user', function (User $user) {

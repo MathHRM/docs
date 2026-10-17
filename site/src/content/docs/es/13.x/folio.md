@@ -226,7 +226,7 @@ withTrashed();
 
 De forma predeterminada, Folio devolverá el contenido de la plantilla Blade de la página como respuesta a la solicitud entrante. Sin embargo, puede personalizar la respuesta invocando la función `render` dentro de la plantilla de la página.
 
-La función `render` acepta un cierre que recibirá la instancia `View` procesada por Folio, lo que le permitirá agregar datos adicionales a la vista o personalizar la respuesta completa. Además de recibir la instancia `View`, también se proporcionarán parámetros de ruta adicionales o enlaces de modelo al cierre `render`:
+La función `render` acepta una función anónima que recibirá la instancia `View` procesada por Folio, lo que le permitirá agregar datos adicionales a la vista o personalizar la respuesta completa. Además de recibir la instancia `View`, también se proporcionarán parámetros de ruta adicionales o enlaces de modelo a la función anónima `render`:
 
 ```php
 <?php
@@ -317,7 +317,7 @@ Folio::path(resource_path('views/pages'))->middleware([
 ]);
 ```
 
-Puede incluir cierres en la matriz de middleware para definir middleware anónimo en línea:
+Puede incluir funciones anónimas en la matriz de middleware para definir middleware anónimo en línea:
 
 ```php
 use Closure;

@@ -139,7 +139,7 @@ Si un usuario no verificado intenta acceder a una ruta a la que se le ha asignad
 
 Aunque la notificación de verificación de correo electrónico predeterminada debería satisfacer los requisitos de la mayoría de las aplicaciones, Laravel le permite personalizar cómo se construye el mensaje de correo electrónico de verificación.
 
-Para comenzar, pase un cierre al método `toMailUsing` proporcionado por la notificación `Illuminate\Auth\Notifications\VerifyEmail`. El cierre recibirá la instancia del modelo notificable que está recibiendo la notificación, así como la URL de verificación de correo electrónico firmada que el usuario debe visitar para verificar su dirección de correo electrónico. El cierre debería devolver una instancia de `Illuminate\Notifications\Messages\MailMessage`. Normalmente, debes llamar al método `toMailUsing` desde el método `boot` de la clase `AppServiceProvider` de tu aplicación:
+Para comenzar, pase una función anónima al método `toMailUsing` proporcionado por la notificación `Illuminate\Auth\Notifications\VerifyEmail`. La función anónima recibirá la instancia del modelo notificable que está recibiendo la notificación, así como la URL de verificación de correo electrónico firmada que el usuario debe visitar para verificar su dirección de correo electrónico. La función anónima debería devolver una instancia de `Illuminate\Notifications\Messages\MailMessage`. Normalmente, debes llamar al método `toMailUsing` desde el método `boot` de la clase `AppServiceProvider` de tu aplicación:
 
 ```php
 use Illuminate\Auth\Notifications\VerifyEmail;

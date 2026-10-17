@@ -358,7 +358,7 @@ $isVitess = DB::connection('mysql')->isVitess();
 <a id="listening-for-query-events"></a>
 ### Escucha de eventos de consulta
 
-Si desea especificar un cierre que se invoca para cada consulta SQL ejecutada por su aplicación, puede utilizar el método `listen` de la fachada `DB`. Este método puede resultar útil para registrar consultas o depurar. Puede registrar el cierre de su escucha de consultas en el método `boot` de un [proveedor de servicios](../providers/):
+Si desea especificar una función anónima que se invoca para cada consulta SQL ejecutada por su aplicación, puede utilizar el método `listen` de la fachada `DB`. Este método puede resultar útil para registrar consultas o depurar. Puede registrar la función anónima de su escucha de consultas en el método `boot` de un [proveedor de servicios](../providers/):
 
 ```php
 <?php
@@ -397,7 +397,7 @@ class AppServiceProvider extends ServiceProvider
 <a id="monitoring-cumulative-query-time"></a>
 ### Monitoreo del tiempo de consulta acumulativo
 
-Un cuello de botella común en el rendimiento de las aplicaciones web modernas es la cantidad de tiempo que dedican a consultar bases de datos. Afortunadamente, Laravel puede invocar un cierre o devolución de llamada de su elección cuando pasa demasiado tiempo consultando la base de datos durante una sola solicitud. Para comenzar, proporcione un umbral de tiempo de consulta (en milisegundos) y un cierre para el método `whenQueryingForLongerThan`. Puede invocar este método en el método `boot` de un [proveedor de servicios](../providers/):
+Un cuello de botella común en el rendimiento de las aplicaciones web modernas es la cantidad de tiempo que dedican a consultar bases de datos. Afortunadamente, Laravel puede invocar una función anónima o devolución de llamada de su elección cuando pasa demasiado tiempo consultando la base de datos durante una sola solicitud. Para comenzar, proporcione un umbral de tiempo de consulta (en milisegundos) y una función anónima para el método `whenQueryingForLongerThan`. Puede invocar este método en el método `boot` de un [proveedor de servicios](../providers/):
 
 ```php
 <?php
@@ -434,7 +434,7 @@ class AppServiceProvider extends ServiceProvider
 <a id="database-transactions"></a>
 ## Transacciones de base de datos
 
-Puede utilizar el método `transaction` proporcionado por la fachada `DB` para ejecutar un conjunto de operaciones dentro de una transacción de base de datos. Si se produce una excepción durante el cierre de la transacción, la transacción se revertirá automáticamente y se volverá a generar la excepción. Si el cierre se ejecuta exitosamente, la transacción se confirmará automáticamente. No necesita preocuparse por revertir o confirmar manualmente mientras usa el método `transaction`:
+Puede utilizar el método `transaction` proporcionado por la fachada `DB` para ejecutar un conjunto de operaciones dentro de una transacción de base de datos. Si se produce una excepción durante la función anónima de la transacción, la transacción se revertirá automáticamente y se volverá a generar la excepción. Si la función anónima se ejecuta exitosamente, la transacción se confirmará automáticamente. No necesita preocuparse por revertir o confirmar manualmente mientras usa el método `transaction`:
 
 ```php
 use Illuminate\Support\Facades\DB;

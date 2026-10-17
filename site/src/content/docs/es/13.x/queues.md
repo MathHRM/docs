@@ -2530,7 +2530,7 @@ dispatch(function () use ($podcast) {
 <a id="the-queue-work-command"></a>
 ### El comando `queue:work`
 
-Laravel incluye un comando Artisan que iniciará un trabajador en cola y procesará nuevos trabajos a medida que se inserten en la cola. Puedes ejecutar el trabajador usando el comando `queue:work` Artisan. Ten en cuenta que una vez que se haya iniciado el comando `queue:work`, continuará ejecutándose hasta que se detenga manualmente o cierres tu terminal:
+Laravel incluye un comando Artisan que iniciará un trabajador en cola y procesará nuevos trabajos a medida que se inserten en la cola. Puedes ejecutar el trabajador usando el comando `queue:work` Artisan. Ten en cuenta que una vez que se haya iniciado el comando `queue:work`, continuará ejecutándose hasta que se detenga manualmente o funciones anónimas tu terminal:
 
 ```shell
 php artisan queue:work

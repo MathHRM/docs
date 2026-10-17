@@ -171,7 +171,7 @@ php artisan test --parallel --recreate-databases
 
 En ocasiones, es posible que necesite preparar ciertos recursos utilizados por las pruebas de su aplicación para que puedan ser utilizados de forma segura por múltiples procesos de prueba.
 
-Usando la fachada `ParallelTesting`, puede especificar el código que se ejecutará en `setUp` y `tearDown` de un proceso o caso de prueba. Los cierres dados reciben las variables `$token` y `$testCase` que contienen el token de proceso y el caso de prueba actual, respectivamente:
+Usando la fachada `ParallelTesting`, puede especificar el código que se ejecutará en `setUp` y `tearDown` de un proceso o caso de prueba. Las funciones anónimas dadas reciben las variables `$token` y `$testCase` que contienen el token de proceso y el caso de prueba actual, respectivamente:
 
 ```php
 <?php

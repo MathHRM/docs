@@ -20,7 +20,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 
 Cuando inicia un nuevo proyecto de Laravel, el manejo de errores y excepciones ya está configurado para usted; sin embargo, en cualquier momento, puede utilizar el método `withExceptions` en el `bootstrap/app.php` de su aplicación para administrar cómo su aplicación informa y representa las excepciones.
 
-El objeto `$exceptions` proporcionado al cierre `withExceptions` es una instancia de `Illuminate\Foundation\Configuration\Exceptions` y es responsable de gestionar el manejo de excepciones en su aplicación. Profundizaremos en este objeto a lo largo de esta documentación.
+El objeto `$exceptions` proporcionado a la función anónima `withExceptions` es una instancia de `Illuminate\Foundation\Configuration\Exceptions` y es responsable de gestionar el manejo de excepciones en su aplicación. Profundizaremos en este objeto a lo largo de esta documentación.
 
 <a id="configuration"></a>
 ## Configuración
@@ -40,7 +40,7 @@ Durante el desarrollo local, debe configurar la variable de entorno `APP_DEBUG` 
 
 En Laravel, los informes de excepciones se utilizan para registrar excepciones o enviarlas a un servicio externo como [Laravel Nightwatch](https://nightwatch.laravel.com), [Sentry](https://github.com/getsentry/sentry-laravel) o [Flare](https://flareapp.io). De forma predeterminada, las excepciones se registrarán según su configuración [logging](../logging/). Sin embargo, usted es libre de registrar excepciones como desee.
 
-Si necesita informar diferentes tipos de excepciones de diferentes maneras, puede usar el método de excepción `report` en el `bootstrap/app.php` de su aplicación para registrar un cierre que debe ejecutarse cuando se debe informar una excepción de un tipo determinado. Laravel determinará qué tipo de excepción informa el cierre examinando la sugerencia de tipo del cierre:
+Si necesita informar diferentes tipos de excepciones de diferentes maneras, puede usar el método de excepción `report` en el `bootstrap/app.php` de su aplicación para registrar una función anónima que debe ejecutarse cuando se debe informar una excepción de un tipo determinado. Laravel determinará qué tipo de excepción informa la función anónima examinando la sugerencia de tipo de la función anónima:
 
 ```php
 use App\Exceptions\InvalidOrderException;
@@ -209,7 +209,7 @@ class PodcastProcessingException extends Exception implements ShouldntReport
 }
 ```
 
-Si necesita aún más control sobre cuándo se ignora un tipo particular de excepción, puede proporcionar un cierre al método `dontReportWhen`:
+Si necesita aún más control sobre cuándo se ignora un tipo particular de excepción, puede proporcionar una función anónima al método `dontReportWhen`:
 
 ```php
 use App\Exceptions\InvalidOrderException;
@@ -236,9 +236,9 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 <a id="rendering-exceptions"></a>
 ### Excepciones de representación
 
-De forma predeterminada, el controlador de excepciones de Laravel convertirá las excepciones en una respuesta HTTP. Sin embargo, puede registrar un cierre de representación personalizado para excepciones de un tipo determinado. Puede lograr esto utilizando el método de excepción `render` en el archivo `bootstrap/app.php` de su aplicación.
+De forma predeterminada, el controlador de excepciones de Laravel convertirá las excepciones en una respuesta HTTP. Sin embargo, puede registrar una función anónima de representación personalizado para excepciones de un tipo determinado. Puede lograr esto utilizando el método de excepción `render` en el archivo `bootstrap/app.php` de su aplicación.
 
-El cierre pasado al método `render` debería devolver una instancia de `Illuminate\Http\Response`, que puede generarse mediante el asistente `response`. Laravel determinará qué tipo de excepción genera el cierre examinando la sugerencia de tipo del cierre:
+La función anónima pasada al método `render` debería devolver una instancia de `Illuminate\Http\Response`, que puede generarse mediante el asistente `response`. Laravel determinará qué tipo de excepción genera la función anónima examinando la sugerencia de tipo de la función anónima:
 
 ```php
 use App\Exceptions\InvalidOrderException;
@@ -251,7 +251,7 @@ use Illuminate\Http\Request;
 })
 ```
 
-También puede utilizar el método `render` para anular el comportamiento de renderizado para excepciones integradas de Laravel o Symfony como `NotFoundHttpException`. Si el cierre dado al método `render` no devuelve un valor, se utilizará la representación de excepción predeterminada de Laravel:
+También puede utilizar el método `render` para anular el comportamiento de renderizado para excepciones integradas de Laravel o Symfony como `NotFoundHttpException`. Si la función anónima dada al método `render` no devuelve un valor, se utilizará la representación de excepción predeterminada de Laravel:
 
 ```php
 use Illuminate\Http\Request;
@@ -291,7 +291,7 @@ use Throwable;
 <a id="customizing-the-exception-response"></a>
 #### Personalización de la respuesta de excepción
 
-En raras ocasiones, es posible que necesites personalizar toda la respuesta HTTP representada por el controlador de excepciones de Laravel. Para lograr esto, puede registrar un cierre de personalización de respuesta utilizando el método `respond`:
+En raras ocasiones, es posible que necesites personalizar toda la respuesta HTTP representada por el controlador de excepciones de Laravel. Para lograr esto, puede registrar una función anónima de personalización de respuesta utilizando el método `respond`:
 
 ```php
 use Symfony\Component\HttpFoundation\Response;
@@ -387,7 +387,7 @@ public function report(): bool
 
 Si su aplicación informa una gran cantidad de excepciones, es posible que desee limitar la cantidad de excepciones que realmente se registran o envían al servicio de seguimiento de errores externo de su aplicación.
 
-Para tomar una tasa de muestreo aleatoria de excepciones, puede utilizar el método de excepción `throttle` en el archivo `bootstrap/app.php` de su aplicación. El método `throttle` recibe un cierre que debería devolver una instancia `Lottery`:
+Para tomar una tasa de muestreo aleatoria de excepciones, puede utilizar el método de excepción `throttle` en el archivo `bootstrap/app.php` de su aplicación. El método `throttle` recibe una función anónima que debería devolver una instancia `Lottery`:
 
 ```php
 use Illuminate\Support\Lottery;

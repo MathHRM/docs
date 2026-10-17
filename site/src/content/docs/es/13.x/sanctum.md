@@ -1,5 +1,5 @@
 ---
-title: "Santuario de Laravel"
+title: "Sanctum de Laravel"
 translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ---
 
@@ -131,7 +131,7 @@ Route::post('/tokens/create', function (Request $request) {
 });
 ```
 
-Puede acceder a todos los tokens del usuario utilizando la relación Elocuente `tokens` proporcionada por el rasgo `HasApiTokens`:
+Puede acceder a todos los tokens del usuario utilizando la relación Eloquent `tokens` proporcionada por el rasgo `HasApiTokens`:
 
 ```php
 foreach ($user->tokens as $token) {
@@ -344,7 +344,7 @@ Durante esta solicitud, Laravel configurará una cookie `XSRF-TOKEN` que contien
 <a id="logging-in"></a>
 #### Iniciar sesión
 
-Una vez que se haya inicializado la protección CSRF, debe realizar una solicitud `POST` a la ruta `/login` de su aplicación Laravel. Esta ruta `/login` puede [implementarse manualmente](../authentication/#authenticating-users) o utilizar un paquete de autenticación sin cabeza como [Laravel Fortify](../fortify/).
+Una vez que se haya inicializado la protección CSRF, debe realizar una solicitud `POST` a la ruta `/login` de su aplicación Laravel. Esta ruta `/login` puede [implementarse manualmente](../authentication/#authenticating-users) o utilizar un paquete de autenticación sin interfaz de usuario como [Laravel Fortify](../fortify/).
 
 Si la solicitud de inicio de sesión tiene éxito, será autenticado y las solicitudes posteriores a las rutas de su aplicación se autenticarán automáticamente a través de la cookie de sesión que la aplicación Laravel emitió a su cliente. Además, dado que su aplicación ya realizó una solicitud a la ruta `/sanctum/csrf-cookie`, las solicitudes posteriores deberían recibir protección CSRF automáticamente siempre que su cliente HTTP JavaScript envíe el valor de la cookie `XSRF-TOKEN` en el encabezado `X-XSRF-TOKEN`.
 

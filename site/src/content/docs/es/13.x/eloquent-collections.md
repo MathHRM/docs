@@ -1,5 +1,5 @@
 ---
-title: "Elocuente: Colecciones"
+title: "Eloquent: Colecciones"
 translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ---
 
@@ -35,7 +35,7 @@ $names = User::all()->reject(function (User $user) {
 ```
 
 <a id="eloquent-collection-conversion"></a>
-#### Conversión de colección elocuente
+#### Conversión de colección Eloquent
 
 Si bien la mayoría de los métodos de colección de Eloquent devuelven una nueva instancia de una colección de Eloquent, los métodos `collapse`, `flatten`, `flip`, `keys`, `pluck` y `zip` devuelven una [instancia de colección base](../collections/). Del mismo modo, si una operación `map` devuelve una colección que no contiene ningún modelo de Eloquent, se convertirá en una instancia de colección base.
 
