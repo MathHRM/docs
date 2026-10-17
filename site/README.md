@@ -1,4 +1,4 @@
-# Laravel Translations website
+# Laravel Docs website
 
 Astro + Starlight documentation. All maintained languages and Laravel major
 versions live on `main`; feature and translation branches are temporary.

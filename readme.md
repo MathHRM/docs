@@ -1,4 +1,4 @@
-# Laravel Translations
+# Laravel Docs
 
 Community Laravel documentation and translations, published with Astro Starlight.
 
