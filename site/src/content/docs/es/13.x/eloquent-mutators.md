@@ -7,20 +7,20 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 - [Accesorios y Mutadores](#accessors-and-mutators)
     - [Definición de un accesor](#defining-an-accessor)
     - [Definiendo un mutador](#defining-a-mutator)
-- [Fundición de atributos](#attribute-casting)
-    - [Array y JSON Casting](#array-and-json-casting)
-    - [Fundición vectorial](#vector-casting)
-    - [Transmisión binaria](#binary-casting)
-    - [Fecha de transmisión](#date-casting)
-    - [Enumeración Casting](#enum-casting)
-    - [Transmisión cifrada](#encrypted-casting)
-    - [Consulta de tiempo de transmisión](#query-time-casting)
-- [Repartos personalizados](#custom-casts)
-    - [Fundición de objetos de valor](#value-object-casting)
+- [Conversión de tipos de atributos](#attribute-casting)
+    - [Conversión de tipos de array y JSON](#array-and-json-casting)
+    - [Conversión de tipos vectoriales](#vector-casting)
+    - [Conversión binaria](#binary-casting)
+    - [Conversión de fechas](#date-casting)
+    - [Conversión de enumeración](#enum-casting)
+    - [Conversión cifrada](#encrypted-casting)
+    - [Conversión en tiempo de consulta](#query-time-casting)
+- [Conversiones personalizadas](#custom-casts)
+    - [Conversión de objetos de valor](#value-object-casting)
     - [Matriz / Serialización JSON](#array-json-serialization)
-    - [Casting entrante](#inbound-casting)
-    - [Parámetros de transmisión](#cast-parameters)
-    - [Comparación de valores fundidos](#comparing-cast-values)
+    - [Conversión entrante](#inbound-casting)
+    - [Parámetros de conversión](#cast-parameters)
+    - [Comparación de valores convertidos](#comparing-cast-values)
     - [Castables](#castables)
 
 <a id="introduction"></a>
@@ -210,11 +210,11 @@ protected function address(): Attribute
 ```
 
 <a id="attribute-casting"></a>
-## Transmisión de atributos
+## Conversión de tipos de atributos
 
 La conversión de atributos proporciona una funcionalidad similar a los accesores y mutadores sin necesidad de definir ningún método adicional en su modelo. En cambio, el método `casts` de su modelo proporciona una manera conveniente de convertir atributos a tipos de datos comunes.
 
-El método `casts` debe devolver una matriz donde la clave es el nombre del atributo que se está convirtiendo y el valor es el tipo al que desea convertir la columna. Los tipos de transmisión admitidos son:
+El método `casts` debe devolver una matriz donde la clave es el nombre del atributo que se está convirtiendo y el valor es el tipo al que desea convertir la columna. Los tipos de conversión admitidos son:
 
 <div class="content-list" markdown="1">
 
@@ -280,7 +280,7 @@ if ($user->is_admin) {
 }
 ```
 
-Si necesita agregar una nueva conversión temporal en tiempo de ejecución, puede usar el método `mergeCasts`. Estas definiciones de reparto se agregarán a cualquiera de los repartos ya definidos en el modelo:
+Si necesita agregar una nueva conversión temporal en tiempo de ejecución, puede usar el método `mergeCasts`. Estas definiciones de conversión se agregarán a cualquiera de las conversiones ya definidas en el modelo:
 
 ```php
 $user->mergeCasts([
@@ -290,10 +290,10 @@ $user->mergeCasts([
 ```
 
 > **Advertencia:**
-> Los atributos que sean `null` no se transmitirán. Además, nunca debe definir una conversión (o un atributo) que tenga el mismo nombre que una relación ni asignar una conversión a la clave principal del modelo.
+> Los atributos que sean `null` no se convertirán. Además, nunca debe definir una conversión (o un atributo) que tenga el mismo nombre que una relación ni asignar una conversión a la clave principal del modelo.
 
 <a id="stringable-casting"></a>
-#### Fundición encordable
+#### Conversión a Stringable
 
 Puede utilizar la clase de conversión `Illuminate\Database\Eloquent\Casts\AsStringable` para convertir un atributo de modelo a un [objeto Illuminate\Support\Stringable fluido](../strings/#fluent-strings-method-list):
 
@@ -322,7 +322,7 @@ class User extends Model
 ```
 
 <a id="array-and-json-casting"></a>
-### Array y conversión JSON
+### Conversión de tipos de array y JSON
 
 La conversión `array` es particularmente útil cuando se trabaja con columnas almacenadas como JSON serializado. Por ejemplo, si su base de datos tiene un tipo de campo `JSON` o `TEXT` que contiene JSON serializado, agregar la conversión `array` a ese atributo deserializará automáticamente el atributo a una matriz PHP cuando acceda a él en su modelo Eloquent:
 
@@ -393,9 +393,9 @@ protected function casts(): array
 ```
 
 <a id="array-object-and-collection-casting"></a>
-#### Casting de colección y objeto de matriz
+#### Conversión a ArrayObject y Collection
 
-Aunque la fundición estándar `array` es suficiente para muchas aplicaciones, tiene algunas desventajas. Dado que la conversión `array` devuelve un tipo primitivo, no es posible mutar un desplazamiento de la matriz directamente. Por ejemplo, el siguiente código provocará un error de PHP:
+Aunque la conversión estándar `array` es suficiente para muchas aplicaciones, tiene algunas desventajas. Dado que la conversión `array` devuelve un tipo primitivo, no es posible mutar un desplazamiento de la matriz directamente. Por ejemplo, el siguiente código provocará un error de PHP:
 
 ```php
 $user = User::find(1);
@@ -403,7 +403,7 @@ $user = User::find(1);
 $user->options['key'] = $value;
 ```
 
-Para resolver esto, Laravel ofrece una conversión `AsArrayObject` que convierte su atributo JSON en una clase [ArrayObject](https://www.php.net/manual/en/class.arrayobject.php). Esta característica se implementa utilizando la implementación [custom cast](#custom-casts)] de Laravel, que permite a Laravel almacenar en caché y transformar de manera inteligente el objeto mutado de modo que las compensaciones individuales puedan modificarse sin provocar un error de PHP. Para utilizar la conversión `AsArrayObject`, simplemente asígnela a un atributo:
+Para resolver esto, Laravel ofrece una conversión `AsArrayObject` que convierte su atributo JSON en una clase [ArrayObject](https://www.php.net/manual/en/class.arrayobject.php). Esta característica se implementa utilizando la implementación [conversión personalizada](#custom-casts) de Laravel, que permite a Laravel almacenar en caché y transformar de manera inteligente el objeto mutado de modo que las compensaciones individuales puedan modificarse sin provocar un error de PHP. Para utilizar la conversión `AsArrayObject`, simplemente asígnela a un atributo:
 
 ```php
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
@@ -465,7 +465,7 @@ El método `nullable` también se puede combinar con una clase de colección per
 
 La conversión `AsArrayObject` también proporciona un método `nullable` con el mismo comportamiento.
 
-Si desea que la transmisión `AsCollection` cree una instancia de una clase de colección personalizada en lugar de la clase de colección base de Laravel, puede proporcionar el nombre de la clase de colección como argumento de conversión:
+Si desea que la conversión `AsCollection` cree una instancia de una clase de colección personalizada en lugar de la clase de colección base de Laravel, puede proporcionar el nombre de la clase de colección como argumento de conversión:
 
 ```php
 use App\Collections\OptionCollection;
@@ -556,7 +556,7 @@ class Option implements Arrayable, JsonSerializable
 ```
 
 <a id="vector-casting"></a>
-### Fundición vectorial
+### Conversión de tipos vectoriales
 
 Puede utilizar la clase de conversión `Illuminate\Database\Eloquent\Casts\AsVector` para convertir una columna de vector de base de datos hacia y desde una matriz PHP:
 
@@ -613,7 +613,7 @@ return $user->uuid;
 ```
 
 <a id="date-casting"></a>
-### Fecha de transmisión
+### Conversión de fechas
 
 De forma predeterminada, Eloquent convertirá las columnas `created_at` y `updated_at` en instancias de [Carbon](https://github.com/briannesbitt/Carbon), que extiende la clase PHP `DateTime` y proporciona una variedad de métodos útiles. Puede emitir atributos de fecha adicionales definiendo conversiones de fecha adicionales dentro del método `casts` de su modelo. Normalmente, las fechas se deben convertir utilizando los tipos de conversión `datetime` o `immutable_datetime`.
 
@@ -660,11 +660,11 @@ class Flight extends Model
 ```
 
 <a id="date-casting-and-timezones"></a>
-#### Transmisión de fecha, serialización y zonas horarias
+#### Conversión de fechas, serialización y zonas horarias
 
 De forma predeterminada, las conversiones `date` y `datetime` serializarán las fechas en una cadena de fecha UTC ISO-8601 (`YYYY-MM-DDTHH:MM:SS.uuuuuuZ`), independientemente de la zona horaria especificada en la opción de configuración `timezone` de su aplicación. Le recomendamos encarecidamente que utilice siempre este formato de serialización, así como que almacene las fechas de su aplicación en la zona horaria UTC sin cambiar la opción de configuración `timezone` de su aplicación de su valor predeterminado `UTC`. El uso constante de la zona horaria UTC en toda su aplicación proporcionará el máximo nivel de interoperabilidad con otras bibliotecas de manipulación de fechas escritas en PHP y JavaScript.
 
-Si se aplica un formato personalizado a la transmisión `date` o `datetime`, como `datetime:Y-m-d H:i:s`, la zona horaria interna de la instancia de Carbon se usará durante la serialización de la fecha. Normalmente, esta será la zona horaria especificada en la opción de configuración `timezone` de su aplicación. Sin embargo, es importante tener en cuenta que las columnas `timestamp`, como `created_at` y `updated_at`, están exentas de este comportamiento y siempre están formateadas en UTC, independientemente de la configuración de zona horaria de la aplicación.
+Si se aplica un formato personalizado a la conversión `date` o `datetime`, como `datetime:Y-m-d H:i:s`, la zona horaria interna de la instancia de Carbon se usará durante la serialización de la fecha. Normalmente, esta será la zona horaria especificada en la opción de configuración `timezone` de su aplicación. Sin embargo, es importante tener en cuenta que las columnas `timestamp`, como `created_at` y `updated_at`, están exentas de este comportamiento y siempre están formateadas en UTC, independientemente de la configuración de zona horaria de la aplicación.
 
 <a id="enum-casting"></a>
 ### Conversión de enumeración
@@ -687,7 +687,7 @@ protected function casts(): array
 }
 ```
 
-Una vez que haya definido la conversión en su modelo, el atributo especificado se transmitirá automáticamente hacia y desde una enumeración cuando interactúe con el atributo:
+Una vez que haya definido la conversión en su modelo, el atributo especificado se convertirá automáticamente hacia y desde una enumeración cuando interactúe con el atributo:
 
 ```php
 if ($server->status == ServerStatus::Provisioned) {
@@ -698,7 +698,7 @@ if ($server->status == ServerStatus::Provisioned) {
 ```
 
 <a id="casting-arrays-of-enums"></a>
-#### Lanzamiento de matrices de enumeraciones
+#### Conversión de matrices de enumeraciones
 
 A veces es posible que necesite que su modelo almacene una serie de valores de enumeración dentro de una sola columna. Para lograr esto, puede utilizar las conversiones `AsEnumArrayObject` o `AsEnumCollection` proporcionadas por Laravel:
 
@@ -720,7 +720,7 @@ protected function casts(): array
 ```
 
 <a id="encrypted-casting"></a>
-### Transmisión cifrada
+### Conversión cifrada
 
 La conversión `encrypted` cifrará el valor del atributo de un modelo utilizando las funciones [encryption](../encryption/)] integradas de Laravel. Además, las versiones `encrypted:array`, `encrypted:collection`, `encrypted:object`, `AsEncryptedArrayObject` y `AsEncryptedCollection` funcionan como sus contrapartes no cifradas; sin embargo, como es de esperar, el valor subyacente se cifra cuando se almacena en su base de datos.
 
@@ -732,7 +732,7 @@ Como la longitud final del texto cifrado no es predecible y es más larga que su
 Como sabrá, Laravel cifra cadenas utilizando el valor de configuración `key` especificado en el archivo de configuración `app` de su aplicación. Normalmente, este valor corresponde al valor de la variable de entorno `APP_KEY`. Si necesita rotar la clave de cifrado de su aplicación, puede [hacerlo elegantemente](../encryption/#gracefully-rotating-encryption-keys).
 
 <a id="query-time-casting"></a>
-### Consulta de tiempo de conversión
+### Conversión en tiempo de consulta
 
 A veces es posible que necesite aplicar conversiones mientras ejecuta una consulta, como al seleccionar un valor sin procesar de una tabla. Por ejemplo, considere la siguiente consulta:
 
@@ -760,9 +760,9 @@ $users = User::select([
 ```
 
 <a id="custom-casts"></a>
-## Moldes personalizados
+## Conversiones personalizadas
 
-Laravel tiene una variedad de tipos de conversión útiles e integrados; sin embargo, es posible que en ocasiones necesites definir tus propios tipos de conversión. Para crear un molde, ejecute el comando `make:cast` Artisan. La nueva clase de reparto se colocará en su directorio `app/Casts`:
+Laravel tiene una variedad de tipos de conversión útiles e integrados; sin embargo, es posible que en ocasiones necesites definir tus propios tipos de conversión. Para crear una conversión, ejecute el comando `make:cast` Artisan. La nueva clase de conversión se colocará en su directorio `app/Casts`:
 
 ```shell
 php artisan make:cast AsJson
@@ -952,7 +952,7 @@ public function serialize(
 ```
 
 <a id="inbound-casting"></a>
-### Casting entrante
+### Conversión entrante
 
 En ocasiones, es posible que necesite escribir una clase de conversión personalizada que solo transforme los valores que se establecen en el modelo y no realice ninguna operación cuando se recuperan los atributos del modelo.
 
@@ -1000,7 +1000,7 @@ class AsHash implements CastsInboundAttributes
 ```
 
 <a id="cast-parameters"></a>
-### Parámetros de transmisión
+### Parámetros de conversión
 
 Al adjuntar una conversión personalizada a un modelo, los parámetros de conversión se pueden especificar separándolos del nombre de la clase mediante un carácter `:` y delimitando por comas varios parámetros. Los parámetros se pasarán al constructor de la clase de conversión:
 
@@ -1019,7 +1019,7 @@ protected function casts(): array
 ```
 
 <a id="comparing-cast-values"></a>
-### Comparación de valores de reparto
+### Comparación de valores convertidos
 
 Si desea definir cómo se deben comparar dos valores de conversión determinados para determinar si se han modificado, su clase de conversión personalizada puede implementar la interfaz `Illuminate\Contracts\Database\Eloquent\ComparesCastableAttributes`. Esto le permite tener un control detallado sobre qué valores Eloquent considera modificados y, por lo tanto, los guarda en la base de datos cuando se actualiza un modelo.
 
@@ -1061,7 +1061,7 @@ protected function casts(): array
 }
 ```
 
-Los objetos que implementan la interfaz `Castable` deben definir un método `castUsing` que devuelva el nombre de la clase de lanzador personalizada que es responsable de la conversión hacia y desde la clase `Castable`:
+Los objetos que implementan la interfaz `Castable` deben definir un método `castUsing` que devuelva el nombre de la clase de conversión personalizada que es responsable de la conversión hacia y desde la clase `Castable`:
 
 ```php
 <?php
@@ -1099,9 +1099,9 @@ protected function casts(): array
 ```
 
 <a id="anonymous-cast-classes"></a>
-#### Castables y clases de reparto anónimos
+#### Castables y clases de conversión anónimas
 
-Al combinar "castables" con [clases anónimas ](https://www.php.net/manual/en/language.oop5.anonymous.php) de PHP, puede definir un objeto de valor y su lógica de conversión como un único objeto moldeable. Para lograr esto, devuelva una clase anónima del método `castUsing` de su objeto de valor. La clase anónima debería implementar la interfaz `CastsAttributes`:
+Al combinar "castables" con [clases anónimas ](https://www.php.net/manual/en/language.oop5.anonymous.php) de PHP, puede definir un objeto de valor y su lógica de conversión como un único objeto que admite conversión. Para lograr esto, devuelva una clase anónima del método `castUsing` de su objeto de valor. La clase anónima debería implementar la interfaz `CastsAttributes`:
 
 ```php
 <?php

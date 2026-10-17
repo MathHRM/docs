@@ -33,7 +33,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 <div class="content-list" markdown="1">
 
 - [Prefijos de caché y nombres de cookies de sesión](#cache-prefixes-and-session-cookie-names)
-- [La serialización del modelo de colección restaura relaciones apasionantes](#collection-model-serialization-restores-eager-loaded-relations)
+- [La serialización del modelo de colección restaura relaciones cargadas de forma anticipada](#collection-model-serialization-restores-eager-loaded-relations)
 - [`Container::call` y valores predeterminados de clase anulables](#containercall-and-nullable-class-defaults)
 - [Precedencia de registro de ruta de dominio](#domain-route-registration-precedence)
 - [`JobAttempted` Carga útil de excepción de evento](#jobattempted-event-exception-payload)
@@ -252,11 +252,11 @@ Cuando se infieren nombres de tablas para modelos pivote polimórficos utilizand
 Si su aplicación dependía de los nombres singulares inferidos anteriores para las tablas dinámicas de transformación y usaba clases dinámicas personalizadas, debe definir explícitamente el nombre de la tabla en su modelo dinámico.
 
 <a id="collection-model-serialization-restores-eager-loaded-relations"></a>
-#### La serialización del modelo de colección restaura relaciones cargadas de entusiasmo
+#### La serialización del modelo de colección restaura relaciones cargadas de forma anticipada
 
 **Probabilidad de impacto: baja**
 
-Cuando las colecciones de modelos de Eloquent se serializan y restauran (como en trabajos en cola), ahora se restauran las relaciones cargadas con entusiasmo para los modelos de la colección.
+Cuando las colecciones de modelos de Eloquent se serializan y restauran (como en trabajos en cola), ahora se restauran las relaciones cargadas de forma anticipada para los modelos de la colección.
 
 Si su código dependía de que las relaciones no estuvieran presentes después de la deserialización, es posible que deba ajustar esa lógica.
 

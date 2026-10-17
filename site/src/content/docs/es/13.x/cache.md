@@ -119,7 +119,7 @@ Antes de utilizar el controlador de caché [DynamoDB](https://aws.amazon.com/dyn
 
 Esta tabla también debe tener una clave de partición de cadena con un nombre que corresponda al valor del elemento de configuración `stores.dynamodb.attributes.key` dentro del archivo de configuración `cache` de su aplicación. De forma predeterminada, la clave de partición debe llamarse `key`.
 
-Normalmente, DynamoDB no eliminará de forma proactiva los elementos caducados de una tabla. Por lo tanto, debe [habilitar Tiempo de vida (TTL)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html) en la mesa. Al configurar los ajustes TTL de la tabla, debe establecer el nombre del atributo TTL en `expires_at`.
+Normalmente, DynamoDB no eliminará de forma proactiva los elementos caducados de una tabla. Por lo tanto, debe [habilitar Tiempo de vida (TTL)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html) en la tabla. Al configurar los ajustes TTL de la tabla, debe establecer el nombre del atributo TTL en `expires_at`.
 
 A continuación, instale el SDK de AWS para que su aplicación Laravel pueda comunicarse con DynamoDB:
 

@@ -46,7 +46,7 @@ php artisan help migrate
 ```
 
 <a id="laravel-sail"></a>
-#### Vela Laravel
+#### Laravel Sail
 
 Si está utilizando [Laravel Sail](../sail/) como entorno de desarrollo local, recuerde usar la línea de comando `sail` para invocar los comandos de Artisan. Sail ejecutará sus comandos Artisan dentro de los contenedores Docker de su aplicación:
 

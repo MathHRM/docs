@@ -13,9 +13,9 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 - [Trabajando con JavaScript](#working-with-scripts)
   - [Alias](#aliases)
   - [Vue](#vue)
-  - [Reaccionar](#react)
-  - [Esbelto](#svelte)
-  - [Inercia](#inertia)
+  - [React](#react)
+  - [Svelte](#svelte)
+  - [Inertia](#inertia)
   - [Procesamiento de URL](#url-processing)
 - [Trabajar con hojas de estilo](#working-with-stylesheets)
 - [Trabajar con fuentes](#working-with-fonts)
@@ -299,7 +299,7 @@ export default defineConfig({
 ```
 
 <a id="vue"></a>
-### vista
+### Vue
 
 Si desea crear su interfaz utilizando el marco [Vue](https://vuejs.org/), también deberá instalar el complemento `@vitejs/plugin-vue`:
 
@@ -343,7 +343,7 @@ export default defineConfig({
 > Los [kits de inicio](../starter-kits/) de Laravel ya incluyen la configuración adecuada de Laravel, Vue y Vite. Estos kits de inicio ofrecen la forma más rápida de comenzar con Laravel, Vue y Vite.
 
 <a id="react"></a>
-### Reaccionar
+### React
 
 Si desea crear su interfaz utilizando el marco [React](https://reactjs.org/), también deberá instalar el complemento `@vitejs/plugin-react`:
 
@@ -381,7 +381,7 @@ La directiva `@viteReactRefresh` debe llamarse antes que la directiva `@vite`.
 > Los [kits de inicio](../starter-kits/) de Laravel ya incluyen la configuración adecuada de Laravel, React y Vite. Estos kits de inicio ofrecen la forma más rápida de comenzar con Laravel, React y Vite.
 
 <a id="svelte"></a>
-### Esbelto
+### Svelte
 
 Si desea crear su interfaz utilizando el marco [Svelte](https://svelte.dev/), también deberá instalar el complemento `@sveltejs/vite-plugin-svelte`:
 
@@ -412,7 +412,7 @@ export default defineConfig({
 > Los [kits de inicio](../starter-kits/) de Laravel ya incluyen la configuración adecuada de Laravel, Svelte y Vite. Estos kits de inicio ofrecen la forma más rápida de comenzar con Laravel, Svelte y Vite.
 
 <a id="inertia"></a>
-### Inercia
+### Inertia
 
 El complemento Laravel Vite proporciona una conveniente función `resolvePageComponent` para ayudarlo a resolver los componentes de su página Inertia. A continuación se muestra un ejemplo del asistente en uso con Vue 3; sin embargo, también puedes utilizar la función en otros frameworks como React o Svelte:
 
