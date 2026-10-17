@@ -1,5 +1,5 @@
 ---
-title: "Impulso de Laravel"
+title: "Laravel Boost"
 translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ---
 
@@ -152,7 +152,7 @@ A veces es posible que necesites registrar manualmente el servidor Laravel Boost
 
 <table>
 <tr><td><strong>Comando</strong></td><td><code>php</code></td></tr>
-<tr><td><strong>Args</strong></td><td><code>impulso artesanal:mcp</code></td></tr>
+<tr><td><strong>Args</strong></td><td><code>artisan boost:mcp</code></td></tr>
 </table>
 
 Ejemplo JSON:
@@ -448,7 +448,7 @@ La herramienta MCP `Search Docs` permite a los agentes consultar el servicio API
 </div>
 
 <a id="extending-boost"></a>
-## Impulso extendido
+## Laravel Boost extendido
 
 Boost funciona con muchos IDE y agentes de IA populares listos para usar. Si su herramienta de codificación aún no es compatible, puede crear su propio agente e integrarlo con Boost.
 
