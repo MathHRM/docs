@@ -1,5 +1,5 @@
 ---
-title: "Telescopio Laravel"
+title: "Laravel Telescope"
 translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ---
 
@@ -9,7 +9,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
     - [Configuración](#configuration)
     - [Poda de datos](#data-pruning)
     - [Autorización del panel](#dashboard-authorization)
-- [Actualización del Telescopio](#upgrading-telescope)
+- [Actualización de Laravel Telescope](#upgrading-telescope)
 - [Filtrado](#filtering)
     - [Entradas](#filtering-entries)
     - [lotes](#filtering-batches)
@@ -59,7 +59,7 @@ php artisan telescope:install
 php artisan migrate
 ```
 
-Finalmente, puede acceder al panel del Telescopio a través de la ruta `/telescope`.
+Finalmente, puede acceder al panel de Laravel Telescope a través de la ruta `/telescope`.
 
 <a id="local-only-installation"></a>
 ### Instalación solo local
@@ -106,7 +106,7 @@ Finalmente, también debes evitar que el paquete Telescope sea [descubierto auto
 
 Después de publicar los activos de Telescope, su archivo de configuración principal se ubicará en `config/telescope.php`. Este archivo de configuración le permite configurar sus [opciones de observador](#available-watchers). Cada opción de configuración incluye una descripción de su propósito, así que asegúrese de explorar este archivo a fondo.
 
-Si lo desea, puede desactivar por completo la recopilación de datos del Telescopio utilizando la opción de configuración `enabled`:
+Si lo desea, puede desactivar por completo la recopilación de datos de Laravel Telescope utilizando la opción de configuración `enabled`:
 
 ```php
 'enabled' => env('TELESCOPE_ENABLED', true),
@@ -152,7 +152,7 @@ use Illuminate\Support\Facades\Schedule;
 Schedule::command('telescope:prune')->daily();
 ```
 
-De forma predeterminada, se eliminarán todas las entradas de más de 24 horas. Puede utilizar la opción `hours` al llamar al comando para determinar durante cuánto tiempo se conservarán los datos del telescopio. Por ejemplo, el siguiente comando eliminará todos los registros creados hace más de 48 horas:
+De forma predeterminada, se eliminarán todas las entradas de más de 24 horas. Puede utilizar la opción `hours` al llamar al comando para determinar durante cuánto tiempo se conservarán los datos de Laravel Telescope. Por ejemplo, el siguiente comando eliminará todos los registros creados hace más de 48 horas:
 
 ```php
 use Illuminate\Support\Facades\Schedule;
@@ -163,7 +163,7 @@ Schedule::command('telescope:prune --hours=48')->daily();
 <a id="dashboard-authorization"></a>
 ### Autorización del panel
 
-Se puede acceder al panel del Telescopio a través de la ruta `/telescope`. De forma predeterminada, solo podrá acceder a este panel en el entorno `local`. Dentro de su archivo `app/Providers/TelescopeServiceProvider.php`, hay una [definición de puerta de autorización](../authorization/#gates). Esta puerta de autorización controla el acceso al Telescopio en entornos **no locales**. Usted es libre de modificar esta puerta según sea necesario para restringir el acceso a la instalación de su Telescopio:
+Se puede acceder al panel de Laravel Telescope a través de la ruta `/telescope`. De forma predeterminada, solo podrá acceder a este panel en el entorno `local`. Dentro de su archivo `app/Providers/TelescopeServiceProvider.php`, hay una [definición de puerta de autorización](../authorization/#gates). Esta puerta de autorización controla el acceso a Laravel Telescope en entornos **no locales**. Usted es libre de modificar esta puerta según sea necesario para restringir el acceso a la instalación de Laravel Telescope:
 
 ```php
 use App\Models\User;
@@ -184,10 +184,10 @@ protected function gate(): void
 ```
 
 > **Advertencia:**
-> Debe asegurarse de cambiar su variable de entorno `APP_ENV` a `production` en su entorno de producción. De lo contrario, la instalación de su Telescopio estará disponible públicamente.
+> Debe asegurarse de cambiar su variable de entorno `APP_ENV` a `production` en su entorno de producción. De lo contrario, la instalación de Laravel Telescope estará disponible públicamente.
 
 <a id="upgrading-telescope"></a>
-## Actualización del telescopio
+## Actualización de Laravel Telescope
 
 Al actualizar a una nueva versión principal de Telescope, es importante que revise cuidadosamente [la guía de actualización](https://github.com/laravel/telescope/blob/master/UPGRADE.md).
 
@@ -303,7 +303,7 @@ public function register(): void
 <a id="available-watchers"></a>
 ## Vigilantes disponibles
 
-Los "observadores" del telescopio recopilan datos de la aplicación cuando se ejecuta una solicitud o un comando de la consola. Puede personalizar la lista de observadores que le gustaría habilitar dentro de su archivo de configuración `config/telescope.php`:
+Los "observadores" de Laravel Telescope recopilan datos de la aplicación cuando se ejecuta una solicitud o un comando de la consola. Puede personalizar la lista de observadores que le gustaría habilitar dentro de su archivo de configuración `config/telescope.php`:
 
 ```php
 'watchers' => [

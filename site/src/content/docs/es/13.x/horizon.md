@@ -1,5 +1,5 @@
 ---
-title: "Horizonte de Laravel"
+title: "Laravel Horizon"
 translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ---
 
@@ -497,12 +497,12 @@ Puede controlar la capacidad de Horizon para escalar procesos de trabajo utiliza
 </div>
 
 <a id="upgrading-horizon"></a>
-## Actualizando Horizonte
+## Actualizando Laravel Horizon
 
 Al actualizar a una nueva versión principal de Horizon, es importante que revise detenidamente [la guía de actualización](https://github.com/laravel/horizon/blob/master/UPGRADE.md).
 
 <a id="running-horizon"></a>
-## Horizonte corriendo
+## Laravel Horizon corriendo
 
 Una vez que haya configurado a sus supervisores y trabajadores en el archivo de configuración `config/horizon.php` de su aplicación, puede iniciar Horizon usando el comando `horizon` Artisan. Este único comando iniciará todos los procesos de trabajo configurados para el entorno actual:
 

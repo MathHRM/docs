@@ -44,7 +44,7 @@ Para la búsqueda semántica impulsada por IA que coincide con los resultados po
 [AI SDK](../ai-sdk/) de Laravel proporciona capacidades de reclasificación que utilizan modelos de IA para reordenar cualquier conjunto de resultados por relevancia semántica para una consulta. La reclasificación es especialmente poderosa como segunda etapa después de un paso de recuperación inicial rápido, como la búsqueda de texto completo, lo que le brinda velocidad y precisión semántica.
 
 <a id="introduction-scout-search-engines"></a>
-#### Búsqueda de exploradores de Laravel
+#### Búsqueda de Laravel Scout
 
 Para aplicaciones que desean un rasgo `Searchable` que mantenga sincronizados automáticamente los índices de búsqueda con los modelos Eloquent, [Laravel Scout](../scout/) ofrece un motor de base de datos integrado y controladores para servicios de terceros como Algolia, Meilisearch, Typesense y Turbopuffer.
 
@@ -227,7 +227,7 @@ $articles = Article::all()
 Para obtener detalles completos sobre la configuración de proveedores de reclasificación y las opciones disponibles, consulte la [documentación AI SDK](../ai-sdk/#reranking).
 
 <a id="laravel-scout"></a>
-## Explorador de Laravel
+## Laravel Scout
 
 Las técnicas de búsqueda descritas anteriormente son todos métodos de creación de consultas que usted llama directamente en su código. [Laravel Scout](../scout/) adopta un enfoque diferente: proporciona un rasgo `Searchable` que usted agrega a sus modelos Eloquent, y Scout mantiene automáticamente sus índices de búsqueda sincronizados a medida que se crean, actualizan y eliminan registros. Esto es particularmente conveniente cuando desea que siempre se puedan realizar búsquedas en sus modelos sin administrar manualmente las actualizaciones del índice.
 

@@ -14,8 +14,8 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
     - [Bases de datos y Migraciones](#databases-and-migrations)
     - [Configuración de directorio](#directory-configuration)
 - [Instalación usando Herd](#installation-using-herd)
-    - [Rebaño en macOS](#herd-on-macos)
-    - [Rebaño en Windows](#herd-on-windows)
+    - [Herd en macOS](#herd-on-macos)
+    - [Herd en Windows](#herd-on-windows)
 - [Soporte IDE](#ide-support)
 - [Laravel y AI](#laravel-and-ai)
     - [Instalando Laravel Boost](#installing-laravel-boost)
@@ -192,7 +192,7 @@ Una vez que instales Herd, estarás listo para comenzar a desarrollar con Larave
 > [Herd Pro](https://herd.laravel.com/#plans) aumenta Herd con potentes funciones adicionales, como la capacidad de crear y administrar bases de datos locales MySQL, Postgres y Redis, así como visualización de correo local y monitoreo de registros.
 
 <a id="herd-on-macos"></a>
-### Rebaño en macOS
+### Herd en macOS
 
 Si desarrolla en macOS, puede descargar el instalador de Herd desde el [sitio web de Herd](https://herd.laravel.com). El instalador descarga automáticamente la última versión de PHP y configura su Mac para ejecutar siempre [Nginx](https://www.nginx.com/) en segundo plano.
 
@@ -212,7 +212,7 @@ Por supuesto, siempre puedes administrar tus directorios estacionados y otras co
 Puede obtener más información sobre Herd consultando la [documentación de Herd](https://herd.laravel.com/docs).
 
 <a id="herd-on-windows"></a>
-### Rebaño en Windows
+### Herd en Windows
 
 Puede descargar el instalador de Windows para Herd en el [sitio web de Herd](https://herd.laravel.com/windows). Una vez finalizada la instalación, puede iniciar Herd para completar el proceso de incorporación y acceder a la interfaz de usuario de Herd por primera vez.
 
