@@ -1,4 +1,4 @@
-    ---
+---
 title: "Laravel Boost"
 translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 ---
