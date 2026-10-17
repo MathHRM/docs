@@ -125,7 +125,7 @@ Si es necesario, puede definir la ruta desde donde se deben cargar las claves de
 
 ```php
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -171,7 +171,7 @@ De forma predeterminada, Passport emite tokens de acceso de larga duración que 
 use Carbon\CarbonInterval;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -209,7 +209,7 @@ use App\Models\Passport\Token;
 use Laravel\Passport\Passport;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -230,7 +230,7 @@ A veces es posible que desee personalizar las rutas definidas por Passport. Para
 use Laravel\Passport\Passport;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {
@@ -264,7 +264,7 @@ use Inertia\Inertia;
 use Laravel\Passport\Passport;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -387,7 +387,7 @@ use Laravel\Passport\Client as BaseClient;
 class Client extends BaseClient
 {
     /**
-     * Determine if the client should skip the authorization prompt.
+     * Determinar si el cliente debe omitir el prompt de autorización.
      *
      * @param  \Laravel\Passport\Scope[]  $scopes
      */
@@ -496,13 +496,13 @@ use Laravel\Passport\Token;
 
 $token = Passport::token()->find($tokenId);
 
-// Revoke an access token...
+// Revocar un access token...
 $token->revoke();
 
-// Revoke the token's refresh token...
+// Revocar el refresh token del token...
 $token->refreshToken?->revoke();
 
-// Revoke all of the user's tokens...
+// Revocar todos los tokens del usuario...
 User::find($userId)->tokens()->each(function (Token $token) {
     $token->revoke();
     $token->refreshToken?->revoke();
@@ -515,7 +515,7 @@ User::find($userId)->tokens()->each(function (Token $token) {
 Cuando los tokens hayan sido revocados o caducados, es posible que desee eliminarlos de la base de datos. El comando `passport:purge` Artisan incluido en Passport puede hacer esto por usted:
 
 ```shell
-# Purge revoked and expired tokens, auth codes, and device codes...
+# Eliminar tokens revocados o vencidos, códigos de autorización y códigos de dispositivo...
 php artisan passport:purge
 
 # Only purge tokens expired for more than 6 hours...
@@ -650,7 +650,7 @@ use Inertia\Inertia;
 use Laravel\Passport\Passport;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -777,7 +777,7 @@ Para habilitar la concesión de contraseña, llame al método `enablePasswordGra
 
 ```php
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -861,7 +861,7 @@ class User extends Authenticatable implements OAuthenticatable
     use HasApiTokens, Notifiable;
 
     /**
-     * Find the user instance for the given username.
+     * Buscar la instancia del usuario para el username indicado.
      */
     public function findForPassport(string $username, Client $client): User
     {
@@ -891,7 +891,7 @@ class User extends Authenticatable implements OAuthenticatable
     use HasApiTokens, Notifiable;
 
     /**
-     * Validate the password of the user for the Passport password grant.
+     * Validar la contraseña del usuario para el password grant de Passport.
      */
     public function validateForPassportPasswordGrant(string $password): bool
     {
@@ -910,7 +910,7 @@ La concesión implícita es similar a la concesión del código de autorización
 
 ```php
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -965,7 +965,7 @@ A continuación, asigne el middleware `Laravel\Passport\Http\Middleware\EnsureCl
 use Laravel\Passport\Http\Middleware\EnsureClientIsResourceOwner;
 
 Route::get('/orders', function (Request $request) {
-    // Access token is valid and the client is resource owner...
+    // El access token es válido y el cliente es el propietario del recurso...
 })->middleware(EnsureClientIsResourceOwner::class);
 ```
 
@@ -973,7 +973,7 @@ Para restringir el acceso a la ruta a ámbitos específicos, puede proporcionar 
 
 ```php
 Route::get('/orders', function (Request $request) {
-    // Access token is valid, the client is resource owner, and has both "servers:read" and "servers:create" scopes...
+    // El access token es válido, el cliente es propietario del recurso y tiene los scopes "servers:read" y "servers:create"...
 })->middleware(EnsureClientIsResourceOwner::using('servers:read', 'servers:create'));
 ```
 
@@ -1125,7 +1125,7 @@ Puede definir los alcances de su API utilizando el método `Passport::tokensCan`
 
 ```php
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -1201,7 +1201,7 @@ El middleware `Laravel\Passport\Http\Middleware\CheckToken` se puede asignar a u
 use Laravel\Passport\Http\Middleware\CheckToken;
 
 Route::get('/orders', function () {
-    // Access token has both "orders:read" and "orders:create" scopes...
+    // El access token tiene los scopes "orders:read" y "orders:create"...
 })->middleware(['auth:api', CheckToken::using('orders:read', 'orders:create')]);
 ```
 
@@ -1214,7 +1214,7 @@ El middleware `Laravel\Passport\Http\Middleware\CheckTokenForAnyScope` se puede 
 use Laravel\Passport\Http\Middleware\CheckTokenForAnyScope;
 
 Route::get('/orders', function () {
-    // Access token has either "orders:read" or "orders:create" scope...
+    // El access token tiene el scope "orders:read" o "orders:create"...
 })->middleware(['auth:api', CheckTokenForAnyScope::using('orders:read', 'orders:create')]);
 ```
 
@@ -1237,12 +1237,12 @@ class OrderController
     #[AuthorizeToken(['orders:read', 'orders:create'], anyScope: true)]
     public function index()
     {
-        // Access token has either "orders:read" or "orders:create" scope...
+        // El access token tiene el scope "orders:read" o "orders:create"...
     }
 
     public function store()
     {
-        // Access token has both "orders:read" and "orders:create" scopes...
+        // El access token tiene los scopes "orders:read" y "orders:create"...
     }
 }
 ```
@@ -1329,7 +1329,7 @@ Si es necesario, puede personalizar el nombre de la cookie `laravel_token` utili
 
 ```php
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

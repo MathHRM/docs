@@ -129,10 +129,10 @@ Después de crear una aplicación a partir de un kit de inicio y permitir que lo
 ```php
 use Illuminate\Support\Facades\Auth;
 
-// Retrieve the currently authenticated user...
+// Recuperar el usuario autenticado actualmente...
 $user = Auth::user();
 
-// Retrieve the currently authenticated user's ID...
+// Recuperar el ID del usuario autenticado actualmente...
 $id = Auth::id();
 ```
 
@@ -149,7 +149,7 @@ use Illuminate\Http\Request;
 class FlightController extends Controller
 {
     /**
-     * Update the flight information for an existing flight.
+     * Actualizar la información de un vuelo existente.
      */
     public function update(Request $request): RedirectResponse
     {
@@ -259,7 +259,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     /**
-     * Handle an authentication attempt.
+     * Gestionar un intento de autenticación.
      */
     public function authenticate(Request $request): RedirectResponse
     {
@@ -461,7 +461,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AuthenticateOnceWithBasicAuth
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
@@ -621,12 +621,12 @@ class AppServiceProvider extends ServiceProvider
     // ...
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
         Auth::extend('jwt', function (Application $app, string $name, array $config) {
-            // Return an instance of Illuminate\Contracts\Auth\Guard...
+            // Devolver una instancia de Illuminate\Contracts\Auth\Guard...
 
             return new JwtGuard(Auth::createUserProvider($config['provider']));
         });
@@ -658,7 +658,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -706,12 +706,12 @@ class AppServiceProvider extends ServiceProvider
     // ...
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
         Auth::provider('mongo', function (Application $app, array $config) {
-            // Return an instance of Illuminate\Contracts\Auth\UserProvider...
+            // Devuelve una instancia de Illuminate\Contracts\Auth\UserProvider...
 
             return new MongoUserProvider($app->make('mongo.connection'));
         });

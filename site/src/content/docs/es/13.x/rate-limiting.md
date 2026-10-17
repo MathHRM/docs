@@ -42,7 +42,7 @@ $executed = RateLimiter::attempt(
     'send-message:'.$user->id,
     $perMinute = 5,
     function() {
-        // Send message...
+        // Enviar un mensaje...
     }
 );
 
@@ -58,7 +58,7 @@ $executed = RateLimiter::attempt(
     'send-message:'.$user->id,
     $perTwoMinutes = 5,
     function() {
-        // Send message...
+        // Enviar un mensaje...
     },
     $decayRate = 120,
 );
@@ -78,7 +78,7 @@ if (RateLimiter::tooManyAttempts('send-message:'.$user->id, $perMinute = 5)) {
 
 RateLimiter::increment('send-message:'.$user->id);
 
-// Send message...
+// Enviar un mensaje...
 ```
 
 Al limitar la frecuencia de un endpoint que puede recibir muchas solicitudes simultáneas, puedes querer comprobar el valor devuelto por el método `increment` en lugar de usar `tooManyAttempts` y `increment` como operaciones separadas. Cuando se utilizan los almacenes de caché `redis`, `memcached` o `database`, este valor se incrementa atómicamente, lo que garantiza que cada solicitud simultánea reciba un recuento único:
@@ -92,7 +92,7 @@ if (RateLimiter::increment('send-message:'.$user->id) > $perMinute) {
     return 'Too many attempts!';
 }
 
-// Send message...
+// Enviar un mensaje...
 ```
 
 Alternativamente, puedes usar el método `remaining` para recuperar la cantidad de intentos restantes para una clave determinada. Si a una clave determinada le quedan reintentos, puedes invocar el método `increment` para incrementar el número total de intentos:
@@ -103,7 +103,7 @@ use Illuminate\Support\Facades\RateLimiter;
 if (RateLimiter::remaining('send-message:'.$user->id, $perMinute = 5)) {
     RateLimiter::increment('send-message:'.$user->id);
 
-    // Send message...
+    // Enviar un mensaje...
 }
 ```
 
@@ -129,7 +129,7 @@ if (RateLimiter::tooManyAttempts('send-message:'.$user->id, $perMinute = 5)) {
 
 RateLimiter::increment('send-message:'.$user->id);
 
-// Send message...
+// Enviar un mensaje...
 ```
 
 <a id="clearing-attempts"></a>

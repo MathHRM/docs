@@ -49,11 +49,11 @@ use Illuminate\Support\Facades\Hash;
 class PasswordController extends Controller
 {
     /**
-     * Update the password for the user.
+     * Actualizar la contraseña del usuario.
      */
     public function update(Request $request): RedirectResponse
     {
-        // Validate the new password length...
+        // Validar la longitud de la nueva contraseña...
 
         $request->user()->fill([
             'password' => Hash::make($request->newPassword)

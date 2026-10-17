@@ -383,7 +383,7 @@ Si desea que un parámetro de ruta esté siempre restringido por una expresión 
 use Illuminate\Support\Facades\Route;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -487,7 +487,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Handle an incoming request.
+ * Gestionar una solicitud entrante.
  *
  * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
  */
@@ -516,11 +516,11 @@ Para asignar [middleware](../middleware/) a todas las rutas dentro de un grupo, 
 ```php
 Route::middleware(['first', 'second'])->group(function () {
     Route::get('/', function () {
-        // Uses first & second middleware...
+        // Utiliza el primer y segundo middleware...
     });
 
     Route::get('/user/profile', function () {
-        // Uses first & second middleware...
+        // Utiliza el primer y segundo middleware...
     });
 });
 ```
@@ -573,7 +573,7 @@ El método `name` se puede utilizar para prefijar cada nombre de ruta en el grup
 ```php
 Route::name('admin.')->group(function () {
     Route::get('/users', function () {
-        // Route assigned name "admin.users"...
+        // La ruta tiene asignado el nombre "admin.users"...
     })->name('users');
 });
 ```
@@ -604,7 +604,7 @@ Por supuesto, la vinculación implícita también es posible cuando se utilizan 
 use App\Http\Controllers\UserController;
 use App\Models\User;
 
-// Route definition...
+// Definición de la ruta...
 Route::get('/users/{user}', [UserController::class, 'show']);
 
 // Controller method definition...
@@ -753,7 +753,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -785,7 +785,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -799,7 +799,7 @@ Alternativamente, puede anular el método `resolveRouteBinding` en su modelo Elo
 
 ```php
 /**
- * Retrieve the model for a bound value.
+ * Recuperar el modelo para un valor enlazado.
  *
  * @param  mixed  $value
  * @param  string|null  $field
@@ -815,7 +815,7 @@ Si una ruta utiliza [alcance de enlace implícito](#implicit-model-binding-scopi
 
 ```php
 /**
- * Retrieve the child model for a bound value.
+ * Recuperar el modelo hijo para un valor enlazado.
  *
  * @param  string  $childType
  * @param  mixed  $value
@@ -855,7 +855,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -873,7 +873,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

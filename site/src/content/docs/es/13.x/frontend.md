@@ -126,7 +126,7 @@ use Inertia\Response;
 class UserController extends Controller
 {
     /**
-     * Show the profile for a given user.
+     * Mostrar el perfil del usuario indicado.
      */
     public function show(string $id): Response
     {

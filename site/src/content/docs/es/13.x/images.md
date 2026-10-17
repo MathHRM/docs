@@ -343,41 +343,41 @@ use Illuminate\Image\ImagePipeline;
 class VipsDriver implements Driver
 {
     /**
-     * Process the given image contents with the specified pipeline.
+     * Procesar el contenido de imagen indicado con el pipeline especificado.
      */
     public function process(string $contents, ImagePipeline $pipeline): string
     {
-        // Apply the pipeline's transformations and output options...
+        // Aplicar las transformaciones y opciones de salida del pipeline...
 
         return $contents;
     }
 
     /**
-     * Get the dimensions of the given image contents.
+     * Obtener las dimensiones del contenido de imagen indicado.
      */
     public function dimensions(string $contents): array
     {
-        // Read the image's width and height...
+        // Leer el ancho y el alto de la imagen...
 
         return [0, 0];
     }
 
     /**
-     * Get the dominant (average) color of the image as a hex string.
+     * Obtener el color dominante (promedio) de la imagen como cadena hexadecimal.
      */
     public function dominantColor(string $contents): string
     {
-        // Calculate the image's average color...
+        // Calcular el color promedio de la imagen...
 
         return '#000000';
     }
 
     /**
-     * Register a transformation handler.
+     * Registrar un handler de transformación.
      */
     public function transformUsing(string $transformation, callable $callback): static
     {
-        // Store the handler so it may be applied while processing the pipeline...
+        // Guardar el handler para poder aplicarlo al procesar el pipeline...
 
         return $this;
     }
@@ -395,7 +395,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Image;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

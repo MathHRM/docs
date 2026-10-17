@@ -69,33 +69,33 @@ php artisan make:model Flight --migration
 Puedes generar otros tipos de clases al generar un modelo, como factories, seeders, políticas, controladores y solicitudes de formulario. Además, estas opciones se pueden combinar para crear varias clases a la vez:
 
 ```shell
-# Generate a model and a FlightFactory class...
+# Generar un modelo y una clase FlightFactory...
 php artisan make:model Flight --factory
 php artisan make:model Flight -f
 
-# Generate a model and a FlightSeeder class...
+# Generar un modelo y una clase FlightSeeder...
 php artisan make:model Flight --seed
 php artisan make:model Flight -s
 
-# Generate a model and a FlightController class...
+# Generar un modelo y una clase FlightController...
 php artisan make:model Flight --controller
 php artisan make:model Flight -c
 
-# Generate a model, FlightController resource class, and form request classes...
+# Generar un modelo, una clase resource FlightController y clases de form request...
 php artisan make:model Flight --controller --resource --requests
 php artisan make:model Flight -crR
 
-# Generate a model and a FlightPolicy class...
+# Generar un modelo y una clase FlightPolicy...
 php artisan make:model Flight --policy
 
-# Generate a model and a migration, factory, seeder, and controller...
+# Generar un modelo y una migration, factory, seeder y controller...
 php artisan make:model Flight -mfsc
 
 # Shortcut to generate a model, migration, factory, seeder, policy, controller, and form requests...
 php artisan make:model Flight --all
 php artisan make:model Flight -a
 
-# Generate a pivot model...
+# Generar un modelo pivot...
 php artisan make:model Member --pivot
 php artisan make:model Member -p
 ```
@@ -240,7 +240,7 @@ Puedes anular el proceso de generación de UUID para un modelo determinado defin
 use Ramsey\Uuid\Uuid;
 
 /**
- * Generate a new UUID for the model.
+ * Generar un nuevo UUID para el modelo.
  */
 public function newUniqueId(): string
 {
@@ -248,7 +248,7 @@ public function newUniqueId(): string
 }
 
 /**
- * Get the columns that should receive a unique identifier.
+ * Obtener las columnas que deben recibir un identificador único.
  *
  * @return array<int, string>
  */
@@ -456,7 +456,7 @@ Primero, el método `preventLazyLoading` acepta un argumento booleano opcional q
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -527,7 +527,7 @@ Si necesitas actualizar un modelo y adquirir un bloqueo pesimista dentro de una 
 DB::transaction(function () use ($flight) {
     $flight->refreshForUpdate();
 
-    // Update the locked model...
+    // Actualizar el modelo bloqueado...
 });
 ```
 
@@ -700,10 +700,10 @@ Además de recuperar todos los registros que coinciden con una consulta determin
 ```php
 use App\Models\Flight;
 
-// Retrieve a model by its primary key...
+// Recuperar un modelo por su clave primaria...
 $flight = Flight::find(1);
 
-// Retrieve the first model matching the query constraints...
+// Recuperar el primer modelo que coincida con las restricciones de la query...
 $flight = Flight::where('active', 1)->first();
 
 // Alternative to retrieving the first model matching the query constraints...
@@ -753,23 +753,23 @@ El método `firstOrNew`, al igual que `firstOrCreate`, intentará localizar un r
 ```php
 use App\Models\Flight;
 
-// Retrieve flight by name or create it if it doesn't exist...
+// Recuperar el vuelo por nombre o crearlo si no existe...
 $flight = Flight::firstOrCreate([
     'name' => 'London to Paris'
 ]);
 
-// Retrieve flight by name or create it with the name, delayed, and arrival_time attributes...
+// Recuperar el vuelo por nombre o crearlo con los atributos name, delayed y arrival_time...
 $flight = Flight::firstOrCreate(
     ['name' => 'London to Paris'],
     ['delayed' => 1, 'arrival_time' => '11:30']
 );
 
-// Retrieve flight by name or instantiate a new Flight instance...
+// Recuperar el vuelo por nombre o crear una instancia de Flight...
 $flight = Flight::firstOrNew([
     'name' => 'London to Paris'
 ]);
 
-// Retrieve flight by name or instantiate with the name, delayed, and arrival_time attributes...
+// Recuperar el vuelo por nombre o crear una instancia con los atributos name, delayed y arrival_time...
 $flight = Flight::firstOrNew(
     ['name' => 'Tokyo to Sydney'],
     ['delayed' => 1, 'arrival_time' => '11:30']
@@ -807,11 +807,11 @@ use Illuminate\Http\Request;
 class FlightController extends Controller
 {
     /**
-     * Store a new flight in the database.
+     * Guardar un vuelo nuevo en la base de datos.
      */
     public function store(Request $request): RedirectResponse
     {
-        // Validate the request...
+        // Validar la solicitud...
 
         $flight = new Flight;
 
@@ -1097,7 +1097,7 @@ Si lo deseas, puedes indicarle a Laravel que lance una excepción al intentar as
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -1318,7 +1318,7 @@ class Flight extends Model
     use Prunable;
 
     /**
-     * Get the prunable model query.
+     * Obtener la consulta del modelo que se puede podar.
      */
     public function prunable(): Builder
     {
@@ -1331,7 +1331,7 @@ Al marcar modelos como `Prunable`, también puedes definir un método `pruning` 
 
 ```php
 /**
- * Prepare the model for pruning.
+ * Preparar el modelo para la poda.
  */
 protected function pruning(): void
 {
@@ -1391,7 +1391,7 @@ class Flight extends Model
     use MassPrunable;
 
     /**
-     * Get the prunable model query.
+     * Obtener la consulta del modelo que se puede podar.
      */
     public function prunable(): Builder
     {
@@ -1473,7 +1473,7 @@ use Illuminate\Database\Eloquent\Scope;
 class AncientScope implements Scope
 {
     /**
-     * Apply the scope to a given Eloquent query builder.
+     * Aplicar el scope al Eloquent query builder indicado.
      */
     public function apply(Builder $builder, Model $model): void
     {
@@ -1578,15 +1578,15 @@ User::withoutGlobalScope('ancient')->get();
 Si deseas eliminar varios o incluso todos los ámbitos globales de la consulta, puedes utilizar los métodos `withoutGlobalScopes` y `withoutGlobalScopesExcept`:
 
 ```php
-// Remove all of the global scopes...
+// Eliminar todos los scopes globales...
 User::withoutGlobalScopes()->get();
 
-// Remove some of the global scopes...
+// Eliminar algunos de los scopes globales...
 User::withoutGlobalScopes([
     FirstScope::class, SecondScope::class
 ])->get();
 
-// Remove all global scopes except the given ones...
+// Eliminar todos los scopes globales excepto los indicados...
 User::withoutGlobalScopesExcept([
     SecondScope::class,
 ])->get();
@@ -1611,7 +1611,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     /**
-     * Scope a query to only include popular users.
+     * Aplicar un scope a la query para incluir solo usuarios populares.
      */
     #[Scope]
     protected function popular(Builder $query): void
@@ -1620,7 +1620,7 @@ class User extends Model
     }
 
     /**
-     * Scope a query to only include active users.
+     * Aplicar un scope a la query para incluir solo usuarios activos.
      */
     #[Scope]
     protected function active(Builder $query): void
@@ -1672,7 +1672,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     /**
-     * Scope a query to only include users of a given type.
+     * Aplicar un scope a la query para incluir solo usuarios del tipo indicado.
      */
     #[Scope]
     protected function ofType(Builder $query, string $type): void
@@ -1707,7 +1707,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     /**
-     * Scope the query to only include drafts.
+     * Aplicar un scope a la query para incluir solo borradores.
      */
     #[Scope]
     protected function draft(Builder $query): void
@@ -1861,7 +1861,7 @@ use App\Models\User;
 class UserObserver
 {
     /**
-     * Handle the User "created" event.
+     * Gestionar el evento "created" de User.
      */
     public function created(User $user): void
     {
@@ -1869,7 +1869,7 @@ class UserObserver
     }
 
     /**
-     * Handle the User "updated" event.
+     * Gestionar el evento "updated" de User.
      */
     public function updated(User $user): void
     {
@@ -1877,7 +1877,7 @@ class UserObserver
     }
 
     /**
-     * Handle the User "deleted" event.
+     * Gestionar el evento "deleted" de User.
      */
     public function deleted(User $user): void
     {
@@ -1885,7 +1885,7 @@ class UserObserver
     }
 
     /**
-     * Handle the User "restored" event.
+     * Gestionar el evento "restored" de User.
      */
     public function restored(User $user): void
     {
@@ -1893,7 +1893,7 @@ class UserObserver
     }
 
     /**
-     * Handle the User "forceDeleted" event.
+     * Gestionar el evento "forceDeleted" de User.
      */
     public function forceDeleted(User $user): void
     {
@@ -1922,7 +1922,7 @@ use App\Models\User;
 use App\Observers\UserObserver;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -1949,7 +1949,7 @@ use Illuminate\Contracts\Events\ShouldHandleEventsAfterCommit;
 class UserObserver implements ShouldHandleEventsAfterCommit
 {
     /**
-     * Handle the User "created" event.
+     * Gestionar el evento "created" de User.
      */
     public function created(User $user): void
     {

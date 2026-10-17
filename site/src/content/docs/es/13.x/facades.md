@@ -167,7 +167,7 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
     /**
-     * Show the profile for the given user.
+     * Mostrar el perfil del usuario indicado.
      */
     public function showProfile(string $id): View
     {
@@ -186,7 +186,7 @@ Si miramos esa clase `Illuminate\Support\Facades\Cache`, verás que no existe ni
 class Cache extends Facade
 {
     /**
-     * Get the registered name of the component.
+     * Obtener el nombre registrado del componente.
      */
     protected static function getFacadeAccessor(): string
     {
@@ -213,7 +213,7 @@ use Illuminate\Database\Eloquent\Model;
 class Podcast extends Model
 {
     /**
-     * Publish the podcast.
+     * Publicar el podcast.
      */
     public function publish(Publisher $publisher): void
     {
@@ -238,7 +238,7 @@ use Illuminate\Database\Eloquent\Model;
 class Podcast extends Model
 {
     /**
-     * Publish the podcast.
+     * Publicar el podcast.
      */
     public function publish(Publisher $publisher): void // [tl! remove]
     public function publish(): void // [tl! add]

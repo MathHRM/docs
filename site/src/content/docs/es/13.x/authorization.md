@@ -55,7 +55,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -72,7 +72,7 @@ use App\Policies\PostPolicy;
 use Illuminate\Support\Facades\Gate;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -98,7 +98,7 @@ use Illuminate\Support\Facades\Gate;
 class PostController extends Controller
 {
     /**
-     * Update the given post.
+     * Actualizar la publicación indicada.
      */
     public function update(Request $request, Post $post): RedirectResponse
     {
@@ -106,7 +106,7 @@ class PostController extends Controller
             abort(403);
         }
 
-        // Update the post...
+        // Actualizar la publicación...
 
         return redirect('/posts');
     }
@@ -323,7 +323,7 @@ Si desea definir su propia lógica de descubrimiento de políticas, puede regist
 use Illuminate\Support\Facades\Gate;
 
 Gate::guessPolicyNamesUsing(function (string $modelClass) {
-    // Return the name of the policy class for the given model...
+    // Devolver el nombre de la policy class del modelo indicado...
 });
 ```
 
@@ -338,7 +338,7 @@ use App\Policies\OrderPolicy;
 use Illuminate\Support\Facades\Gate;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -385,7 +385,7 @@ use App\Models\User;
 class PostPolicy
 {
     /**
-     * Determine if the given post can be updated by the user.
+     * Determinar si el usuario puede actualizar la publicación indicada.
      */
     public function update(User $user, Post $post): bool
     {
@@ -412,7 +412,7 @@ use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
 /**
- * Determine if the given post can be updated by the user.
+ * Determinar si el usuario puede actualizar la publicación indicada.
  */
 public function update(User $user, Post $post): Response
 {
@@ -455,7 +455,7 @@ use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
 /**
- * Determine if the given post can be updated by the user.
+ * Determinar si el usuario puede actualizar la publicación indicada.
  */
 public function update(User $user, Post $post): Response
 {
@@ -473,7 +473,7 @@ use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
 /**
- * Determine if the given post can be updated by the user.
+ * Determinar si el usuario puede actualizar la publicación indicada.
  */
 public function update(User $user, Post $post): Response
 {
@@ -490,7 +490,7 @@ Algunos métodos de política solo reciben una instancia del usuario actualmente
 
 ```php
 /**
- * Determine if the given user can create posts.
+ * Determinar si el usuario indicado puede crear publicaciones.
  */
 public function create(User $user): bool
 {
@@ -514,7 +514,7 @@ use App\Models\User;
 class PostPolicy
 {
     /**
-     * Determine if the given post can be updated by the user.
+     * Determinar si el usuario puede actualizar la publicación indicada.
      */
     public function update(?User $user, Post $post): bool
     {
@@ -569,7 +569,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     /**
-     * Update the given post.
+     * Actualizar la publicación indicada.
      */
     public function update(Request $request, Post $post): RedirectResponse
     {
@@ -577,7 +577,7 @@ class PostController extends Controller
             abort(403);
         }
 
-        // Update the post...
+        // Actualizar la publicación...
 
         return redirect('/posts');
     }
@@ -603,7 +603,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     /**
-     * Create a post.
+     * Crear una publicación.
      */
     public function store(Request $request): RedirectResponse
     {
@@ -611,7 +611,7 @@ class PostController extends Controller
             abort(403);
         }
 
-        // Create the post...
+        // Crear la publicación...
 
         return redirect('/posts');
     }
@@ -638,7 +638,7 @@ use Illuminate\Support\Facades\Gate;
 class PostController extends Controller
 {
     /**
-     * Update the given blog post.
+     * Actualizar la entrada de blog indicada.
      *
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
@@ -665,7 +665,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 /**
- * Create a new blog post.
+ * Crear una nueva entrada de blog.
  *
  * @throws \Illuminate\Auth\Access\AuthorizationException
  */
@@ -802,7 +802,7 @@ Al autorizar acciones mediante políticas, puede pasar una matriz como segundo a
 
 ```php
 /**
- * Determine if the given post can be updated by the user.
+ * Determinar si el usuario puede actualizar la publicación indicada.
  */
 public function update(User $user, Post $post, int $category): bool
 {
@@ -815,7 +815,7 @@ Al intentar determinar si el usuario autenticado puede actualizar una publicaci�
 
 ```php
 /**
- * Update the given blog post.
+ * Actualizar la entrada de blog indicada.
  *
  * @throws \Illuminate\Auth\Access\AuthorizationException
  */

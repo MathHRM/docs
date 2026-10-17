@@ -48,13 +48,13 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
-     * Store a new user.
+     * Guardar un usuario nuevo.
      */
     public function store(Request $request): RedirectResponse
     {
         $name = $request->input('name');
 
-        // Store the user...
+        // Guardar el usuario...
 
         return redirect('/users');
     }
@@ -95,11 +95,11 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
-     * Update the specified user.
+     * Actualizar el usuario especificado.
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        // Update the user...
+        // Actualizar el usuario...
 
         return redirect('/users');
     }

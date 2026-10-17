@@ -101,7 +101,7 @@ use Illuminate\Support\Facades\Cache;
 class UserController extends Controller
 {
     /**
-     * Retrieve a list of all users of the application.
+     * Recuperar una lista de todos los usuarios de la aplicación.
      */
     public function index(): array
     {
@@ -216,7 +216,7 @@ test('time can be manipulated', function () {
     // Travel to an explicit time...
     $this->travelTo(now()->minus(hours: 6));
 
-    // Return back to the present time...
+    // Volver al momento presente...
     $this->travelBack();
 });
 ```
@@ -239,7 +239,7 @@ public function test_time_can_be_manipulated(): void
     // Travel to an explicit time...
     $this->travelTo(now()->minus(hours: 6));
 
-    // Return back to the present time...
+    // Volver al momento presente...
     $this->travelBack();
 }
 ```
@@ -248,11 +248,11 @@ También puedes pasar una función anónima a los distintos métodos de viaje en
 
 ```php
 $this->travel(5)->days(function () {
-    // Test something five days into the future...
+    // Probar algo dentro de cinco días...
 });
 
 $this->travelTo(now()->minus(days: 10), function () {
-    // Test something during a given moment...
+    // Probar algo durante un momento determinado...
 });
 ```
 
@@ -261,12 +261,12 @@ Puedes utilizar el método `freezeTime` para congelar la hora actual. De manera 
 ```php
 use Illuminate\Support\Carbon;
 
-// Freeze time and resume normal time after executing closure...
+// Congelar el tiempo y reanudar el tiempo normal después de ejecutar el closure...
 $this->freezeTime(function (Carbon $time) {
     // ...
 });
 
-// Freeze time at the current second and resume normal time after executing closure...
+// Congelar el tiempo en el segundo actual y reanudar el tiempo normal después de ejecutar el closure...
 $this->freezeSecond(function (Carbon $time) {
     // ...
 });

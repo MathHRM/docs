@@ -45,7 +45,7 @@ class UserFactory extends Factory
     protected static ?string $password;
 
     /**
-     * Define the model's default state.
+     * Definir el estado predeterminado del modelo.
      *
      * @return array<string, mixed>
      */
@@ -61,7 +61,7 @@ class UserFactory extends Factory
     }
 
     /**
-     * Indicate that the model's email address should be unverified.
+     * Indicar que la dirección de correo electrónico del modelo debe quedar sin verificar.
      */
     public function unverified(): static
     {
@@ -117,7 +117,7 @@ Alternativamente, puede sobrescribir el método `newFactory` en su modelo para d
 use Database\Factories\Administration\FlightFactory;
 
 /**
- * Create a new factory instance for the model.
+ * Crear una nueva instancia de factory para el modelo.
  */
 protected static function newFactory()
 {
@@ -150,7 +150,7 @@ Los métodos de transformación de estado normalmente llaman al método `state` 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * Indicate that the user is suspended.
+ * Indicar que el usuario está suspendido.
  */
 public function suspended(): Factory
 {
@@ -209,7 +209,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * Indicate that the user is suspended.
+ * Indicar que el usuario está suspendido.
  */
 public function suspended(): Factory
 {
@@ -284,10 +284,10 @@ El método `create` crea instancias de modelos y las conserva en la base de dato
 ```php
 use App\Models\User;
 
-// Create a single App\Models\User instance...
+// Crear una sola instancia de App\Models\User...
 $user = User::factory()->create();
 
-// Create three App\Models\User instances...
+// Crear tres instancias de App\Models\User...
 $users = User::factory()->count(3)->create();
 ```
 
@@ -619,7 +619,7 @@ Para definir una relación dentro de su fábrica de modelos, normalmente asignar
 use App\Models\User;
 
 /**
- * Define the model's default state.
+ * Definir el estado predeterminado del modelo.
  *
  * @return array<string, mixed>
  */
@@ -637,7 +637,7 @@ Si las columnas de la relación dependen de la fábrica que la define puedes asi
 
 ```php
 /**
- * Define the model's default state.
+ * Definir el estado predeterminado del modelo.
  *
  * @return array<string, mixed>
  */

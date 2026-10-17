@@ -240,18 +240,18 @@ class ProcessPodcast implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new job instance.
+     * Crear una nueva instancia de job.
      */
     public function __construct(
         public Podcast $podcast,
     ) {}
 
     /**
-     * Execute the job.
+     * Ejecutar el job.
      */
     public function handle(AudioProcessor $processor): void
     {
-        // Process uploaded podcast...
+        // Procesar el podcast subido...
     }
 }
 ```
@@ -289,7 +289,7 @@ O, para evitar que las relaciones se serialicen, puedes llamar al método `witho
 
 ```php
 /**
- * Create a new job instance.
+ * Crear una nueva instancia de job.
  */
 public function __construct(
     Podcast $podcast,
@@ -310,7 +310,7 @@ Si estás utilizando [promoción de propiedades del constructor de PHP](https://
 use Illuminate\Queue\Attributes\WithoutRelations;
 
 /**
- * Create a new job instance.
+ * Crear una nueva instancia de job.
  */
 public function __construct(
     #[WithoutRelations]
@@ -337,7 +337,7 @@ class ProcessPodcast implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new job instance.
+     * Crear una nueva instancia de job.
      */
     public function __construct(
         public Podcast $podcast,
@@ -395,7 +395,7 @@ class UpdateSearchIndex implements ShouldQueue, ShouldBeUnique
     public $product;
 
     /**
-     * Get the unique ID for the job.
+     * Obtener el ID único del job.
      */
     public function uniqueId(): string
     {
@@ -439,7 +439,7 @@ class UpdateSearchIndex implements ShouldQueue, ShouldBeUnique
     // ...
 
     /**
-     * Get the cache driver for the unique job lock.
+     * Obtener el cache driver para el lock único del job.
      */
     public function uniqueVia(): Repository
     {
@@ -471,14 +471,14 @@ class UpdateSearchIndex implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new job instance.
+     * Crear una nueva instancia de job.
      */
     public function __construct(public int $productId)
     {
     }
 
     /**
-     * Get the debounce ID for the job.
+     * Obtener el ID de debounce del job.
      */
     public function debounceId(): string
     {
@@ -547,14 +547,14 @@ El middleware de trabajos te permite envolver la ejecución de trabajos en cola 
 use Illuminate\Support\Facades\Redis;
 
 /**
- * Execute the job.
+ * Ejecutar el job.
  */
 public function handle(): void
 {
     Redis::throttle('key')->block(0)->allow(1)->every(5)->then(function () {
         info('Lock obtained...');
 
-        // Handle job...
+        // Gestionar el job...
     }, function () {
         // Could not obtain lock...
 
@@ -576,7 +576,7 @@ use Illuminate\Support\Facades\Redis;
 class RateLimited
 {
     /**
-     * Process the queued job.
+     * Procesar el job en cola.
      *
      * @param  \Closure(object): void  $next
      */
@@ -585,7 +585,7 @@ class RateLimited
         Redis::throttle('key')
             ->block(0)->allow(1)->every(5)
             ->then(function () use ($job, $next) {
-                // Lock obtained...
+                // Lock obtenido...
 
                 $next($job);
             }, function () use ($job) {
@@ -605,7 +605,7 @@ Puedes generar una nueva clase de middleware de trabajo utilizando el comando `m
 use App\Jobs\Middleware\RateLimited;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -630,7 +630,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -654,7 +654,7 @@ Una vez que hayas definido tu límite de frecuencia, puedes adjuntar el limitado
 use Illuminate\Queue\Middleware\RateLimited;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -670,7 +670,7 @@ Usando el método `releaseAfter`, también puedes especificar la cantidad de seg
 
 ```php
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -684,7 +684,7 @@ Si no desea que se vuelva a intentar un trabajo cuando tiene frecuencia limitada
 
 ```php
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -725,7 +725,7 @@ Por ejemplo, imaginemos que tienes un trabajo en cola que actualiza el puntaje c
 use Illuminate\Queue\Middleware\WithoutOverlapping;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -741,7 +741,7 @@ Cualquier trabajo superpuesto del mismo tipo se devolverá a la cola. También p
 
 ```php
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -755,7 +755,7 @@ Si deseas eliminar inmediatamente cualquier trabajo superpuesto para que no se v
 
 ```php
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -769,7 +769,7 @@ El middleware `WithoutOverlapping` funciona con la función de bloqueo atómico 
 
 ```php
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -827,7 +827,7 @@ use DateTime;
 use Illuminate\Queue\Middleware\ThrottlesExceptions;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -837,7 +837,7 @@ public function middleware(): array
 }
 
 /**
- * Determine the time at which the job should timeout.
+ * Determinar cuándo debe agotarse el tiempo de espera del job.
  */
 public function retryUntil(): DateTime
 {
@@ -853,7 +853,7 @@ Cuando un trabajo genera una excepción pero aún no se ha alcanzado el umbral d
 use Illuminate\Queue\Middleware\ThrottlesExceptions;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -871,7 +871,7 @@ use Illuminate\Queue\Middleware\ThrottlesExceptions;
 use Throwable;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -891,7 +891,7 @@ Internamente, este middleware utiliza el sistema de caché de Laravel para imple
 use Illuminate\Queue\Middleware\ThrottlesExceptions;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -908,7 +908,7 @@ use Illuminate\Http\Client\HttpClientException;
 use Illuminate\Queue\Middleware\ThrottlesExceptions;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -927,7 +927,7 @@ use App\Exceptions\CustomerDeletedException;
 use Illuminate\Queue\Middleware\ThrottlesExceptions;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -944,7 +944,7 @@ use Illuminate\Http\Client\HttpClientException;
 use Illuminate\Queue\Middleware\ThrottlesExceptions;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  *
  * @return array<int, object>
  */
@@ -985,7 +985,7 @@ El middleware `Release` te permite devolver un trabajo a la cola sin ejecutarlo.
 use Illuminate\Queue\Middleware\Release;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  */
 public function middleware(): array
 {
@@ -1003,7 +1003,7 @@ También puedes pasar un `Closure` a los métodos `when` y `unless` para una eva
 use Illuminate\Queue\Middleware\Release;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  */
 public function middleware(): array
 {
@@ -1024,7 +1024,7 @@ El middleware `Skip` te permite especificar que un trabajo debe omitirse o elimi
 use Illuminate\Queue\Middleware\Skip;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  */
 public function middleware(): array
 {
@@ -1040,7 +1040,7 @@ También puedes pasar un `Closure` a los métodos `when` y `unless` para una eva
 use Illuminate\Queue\Middleware\Skip;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  */
 public function middleware(): array
 {
@@ -1070,7 +1070,7 @@ use Illuminate\Http\Request;
 class PodcastController extends Controller
 {
     /**
-     * Store a new podcast.
+     * Guardar un nuevo podcast.
      */
     public function store(Request $request): RedirectResponse
     {
@@ -1113,7 +1113,7 @@ use Illuminate\Http\Request;
 class PodcastController extends Controller
 {
     /**
-     * Store a new podcast.
+     * Guardar un nuevo podcast.
      */
     public function store(Request $request): RedirectResponse
     {
@@ -1156,13 +1156,13 @@ use Illuminate\Http\Request;
 class PodcastController extends Controller
 {
     /**
-     * Store a new podcast.
+     * Guardar un nuevo podcast.
      */
     public function store(Request $request): RedirectResponse
     {
         $podcast = Podcast::create(/* ... */);
 
-        // Create podcast...
+        // Crear podcast...
 
         ProcessPodcast::dispatchSync($podcast);
 
@@ -1222,14 +1222,14 @@ class SyncPodcasts implements PreparesForDispatch, ShouldQueue
     use Queueable;
 
     /**
-     * Create a new job instance.
+     * Crear una nueva instancia de job.
      */
     public function __construct(
         public array $podcastIds,
     ) {}
 
     /**
-     * Prepare the job before dispatching.
+     * Preparar el job antes de despacharlo.
      */
     public function prepareForDispatch(): bool
     {
@@ -1332,7 +1332,7 @@ En ocasiones, es posible que necesites anteponer o agregar un trabajo a una cade
 
 ```php
 /**
- * Execute the job.
+ * Ejecutar el job.
  */
 public function handle(): void
 {
@@ -1388,13 +1388,13 @@ use Illuminate\Http\Request;
 class PodcastController extends Controller
 {
     /**
-     * Store a new podcast.
+     * Guardar un nuevo podcast.
      */
     public function store(Request $request): RedirectResponse
     {
         $podcast = Podcast::create(/* ... */);
 
-        // Create podcast...
+        // Crear podcast...
 
         ProcessPodcast::dispatch($podcast)->onQueue('processing');
 
@@ -1418,7 +1418,7 @@ class ProcessPodcast implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new job instance.
+     * Crear una nueva instancia de job.
      */
     public function __construct()
     {
@@ -1445,13 +1445,13 @@ use Illuminate\Http\Request;
 class PodcastController extends Controller
 {
     /**
-     * Store a new podcast.
+     * Guardar un nuevo podcast.
      */
     public function store(Request $request): RedirectResponse
     {
         $podcast = Podcast::create(/* ... */);
 
-        // Create podcast...
+        // Crear podcast...
 
         ProcessPodcast::dispatch($podcast)->onConnection('sqs');
 
@@ -1483,7 +1483,7 @@ class ProcessPodcast implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new job instance.
+     * Crear una nueva instancia de job.
      */
     public function __construct()
     {
@@ -1509,7 +1509,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Support\Facades\Queue;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -1611,7 +1611,7 @@ Si necesitas control dinámico sobre los intentos máximos de un trabajo en part
 
 ```php
 /**
- * Determine number of times the job may be attempted.
+ * Determinar cuántas veces se puede intentar ejecutar el job.
  */
 public function tries(): int
 {
@@ -1628,7 +1628,7 @@ Como alternativa a definir cuántas veces se puede intentar un trabajo antes de 
 use DateTime;
 
 /**
- * Determine the time at which the job should timeout.
+ * Determinar cuándo debe agotarse el tiempo de espera del job.
  */
 public function retryUntil(): DateTime
 {
@@ -1664,12 +1664,12 @@ class ProcessPodcast implements ShouldQueue
     use Queueable;
 
     /**
-     * Execute the job.
+     * Ejecutar el job.
      */
     public function handle(): void
     {
         Redis::throttle('key')->allow(10)->every(60)->then(function () {
-            // Lock obtained, process the podcast...
+            // Lock obtenido; procesar el podcast...
         }, function () {
             // Unable to obtain lock...
             return $this->release(10);
@@ -1816,7 +1816,7 @@ class ProcessSubscriptionRenewal implements ShouldQueue
     // ...
 
     /**
-     * Get the job's deduplication ID.
+     * Obtener el ID de deduplicación del job.
      */
     public function deduplicationId(): string
     {
@@ -1847,7 +1847,7 @@ class ProcessOrder implements ShouldQueue
     // ...
 
     /**
-     * Get the job's message group.
+     * Obtener el grupo de mensajes del job.
      */
     public function messageGroup(): string
     {
@@ -1876,7 +1876,7 @@ class SendShipmentNotification
     // ...
 
     /**
-     * Get the job's message group.
+     * Obtener el grupo de mensajes del job.
      */
     public function messageGroup(): string
     {
@@ -1884,7 +1884,7 @@ class SendShipmentNotification
     }
 
     /**
-     * Get the job's deduplicator.
+     * Obtener el deduplicator del job.
      */
     public function deduplicator(OrderShipped $event): Closure
     {
@@ -1969,7 +1969,7 @@ A veces es posible que desees volver a liberar manualmente un trabajo en la cola
 
 ```php
 /**
- * Execute the job.
+ * Ejecutar el job.
  */
 public function handle(): void
 {
@@ -1994,7 +1994,7 @@ En ocasiones, es posible que necesites marcar manualmente un trabajo como "falli
 
 ```php
 /**
- * Execute the job.
+ * Ejecutar el job.
  */
 public function handle(): void
 {
@@ -2039,14 +2039,14 @@ class SyncChatHistory implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new job instance.
+     * Crear una nueva instancia de job.
      */
     public function __construct(
         public User $user,
     ) {}
 
     /**
-     * Execute the job.
+     * Ejecutar el job.
      */
     public function handle(): void
     {
@@ -2060,7 +2060,7 @@ class SyncChatHistory implements ShouldQueue
     }
 
     /**
-     * Get the middleware the job should pass through.
+     * Obtener el middleware por el que debe pasar el job.
      */
     public function middleware(): array
     {
@@ -2103,17 +2103,17 @@ class ImportCsv implements ShouldQueue
     use Batchable, Queueable;
 
     /**
-     * Execute the job.
+     * Ejecutar el job.
      */
     public function handle(): void
     {
         if ($this->batch()->cancelled()) {
-            // Determine if the batch has been cancelled...
+            // Determinar si se ha cancelado el batch...
 
             return;
         }
 
-        // Import a portion of the CSV file...
+        // Importar una parte del archivo CSV...
     }
 }
 ```
@@ -2253,7 +2253,7 @@ use App\Jobs\ImportContacts;
 use Illuminate\Support\Collection;
 
 /**
- * Execute the job.
+ * Ejecutar el job.
  */
 public function handle(): void
 {
@@ -2300,7 +2300,7 @@ $batch->progress();
 // Indicates if the batch has finished executing...
 $batch->finished();
 
-// Cancel the execution of the batch...
+// Cancelar la ejecución del batch...
 $batch->cancel();
 
 // Indicates if the batch has been cancelled...
@@ -2330,7 +2330,7 @@ A veces es posible que necesites cancelar la ejecución de un lote determinado. 
 
 ```php
 /**
- * Execute the job.
+ * Ejecutar el job.
  */
 public function handle(): void
 {
@@ -2352,7 +2352,7 @@ Como habrás notado en los ejemplos anteriores, los trabajos por lotes normalmen
 use Illuminate\Queue\Middleware\SkipIfBatchCancelled;
 
 /**
- * Get the middleware the job should pass through.
+ * Obtener el middleware por el que debe pasar el job.
  */
 public function middleware(): array
 {
@@ -2384,7 +2384,7 @@ Opcionalmente, puedes proporcionar una función anónima al método `allowFailur
 $batch = Bus::batch([
     // ...
 ])->allowFailures(function (Batch $batch, $exception) {
-    // Handle individual job failures...
+    // Gestionar los fallos de jobs individuales...
 })->dispatch();
 ```
 
@@ -2603,7 +2603,7 @@ php artisan queue:work --stop-when-empty
 La opción `--max-time` se puede utilizar para indicarle al trabajador que procese trabajos durante la cantidad de segundos especificada y luego salga. Esta opción puede ser útil cuando se combina con [Supervisor](#supervisor-configuration) para que tus trabajadores se reinicien automáticamente después de procesar trabajos durante un período de tiempo determinado, liberando cualquier memoria que puedan haber acumulado:
 
 ```shell
-# Process jobs for one hour and then exit...
+# Procesar jobs durante una hora y luego salir...
 php artisan queue:work --max-time=3600
 ```
 
@@ -2693,14 +2693,14 @@ class ImportProducts implements ShouldQueue, Interruptible
     protected bool $shouldStop = false;
 
     /**
-     * Create a new job instance.
+     * Crear una nueva instancia de job.
      */
     public function __construct(
         public Import $import,
     ) {}
 
     /**
-     * Execute the job.
+     * Ejecutar el job.
      */
     public function handle(): void
     {
@@ -2709,14 +2709,14 @@ class ImportProducts implements ShouldQueue, Interruptible
                 break;
             }
 
-            // Import the product row...
+            // Importar la fila del producto...
         }
 
         $this->import->saveProgress();
     }
 
     /**
-     * Handle a signal received by the queue worker.
+     * Gestionar una señal recibida por el queue worker.
      */
     public function interrupted(int $signal): void
     {
@@ -2796,7 +2796,7 @@ Si necesitas optimizar el rendimiento y no necesitas estas funciones de interrup
 use Illuminate\Support\Facades\Queue;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -2810,7 +2810,7 @@ Alternativamente, puedes deshabilitar el sondeo de reinicio o de pausa individua
 use Illuminate\Queue\Worker;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -2926,7 +2926,7 @@ Si necesitas una lógica más compleja para determinar el tiempo de espera del t
 
 ```php
 /**
- * Calculate the number of seconds to wait before retrying the job.
+ * Calcular cuántos segundos esperar antes de reintentar el job.
  */
 public function backoff(): int
 {
@@ -2971,26 +2971,26 @@ class ProcessPodcast implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new job instance.
+     * Crear una nueva instancia de job.
      */
     public function __construct(
         public Podcast $podcast,
     ) {}
 
     /**
-     * Execute the job.
+     * Ejecutar el job.
      */
     public function handle(AudioProcessor $processor): void
     {
-        // Process uploaded podcast...
+        // Procesar el podcast subido...
     }
 
     /**
-     * Handle a job failure.
+     * Gestionar el fallo de un job.
      */
     public function failed(?Throwable $exception): void
     {
-        // Send user notification of failure, etc...
+        // Enviar al usuario una notificación del fallo, etc....
     }
 }
 ```
@@ -3151,7 +3151,7 @@ use Illuminate\Queue\Events\JobFailed;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -3159,7 +3159,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -3213,7 +3213,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -3247,31 +3247,31 @@ test('orders can be shipped', function () {
 
     // Perform order shipping...
 
-    // Assert that no jobs were pushed...
+    // Comprobar que no se haya enviado ningún job...
     Queue::assertNothingPushed();
 
-    // Assert a job was pushed to a given queue...
+    // Comprobar que se haya enviado un job a la cola indicada...
     Queue::assertPushedOn('queue-name', ShipOrder::class);
 
-    // Assert a job was pushed
+    // Comprobar que se haya enviado un job
     Queue::assertPushed(ShipOrder::class);
 
-    // Assert a job was pushed exactly once...
+    // Comprobar que se haya enviado un job exactamente una vez...
     Queue::assertPushedOnce(ShipOrder::class);
 
-    // Assert a job was pushed twice...
+    // Comprobar que un job se haya enviado dos veces...
     Queue::assertPushedTimes(ShipOrder::class, 2);
 
-    // Assert a job was not pushed...
+    // Comprobar que no se haya enviado un job...
     Queue::assertNotPushed(AnotherJob::class);
 
-    // Assert that a closure was pushed to the queue...
+    // Comprobar que se haya enviado un closure a la cola...
     Queue::assertClosurePushed();
 
-    // Assert that a closure was not pushed...
+    // Comprobar que no se haya enviado un closure...
     Queue::assertClosureNotPushed();
 
-    // Assert the total number of jobs that were pushed...
+    // Comprobar el número total de jobs enviados...
     Queue::assertCount(3);
 });
 ```
@@ -3294,31 +3294,31 @@ class ExampleTest extends TestCase
 
         // Perform order shipping...
 
-        // Assert that no jobs were pushed...
+        // Comprobar que no se haya enviado ningún job...
         Queue::assertNothingPushed();
 
-        // Assert a job was pushed to a given queue...
+        // Comprobar que se haya enviado un job a la cola indicada...
         Queue::assertPushedOn('queue-name', ShipOrder::class);
 
-        // Assert a job was pushed
+        // Comprobar que se haya enviado un job
         Queue::assertPushed(ShipOrder::class);
 
-        // Assert a job was pushed exactly once...
+        // Comprobar que se haya enviado un job exactamente una vez...
         Queue::assertPushedOnce(ShipOrder::class);
 
-        // Assert a job was pushed twice...
+        // Comprobar que un job se haya enviado dos veces...
         Queue::assertPushedTimes(ShipOrder::class, 2);
 
-        // Assert a job was not pushed...
+        // Comprobar que no se haya enviado un job...
         Queue::assertNotPushed(AnotherJob::class);
 
-        // Assert that a closure was pushed to the queue...
+        // Comprobar que se haya enviado un closure a la cola...
         Queue::assertClosurePushed();
 
-        // Assert that a closure was not pushed...
+        // Comprobar que no se haya enviado un closure...
         Queue::assertClosureNotPushed();
 
-        // Assert the total number of jobs that were pushed...
+        // Comprobar el número total de jobs enviados...
         Queue::assertCount(3);
     }
 }
@@ -3361,7 +3361,7 @@ test('orders can be shipped', function () {
 
     // Perform order shipping...
 
-    // Assert a job was pushed twice...
+    // Comprobar que un job se haya enviado dos veces...
     Queue::assertPushedTimes(ShipOrder::class, 2);
 });
 ```
@@ -3375,7 +3375,7 @@ public function test_orders_can_be_shipped(): void
 
     // Perform order shipping...
 
-    // Assert a job was pushed twice...
+    // Comprobar que un job se haya enviado dos veces...
     Queue::assertPushedTimes(ShipOrder::class, 2);
 }
 ```
@@ -3579,7 +3579,7 @@ use Illuminate\Queue\Events\JobProcessing;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -3587,7 +3587,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {

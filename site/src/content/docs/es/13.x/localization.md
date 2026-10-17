@@ -109,7 +109,7 @@ Puede indicarle al "pluralizador" de Laravel, que utiliza Eloquent y otras parte
 use Illuminate\Support\Pluralizer;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -229,7 +229,7 @@ use Illuminate\Support\Facades\Lang;
 use Money\Money;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

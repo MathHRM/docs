@@ -91,7 +91,7 @@ Si no tienes PHP y Composer instalados en tu máquina local, los siguientes coma
 ```
 
 ```shell tab=Windows PowerShell
-# Run as administrator...
+# Ejecutar como administrador...
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.5'))
 ```
 

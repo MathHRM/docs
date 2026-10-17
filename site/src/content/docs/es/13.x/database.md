@@ -191,7 +191,7 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
     /**
-     * Show a list of all of the application's users.
+     * Mostrar una lista de todos los usuarios de la aplicación.
      */
     public function index(): View
     {
@@ -372,7 +372,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -380,7 +380,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -412,7 +412,7 @@ use Illuminate\Database\Events\QueryExecuted;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -420,7 +420,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -570,7 +570,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

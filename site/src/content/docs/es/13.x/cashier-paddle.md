@@ -197,7 +197,7 @@ use App\Models\Cashier\Subscription;
 use App\Models\Cashier\Transaction;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -280,7 +280,7 @@ use Illuminate\Support\Facades\Event;
 use Laravel\Paddle\Events\TransactionCompleted;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -300,7 +300,7 @@ use Laravel\Paddle\Events\TransactionCompleted;
 class CompleteOrder
 {
     /**
-     * Handle the incoming Cashier webhook event.
+     * Gestionar el evento webhook entrante de Cashier.
      */
     public function handle(TransactionCompleted $event): void
     {
@@ -385,12 +385,12 @@ use Symfony\Component\HttpFoundation\Response;
 class Subscribed
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      */
     public function handle(Request $request, Closure $next): Response
     {
         if (! $request->user()?->subscribed()) {
-            // Redirect user to billing page and ask them to subscribe...
+            // Redirigir al usuario a la página de facturación y pedirle que se suscriba...
             return redirect('/subscribe');
         }
 
@@ -695,7 +695,7 @@ Cajero le permite definir algunos valores predeterminados útiles para sus clien
 
 ```php
 /**
- * Get the customer's name to associate with Paddle.
+ * Obtener el nombre del cliente que se asociará con Paddle.
  */
 public function paddleName(): string|null
 {
@@ -703,7 +703,7 @@ public function paddleName(): string|null
 }
 
 /**
- * Get the customer's email address to associate with Paddle.
+ * Obtener el correo electrónico del cliente que se asociará con Paddle.
  */
 public function paddleEmail(): string|null
 {
@@ -811,7 +811,7 @@ use Symfony\Component\HttpFoundation\Response;
 class EnsureUserIsSubscribed
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
@@ -889,7 +889,7 @@ Si desea que las suscripciones aún se consideren válidas cuando sean `past_due
 use Laravel\Paddle\Cashier;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {
@@ -906,10 +906,10 @@ public function register(): void
 La mayoría de los estados de suscripción también están disponibles como alcances de consulta para que pueda consultar fácilmente en su base de datos las suscripciones que se encuentran en un estado determinado:
 
 ```php
-// Get all valid subscriptions...
+// Obtener todas las suscripciones válidas...
 $subscriptions = Subscription::query()->valid()->get();
 
-// Get all of the canceled subscriptions for a user...
+// Obtener todas las suscripciones canceladas de un usuario...
 $subscriptions = $user->subscriptions()->canceled()->get();
 ```
 
@@ -1023,12 +1023,12 @@ $user = User::find(1);
 
 $user->subscription()->incrementQuantity();
 
-// Add five to the subscription's current quantity...
+// Sumar cinco a la cantidad actual de la suscripción...
 $user->subscription()->incrementQuantity(5);
 
 $user->subscription()->decrementQuantity();
 
-// Subtract five from the subscription's current quantity...
+// Restar cinco a la cantidad actual de la suscripción...
 $user->subscription()->decrementQuantity(5);
 ```
 
@@ -1394,12 +1394,12 @@ use Laravel\Paddle\Events\WebhookReceived;
 class PaddleEventListener
 {
     /**
-     * Handle received Paddle webhooks.
+     * Gestionar los webhooks recibidos de Paddle.
      */
     public function handle(WebhookReceived $event): void
     {
         if ($event->payload['event_type'] === 'transaction.billed') {
-            // Handle the incoming event...
+            // Gestionar el evento entrante...
         }
     }
 }

@@ -561,13 +561,13 @@ client.use(window.axios)
 Puede utilizar comodines para validar campos dentro de matrices u objetos anidados. Cada `*` coincide con un único segmento de ruta:
 
 ```js
-// Validate email for all users in an array...
+// Validar el correo electrónico de todos los usuarios de un array...
 form.validate('users.*.email');
 
-// Validate all fields in a profile object...
+// Validar todos los campos de un objeto de perfil...
 form.validate('profile.*');
 
-// Validate all fields for all users...
+// Validar todos los campos de todos los usuarios...
 form.validate('users.*.*');
 ```
 
@@ -589,7 +589,7 @@ use Illuminate\Validation\Rules\Password;
 class StoreUserRequest extends FormRequest
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Obtener las reglas de validación aplicables a la solicitud.
      *
      * @return array
      */
@@ -617,7 +617,7 @@ Debido a este comportamiento, debe asegurarse de que su aplicación [personalice
 
 ```php
 /**
- * Get the validation rules that apply to the request.
+ * Obtener las reglas de validación aplicables a la solicitud.
  *
  * @return array
  */
@@ -660,7 +660,7 @@ use Illuminate\Http\Request;
 class InteractionMiddleware
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      */
     public function handle(Request $request, Closure $next): mixed
     {

@@ -215,7 +215,7 @@ Para interactuar con las [funciones de administración de suscripciones](https:/
 
 ```php
 /**
- * Get the message headers.
+ * Obtener los encabezados del mensaje.
  */
 public function headers(): Headers
 {
@@ -342,7 +342,7 @@ use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Envelope;
 
 /**
- * Get the message envelope.
+ * Obtener el sobre del mensaje.
  */
 public function envelope(): Envelope
 {
@@ -393,7 +393,7 @@ Dentro del método `content` de una clase que se puede enviar por correo, puede 
 
 ```php
 /**
- * Get the message content definition.
+ * Obtener la definición del contenido del mensaje.
  */
 public function content(): Content
 {
@@ -413,7 +413,7 @@ Si desea definir una versión de texto sin formato de su correo electrónico, pu
 
 ```php
 /**
- * Get the message content definition.
+ * Obtener la definición del contenido del mensaje.
  */
 public function content(): Content
 {
@@ -457,14 +457,14 @@ class OrderShipped extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * Create a new message instance.
+     * Crear una nueva instancia del mensaje.
      */
     public function __construct(
         public Order $order,
     ) {}
 
     /**
-     * Get the message content definition.
+     * Obtener la definición del contenido del mensaje.
      */
     public function content(): Content
     {
@@ -504,14 +504,14 @@ class OrderShipped extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * Create a new message instance.
+     * Crear una nueva instancia del mensaje.
      */
     public function __construct(
         protected Order $order,
     ) {}
 
     /**
-     * Get the message content definition.
+     * Obtener la definición del contenido del mensaje.
      */
     public function content(): Content
     {
@@ -543,7 +543,7 @@ Para agregar archivos adjuntos a un correo electrónico, agregará archivos adju
 use Illuminate\Mail\Mailables\Attachment;
 
 /**
- * Get the attachments for the message.
+ * Obtener los archivos adjuntos del mensaje.
  *
  * @return array<int, \Illuminate\Mail\Mailables\Attachment>
  */
@@ -559,7 +559,7 @@ Al adjuntar archivos a un mensaje, también puede especificar el nombre para mos
 
 ```php
 /**
- * Get the attachments for the message.
+ * Obtener los archivos adjuntos del mensaje.
  *
  * @return array<int, \Illuminate\Mail\Mailables\Attachment>
  */
@@ -580,7 +580,7 @@ Si ha almacenado un archivo en uno de sus [discos del sistema de archivos](../fi
 
 ```php
 /**
- * Get the attachments for the message.
+ * Obtener los archivos adjuntos del mensaje.
  *
  * @return array<int, \Illuminate\Mail\Mailables\Attachment>
  */
@@ -596,7 +596,7 @@ Por supuesto, también puedes especificar el nombre del archivo adjunto y el tip
 
 ```php
 /**
- * Get the attachments for the message.
+ * Obtener los archivos adjuntos del mensaje.
  *
  * @return array<int, \Illuminate\Mail\Mailables\Attachment>
  */
@@ -614,7 +614,7 @@ Se puede utilizar el método `fromStorageDisk` si necesita especificar un disco 
 
 ```php
 /**
- * Get the attachments for the message.
+ * Obtener los archivos adjuntos del mensaje.
  *
  * @return array<int, \Illuminate\Mail\Mailables\Attachment>
  */
@@ -635,7 +635,7 @@ El método de archivo adjunto `fromData` se puede utilizar para adjuntar una cad
 
 ```php
 /**
- * Get the attachments for the message.
+ * Obtener los archivos adjuntos del mensaje.
  *
  * @return array<int, \Illuminate\Mail\Mailables\Attachment>
  */
@@ -696,7 +696,7 @@ use Illuminate\Mail\Attachment;
 class Photo extends Model implements Attachable
 {
     /**
-     * Get the attachable representation of the model.
+     * Obtener la representación adjuntable del modelo.
      */
     public function toMailAttachment(): Attachment
     {
@@ -709,7 +709,7 @@ Una vez que haya definido su objeto adjuntable, puede devolver una instancia de 
 
 ```php
 /**
- * Get the attachments for the message.
+ * Obtener los archivos adjuntos del mensaje.
  *
  * @return array<int, \Illuminate\Mail\Mailables\Attachment>
  */
@@ -722,10 +722,10 @@ public function attachments(): array
 Por supuesto, los datos adjuntos pueden almacenarse en un servicio de almacenamiento de archivos remoto como Amazon S3. Por lo tanto, Laravel también le permite generar instancias de archivos adjuntos a partir de datos almacenados en uno de los [discos del sistema de archivos](../filesystem/):
 
 ```php
-// Create an attachment from a file on your default disk...
+// Crear un archivo adjunto a partir de un archivo en el disk predeterminado...
 return Attachment::fromStorage($this->path);
 
-// Create an attachment from a file on a specific disk...
+// Crear un archivo adjunto a partir de un archivo en un disk específico...
 return Attachment::fromStorageDisk('backblaze', $this->path);
 ```
 
@@ -754,7 +754,7 @@ Para lograr esto, defina un método `headers` en su correo. El método `headers`
 use Illuminate\Mail\Mailables\Headers;
 
 /**
- * Get the message headers.
+ * Obtener los encabezados del mensaje.
  */
 public function headers(): Headers
 {
@@ -777,7 +777,7 @@ Algunos proveedores de correo electrónico de terceros, como Mailgun y Postmark,
 use Illuminate\Mail\Mailables\Envelope;
 
 /**
- * Get the message envelope.
+ * Obtener el sobre del mensaje.
  *
  * @return \Illuminate\Mail\Mailables\Envelope
  */
@@ -807,7 +807,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Symfony\Component\Mime\Email;
 
 /**
- * Get the message envelope.
+ * Obtener el sobre del mensaje.
  */
 public function envelope(): Envelope
 {
@@ -842,7 +842,7 @@ Luego, al configurar la definición `Content` que se puede enviar por correo den
 use Illuminate\Mail\Mailables\Content;
 
 /**
- * Get the message content definition.
+ * Obtener la definición del contenido del mensaje.
  */
 public function content(): Content
 {
@@ -953,7 +953,7 @@ use Illuminate\Support\Facades\Mail;
 class OrderShipmentController extends Controller
 {
     /**
-     * Ship the given order.
+     * Enviar el pedido indicado.
      */
     public function store(Request $request): RedirectResponse
     {
@@ -1102,7 +1102,7 @@ class OrderShipped extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
 
     /**
-     * Create a new message instance.
+     * Crear una nueva instancia del mensaje.
      */
     public function __construct()
     {
@@ -1134,7 +1134,7 @@ class OrderDelayed extends Mailable implements ShouldQueue
     use SerializesModels;
 
     /**
-     * Handle a queued email's failure.
+     * Gestionar el fallo de un correo en cola.
      */
     public function failed(Throwable $exception): void
     {
@@ -1194,7 +1194,7 @@ use Illuminate\Contracts\Translation\HasLocalePreference;
 class User extends Model implements HasLocalePreference
 {
     /**
-     * Get the user's preferred locale.
+     * Obtener la configuración regional preferida del usuario.
      */
     public function preferredLocale(): string
     {
@@ -1306,31 +1306,31 @@ test('orders can be shipped', function () {
 
     // Perform order shipping...
 
-    // Assert that no mailables were sent...
+    // Comprobar que no se haya enviado ningún mailable...
     Mail::assertNothingSent();
 
-    // Assert that a mailable was sent...
+    // Comprobar que se haya enviado un mailable...
     Mail::assertSent(OrderShipped::class);
 
-    // Assert a mailable was sent twice...
+    // Comprobar que un mailable se haya enviado dos veces...
     Mail::assertSent(OrderShipped::class, 2);
 
-    // Assert a mailable was sent to an email address...
+    // Comprobar que se haya enviado un mailable a una dirección de correo electrónico...
     Mail::assertSent(OrderShipped::class, 'example@laravel.com');
 
-    // Assert a mailable was sent to multiple email addresses...
+    // Comprobar que se haya enviado un mailable a varias direcciones de correo electrónico...
     Mail::assertSent(OrderShipped::class, ['example@laravel.com', '...']);
 
-    // Assert a mailable was not sent...
+    // Comprobar que no se haya enviado un mailable...
     Mail::assertNotSent(AnotherMailable::class);
 
-    // Assert a mailable was sent twice...
+    // Comprobar que un mailable se haya enviado dos veces...
     Mail::assertSentTimes(OrderShipped::class, 2);
 
-    // Assert that a mailable was sent exactly once...
+    // Comprobar que se haya enviado un mailable exactamente una vez...
     Mail::assertSentOnce(OrderShipped::class);
 
-    // Assert 3 total mailables were sent...
+    // Comprobar que se hayan enviado 3 mailables en total...
     Mail::assertSentCount(3);
 });
 ```
@@ -1352,31 +1352,31 @@ class ExampleTest extends TestCase
 
         // Perform order shipping...
 
-        // Assert that no mailables were sent...
+        // Comprobar que no se haya enviado ningún mailable...
         Mail::assertNothingSent();
 
-        // Assert that a mailable was sent...
+        // Comprobar que se haya enviado un mailable...
         Mail::assertSent(OrderShipped::class);
 
-        // Assert a mailable was sent twice...
+        // Comprobar que un mailable se haya enviado dos veces...
         Mail::assertSent(OrderShipped::class, 2);
 
-        // Assert a mailable was sent to an email address...
+        // Comprobar que se haya enviado un mailable a una dirección de correo electrónico...
         Mail::assertSent(OrderShipped::class, 'example@laravel.com');
 
-        // Assert a mailable was sent to multiple email addresses...
+        // Comprobar que se haya enviado un mailable a varias direcciones de correo electrónico...
         Mail::assertSent(OrderShipped::class, ['example@laravel.com', '...']);
 
-        // Assert a mailable was not sent...
+        // Comprobar que no se haya enviado un mailable...
         Mail::assertNotSent(AnotherMailable::class);
 
-        // Assert a mailable was sent twice...
+        // Comprobar que un mailable se haya enviado dos veces...
         Mail::assertSentTimes(OrderShipped::class, 2);
 
-        // Assert that a mailable was sent exactly once...
+        // Comprobar que se haya enviado un mailable exactamente una vez...
         Mail::assertSentOnce(OrderShipped::class);
 
-        // Assert 3 total mailables were sent...
+        // Comprobar que se hayan enviado 3 mailables en total...
         Mail::assertSentCount(3);
     }
 }
@@ -1483,7 +1483,7 @@ Finalmente, puede especificar una dirección "a" global invocando el método `al
 use Illuminate\Support\Facades\Mail;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -1507,7 +1507,7 @@ use Illuminate\Mail\Events\MessageSending;
 class LogMessage
 {
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(MessageSending $event): void
     {
@@ -1535,7 +1535,7 @@ use Symfony\Component\Mime\MessageConverter;
 class MailchimpTransport extends AbstractTransport
 {
     /**
-     * Create a new Mailchimp transport instance.
+     * Crear una nueva instancia de transport de Mailchimp.
      */
     public function __construct(
         protected ApiClient $client,
@@ -1561,7 +1561,7 @@ class MailchimpTransport extends AbstractTransport
     }
 
     /**
-     * Get the string representation of the transport.
+     * Obtener la representación en cadena del transport.
      */
     public function __toString(): string
     {
@@ -1578,7 +1578,7 @@ use Illuminate\Support\Facades\Mail;
 use MailchimpTransactional\ApiClient;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -1627,7 +1627,7 @@ use Symfony\Component\Mailer\Bridge\Brevo\Transport\BrevoTransportFactory;
 use Symfony\Component\Mailer\Transport\Dsn;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

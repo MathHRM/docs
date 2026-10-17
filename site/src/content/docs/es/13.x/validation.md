@@ -83,7 +83,7 @@ use Illuminate\View\View;
 class PostController extends Controller
 {
     /**
-     * Show the form to create a new blog post.
+     * Mostrar el formulario para crear una nueva entrada de blog.
      */
     public function create(): View
     {
@@ -91,11 +91,11 @@ class PostController extends Controller
     }
 
     /**
-     * Store a new blog post.
+     * Guardar una nueva entrada de blog.
      */
     public function store(Request $request): RedirectResponse
     {
-        // Validate and store the blog post...
+        // Validar y guardar la entrada de blog...
 
         $post = /** ... */
 
@@ -115,7 +115,7 @@ Para comprender mejor el método `validate`, volvamos al método `store`:
 
 ```php
 /**
- * Store a new blog post.
+ * Guardar una nueva entrada de blog.
  */
 public function store(Request $request): RedirectResponse
 {
@@ -327,7 +327,7 @@ Como habrás deducido, el método `authorize` es responsable de determinar si el
 
 ```php
 /**
- * Get the validation rules that apply to the request.
+ * Obtener las reglas de validación aplicables a la solicitud.
  *
  * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
  */
@@ -347,20 +347,20 @@ Entonces, ¿cómo se evalúan las reglas de validación? Solo necesitas declarar
 
 ```php
 /**
- * Store a new blog post.
+ * Guardar una nueva entrada de blog.
  */
 public function store(StorePostRequest $request): RedirectResponse
 {
     // The incoming request is valid...
 
-    // Retrieve the validated input data...
+    // Recuperar los datos de entrada validados...
     $validated = $request->validated();
 
-    // Retrieve a portion of the validated input data...
+    // Recuperar una parte de los datos de entrada validados...
     $validated = $request->safe()->only(['name', 'email']);
     $validated = $request->safe()->except(['name', 'email']);
 
-    // Store the blog post...
+    // Guardar la entrada de blog...
 
     return redirect('/posts');
 }
@@ -382,7 +382,7 @@ El método `after` debe devolver un array de invocables o funciones anónimas qu
 use Illuminate\Validation\Validator;
 
 /**
- * Get the "after" validation callables for the request.
+ * Obtener las funciones de validación "after" de la solicitud.
  */
 public function after(): array
 {
@@ -407,7 +407,7 @@ use App\Validation\ValidateUserStatus;
 use Illuminate\Validation\Validator;
 
 /**
- * Get the "after" validation callables for the request.
+ * Obtener las funciones de validación "after" de la solicitud.
  */
 public function after(): array
 {
@@ -473,7 +473,7 @@ También puedes habilitar este comportamiento globalmente para todas las solicit
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -559,7 +559,7 @@ La clase de solicitud de formulario también contiene un método `authorize`. Co
 use App\Models\Comment;
 
 /**
- * Determine if the user is authorized to make this request.
+ * Determinar si el usuario tiene autorización para realizar esta solicitud.
  */
 public function authorize(): bool
 {
@@ -587,7 +587,7 @@ Si planeas manejar la lógica de autorización para la solicitud en otra parte d
 
 ```php
 /**
- * Determine if the user is authorized to make this request.
+ * Determinar si el usuario tiene autorización para realizar esta solicitud.
  */
 public function authorize(): bool
 {
@@ -605,7 +605,7 @@ Puedes personalizar los mensajes de error utilizados por la solicitud del formul
 
 ```php
 /**
- * Get the error messages for the defined validation rules.
+ * Obtener los mensajes de error de las reglas de validación definidas.
  *
  * @return array<string, string>
  */
@@ -625,7 +625,7 @@ Muchos de los mensajes de error de las reglas de validación integradas de Larav
 
 ```php
 /**
- * Get custom attributes for validator errors.
+ * Obtener atributos personalizados para los errores del validator.
  *
  * @return array<string, string>
  */
@@ -646,7 +646,7 @@ Si necesitas preparar o sanear algún dato de la solicitud antes de aplicar tus 
 use Illuminate\Support\Str;
 
 /**
- * Prepare the data for validation.
+ * Preparar los datos para la validación.
  */
 protected function prepareForValidation(): void
 {
@@ -660,7 +660,7 @@ Del mismo modo, si necesitas normalizar cualquier dato de la solicitud una vez c
 
 ```php
 /**
- * Handle a passed validation attempt.
+ * Gestionar un intento de validación exitoso.
  */
 protected function passedValidation(): void
 {
@@ -685,7 +685,7 @@ use Illuminate\Support\Facades\Validator;
 class PostController extends Controller
 {
     /**
-     * Store a new blog post.
+     * Guardar una nueva entrada de blog.
      */
     public function store(Request $request): RedirectResponse
     {
@@ -700,14 +700,14 @@ class PostController extends Controller
                 ->withInput();
         }
 
-        // Retrieve the validated input...
+        // Recuperar la entrada validada...
         $validated = $validator->validated();
 
-        // Retrieve a portion of the validated input...
+        // Recuperar una parte de la entrada validada...
         $validated = $validator->safe()->only(['name', 'email']);
         $validated = $validator->safe()->except(['name', 'email']);
 
-        // Store the blog post...
+        // Guardar la entrada de blog...
 
         return redirect('/posts');
     }
@@ -2472,16 +2472,16 @@ El _field_ proporcionado debe coincidir con el campo bajo validación.
 El campo bajo validación debe tener un tamaño que coincida con el _value_ dado. Para datos de cadena, _value_ corresponde al número de caracteres. Para datos numéricos, _value_ corresponde a un valor entero determinado (el atributo también debe tener la regla `numeric` o `integer`). Para un array, _size_ corresponde al `count` del array. Para archivos, _size_ corresponde al tamaño del archivo en kilobytes. Veamos algunos ejemplos:
 
 ```php
-// Validate that a string is exactly 12 characters long...
+// Validar que una cadena tenga exactamente 12 caracteres...
 'title' => ['size:12'];
 
-// Validate that a provided integer equals 10...
+// Validar que el entero proporcionado sea igual a 10...
 'seats' => ['integer', 'size:10'];
 
-// Validate that an array has exactly 5 elements...
+// Validar que un array tenga exactamente 5 elementos...
 'tags' => ['array', 'size:5'];
 
-// Validate that an uploaded file is exactly 512 kilobytes...
+// Validar que un archivo subido tenga exactamente 512 kilobytes...
 'image' => ['file', 'size:512'];
 ```
 
@@ -2988,22 +2988,22 @@ $validator = Validator::make($request->all(), [
 El objeto de regla `Password` te permite personalizar fácilmente los requisitos de complejidad de la contraseña para tu aplicación, como especificar que las contraseñas requieran al menos una letra, número, símbolo o caracteres que combinen mayúsculas y minúsculas:
 
 ```php
-// Require at least 8 characters...
+// Exigir al menos 8 caracteres...
 Password::min(8);
 
-// Require at most 256 characters...
+// Exigir como máximo 256 caracteres...
 Password::min(16)->max(256);
 
-// Require at least one letter...
+// Exigir al menos una letra...
 Password::min(8)->letters();
 
-// Require at least one uppercase and one lowercase letter...
+// Exigir al menos una letra mayúscula y una minúscula...
 Password::min(8)->mixedCase();
 
-// Require at least one number...
+// Exigir al menos un número...
 Password::min(8)->numbers();
 
-// Require at least one symbol...
+// Exigir al menos un símbolo...
 Password::min(8)->symbols();
 ```
 
@@ -3018,7 +3018,7 @@ Internamente, el objeto de regla `Password` utiliza el modelo [k-Anonymity](http
 De forma predeterminada, si una contraseña aparece al menos una vez en una filtración de datos, se considerará comprometida. Puedes personalizar este umbral utilizando el primer argumento del método `uncompromised`:
 
 ```php
-// Ensure the password appears no more than 3 times in the same data leak...
+// Asegurarse de que la contraseña aparezca como máximo 3 veces en la misma filtración de datos...
 Password::min(8)->uncompromised(3);
 ```
 
@@ -3054,7 +3054,7 @@ Puede que te resulte conveniente especificar las reglas de validación predeterm
 use Illuminate\Validation\Rules\Password;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -3111,7 +3111,7 @@ use Illuminate\Contracts\Validation\ValidationRule;
 class Uppercase implements ValidationRule
 {
     /**
-     * Run the validation rule.
+     * Ejecutar la regla de validación.
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
@@ -3174,7 +3174,7 @@ class Uppercase implements DataAwareRule, ValidationRule
     // ...
 
     /**
-     * Set the data under validation.
+     * Establecer los datos que se están validando.
      *
      * @param  array<string, mixed>  $data
      */
@@ -3210,7 +3210,7 @@ class Uppercase implements ValidationRule, ValidatorAwareRule
     // ...
 
     /**
-     * Set the current validator.
+     * Establecer el validator actual.
      */
     public function setValidator(Validator $validator): static
     {

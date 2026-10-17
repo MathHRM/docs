@@ -57,7 +57,7 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
     /**
-     * Show all application users.
+     * Mostrar todos los usuarios de la aplicación.
      */
     public function index(): View
     {
@@ -329,7 +329,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -349,7 +349,7 @@ Laravel incluye vistas de paginación creadas con [Bootstrap CSS](https://getboo
 use Illuminate\Pagination\Paginator;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

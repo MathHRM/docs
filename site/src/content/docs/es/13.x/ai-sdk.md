@@ -351,7 +351,7 @@ class SalesCoach implements Agent, Conversational, HasTools, HasStructuredOutput
     public function __construct(public User $user) {}
 
     /**
-     * Get the instructions that the agent should follow.
+     * Obtener las instrucciones que debe seguir el agente.
      */
     public function instructions(): Stringable|string
     {
@@ -359,7 +359,7 @@ class SalesCoach implements Agent, Conversational, HasTools, HasStructuredOutput
     }
 
     /**
-     * Get the list of messages comprising the conversation so far.
+     * Obtener la lista de mensajes que conforman la conversación hasta el momento.
      */
     public function messages(): iterable
     {
@@ -374,7 +374,7 @@ class SalesCoach implements Agent, Conversational, HasTools, HasStructuredOutput
     }
 
     /**
-     * Get the tools available to the agent.
+     * Obtener las herramientas disponibles para el agente.
      *
      * @return Tool[]
      */
@@ -386,7 +386,7 @@ class SalesCoach implements Agent, Conversational, HasTools, HasStructuredOutput
     }
 
     /**
-     * Get the agent's structured output schema definition.
+     * Obtener la definición del esquema de salida estructurada del agente.
      */
     public function schema(JsonSchema $schema): array
     {
@@ -458,7 +458,7 @@ Si tu agente implementa la interfaz `Conversational`, puedes utilizar el método
 
 ```php
 /**
- * Get the list of messages comprising the conversation so far.
+ * Obtener la lista de mensajes que conforman la conversación hasta el momento.
  */
 public function messages(): iterable
 {
@@ -510,7 +510,7 @@ class SalesCoach implements Agent, Conversational
     use Promptable, RemembersConversations;
 
     /**
-     * Get the instructions that the agent should follow.
+     * Obtener las instrucciones que debe seguir el agente.
      */
     public function instructions(): string
     {
@@ -699,7 +699,7 @@ class SalesCoach implements Agent, HasStructuredOutput
     // ...
 
     /**
-     * Get the agent's structured output schema definition.
+     * Obtener la definición del esquema de salida estructurada del agente.
      */
     public function schema(JsonSchema $schema): array
     {
@@ -740,7 +740,7 @@ class SalesCoach implements Agent, HasStructuredOutput
     // ...
 
     /**
-     * Get the agent's structured output schema definition.
+     * Obtener la definición del esquema de salida estructurada del agente.
      */
     public function schema(JsonSchema $schema): array
     {
@@ -1090,7 +1090,7 @@ use Stringable;
 class RandomNumberGenerator implements Tool
 {
     /**
-     * Get the description of the tool's purpose.
+     * Obtener la descripción del propósito de la herramienta.
      */
     public function description(): Stringable|string
     {
@@ -1098,7 +1098,7 @@ class RandomNumberGenerator implements Tool
     }
 
     /**
-     * Execute the tool.
+     * Ejecutar la herramienta.
      */
     public function handle(Request $request): Stringable|string
     {
@@ -1106,7 +1106,7 @@ class RandomNumberGenerator implements Tool
     }
 
     /**
-     * Get the tool's schema definition.
+     * Obtener la definición del esquema de la herramienta.
      */
     public function schema(JsonSchema $schema): array
     {
@@ -1124,7 +1124,7 @@ Una vez definida tu herramienta, puedes devolverla desde el método `tools` de c
 use App\Ai\Tools\RandomNumberGenerator;
 
 /**
- * Get the tools available to the agent.
+ * Obtener las herramientas disponibles para el agente.
  *
  * @return Tool[]
  */
@@ -1341,7 +1341,7 @@ use App\Ai\Tools\RandomNumberGenerator;
 use Laravel\Mcp\Client;
 
 /**
- * Get the tools available to the agent.
+ * Obtener las herramientas disponibles para el agente.
  *
  * @return Tool[]
  */
@@ -1603,7 +1603,7 @@ class CustomerSupportAgent implements Agent, HasTools
     use Promptable;
 
     /**
-     * Get the instructions that the agent should follow.
+     * Obtener las instrucciones que debe seguir el agente.
      */
     public function instructions(): string
     {
@@ -1611,7 +1611,7 @@ class CustomerSupportAgent implements Agent, HasTools
     }
 
     /**
-     * Get the tools available to the agent.
+     * Obtener las herramientas disponibles para el agente.
      *
      * @return Tool[]
      */
@@ -1635,7 +1635,7 @@ use Laravel\Ai\Enums\Lab;
 class RefundsAgent implements Agent, CanActAsTool, HasTools
 {
     /**
-     * Get the agent's tool name.
+     * Obtener el nombre de la herramienta del agente.
      */
     public function name(): string
     {
@@ -1643,7 +1643,7 @@ class RefundsAgent implements Agent, CanActAsTool, HasTools
     }
 
     /**
-     * Get the agent's tool description.
+     * Obtener la descripción de la herramienta del agente.
      */
     public function description(): string
     {
@@ -1700,7 +1700,7 @@ class SalesCoach implements Agent, HasMiddleware
     // ...
 
     /**
-     * Get the agent's middleware.
+     * Obtener el middleware del agente.
      */
     public function middleware(): array
     {
@@ -1725,7 +1725,7 @@ use Laravel\Ai\PendingStep;
 class LogPrompts
 {
     /**
-     * Handle the pending generation step.
+     * Gestionar el paso de generación pendiente.
      */
     public function handle(PendingStep $step, Closure $next)
     {
@@ -1926,7 +1926,7 @@ class SalesCoach implements Agent, HasProviderOptions
     // ...
 
     /**
-     * Get provider-specific generation options.
+     * Obtener las opciones de generación específicas del provider.
      */
     public function providerOptions(Lab|string $provider): array
     {
@@ -2048,7 +2048,7 @@ class DeleteFile implements Approvable, Tool
     use InteractsWithApprovals;
 
     /**
-     * Get the description of the tool's purpose.
+     * Obtener la descripción del propósito de la herramienta.
      */
     public function description(): Stringable|string
     {
@@ -2056,7 +2056,7 @@ class DeleteFile implements Approvable, Tool
     }
 
     /**
-     * Execute the tool.
+     * Ejecutar la herramienta.
      */
     public function handle(Request $request): Stringable|string
     {
@@ -2066,7 +2066,7 @@ class DeleteFile implements Approvable, Tool
     }
 
     /**
-     * Get the tool's schema definition.
+     * Obtener la definición del esquema de la herramienta.
      */
     public function schema(JsonSchema $schema): array
     {
@@ -2083,7 +2083,7 @@ Para determinar si se necesita aprobación en función de los argumentos de la l
 use Laravel\Ai\Approvals\Approval;
 
 /**
- * Determine whether the tool needs approval for the given request.
+ * Determinar si la herramienta requiere aprobación para la solicitud indicada.
  */
 protected function needsApproval(Request $request): Approval|bool
 {
@@ -2638,10 +2638,10 @@ $response = Embeddings::for(['Napa Valley has great wine.'])
 El método Stringable `toEmbeddings` también acepta un argumento `cache`:
 
 ```php
-// Cache with default duration...
+// Guardar en cache con la duración predeterminada...
 $embeddings = Str::of('Napa Valley has great wine.')->toEmbeddings(cache: true);
 
-// Cache for a specific duration...
+// Guardar en cache durante un período específico...
 $embeddings = Str::of('Napa Valley has great wine.')->toEmbeddings(cache: 3600);
 ```
 
@@ -2661,7 +2661,7 @@ $response = Reranking::of([
     'React is a JavaScript library for building user interfaces.',
 ])->rerank('PHP frameworks');
 
-// Access the top result...
+// Acceder al resultado principal...
 $response->first()->document; // "Laravel is a PHP web application framework."
 $response->first()->score;    // 0.95
 $response->first()->index;    // 1 (original position)
@@ -2682,14 +2682,14 @@ $response = Reranking::of($documents)
 Por comodidad, las colecciones de Laravel se pueden reordenar mediante la macro `rerank`. El primer argumento especifica los campos que se utilizarán para el reordenamiento y el segundo es la consulta:
 
 ```php
-// Rerank by a single field...
+// Volver a ordenar por un solo campo...
 $posts = Post::all()
     ->rerank('body', 'Laravel tutorials');
 
-// Rerank by multiple fields (sent as JSON)...
+// Volver a ordenar por varios campos (enviados como JSON)...
 $reranked = $posts->rerank(['title', 'body'], 'Laravel tutorials');
 
-// Rerank using a closure to build the document...
+// Volver a ordenar usando un closure para crear el documento...
 $reranked = $posts->rerank(
     fn ($post) => $post->title.': '.$post->body,
     'Laravel tutorials'
@@ -2867,15 +2867,15 @@ La clase `Laravel\Ai\Files` o las clases de archivos individuales permiten almac
 use Laravel\Ai\Files\Document;
 use Laravel\Ai\Files\Image;
 
-// Store a file from a local path...
+// Guardar un archivo desde una ruta local...
 $response = Document::fromPath('/home/laravel/document.pdf')->put();
 $response = Image::fromPath('/home/laravel/photo.jpg')->put();
 
-// Store a file that is stored on a filesystem disk...
+// Guardar un archivo almacenado en un disk del filesystem...
 $response = Document::fromStorage('document.pdf', disk: 'local')->put();
 $response = Image::fromStorage('photo.jpg', disk: 'local')->put();
 
-// Store a file that is stored on a remote URL...
+// Guardar un archivo almacenado en una URL remota...
 $response = Document::fromUrl('https://example.com/document.pdf')->put();
 $response = Image::fromUrl('https://example.com/photo.jpg')->put();
 
@@ -2888,10 +2888,10 @@ También puedes almacenar contenido sin procesar o archivos cargados:
 use Laravel\Ai\Files;
 use Laravel\Ai\Files\Document;
 
-// Store raw content...
+// Guardar contenido sin procesar...
 $stored = Document::fromString('Hello, World!', 'text/plain')->put();
 
-// Store an uploaded file...
+// Guardar un archivo subido...
 $stored = Document::fromUpload($request->file('document'))->put();
 ```
 
@@ -3002,10 +3002,10 @@ Los almacenes vectoriales permiten crear colecciones de archivos que admiten bú
 ```php
 use Laravel\Ai\Stores;
 
-// Create a new vector store...
+// Crear un nuevo vector store...
 $store = Stores::create('Knowledge Base');
 
-// Create a store with additional options...
+// Crear un store con opciones adicionales...
 $store = Stores::create(
     name: 'Knowledge Base',
     description: 'Documentation and reference materials.',
@@ -3036,7 +3036,7 @@ use Laravel\Ai\Stores;
 // Delete by ID...
 Stores::delete('store_id');
 
-// Or delete via a store instance...
+// O eliminar mediante una instancia de store...
 $store = Stores::get('store_id');
 
 $store->delete();
@@ -3053,11 +3053,11 @@ use Laravel\Ai\Stores;
 
 $store = Stores::get('store_id');
 
-// Add a file that has already been stored with the provider...
+// Añadir un archivo que ya se haya almacenado con el provider...
 $document = $store->add('file_id');
 $document = $store->add(Document::fromId('file_id'));
 
-// Or, store and add a file in one step...
+// O guardar y añadir un archivo en un solo paso...
 $document = $store->add(Document::fromPath('/path/to/document.pdf'));
 $document = $store->add(Document::fromStorage('manual.pdf'));
 $document = $store->add($request->file('document'));
@@ -3191,16 +3191,16 @@ Para simular las respuestas de un agente durante las pruebas, llama al método `
 use App\Ai\Agents\SalesCoach;
 use Laravel\Ai\Prompts\AgentPrompt;
 
-// Automatically generate a fixed response for every prompt...
+// Generar automáticamente una respuesta fija para cada prompt...
 SalesCoach::fake();
 
-// Provide a list of prompt responses...
+// Proporcionar una lista de respuestas para prompts...
 SalesCoach::fake([
     'First response',
     'Second response',
 ]);
 
-// Dynamically handle prompt responses based on the incoming prompt...
+// Gestionar dinámicamente las respuestas según el prompt recibido...
 SalesCoach::fake(function (AgentPrompt $prompt) {
     return 'Response for: '.$prompt->prompt;
 });
@@ -3324,16 +3324,16 @@ use Laravel\Ai\Image;
 use Laravel\Ai\Prompts\ImagePrompt;
 use Laravel\Ai\Prompts\QueuedImagePrompt;
 
-// Automatically generate a fixed response for every prompt...
+// Generar automáticamente una respuesta fija para cada prompt...
 Image::fake();
 
-// Provide a list of prompt responses...
+// Proporcionar una lista de respuestas para prompts...
 Image::fake([
     base64_encode($firstImage),
     base64_encode($secondImage),
 ]);
 
-// Dynamically handle prompt responses based on the incoming prompt...
+// Gestionar dinámicamente las respuestas según el prompt recibido...
 Image::fake(function (ImagePrompt $prompt) {
     return base64_encode('...');
 });
@@ -3379,16 +3379,16 @@ use Laravel\Ai\Audio;
 use Laravel\Ai\Prompts\AudioPrompt;
 use Laravel\Ai\Prompts\QueuedAudioPrompt;
 
-// Automatically generate a fixed response for every prompt...
+// Generar automáticamente una respuesta fija para cada prompt...
 Audio::fake();
 
-// Provide a list of prompt responses...
+// Proporcionar una lista de respuestas para prompts...
 Audio::fake([
     base64_encode($firstAudio),
     base64_encode($secondAudio),
 ]);
 
-// Dynamically handle prompt responses based on the incoming prompt...
+// Gestionar dinámicamente las respuestas según el prompt recibido...
 Audio::fake(function (AudioPrompt $prompt) {
     return base64_encode('...');
 });
@@ -3434,16 +3434,16 @@ use Laravel\Ai\Transcription;
 use Laravel\Ai\Prompts\TranscriptionPrompt;
 use Laravel\Ai\Prompts\QueuedTranscriptionPrompt;
 
-// Automatically generate a fixed response for every prompt...
+// Generar automáticamente una respuesta fija para cada prompt...
 Transcription::fake();
 
-// Provide a list of prompt responses...
+// Proporcionar una lista de respuestas para prompts...
 Transcription::fake([
     'First transcription text.',
     'Second transcription text.',
 ]);
 
-// Dynamically handle prompt responses based on the incoming prompt...
+// Gestionar dinámicamente las respuestas según el prompt recibido...
 Transcription::fake(function (TranscriptionPrompt $prompt) {
     return 'Transcribed text...';
 });
@@ -3493,16 +3493,16 @@ use Laravel\Ai\Embeddings;
 use Laravel\Ai\Prompts\EmbeddingsPrompt;
 use Laravel\Ai\Prompts\QueuedEmbeddingsPrompt;
 
-// Automatically generate fake embeddings of the proper dimensions for every prompt...
+// Generar automáticamente embeddings ficticios con las dimensiones adecuadas para cada prompt...
 Embeddings::fake();
 
-// Provide a list of prompt responses...
+// Proporcionar una lista de respuestas para prompts...
 Embeddings::fake([
     [$firstEmbeddingVector],
     [$secondEmbeddingVector],
 ]);
 
-// Dynamically handle prompt responses based on the incoming prompt...
+// Gestionar dinámicamente las respuestas según el prompt recibido...
 Embeddings::fake(function (EmbeddingsPrompt $prompt) {
     return array_map(
         fn () => Embeddings::fakeEmbedding($prompt->dimensions),
@@ -3555,10 +3555,10 @@ use Laravel\Ai\Reranking;
 use Laravel\Ai\Prompts\RerankingPrompt;
 use Laravel\Ai\Responses\Data\RankedDocument;
 
-// Automatically generate a fake reranked responses...
+// Generar automáticamente respuestas ficticias reordenadas...
 Reranking::fake();
 
-// Provide custom responses...
+// Proporcionar respuestas personalizadas...
 Reranking::fake([
     [
         new RankedDocument(index: 0, document: 'First', score: 0.95),
@@ -3592,10 +3592,10 @@ use Laravel\Ai\Prompts\ClassificationPrompt;
 use Laravel\Ai\Responses\Data\BooleanAnswer;
 use Laravel\Ai\Responses\Data\ChoiceAnswer;
 
-// Automatically generate fake answers...
+// Generar respuestas ficticias automáticamente...
 Classification::fake();
 
-// Provide answers for specific questions...
+// Proporcionar respuestas a preguntas específicas...
 Classification::fake([
     [
         'urgent' => new BooleanAnswer(0.94),
@@ -3607,7 +3607,7 @@ Classification::fake([
     ],
 ]);
 
-// Build answers from the prompt...
+// Crear respuestas a partir del prompt...
 Classification::fake(fn (ClassificationPrompt $prompt) => [
     'urgent' => new BooleanAnswer($prompt->contains('ASAP') ? 1.0 : 0.0),
 ]);
@@ -3646,7 +3646,7 @@ Una vez simuladas las operaciones de archivos, puedes realizar aserciones sobre 
 use Laravel\Ai\Contracts\Files\StorableFile;
 use Laravel\Ai\Files\Document;
 
-// Store files...
+// Guardar archivos...
 Document::fromString('Hello, Laravel!', mimeType: 'text/plain')
     ->as('hello.txt')
     ->put();
@@ -3688,7 +3688,7 @@ Una vez simuladas las operaciones de almacenes, puedes realizar aserciones sobre
 ```php
 use Laravel\Ai\Stores;
 
-// Create store...
+// Crear el store...
 $store = Stores::create('Knowledge Base');
 
 // Make assertions...

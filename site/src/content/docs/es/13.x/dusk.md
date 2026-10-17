@@ -115,7 +115,7 @@ Para comenzar, abre tu archivo `tests/DuskTestCase.php`, que es el caso de prueb
 
 ```php
 /**
- * Prepare for Dusk test execution.
+ * Preparar la ejecución de las pruebas de Dusk.
  *
  * @beforeClass
  */
@@ -131,7 +131,7 @@ A continuación, puedes modificar el método `driver` para conectarte a la URL y
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 
 /**
- * Create the RemoteWebDriver instance.
+ * Crear la instancia de RemoteWebDriver.
  */
 protected function driver(): RemoteWebDriver
 {
@@ -313,7 +313,7 @@ De forma predeterminada, Dusk intentará iniciar ChromeDriver automáticamente. 
 
 ```php
 /**
- * Prepare for Dusk test execution.
+ * Preparar la ejecución de las pruebas de Dusk.
  *
  * @beforeClass
  */
@@ -329,7 +329,7 @@ Además, si inicias ChromeDriver en un puerto distinto al 9515, debes modificar 
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 
 /**
- * Create the RemoteWebDriver instance.
+ * Crear la instancia de RemoteWebDriver.
  */
 protected function driver(): RemoteWebDriver
 {
@@ -513,7 +513,7 @@ use Laravel\Dusk\Browser;
 class DuskServiceProvider extends ServiceProvider
 {
     /**
-     * Register Dusk's browser macros.
+     * Registrar las macros del navegador de Dusk.
      */
     public function boot(): void
     {
@@ -649,7 +649,7 @@ Elegir buenos selectores de CSS para interactuar con elementos es una de las par
 ```
 
 ```php
-// Test...
+// Probar...
 
 $browser->click('.login-page .container div > button');
 ```
@@ -663,7 +663,7 @@ Los selectores de Dusk te permiten concentrarte en escribir pruebas efectivas en
 ```
 
 ```php
-// Test...
+// Probar...
 
 $browser->click('@login-button');
 ```
@@ -685,10 +685,10 @@ Dusk::selectorHtmlAttribute('data-dusk');
 Dusk proporciona varios métodos para interactuar con el valor actual, el texto mostrado y los atributos de los elementos en la página. Por ejemplo, para obtener el "valor" de un elemento que coincide con un selector CSS o Dusk determinado, utiliza el método `value`:
 
 ```php
-// Retrieve the value...
+// Recuperar el valor...
 $value = $browser->value('selector');
 
-// Set the value...
+// Establecer el valor...
 $browser->value('selector', 'value');
 ```
 
@@ -906,7 +906,7 @@ use Laravel\Dusk\OperatingSystem;
 class DuskServiceProvider extends ServiceProvider
 {
     /**
-     * Register Dusk's browser macros.
+     * Registrar las macros del navegador de Dusk.
      */
     public function boot(): void
     {
@@ -2268,7 +2268,7 @@ El método `url` debería devolver la ruta de la URL que representa la página. 
 
 ```php
 /**
- * Get the URL for the page.
+ * Obtener la URL de la página.
  */
 public function url(): string
 {
@@ -2283,7 +2283,7 @@ El método `assert` puede realizar las aserciones necesarias para verificar que 
 
 ```php
 /**
- * Assert that the browser is on the page.
+ * Comprobar que el browser esté en la página.
  */
 public function assert(Browser $browser): void
 {
@@ -2320,7 +2320,7 @@ El método `elements` dentro de las clases de página te permite definir accesos
 
 ```php
 /**
- * Get the element shortcuts for the page.
+ * Obtener los atajos de elementos de la página.
  *
  * @return array<string, string>
  */
@@ -2345,7 +2345,7 @@ Después de instalar Dusk, se colocará una clase base `Page` en tu directorio `
 
 ```php
 /**
- * Get the global element shortcuts for the site.
+ * Obtener los atajos globales de elementos del sitio.
  *
  * @return array<string, string>
  */
@@ -2375,7 +2375,7 @@ class Dashboard extends Page
     // Other page methods...
 
     /**
-     * Create a new playlist.
+     * Crear una nueva playlist.
      */
     public function createPlaylist(Browser $browser, string $name): void
     {
@@ -2423,7 +2423,7 @@ use Laravel\Dusk\Component as BaseComponent;
 class DatePicker extends BaseComponent
 {
     /**
-     * Get the root selector for the component.
+     * Obtener el selector raíz del componente.
      */
     public function selector(): string
     {
@@ -2431,7 +2431,7 @@ class DatePicker extends BaseComponent
     }
 
     /**
-     * Assert that the browser page contains the component.
+     * Comprobar que la página del browser contenga el componente.
      */
     public function assert(Browser $browser): void
     {
@@ -2439,7 +2439,7 @@ class DatePicker extends BaseComponent
     }
 
     /**
-     * Get the element shortcuts for the component.
+     * Obtener los atajos de elementos del componente.
      *
      * @return array<string, string>
      */
@@ -2670,7 +2670,7 @@ pipeline:
       composer install --no-interaction --prefer-dist --optimize-autoloader
       php artisan key:generate
 
-      # Create a dusk env file, ensuring APP_URL uses BUILD_HOST
+      # Crear un archivo de entorno para Dusk y asegurarse de que APP_URL use BUILD_HOST
       cp -v .env .env.dusk.ci
       sed -i "s@APP_URL=.*@APP_URL=http://$BUILD_HOST:8000@g" .env.dusk.ci
 

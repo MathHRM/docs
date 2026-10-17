@@ -83,7 +83,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -147,7 +147,7 @@ El método `user` acepta una función anónima que recibirá el modelo `Authenti
 use Laravel\Pulse\Facades\Pulse;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -443,7 +443,7 @@ use Laravel\Pulse\Facades\Pulse;
 use Laravel\Pulse\Value;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

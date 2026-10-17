@@ -334,7 +334,7 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
     /**
-     * Show the profile for the given user.
+     * Mostrar el perfil del usuario indicado.
      */
     public function show(string $id): View
     {
@@ -465,7 +465,7 @@ class RedisSubscribe extends Command
     protected $description = 'Subscribe to a Redis channel';
 
     /**
-     * Execute the console command.
+     * Ejecutar el comando de consola.
      */
     public function handle(): void
     {

@@ -165,7 +165,7 @@ use Illuminate\Support\Facades\Cache;
 class UserController extends Controller
 {
     /**
-     * Show a list of all users of the application.
+     * Mostrar una lista de todos los usuarios de la aplicación.
      */
     public function index(): array
     {
@@ -225,10 +225,10 @@ if (Cache::has('key')) {
 Los métodos `increment` y `decrement` se pueden utilizar para ajustar el valor de los elementos enteros en la caché. Ambos métodos aceptan un segundo argumento opcional que indica la cantidad por la cual incrementar o disminuir el valor del artículo:
 
 ```php
-// Initialize the value if it does not exist...
+// Inicializar el valor si no existe...
 Cache::add('key', 0, now()->plus(hours: 4));
 
-// Increment or decrement the value...
+// Incrementar o disminuir el valor...
 Cache::increment('key');
 Cache::increment('key', $amount);
 Cache::decrement('key');
@@ -512,7 +512,7 @@ use Illuminate\Support\Facades\Cache;
 $lock = Cache::lock('foo', 10);
 
 if ($lock->get()) {
-    // Lock acquired for 10 seconds...
+    // Lock adquirido durante 10 segundos...
 
     $lock->release();
 }
@@ -522,7 +522,7 @@ El método `get` también acepta una función anónima. Después de ejecutar la 
 
 ```php
 Cache::lock('foo', 10)->get(function () {
-    // Lock acquired for 10 seconds and automatically released...
+    // Lock adquirido durante 10 segundos y liberado automáticamente...
 });
 ```
 
@@ -536,7 +536,7 @@ $lock = Cache::lock('foo', 10);
 try {
     $lock->block(5);
 
-    // Lock acquired after waiting a maximum of 5 seconds...
+    // Lock adquirido tras esperar como máximo 5 segundos...
 } catch (LockTimeoutException $e) {
     // Unable to acquire lock...
 } finally {
@@ -548,7 +548,7 @@ El ejemplo anterior se puede simplificar pasando una función anónima al métod
 
 ```php
 Cache::lock('foo', 10)->block(5, function () {
-    // Lock acquired for 10 seconds after waiting a maximum of 5 seconds...
+    // Lock adquirido durante 10 segundos tras esperar como máximo 5 segundos...
 });
 ```
 
@@ -593,7 +593,7 @@ if ($lock->get()) {
     foreach ($reports as $report) {
         $report->generate();
 
-        // Extend the lock for another 60 seconds...
+        // Extender el lock por otros 60 segundos...
         $lock->refresh();
     }
 
@@ -608,7 +608,7 @@ La funcionalidad de bloqueo atómico de Laravel también proporciona algunas for
 
 ```php
 Cache::withoutOverlapping('foo', function () {
-    // Lock acquired after waiting a maximum of 10 seconds...
+    // Lock adquirido tras esperar como máximo 10 segundos...
 });
 ```
 
@@ -616,7 +616,7 @@ De forma predeterminada, el bloqueo se mantiene hasta que la función anónima t
 
 ```php
 Cache::withoutOverlapping('foo', function () {
-    // Lock acquired for 120 seconds after waiting a maximum of 5 seconds...
+    // Lock adquirido durante 120 segundos tras esperar como máximo 5 segundos...
 }, lockFor: 120, waitFor: 5);
 ```
 
@@ -755,7 +755,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -767,7 +767,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {

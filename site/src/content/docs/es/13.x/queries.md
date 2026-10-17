@@ -69,7 +69,7 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
     /**
-     * Show a list of all of the application's users.
+     * Mostrar una lista de todos los usuarios de la aplicación.
      */
     public function index(): View
     {
@@ -169,7 +169,7 @@ Puede detener el procesamiento de más fragmentos devolviendo `false` desde la f
 
 ```php
 DB::table('users')->orderBy('id')->chunk(100, function (Collection $users) {
-    // Process the records...
+    // Procesar los registros...
 
     return false;
 });

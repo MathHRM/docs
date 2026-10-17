@@ -44,7 +44,7 @@ use Symfony\Component\HttpFoundation\Response;
 class EnsureTokenIsValid
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
@@ -437,7 +437,7 @@ use Symfony\Component\HttpFoundation\Response;
 class EnsureUserHasRole
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
@@ -487,7 +487,7 @@ use Symfony\Component\HttpFoundation\Response;
 class TerminatingMiddleware
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
@@ -497,7 +497,7 @@ class TerminatingMiddleware
     }
 
     /**
-     * Handle tasks after the response has been sent to the browser.
+     * Gestionar tareas después de enviar la respuesta al browser.
      */
     public function terminate(Request $request, Response $response): void
     {
@@ -514,7 +514,7 @@ Al llamar al método `terminate` en su middleware, Laravel resolverá una nueva 
 use App\Http\Middleware\TerminatingMiddleware;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {

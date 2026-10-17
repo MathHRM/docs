@@ -117,7 +117,7 @@ A continuación se muestra un ejemplo de un bloque de documentación de Laravel 
 
 ```php
 /**
- * Register a binding with the container.
+ * Registrar un binding en el container.
  *
  * @param  string|array  $abstract
  * @param  \Closure|string|null  $concrete
@@ -136,7 +136,7 @@ Cuando los atributos `@param` o `@return` son redundantes debido al uso de tipos
 
 ```php
 /**
- * Execute the job.
+ * Ejecutar el job.
  * [tl! remove]
  * @return void [tl! remove]
  */
@@ -150,7 +150,7 @@ Sin embargo, cuando el tipo nativo es genérico, especifica el tipo genérico me
 
 ```php
 /**
- * Get the attachments for the message.
+ * Obtener los archivos adjuntos del mensaje.
  * [tl! add]
  * @return array<int, \Illuminate\Mail\Mailables\Attachment> [tl! add]
  */

@@ -136,7 +136,7 @@ Toda la lógica de representación de la vista de autenticación se puede person
 use Laravel\Fortify\Fortify;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -168,7 +168,7 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Fortify\Fortify;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -240,7 +240,7 @@ Si necesita una personalización avanzada de este comportamiento, puede vincular
 use Laravel\Fortify\Contracts\LogoutResponse;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {
@@ -343,7 +343,7 @@ Para comenzar a implementar la funcionalidad de autenticación de dos factores, 
 use Laravel\Fortify\Fortify;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -541,7 +541,7 @@ Toda la lógica de representación de vistas de Fortify se puede personalizar ut
 use Laravel\Fortify\Fortify;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -580,7 +580,7 @@ Toda la lógica de representación de vistas de Fortify se puede personalizar ut
 use Laravel\Fortify\Fortify;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -627,7 +627,7 @@ use Laravel\Fortify\Fortify;
 use Illuminate\Http\Request;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -678,7 +678,7 @@ Toda la lógica de representación de la vista de Fortify se puede personalizar 
 use Laravel\Fortify\Fortify;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -733,7 +733,7 @@ Toda la lógica de representación de vistas de Fortify se puede personalizar ut
 use Laravel\Fortify\Fortify;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

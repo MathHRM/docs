@@ -52,7 +52,7 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
     /**
-     * Show the profile for a given user.
+     * Mostrar el perfil del usuario indicado.
      */
     public function show(string $id): View
     {
@@ -137,7 +137,7 @@ use Illuminate\Routing\Controllers\Middleware;
 class UserController implements HasMiddleware
 {
     /**
-     * Get the middleware that should be assigned to the controller.
+     * Obtener el middleware que debe asignarse al controlador.
      */
     public static function middleware(): array
     {
@@ -159,7 +159,7 @@ use Closure;
 use Illuminate\Http\Request;
 
 /**
- * Get the middleware that should be assigned to the controller.
+ * Obtener el middleware que debe asignarse al controlador.
  */
 public static function middleware(): array
 {
@@ -547,7 +547,7 @@ De forma predeterminada, `Route::resource` creará URI de recursos utilizando ve
 
 ```php
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -744,7 +744,7 @@ use App\Repositories\UserRepository;
 class UserController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Crear una nueva instancia del controlador.
      */
     public function __construct(
         protected UserRepository $users,
@@ -768,13 +768,13 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
-     * Store a new user.
+     * Guardar un usuario nuevo.
      */
     public function store(Request $request): RedirectResponse
     {
         $name = $request->name;
 
-        // Store the user...
+        // Guardar el usuario...
 
         return redirect('/users');
     }
@@ -802,11 +802,11 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
-     * Update the given user.
+     * Actualizar el usuario indicado.
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        // Update the user...
+        // Actualizar el usuario...
 
         return redirect('/users');
     }

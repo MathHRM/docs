@@ -115,7 +115,7 @@ FROM dunglas/frankenphp
 
 RUN install-php-extensions \
     pcntl
-    # Add other PHP extensions here...
+    # Añadir aquí otras extensiones de PHP...
 
 COPY . /app
 
@@ -173,7 +173,7 @@ A continuación, debe iniciar un shell Sail y utilizar el ejecutable `rr` para r
 ```shell
 ./vendor/bin/sail shell
 
-# Within the Sail shell...
+# Dentro del shell de Sail...
 ./vendor/bin/rr get-binary
 ```
 
@@ -453,7 +453,7 @@ use App\Service;
 use Illuminate\Contracts\Foundation\Application;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {
@@ -493,7 +493,7 @@ use App\Service;
 use Illuminate\Contracts\Foundation\Application;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {
@@ -539,7 +539,7 @@ use App\Service;
 use Illuminate\Contracts\Foundation\Application;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {
@@ -580,7 +580,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 /**
- * Handle an incoming request.
+ * Gestionar una solicitud entrante.
  */
 public function index(Request $request): array
 {

@@ -41,14 +41,14 @@ use Illuminate\View\View;
 class PodcastController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Crear una nueva instancia del controlador.
      */
     public function __construct(
         protected AppleMusic $apple,
     ) {}
 
     /**
-     * Show information about the given podcast.
+     * Mostrar información sobre el podcast indicado.
      */
     public function show(string $id): View
     {
@@ -274,7 +274,7 @@ Esta declaración le dice al contenedor que debe inyectar `RedisEventPusher` cua
 use App\Contracts\EventPusher;
 
 /**
- * Create a new class instance.
+ * Crear una nueva instancia de la clase.
  */
 public function __construct(
     protected EventPusher $pusher,
@@ -467,14 +467,14 @@ use ReflectionParameter;
 class Config implements ContextualAttribute
 {
     /**
-     * Create a new attribute instance.
+     * Crear una nueva instancia de attribute.
      */
     public function __construct(public string $key, public mixed $default = null)
     {
     }
 
     /**
-     * Resolve the configuration value.
+     * Resolver el valor de configuración.
      *
      * @param  self  $attribute
      * @param  \Illuminate\Contracts\Container\Container  $container
@@ -538,7 +538,7 @@ class Firewall
     protected $filters;
 
     /**
-     * Create a new class instance.
+     * Crear una nueva instancia de la clase.
      */
     public function __construct(
         protected Logger $logger,
@@ -669,7 +669,7 @@ Si desea que la instancia del contenedor Laravel se inyecte en una clase que el 
 use Illuminate\Container\Container;
 
 /**
- * Create a new class instance.
+ * Crear una nueva instancia de la clase.
  */
 public function __construct(
     protected Container $container,
@@ -693,14 +693,14 @@ use App\Services\AppleMusic;
 class PodcastController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Crear una nueva instancia del controlador.
      */
     public function __construct(
         protected AppleMusic $apple,
     ) {}
 
     /**
-     * Show information about the given podcast.
+     * Mostrar información sobre el podcast indicado.
      */
     public function show(string $id): Podcast
     {
@@ -724,7 +724,7 @@ use App\Services\AppleMusic;
 class PodcastStats
 {
     /**
-     * Generate a new podcast stats report.
+     * Generar un nuevo informe de estadísticas del podcast.
      */
     public function generate(AppleMusic $apple): array
     {
@@ -765,11 +765,11 @@ use App\Services\Transistor;
 use Illuminate\Contracts\Foundation\Application;
 
 $this->app->resolving(Transistor::class, function (Transistor $transistor, Application $app) {
-    // Called when container resolves objects of type "Transistor"...
+    // Se llama cuando el container resuelve objetos del tipo "Transistor"...
 });
 
 $this->app->resolving(function (mixed $object, Application $app) {
-    // Called when container resolves object of any type...
+    // Se llama cuando el container resuelve un objeto de cualquier tipo...
 });
 ```
 

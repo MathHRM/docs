@@ -91,7 +91,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class User extends Model
 {
     /**
-     * Get the phone associated with the user.
+     * Obtener el teléfono asociado al usuario.
      */
     public function phone(): HasOne
     {
@@ -134,7 +134,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Phone extends Model
 {
     /**
-     * Get the user that owns the phone.
+     * Obtener el usuario propietario del teléfono.
      */
     public function user(): BelongsTo
     {
@@ -149,7 +149,7 @@ Eloquent determina el nombre de la clave externa examinando el nombre del métod
 
 ```php
 /**
- * Get the user that owns the phone.
+ * Obtener el usuario propietario del teléfono.
  */
 public function user(): BelongsTo
 {
@@ -161,7 +161,7 @@ Si el modelo principal no usa `id` como clave principal, o deseas encontrar el m
 
 ```php
 /**
- * Get the user that owns the phone.
+ * Obtener el usuario propietario del teléfono.
  */
 public function user(): BelongsTo
 {
@@ -185,7 +185,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Post extends Model
 {
     /**
-     * Get the comments for the blog post.
+     * Obtener los comentarios de la entrada de blog.
      */
     public function comments(): HasMany
     {
@@ -254,7 +254,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Post extends Model
 {
     /**
-     * Get the comments for the blog post.
+     * Obtener los comentarios de la entrada de blog.
      */
     public function comments(): HasMany
     {
@@ -289,7 +289,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Comment extends Model
 {
     /**
-     * Get the post that owns the comment.
+     * Obtener la publicación a la que pertenece el comentario.
      */
     public function post(): BelongsTo
     {
@@ -316,7 +316,7 @@ Sin embargo, si la clave externa de tu relación no sigue estas convenciones, pu
 
 ```php
 /**
- * Get the post that owns the comment.
+ * Obtener la publicación a la que pertenece el comentario.
  */
 public function post(): BelongsTo
 {
@@ -328,7 +328,7 @@ Si tu modelo principal no usa `id` como clave principal, o deseas encontrar el m
 
 ```php
 /**
- * Get the post that owns the comment.
+ * Obtener la publicación a la que pertenece el comentario.
  */
 public function post(): BelongsTo
 {
@@ -343,7 +343,7 @@ Las relaciones `belongsTo`, `hasOne`, `hasOneThrough` y `morphOne` te permiten d
 
 ```php
 /**
- * Get the author of the post.
+ * Obtener el autor de la publicación.
  */
 public function user(): BelongsTo
 {
@@ -355,7 +355,7 @@ Para completar el modelo predeterminado con atributos, puedes pasar un array o u
 
 ```php
 /**
- * Get the author of the post.
+ * Obtener el autor de la publicación.
  */
 public function user(): BelongsTo
 {
@@ -365,7 +365,7 @@ public function user(): BelongsTo
 }
 
 /**
- * Get the author of the post.
+ * Obtener el autor de la publicación.
  */
 public function user(): BelongsTo
 {
@@ -413,7 +413,7 @@ A veces, un modelo puede tener muchos modelos relacionados, pero deseas recupera
 
 ```php
 /**
- * Get the user's most recent order.
+ * Obtener el pedido más reciente del usuario.
  */
 public function latestOrder(): HasOne
 {
@@ -425,7 +425,7 @@ Del mismo modo, puedes definir un método para recuperar el modelo relacionado "
 
 ```php
 /**
- * Get the user's oldest order.
+ * Obtener el pedido más antiguo del usuario.
  */
 public function oldestOrder(): HasOne
 {
@@ -439,7 +439,7 @@ Por ejemplo, utilizando el método `ofMany`, puedes recuperar el pedido más car
 
 ```php
 /**
- * Get the user's largest order.
+ * Obtener el pedido más grande del usuario.
  */
 public function largestOrder(): HasOne
 {
@@ -457,7 +457,7 @@ A menudo, al recuperar un único modelo utilizando los métodos `latestOfMany`, 
 
 ```php
 /**
- * Get the user's orders.
+ * Obtener los pedidos del usuario.
  */
 public function orders(): HasMany
 {
@@ -465,7 +465,7 @@ public function orders(): HasMany
 }
 
 /**
- * Get the user's largest order.
+ * Obtener el pedido más grande del usuario.
  */
 public function largestOrder(): HasOne
 {
@@ -491,7 +491,7 @@ Entonces, en resumen, necesitamos recuperar los últimos precios publicados cuan
 
 ```php
 /**
- * Get the current pricing for the product.
+ * Obtener el precio actual del producto.
  */
 public function currentPricing(): HasOne
 {
@@ -540,7 +540,7 @@ use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 class Mechanic extends Model
 {
     /**
-     * Get the car's owner.
+     * Obtener el propietario del automóvil.
      */
     public function carOwner(): HasOneThrough
     {
@@ -570,7 +570,7 @@ Se utilizarán las convenciones de clave externa típicas de Eloquent al realiza
 class Mechanic extends Model
 {
     /**
-     * Get the car's owner.
+     * Obtener el propietario del automóvil.
      */
     public function carOwner(): HasOneThrough
     {
@@ -630,7 +630,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 class Application extends Model
 {
     /**
-     * Get all of the deployments for the application.
+     * Obtener todos los deployments de la aplicación.
      */
     public function deployments(): HasManyThrough
     {
@@ -701,7 +701,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class User extends Model
 {
     /**
-     * Get the user's posts.
+     * Obtener las publicaciones del usuario.
      */
     public function posts(): HasMany
     {
@@ -709,7 +709,7 @@ class User extends Model
     }
 
     /**
-     * Get the user's featured posts.
+     * Obtener las publicaciones destacadas del usuario.
      */
     public function featuredPosts(): HasMany
     {
@@ -722,7 +722,7 @@ Sin embargo, si intentas crear un modelo mediante el método `featuredPosts`, su
 
 ```php
 /**
- * Get the user's featured posts.
+ * Obtener las publicaciones destacadas del usuario.
  */
 public function featuredPosts(): HasMany
 {
@@ -1108,7 +1108,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Image extends Model
 {
     /**
-     * Get the parent imageable model (user or post).
+     * Obtener el modelo imageable principal (usuario o publicación).
      */
     public function imageable(): MorphTo
     {
@@ -1122,7 +1122,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 class Post extends Model
 {
     /**
-     * Get the post's image.
+     * Obtener la imagen de la publicación.
      */
     public function image(): MorphOne
     {
@@ -1136,7 +1136,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 class User extends Model
 {
     /**
-     * Get the user's image.
+     * Obtener la imagen del usuario.
      */
     public function image(): MorphOne
     {
@@ -1177,7 +1177,7 @@ Si es necesario, puedes especificar el nombre de las columnas "id" y "type" util
 
 ```php
 /**
- * Get the model that the image belongs to.
+ * Obtener el modelo al que pertenece la imagen.
  */
 public function imageable(): MorphTo
 {
@@ -1227,7 +1227,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class Comment extends Model
 {
     /**
-     * Get the parent commentable model (post or video).
+     * Obtener el modelo commentable principal (publicación o video).
      */
     public function commentable(): MorphTo
     {
@@ -1241,7 +1241,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class Post extends Model
 {
     /**
-     * Get all of the post's comments.
+     * Obtener todos los comentarios de la publicación.
      */
     public function comments(): MorphMany
     {
@@ -1255,7 +1255,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class Video extends Model
 {
     /**
-     * Get all of the video's comments.
+     * Obtener todos los comentarios del video.
      */
     public function comments(): MorphMany
     {
@@ -1314,7 +1314,7 @@ Si deseas que Eloquent hidrate automáticamente los modelos principales en sus m
 class Post extends Model
 {
     /**
-     * Get all of the post's comments.
+     * Obtener todos los comentarios de la publicación.
      */
     public function comments(): MorphMany
     {
@@ -1340,7 +1340,7 @@ A veces, un modelo puede tener muchos modelos relacionados, pero deseas recupera
 
 ```php
 /**
- * Get the user's most recent image.
+ * Obtener la imagen más reciente del usuario.
  */
 public function latestImage(): MorphOne
 {
@@ -1352,7 +1352,7 @@ Del mismo modo, puedes definir un método para recuperar el modelo relacionado "
 
 ```php
 /**
- * Get the user's oldest image.
+ * Obtener la imagen más antigua del usuario.
  */
 public function oldestImage(): MorphOne
 {
@@ -1366,7 +1366,7 @@ Por ejemplo, utilizando el método `ofMany`, puedes recuperar la imagen del usua
 
 ```php
 /**
- * Get the user's most popular image.
+ * Obtener la imagen más popular del usuario.
  */
 public function bestImage(): MorphOne
 {
@@ -1425,7 +1425,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 class Post extends Model
 {
     /**
-     * Get all of the tags for the post.
+     * Obtener todas las tags de la publicación.
      */
     public function tags(): MorphToMany
     {
@@ -1452,7 +1452,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 class Tag extends Model
 {
     /**
-     * Get all of the posts that are assigned this tag.
+     * Obtener todas las publicaciones asignadas a esta tag.
      */
     public function posts(): MorphToMany
     {
@@ -1460,7 +1460,7 @@ class Tag extends Model
     }
 
     /**
-     * Get all of the videos that are assigned this tag.
+     * Obtener todos los videos asignados a esta tag.
      */
     public function videos(): MorphToMany
     {
@@ -1568,7 +1568,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class User extends Model
 {
     /**
-     * Get all of the posts for the user.
+     * Obtener todas las publicaciones del usuario.
      */
     public function posts(): HasMany
     {
@@ -1655,21 +1655,21 @@ Al recuperar registros de modelo, es posible que desees limitar tus resultados e
 ```php
 use App\Models\Post;
 
-// Retrieve all posts that have at least one comment...
+// Recuperar todas las publicaciones que tengan al menos un comentario...
 $posts = Post::has('comments')->get();
 ```
 
 También puedes especificar un operador y un valor de recuento para personalizar aún más la consulta:
 
 ```php
-// Retrieve all posts that have three or more comments...
+// Recuperar todas las publicaciones que tengan tres o más comentarios...
 $posts = Post::has('comments', '>=', 3)->get();
 ```
 
 Las declaraciones `has` anidadas se pueden construir utilizando notación de "puntos". Por ejemplo, puedes recuperar todas las publicaciones que tengan al menos un comentario que tenga al menos una imagen:
 
 ```php
-// Retrieve posts that have at least one comment with images...
+// Recuperar las publicaciones que tengan al menos un comentario con imágenes...
 $posts = Post::has('comments.images')->get();
 ```
 
@@ -1678,12 +1678,12 @@ Si necesitas aún más potencia, puedes utilizar los métodos `whereHas` y `orWh
 ```php
 use Illuminate\Database\Eloquent\Builder;
 
-// Retrieve posts with at least one comment containing words like code%...
+// Recuperar publicaciones con al menos un comentario que contenga términos como code%...
 $posts = Post::whereHas('comments', function (Builder $query) {
     $query->where('content', 'like', 'code%');
 })->get();
 
-// Retrieve posts with at least ten comments containing words like code%...
+// Recuperar publicaciones con al menos diez comentarios que contengan términos como code%...
 $posts = Post::whereHas('comments', function (Builder $query) {
     $query->where('content', 'like', 'code%');
 }, '>=', 10)->get();
@@ -1770,7 +1770,7 @@ use App\Models\Post;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Builder;
 
-// Retrieve comments associated to posts or videos with a title like code%...
+// Recuperar comentarios asociados a publicaciones o vídeos con un título como code%...
 $comments = Comment::whereHasMorph(
     'commentable',
     [Post::class, Video::class],
@@ -1779,7 +1779,7 @@ $comments = Comment::whereHasMorph(
     }
 )->get();
 
-// Retrieve comments associated to posts with a title not like code%...
+// Recuperar comentarios asociados a publicaciones con un título que no coincida con code%...
 $comments = Comment::whereDoesntHaveMorph(
     'commentable',
     Post::class,
@@ -1995,7 +1995,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Book extends Model
 {
     /**
-     * Get the author that wrote the book.
+     * Obtener el autor del libro.
      */
     public function author(): BelongsTo
     {
@@ -2079,7 +2079,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class ActivityFeed extends Model
 {
     /**
-     * Get the parent of the activity feed record.
+     * Obtener el elemento principal del registro del feed de actividad.
      */
     public function parentable(): MorphTo
     {
@@ -2140,7 +2140,7 @@ class Book extends Model
     protected $with = ['author'];
 
     /**
-     * Get the author that wrote the book.
+     * Obtener el autor del libro.
      */
     public function author(): BelongsTo
     {
@@ -2148,7 +2148,7 @@ class Book extends Model
     }
 
     /**
-     * Get the genre of the book.
+     * Obtener el género del libro.
      */
     public function genre(): BelongsTo
     {
@@ -2270,7 +2270,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 class ActivityFeed extends Model
 {
     /**
-     * Get the parent of the activity feed record.
+     * Obtener el elemento principal del registro del feed de actividad.
      */
     public function parentable(): MorphTo
     {
@@ -2302,7 +2302,7 @@ En muchos casos, Laravel puede cargar automáticamente de forma anticipada las r
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -2347,7 +2347,7 @@ El método `preventLazyLoading` acepta un argumento booleano opcional que indica
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -2524,10 +2524,10 @@ $user->roles()->attach($roleId, ['expires' => $expires]);
 A veces puede ser necesario eliminar un rol de un usuario. Para eliminar un registro de relación de muchos a muchos, utiliza el método `detach`. El método `detach` eliminará el registro apropiado de la tabla intermedia; sin embargo, ambos modelos permanecerán en la base de datos:
 
 ```php
-// Detach a single role from the user...
+// Desvincular un solo rol del usuario...
 $user->roles()->detach($roleId);
 
-// Detach all roles from the user...
+// Desvincular todos los roles del usuario...
 $user->roles()->detach();
 ```
 
@@ -2633,7 +2633,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Comment extends Model
 {
     /**
-     * Get the post that the comment belongs to.
+     * Obtener la publicación a la que pertenece el comentario.
      */
     public function post(): BelongsTo
     {

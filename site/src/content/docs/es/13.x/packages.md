@@ -111,7 +111,7 @@ Normalmente, deberá publicar el archivo de configuración de su paquete en el d
 
 ```php
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -139,7 +139,7 @@ El método `mergeConfigFrom` acepta la ruta al archivo de configuración de su p
 
 ```php
 /**
- * Register any package services.
+ * Registrar los servicios del package.
  */
 public function register(): void
 {
@@ -159,7 +159,7 @@ Si su paquete contiene rutas, puede cargarlas usando el método `loadRoutesFrom`
 
 ```php
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -174,7 +174,7 @@ Si su paquete contiene [migraciones de base de datos](../migrations/), puede usa
 
 ```php
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -191,7 +191,7 @@ Si su paquete contiene [archivos de idioma](../localization/), puede usar el mé
 
 ```php
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -209,7 +209,7 @@ Puede registrar archivos de traducción JSON para su paquete utilizando el méto
 
 ```php
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -224,7 +224,7 @@ Si desea publicar los archivos de idioma de su paquete en el directorio `lang/ve
 
 ```php
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -245,7 +245,7 @@ Para registrar las [views](../views/) de su paquete con Laravel, debe indicarle 
 
 ```php
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -273,7 +273,7 @@ Si desea que sus vistas estén disponibles para su publicación en el directorio
 
 ```php
 /**
- * Bootstrap the package services.
+ * Inicializar los servicios del package.
  */
 public function boot(): void
 {
@@ -297,7 +297,7 @@ use Illuminate\Support\Facades\Blade;
 use VendorPackage\View\Components\AlertComponent;
 
 /**
- * Bootstrap your package's services.
+ * Inicializar los servicios del package.
  */
 public function boot(): void
 {
@@ -320,7 +320,7 @@ Alternativamente, puede utilizar el método `componentNamespace` para cargar aut
 use Illuminate\Support\Facades\Blade;
 
 /**
- * Bootstrap your package's services.
+ * Inicializar los servicios del package.
  */
 public function boot(): void
 {
@@ -355,7 +355,7 @@ El comando `about` Artisan integrado de Laravel proporciona una sinopsis del ent
 use Illuminate\Foundation\Console\AboutCommand;
 
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -373,7 +373,7 @@ use Courier\Console\Commands\InstallCommand;
 use Courier\Console\Commands\NetworkCommand;
 
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -393,7 +393,7 @@ El comando de optimización [](../deployment/#optimization) de Laravel almacena 
 
 ```php
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -413,7 +413,7 @@ El [comando de recarga](../deployment/#reloading-services) de Laravel finaliza c
 
 ```php
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -430,7 +430,7 @@ Su paquete puede tener recursos como JavaScript, CSS e imágenes. Para publicar 
 
 ```php
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {
@@ -453,7 +453,7 @@ Es posible que desee publicar grupos de activos y recursos de paquetes por separ
 
 ```php
 /**
- * Bootstrap any package services.
+ * Inicializar los servicios de cualquier package.
  */
 public function boot(): void
 {

@@ -87,7 +87,7 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
     /**
-     * Show the profile for the given user.
+     * Mostrar el perfil del usuario indicado.
      */
     public function show(Request $request, string $id): View
     {
@@ -119,13 +119,13 @@ También puede utilizar la función PHP global `session` para recuperar y almace
 
 ```php
 Route::get('/home', function () {
-    // Retrieve a piece of data from the session...
+    // Recuperar un dato de la session...
     $value = session('key');
 
     // Specifying a default value...
     $value = session('key', 'default');
 
-    // Store a piece of data in the session...
+    // Almacenar un dato en la session...
     session(['key' => 'value']);
 });
 ```
@@ -186,10 +186,10 @@ if ($request->session()->missing('users')) {
 Para almacenar datos en la sesión, normalmente utilizará el método `put` de la instancia de solicitud o el asistente global `session`:
 
 ```php
-// Via a request instance...
+// Mediante una instancia de request...
 $request->session()->put('key', 'value');
 
-// Via the global "session" helper...
+// Mediante el helper global "session"...
 session(['key' => 'value']);
 ```
 
@@ -255,10 +255,10 @@ $request->session()->now('status', 'Task was successful!');
 El método `forget` eliminará un dato de la sesión. Si desea eliminar todos los datos de la sesión, puede utilizar el método `flush`:
 
 ```php
-// Forget a single key...
+// Olvidar una sola clave...
 $request->session()->forget('name');
 
-// Forget multiple keys...
+// Olvidar varias claves...
 $request->session()->forget(['name', 'status']);
 
 $request->session()->flush();
@@ -389,7 +389,7 @@ use Illuminate\Support\ServiceProvider;
 class SessionServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -397,12 +397,12 @@ class SessionServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
         Session::extend('mongo', function (Application $app) {
-            // Return an implementation of SessionHandlerInterface...
+            // Devolver una implementación de SessionHandlerInterface...
             return new MongoSessionHandler;
         });
     }

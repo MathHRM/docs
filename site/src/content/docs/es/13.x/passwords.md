@@ -227,7 +227,7 @@ use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -246,7 +246,7 @@ Puede modificar fácilmente la clase de notificación utilizada para enviar el e
 use App\Notifications\ResetPasswordNotification;
 
 /**
- * Send a password reset notification to the user.
+ * Enviar una notificación de restablecimiento de contraseña al usuario.
  *
  * @param  string  $token
  */

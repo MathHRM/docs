@@ -257,10 +257,10 @@ Hay dos formas de ejecutar Vite. Puede ejecutar el servidor de desarrollo median
 O bien, ejecutar el comando `build` versionará y empaquetará los activos de su aplicación y los preparará para su implementación en producción:
 
 ```shell
-# Run the Vite development server...
+# Ejecutar el servidor de desarrollo de Vite...
 npm run dev
 
-# Build and version the assets for production...
+# Compilar y asignar versiones a los assets para producción...
 npm run build
 ```
 
@@ -701,7 +701,7 @@ Es común en aplicaciones JavaScript [crear alias](#aliases) para directorios a 
 
 ```php
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -733,7 +733,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -741,7 +741,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -754,7 +754,7 @@ En el ejemplo anterior, los recursos se recuperarán previamente con un máximo 
 
 ```php
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -766,7 +766,7 @@ De forma predeterminada, la captación previa comenzará cuando se active la [p�
 
 ```php
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -931,7 +931,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AddContentSecurityPolicyHeaders
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
@@ -1136,7 +1136,7 @@ export default defineConfig({
     server: {  // [tl! add]
         cors: {  // [tl! add]
             origin: [ // [tl! add]
-                // Supports: SCHEME://DOMAIN.laravel[:PORT] [tl! add]
+                // Admite: SCHEME://DOMAIN.laravel[:PORT] [tl! add]
                 /^https?:\/\/.*\.laravel(:\d+)?$/, //[tl! add]
             ], // [tl! add]
         }, // [tl! add]

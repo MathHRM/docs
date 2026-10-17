@@ -685,7 +685,7 @@ use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\PrivateChannel;
 
 /**
- * Get the channel the event should broadcast on.
+ * Obtener el channel en el que se debe emitir el evento.
  */
 public function broadcastOn(): Channel
 {
@@ -699,7 +699,7 @@ Si deseas que el evento se difunda en varios canales, puedes devolver un `array`
 use Illuminate\Broadcasting\PrivateChannel;
 
 /**
- * Get the channels the event should broadcast on.
+ * Obtener los canales en los que debe emitirse el evento.
  *
  * @return array<int, \Illuminate\Broadcasting\Channel>
  */
@@ -800,14 +800,14 @@ class ServerCreated implements ShouldBroadcast
     use SerializesModels;
 
     /**
-     * Create a new event instance.
+     * Crear una nueva instancia del evento.
      */
     public function __construct(
         public User $user,
     ) {}
 
     /**
-     * Get the channels the event should broadcast on.
+     * Obtener los canales en los que debe emitirse el evento.
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */
@@ -864,7 +864,7 @@ Sin embargo, si deseas tener un control más detallado sobre la carga útil de t
 
 ```php
 /**
- * Get the data to broadcast.
+ * Obtener los datos que se deben emitir.
  *
  * @return array<string, mixed>
  */
@@ -927,7 +927,7 @@ A veces deseas difundir tu evento solo si una condición determinada es verdader
 
 ```php
 /**
- * Determine if this event should broadcast.
+ * Determinar si se debe emitir este evento.
  */
 public function broadcastWhen(): bool
 {
@@ -1056,7 +1056,7 @@ use App\Models\User;
 class OrderChannel
 {
     /**
-     * Create a new channel instance.
+     * Crear una nueva instancia de channel.
      */
     public function __construct() {}
 
@@ -1151,7 +1151,7 @@ class OrderShipmentStatusUpdated implements ShouldBroadcast
     use InteractsWithBroadcasting;
 
     /**
-     * Create a new event instance.
+     * Crear una nueva instancia del evento.
      */
     public function __construct()
     {
@@ -1406,10 +1406,10 @@ stopListening();
 // Start listening again...
 listen();
 
-// Leave channel...
+// Salir del canal...
 leaveChannel();
 
-// Leave a channel and also its associated private and presence channels...
+// Salir de un canal y también de sus canales privados y de presencia asociados...
 leave();
 ```
 
@@ -1431,10 +1431,10 @@ stopListening();
 // Start listening again...
 listen();
 
-// Leave channel...
+// Salir del canal...
 leaveChannel();
 
-// Leave a channel and also its associated private and presence channels...
+// Salir de un canal y también de sus canales privados y de presencia asociados...
 leave();
 </script>
 ```
@@ -1457,10 +1457,10 @@ stopListening();
 // Start listening again...
 listen();
 
-// Leave channel...
+// Salir del canal...
 leaveChannel();
 
-// Leave a channel and also its associated private and presence channels...
+// Salir de un canal y también de sus canales privados y de presencia asociados...
 leave();
 </script>
 ```
@@ -1669,7 +1669,7 @@ Los canales de presencia pueden recibir eventos al igual que los canales públic
 
 ```php
 /**
- * Get the channels the event should broadcast on.
+ * Obtener los canales en los que debe emitirse el evento.
  *
  * @return array<int, \Illuminate\Broadcasting\Channel>
  */
@@ -1712,7 +1712,7 @@ Para comenzar, configura una clave de cifrado para [Pusher Channels](#pusher-man
 use Illuminate\Broadcasting\EncryptedPrivateChannel;
 
 /**
- * Get the channels the event should broadcast on.
+ * Obtener los canales en los que debe emitirse el evento.
  *
  * @return array<int, \Illuminate\Broadcasting\Channel>
  */
@@ -1771,7 +1771,7 @@ class Post extends Model
     use BroadcastsEvents, HasFactory;
 
     /**
-     * Get the user that the post belongs to.
+     * Obtener el usuario al que pertenece la publicación.
      */
     public function user(): BelongsTo
     {
@@ -1779,7 +1779,7 @@ class Post extends Model
     }
 
     /**
-     * Get the channels that model events should broadcast on.
+     * Obtener los canales en los que deben emitirse los eventos del modelo.
      *
      * @return array<int, \Illuminate\Broadcasting\Channel|\Illuminate\Database\Eloquent\Model>
      */
@@ -1796,7 +1796,7 @@ Además, habrás notado que el método `broadcastOn` recibe un argumento de cade
 
 ```php
 /**
- * Get the channels that model events should broadcast on.
+ * Obtener los canales en los que deben emitirse los eventos del modelo.
  *
  * @return array<string, array<int, \Illuminate\Broadcasting\Channel|\Illuminate\Database\Eloquent\Model>>
  */
@@ -1818,7 +1818,7 @@ Ocasionalmente, es posible que desees personalizar cómo Laravel crea el evento 
 use Illuminate\Database\Eloquent\BroadcastableModelEventOccurred;
 
 /**
- * Create a new broadcastable model event for the model.
+ * Crear un nuevo evento de modelo emitible para el modelo.
  */
 protected function newBroadcastableEvent(string $event): BroadcastableModelEventOccurred
 {
@@ -1842,7 +1842,7 @@ Entonces, un modelo `App\Models\User` con un `id` de `1` se convertiría en una 
 use Illuminate\Broadcasting\PrivateChannel;
 
 /**
- * Get the channels that model events should broadcast on.
+ * Obtener los canales en los que deben emitirse los eventos del modelo.
  *
  * @return array<int, \Illuminate\Broadcasting\Channel>
  */
@@ -1902,7 +1902,7 @@ public function broadcastAs(string $event): string|null
 }
 
 /**
- * Get the data to broadcast for the model.
+ * Obtener los datos del modelo que se deben emitir.
  *
  * @return array<string, mixed>
  */

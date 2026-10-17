@@ -89,7 +89,7 @@ use App\Models\Sanctum\PersonalAccessToken;
 use Laravel\Sanctum\Sanctum;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -230,13 +230,13 @@ Route::get('/user', function (Request $request) {
 Puede "revocar" tokens eliminándolos de su base de datos utilizando la relación `tokens` proporcionada por el rasgo `Laravel\Sanctum\HasApiTokens`:
 
 ```php
-// Revoke all tokens...
+// Revocar todos los tokens...
 $user->tokens()->delete();
 
-// Revoke the token that was used to authenticate the current request...
+// Revocar el token usado para autenticar la solicitud actual...
 $request->user()->currentAccessToken()->delete();
 
-// Revoke a specific token...
+// Revocar un token específico...
 $user->tokens()->where('id', $tokenId)->delete();
 ```
 
@@ -472,10 +472,10 @@ Route::get('/user', function (Request $request) {
 Para permitir a los usuarios revocar tokens API emitidos a dispositivos móviles, puede enumerarlos por nombre, junto con un botón "Revocar", dentro de una parte de "configuración de cuenta" de la interfaz de usuario de su aplicación web. Cuando el usuario hace clic en el botón "Revocar", puede eliminar el token de la base de datos. Recuerde, puede acceder a los tokens API de un usuario a través de la relación `tokens` proporcionada por el rasgo `Laravel\Sanctum\HasApiTokens`:
 
 ```php
-// Revoke all tokens...
+// Revocar todos los tokens...
 $user->tokens()->delete();
 
-// Revoke a specific token...
+// Revocar un token específico...
 $user->tokens()->where('id', $tokenId)->delete();
 ```
 

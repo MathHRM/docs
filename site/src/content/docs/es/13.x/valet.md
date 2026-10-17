@@ -339,12 +339,12 @@ Algunas aplicaciones que utilizan otros marcos pueden depender de las variables 
 <?php
 
 return [
-    // Set $_SERVER['key'] to "value" for the laravel.test site...
+    // Establecer $_SERVER['key'] en "value" para el sitio laravel.test...
     'laravel' => [
         'key' => 'value',
     ],
 
-    // Set $_SERVER['key'] to "value" for all sites...
+    // Establecer $_SERVER['key'] en "value" para todos los sitios...
     '*' => [
         'key' => 'value',
     ],
@@ -398,7 +398,7 @@ Por ejemplo, imaginemos que estamos escribiendo un `WordPressValetDriver`. Nuest
 
 ```php
 /**
- * Determine if the driver serves the request.
+ * Determinar si el driver gestiona la solicitud.
  */
 public function serves(string $sitePath, string $siteName, string $uri): bool
 {
@@ -413,7 +413,7 @@ El `isStaticFile` debe determinar si la solicitud entrante es para un archivo "e
 
 ```php
 /**
- * Determine if the incoming request is for a static file.
+ * Determinar si la solicitud entrante es para un archivo estático.
  *
  * @return string|false
  */
@@ -437,7 +437,7 @@ El método `frontControllerPath` debería devolver la ruta completa al "controla
 
 ```php
 /**
- * Get the fully resolved path to the application's front controller.
+ * Obtener la ruta completamente resuelta al controlador frontal de la aplicación.
  */
 public function frontControllerPath(string $sitePath, string $siteName, string $uri): string
 {
@@ -456,7 +456,7 @@ use Valet\Drivers\LaravelValetDriver;
 class LocalValetDriver extends LaravelValetDriver
 {
     /**
-     * Determine if the driver serves the request.
+     * Determinar si el driver gestiona la solicitud.
      */
     public function serves(string $sitePath, string $siteName, string $uri): bool
     {
@@ -464,7 +464,7 @@ class LocalValetDriver extends LaravelValetDriver
     }
 
     /**
-     * Get the fully resolved path to the application's front controller.
+     * Obtener la ruta completamente resuelta al controlador frontal de la aplicación.
      */
     public function frontControllerPath(string $sitePath, string $siteName, string $uri): string
     {

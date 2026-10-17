@@ -2007,7 +2007,7 @@ El método `Number::useLocale` establece globalmente la configuración regional 
 use Illuminate\Support\Number;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -2037,7 +2037,7 @@ El método `Number::useCurrency` establece globalmente la moneda predeterminada 
 use Illuminate\Support\Number;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -3016,7 +3016,7 @@ Para mayor comodidad, puedes proporcionar un array como primer argumento de la f
 
 ```php
 return retry([100, 200], function () {
-    // Sleep for 100ms on first retry, 200ms on second retry...
+    // Esperar 100 ms en el primer reintento y 200 ms en el segundo...
 });
 ```
 
@@ -3338,7 +3338,7 @@ use Illuminate\Support\Facades\Route;
 use function Illuminate\Support\defer;
 
 Route::post('/orders', function (Request $request) {
-    // Create order...
+    // Crear el pedido...
 
     defer(fn () => Metrics::reportOrder($order));
 
@@ -3534,25 +3534,25 @@ while ($waiting) {
 La clase `Sleep` ofrece diversos métodos que permiten trabajar con distintas unidades de tiempo:
 
 ```php
-// Return a value after sleeping...
+// Devolver un valor después de esperar...
 $result = Sleep::for(1)->second()->then(fn () => 1 + 1);
 
-// Sleep while a given value is true...
+// Esperar mientras el valor indicado sea true...
 Sleep::for(1)->second()->while(fn () => shouldKeepSleeping());
 
-// Pause execution for 90 seconds...
+// Pausar la ejecución durante 90 segundos...
 Sleep::for(1.5)->minutes();
 
-// Pause execution for 2 seconds...
+// Pausar la ejecución durante 2 segundos...
 Sleep::for(2)->seconds();
 
-// Pause execution for 500 milliseconds...
+// Pausar la ejecución durante 500 milisegundos...
 Sleep::for(500)->milliseconds();
 
-// Pause execution for 5,000 microseconds...
+// Pausar la ejecución durante 5.000 microsegundos...
 Sleep::for(5000)->microseconds();
 
-// Pause execution until a given time...
+// Pausar la ejecución hasta la hora indicada...
 Sleep::until(now()->plus(minutes: 1));
 
 // Alias of PHP's native "sleep" function...
@@ -3643,18 +3643,18 @@ Por supuesto, la clase `Sleep` ofrece otras aserciones que puedes utilizar en tu
 use Carbon\CarbonInterval as Duration;
 use Illuminate\Support\Sleep;
 
-// Assert that sleep was called 3 times...
+// Comprobar que sleep se haya llamado 3 veces...
 Sleep::assertSleptTimes(3);
 
-// Assert against the duration of sleep...
+// Comprobar la duración de sleep...
 Sleep::assertSlept(function (Duration $duration): bool {
     return /* ... */;
 }, times: 1);
 
-// Assert that the Sleep class was never invoked...
+// Comprobar que nunca se haya invocado la clase Sleep...
 Sleep::assertNeverSlept();
 
-// Assert that, even if Sleep was called, no execution paused occurred...
+// Comprobar que la ejecución no se haya pausado aunque se haya llamado a Sleep...
 Sleep::assertInsomniac();
 ```
 
@@ -3668,7 +3668,7 @@ $this->freezeTime();
 Sleep::fake();
 
 Sleep::whenFakingSleep(function (Duration $duration) {
-    // Progress time when faking sleep...
+    // Adelantar el tiempo al simular sleep...
     $this->travel($duration->totalMilliseconds)->milliseconds();
 });
 ```
@@ -3718,10 +3718,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\InvokableController;
 use Illuminate\Support\Uri;
 
-// Generate a URI instance from the given string...
+// Generar una instancia de URI a partir de la cadena indicada...
 $uri = Uri::of('https://example.com/path');
 
-// Generate URI instances to paths, named routes, or controller actions...
+// Generar instancias de URI para rutas, rutas con nombre o acciones de controladores...
 $uri = Uri::to('/dashboard');
 $uri = Uri::route('users.show', ['user' => 1]);
 $uri = Uri::signedRoute('users.show', ['user' => 1]);
@@ -3729,7 +3729,7 @@ $uri = Uri::temporarySignedRoute('user.index', now()->plus(minutes: 5));
 $uri = Uri::action([UserController::class, 'index']);
 $uri = Uri::action(InvokableController::class);
 
-// Generate a URI instance from the current request URL...
+// Generar una instancia de URI a partir de la URL de la solicitud actual...
 $uri = $request->uri();
 ```
 

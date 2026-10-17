@@ -110,7 +110,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -788,7 +788,7 @@ Sin embargo, si estás creando un paquete que utiliza componentes Blade, deberá
 use Illuminate\Support\Facades\Blade;
 
 /**
- * Bootstrap your package's services.
+ * Inicializar los servicios del package.
  */
 public function boot(): void
 {
@@ -808,7 +808,7 @@ Alternativamente, puedes utilizar el método `componentNamespace` para cargar au
 use Illuminate\Support\Facades\Blade;
 
 /**
- * Bootstrap your package's services.
+ * Inicializar los servicios del package.
  */
 public function boot(): void
 {
@@ -898,7 +898,7 @@ use Illuminate\View\View;
 class Alert extends Component
 {
     /**
-     * Create the component instance.
+     * Crear la instancia del componente.
      */
     public function __construct(
         public string $type,
@@ -906,7 +906,7 @@ class Alert extends Component
     ) {}
 
     /**
-     * Get the view / contents that represent the component.
+     * Obtener la vista / el contenido que representa el componente.
      */
     public function render(): View
     {
@@ -930,7 +930,7 @@ Los argumentos del constructor de componentes se deben especificar usando `camel
 
 ```php
 /**
- * Create the component instance.
+ * Crear la instancia del componente.
  */
 public function __construct(
     public string $alertType,
@@ -982,7 +982,7 @@ Además de que las variables públicas estén disponibles para la plantilla de t
 
 ```php
 /**
- * Determine if the given option is the currently selected option.
+ * Determinar si la opción indicada es la opción seleccionada actualmente.
  */
 public function isSelected(string $option): bool
 {
@@ -1007,7 +1007,7 @@ Los componentes Blade también te permiten acceder al nombre, los atributos y el
 use Closure;
 
 /**
- * Get the view / contents that represent the component.
+ * Obtener la vista / el contenido que representa el componente.
  */
 public function render(): Closure
 {
@@ -1045,7 +1045,7 @@ Si tu componente requiere dependencias del [contenedor de servicios](../containe
 use App\Services\AlertCreator;
 
 /**
- * Create the component instance.
+ * Crear la instancia del componente.
  */
 public function __construct(
     public AlertCreator $creator,
@@ -1076,7 +1076,7 @@ class Alert extends Component
     protected $except = ['type'];
 
     /**
-     * Create the component instance.
+     * Crear la instancia del componente.
      */
     public function __construct(
         public string $type,
@@ -1402,7 +1402,7 @@ Para componentes muy pequeños, puede resultar engorroso administrar tanto la cl
 
 ```php
 /**
- * Get the view / contents that represent the component.
+ * Obtener la vista / el contenido que representa el componente.
  */
 public function render(): string
 {
@@ -1449,7 +1449,7 @@ use Illuminate\Support\Facades\Blade;
 use VendorPackage\View\Components\AlertComponent;
 
 /**
- * Bootstrap your package's services.
+ * Inicializar los servicios del package.
  */
 public function boot(): void
 {
@@ -1471,7 +1471,7 @@ Alternativamente, puedes utilizar el método `componentNamespace` para cargar au
 use Illuminate\Support\Facades\Blade;
 
 /**
- * Bootstrap your package's services.
+ * Inicializar los servicios del package.
  */
 public function boot(): void
 {
@@ -1611,7 +1611,7 @@ El método `anonymousComponentPath` acepta como primer argumento la "ruta" a la 
 
 ```php
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -2003,7 +2003,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -2011,7 +2011,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -2043,7 +2043,7 @@ use Illuminate\Support\Facades\Blade;
 use Money\Money;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -2068,7 +2068,7 @@ Programar una directiva personalizada a veces es más complejo de lo necesario c
 use Illuminate\Support\Facades\Blade;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

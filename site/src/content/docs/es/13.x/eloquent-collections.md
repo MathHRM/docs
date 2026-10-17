@@ -371,7 +371,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     /**
-     * Create a new Eloquent Collection instance.
+     * Crear una nueva instancia de Eloquent Collection.
      *
      * @param  array<int, \Illuminate\Database\Eloquent\Model>  $models
      * @return \Illuminate\Database\Eloquent\Collection<int, \Illuminate\Database\Eloquent\Model>

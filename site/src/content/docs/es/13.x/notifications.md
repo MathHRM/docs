@@ -133,7 +133,7 @@ El método `via` recibe una instancia `$notifiable`, que será una instancia de 
 
 ```php
 /**
- * Get the notification's delivery channels.
+ * Obtener los canales de entrega de la notificación.
  *
  * @return array<int, string>
  */
@@ -200,7 +200,7 @@ Alternativamente, puedes definir un método `withDelay` en la propia clase de no
 
 ```php
 /**
- * Determine the notification's delivery delay.
+ * Determinar el retraso de entrega de la notificación.
  *
  * @return array<string, \Illuminate\Support\Carbon>
  */
@@ -232,7 +232,7 @@ class InvoicePaid extends Notification implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new notification instance.
+     * Crear una nueva instancia de notificación.
      */
     public function __construct()
     {
@@ -245,7 +245,7 @@ O, si deseas especificar una conexión de cola específica que debe usarse para 
 
 ```php
 /**
- * Determine which connections should be used for each notification channel.
+ * Determinar qué conexiones deben usarse para cada canal de notificación.
  *
  * @return array<string, string>
  */
@@ -265,7 +265,7 @@ Si deseas especificar una cola específica que debe usarse para cada canal de no
 
 ```php
 /**
- * Determine which queues should be used for each notification channel.
+ * Determinar qué queues deben usarse para cada canal de notificación.
  *
  * @return array<string, string>
  */
@@ -334,7 +334,7 @@ Además de definir estos atributos directamente en tu clase de notificación, ta
 use DateTime;
 
 /**
- * Calculate the number of seconds to wait before retrying the notification.
+ * Calcular cuántos segundos esperar antes de reintentar la notificación.
  */
 public function backoff(): int
 {
@@ -342,7 +342,7 @@ public function backoff(): int
 }
 
 /**
- * Determine the time at which the notification should timeout.
+ * Determinar cuándo debe agotarse el tiempo de espera de la notificación.
  */
 public function retryUntil(): DateTime
 {
@@ -362,7 +362,7 @@ Las notificaciones en cola pueden definir middleware [al igual que los trabajos 
 use Illuminate\Queue\Middleware\RateLimited;
 
 /**
- * Get the middleware the notification job should pass through.
+ * Obtener el middleware por el que debe pasar el job de notificación.
  *
  * @return array<int, object>
  */
@@ -405,7 +405,7 @@ class InvoicePaid extends Notification implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new notification instance.
+     * Crear una nueva instancia de notificación.
      */
     public function __construct()
     {
@@ -426,7 +426,7 @@ Sin embargo, si deseas tomar la decisión final sobre si la notificación en col
 
 ```php
 /**
- * Determine if the notification should be sent.
+ * Determinar si se debe enviar la notificación.
  */
 public function shouldSend(object $notifiable, string $channel): bool
 {
@@ -441,7 +441,7 @@ Si deseas ejecutar código después de que se haya enviado una notificación, pu
 
 ```php
 /**
- * Handle the notification after it has been sent.
+ * Gestionar la notificación después de enviarla.
  */
 public function afterSending(object $notifiable, string $channel, mixed $response): void
 {
@@ -494,7 +494,7 @@ La clase `MailMessage` contiene algunos métodos simples para ayudarte a crear m
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -526,7 +526,7 @@ Algunas notificaciones informan a los usuarios sobre errores, como el pago falli
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -544,7 +544,7 @@ En lugar de definir las "líneas" de texto en la clase de notificación, puedes 
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -558,7 +558,7 @@ Puedes especificar una vista de texto sin formato para el mensaje de correo pasa
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -573,7 +573,7 @@ O, si tu mensaje solo tiene una vista de texto sin formato, puedes utilizar el m
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -590,7 +590,7 @@ De forma predeterminada, la dirección y el nombre del remitente del correo elec
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -619,16 +619,16 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * Route notifications for the mail channel.
+     * Enrutar las notificaciones para el canal mail.
      *
      * @return  array<string, string>|string
      */
     public function routeNotificationForMail(Notification $notification): array|string
     {
-        // Return email address only...
+        // Devolver solo el correo electrónico...
         return $this->email_address;
 
-        // Return email address and name...
+        // Devolver el correo electrónico y el nombre...
         return [$this->email_address => $this->name];
     }
 }
@@ -641,7 +641,7 @@ De forma predeterminada, el asunto del correo electrónico es el nombre de clase
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -658,7 +658,7 @@ De forma predeterminada, la notificación por correo electrónico se enviará ut
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -684,7 +684,7 @@ Para agregar archivos adjuntos a una notificación por correo electrónico, util
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -701,7 +701,7 @@ Al adjuntar archivos a un mensaje, también puedes especificar el nombre para mo
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -718,7 +718,7 @@ Cuando sea necesario, se pueden adjuntar varios archivos a un mensaje utilizando
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -740,7 +740,7 @@ Puedes utilizar el método `attachFromStorageDisk` para adjuntar un archivo que 
 use App\Mail\InvoicePaid as InvoicePaidMailable;
 
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): Mailable
 {
@@ -759,7 +759,7 @@ El método `attachData` se puede utilizar para adjuntar una cadena sin formato d
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -778,7 +778,7 @@ Algunos proveedores de correo electrónico de terceros, como Mailgun y Postmark,
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -802,7 +802,7 @@ El método `withSymfonyMessage` de la clase `MailMessage` te permite registrar u
 use Symfony\Component\Mime\Email;
 
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -825,7 +825,7 @@ use App\Mail\InvoicePaid as InvoicePaidMailable;
 use Illuminate\Mail\Mailable;
 
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): Mailable
 {
@@ -845,7 +845,7 @@ use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Mail\Mailable;
 
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): Mailable
 {
@@ -893,7 +893,7 @@ Como todas las demás notificaciones por correo, las notificaciones que utilizan
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -986,7 +986,7 @@ Para personalizar el tema de una notificación individual, puedes llamar al mét
 
 ```php
 /**
- * Get the mail representation of the notification.
+ * Obtener la representación de correo de la notificación.
  */
 public function toMail(object $notifiable): MailMessage
 {
@@ -1023,7 +1023,7 @@ Si una notificación admite el almacenamiento en una tabla de base de datos, deb
 
 ```php
 /**
- * Get the array representation of the notification.
+ * Obtener la representación en array de la notificación.
  *
  * @return array<string, mixed>
  */
@@ -1042,7 +1042,7 @@ Cuando se almacena una notificación en la base de datos de tu aplicación, la c
 use Illuminate\Support\Carbon;
 
 /**
- * Get the notification's database type.
+ * Obtener el tipo de base de datos de la notificación.
  */
 public function databaseType(object $notifiable): string
 {
@@ -1050,7 +1050,7 @@ public function databaseType(object $notifiable): string
 }
 
 /**
- * Get the initial value for the "read_at" column.
+ * Obtener el valor inicial de la columna "read_at".
  */
 public function initialDatabaseReadAtValue(): ?Carbon
 {
@@ -1149,7 +1149,7 @@ El canal `broadcast` transmite notificaciones utilizando los [servicios de difus
 use Illuminate\Notifications\Messages\BroadcastMessage;
 
 /**
- * Get the broadcastable representation of the notification.
+ * Obtener la representación de la notificación que se puede emitir.
  */
 public function toBroadcast(object $notifiable): BroadcastMessage
 {
@@ -1178,7 +1178,7 @@ Además de los datos que especifiques, todas las notificaciones de difusión tam
 
 ```php
 /**
- * Get the type of the notification being broadcast.
+ * Obtener el tipo de la notificación que se está emitiendo.
  */
 public function broadcastType(): string
 {
@@ -1358,7 +1358,7 @@ Si una notificación admite el envío como SMS, debes definir un método `toVona
 use Illuminate\Notifications\Messages\VonageMessage;
 
 /**
- * Get the Vonage / SMS representation of the notification.
+ * Obtener la representación de Vonage / SMS de la notificación.
  */
 public function toVonage(object $notifiable): VonageMessage
 {
@@ -1376,7 +1376,7 @@ Si tu mensaje SMS contendrá caracteres Unicode, debes llamar al método `unicod
 use Illuminate\Notifications\Messages\VonageMessage;
 
 /**
- * Get the Vonage / SMS representation of the notification.
+ * Obtener la representación de Vonage / SMS de la notificación.
  */
 public function toVonage(object $notifiable): VonageMessage
 {
@@ -1395,7 +1395,7 @@ Si deseas enviar algunas notificaciones desde un número de teléfono que es dif
 use Illuminate\Notifications\Messages\VonageMessage;
 
 /**
- * Get the Vonage / SMS representation of the notification.
+ * Obtener la representación de Vonage / SMS de la notificación.
  */
 public function toVonage(object $notifiable): VonageMessage
 {
@@ -1414,7 +1414,7 @@ Si deseas realizar un seguimiento de los costos por usuario, equipo o cliente, p
 use Illuminate\Notifications\Messages\VonageMessage;
 
 /**
- * Get the Vonage / SMS representation of the notification.
+ * Obtener la representación de Vonage / SMS de la notificación.
  */
 public function toVonage(object $notifiable): VonageMessage
 {
@@ -1443,7 +1443,7 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * Route notifications for the Vonage channel.
+     * Enrutar las notificaciones para el canal de Vonage.
      */
     public function routeNotificationForVonage(Notification $notification): string
     {
@@ -1495,7 +1495,7 @@ use Illuminate\Notifications\Slack\BlockKit\Blocks\SectionBlock;
 use Illuminate\Notifications\Slack\SlackMessage;
 
 /**
- * Get the Slack representation of the notification.
+ * Obtener la representación de Slack de la notificación.
  */
 public function toSlack(object $notifiable): SlackMessage
 {
@@ -1527,7 +1527,7 @@ use Illuminate\Notifications\Slack\SlackMessage;
 use Illuminate\Support\Str;
 
 /**
- * Get the Slack representation of the notification.
+ * Obtener la representación de Slack de la notificación.
  */
 public function toSlack(object $notifiable): SlackMessage
 {
@@ -1571,7 +1571,7 @@ use Illuminate\Notifications\Slack\BlockKit\Blocks\SectionBlock;
 use Illuminate\Notifications\Slack\SlackMessage;
 
 /**
- * Get the Slack representation of the notification.
+ * Obtener la representación de Slack de la notificación.
  */
 public function toSlack(object $notifiable): SlackMessage
 {
@@ -1588,7 +1588,7 @@ public function toSlack(object $notifiable): SlackMessage
              // ID defaults to "button_acknowledge_invoice"...
             $block->button('Acknowledge Invoice')->primary();
 
-            // Manually configure the ID...
+            // Configurar manualmente el ID...
             $block->button('Deny')->danger()->id('deny_invoice');
         });
 }
@@ -1607,7 +1607,7 @@ use Illuminate\Notifications\Slack\BlockKit\Composites\ConfirmObject;
 use Illuminate\Notifications\Slack\SlackMessage;
 
 /**
- * Get the Slack representation of the notification.
+ * Obtener la representación de Slack de la notificación.
  */
 public function toSlack(object $notifiable): SlackMessage
 {
@@ -1671,7 +1671,7 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * Route notifications for the Slack channel.
+     * Enrutar las notificaciones para el canal de Slack.
      */
     public function routeNotificationForSlack(Notification $notification): mixed
     {
@@ -1705,7 +1705,7 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * Route notifications for the Slack channel.
+     * Enrutar las notificaciones para el canal de Slack.
      */
     public function routeNotificationForSlack(Notification $notification): mixed
     {
@@ -1744,7 +1744,7 @@ use Illuminate\Contracts\Translation\HasLocalePreference;
 class User extends Model implements HasLocalePreference
 {
     /**
-     * Get the user's preferred locale.
+     * Obtener la configuración regional preferida del usuario.
      */
     public function preferredLocale(): string
     {
@@ -1777,26 +1777,26 @@ test('orders can be shipped', function () {
 
     // Perform order shipping...
 
-    // Assert that no notifications were sent...
+    // Comprobar que no se haya enviado ninguna notificación...
     Notification::assertNothingSent();
 
-    // Assert a notification was sent to the given users...
+    // Comprobar que se haya enviado una notificación a los usuarios indicados...
     Notification::assertSentTo(
         [$user], OrderShipped::class
     );
 
-    // Assert a notification was not sent...
+    // Comprobar que no se haya enviado una notificación...
     Notification::assertNotSentTo(
         [$user], AnotherNotification::class
     );
 
-    // Assert a notification was sent twice...
+    // Comprobar que se haya enviado una notificación dos veces...
     Notification::assertSentTimes(WeeklyReminder::class, 2);
 
-    // Assert that a notification was sent to a user exactly once...
+    // Comprobar que se haya enviado una notificación a un usuario exactamente una vez...
     Notification::assertSentToOnce($user, OrderShipped::class);
 
-    // Assert that a given number of notifications were sent...
+    // Comprobar que se haya enviado el número indicado de notificaciones...
     Notification::assertCount(3);
 });
 ```
@@ -1818,26 +1818,26 @@ class ExampleTest extends TestCase
 
         // Perform order shipping...
 
-        // Assert that no notifications were sent...
+        // Comprobar que no se haya enviado ninguna notificación...
         Notification::assertNothingSent();
 
-        // Assert a notification was sent to the given users...
+        // Comprobar que se haya enviado una notificación a los usuarios indicados...
         Notification::assertSentTo(
             [$user], OrderShipped::class
         );
 
-        // Assert a notification was not sent...
+        // Comprobar que no se haya enviado una notificación...
         Notification::assertNotSentTo(
             [$user], AnotherNotification::class
         );
 
-        // Assert a notification was sent twice...
+        // Comprobar que se haya enviado una notificación dos veces...
         Notification::assertSentTimes(WeeklyReminder::class, 2);
 
-        // Assert that a notification was sent to a user exactly once...
+        // Comprobar que se haya enviado una notificación a un usuario exactamente una vez...
         Notification::assertSentToOnce($user, OrderShipped::class);
 
-        // Assert that a given number of notifications were sent...
+        // Comprobar que se haya enviado el número indicado de notificaciones...
         Notification::assertCount(3);
     }
 }
@@ -1897,7 +1897,7 @@ use Illuminate\Notifications\Events\NotificationSending;
 class CheckNotificationStatus
 {
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(NotificationSending $event): void
     {
@@ -1910,7 +1910,7 @@ La notificación no se enviará si un listener de eventos para el evento `Notifi
 
 ```php
 /**
- * Handle the event.
+ * Gestionar el evento.
  */
 public function handle(NotificationSending $event): bool
 {
@@ -1922,7 +1922,7 @@ Dentro de un listener de eventos, puedes acceder a las propiedades `notifiable`,
 
 ```php
 /**
- * Handle the event.
+ * Gestionar el evento.
  */
 public function handle(NotificationSending $event): void
 {
@@ -1943,7 +1943,7 @@ use Illuminate\Notifications\Events\NotificationSent;
 class LogNotification
 {
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(NotificationSent $event): void
     {
@@ -1956,7 +1956,7 @@ Dentro de un listener de eventos, puedes acceder a las propiedades `notifiable`,
 
 ```php
 /**
- * Handle the event.
+ * Gestionar el evento.
  */
 public function handle(NotificationSent $event): void
 {
@@ -1984,13 +1984,13 @@ use Illuminate\Notifications\Notification;
 class VoiceChannel
 {
     /**
-     * Send the given notification.
+     * Enviar la notificación indicada.
      */
     public function send(object $notifiable, Notification $notification): void
     {
         $message = $notification->toVoice($notifiable);
 
-        // Send notification to the $notifiable instance...
+        // Enviar la notificación a la instancia $notifiable...
     }
 }
 ```
@@ -2013,7 +2013,7 @@ class InvoicePaid extends Notification
     use Queueable;
 
     /**
-     * Get the notification channels.
+     * Obtener los canales de notificación.
      */
     public function via(object $notifiable): string
     {
@@ -2021,7 +2021,7 @@ class InvoicePaid extends Notification
     }
 
     /**
-     * Get the voice representation of the notification.
+     * Obtener la representación de voz de la notificación.
      */
     public function toVoice(object $notifiable): VoiceMessage
     {

@@ -193,7 +193,7 @@ use Laravel\Mcp\Server\Attributes\Cacheable;
 class WeatherServer extends Server
 {
     /**
-     * Get the cache hints for individual MCP methods.
+     * Obtener las indicaciones de cache para métodos MCP individuales.
      *
      * @return array<string, \Laravel\Mcp\Server\Attributes\Cacheable>
      */
@@ -240,19 +240,19 @@ use Laravel\Mcp\Server\Tool;
 class CurrentWeatherTool extends Tool
 {
     /**
-     * Handle the tool request.
+     * Gestionar la solicitud de la herramienta.
      */
     public function handle(Request $request): Response
     {
         $location = $request->get('location');
 
-        // Get weather...
+        // Obtener el clima...
 
         return Response::text('The weather is...');
     }
 
     /**
-     * Get the tool's input schema.
+     * Obtener el esquema de entrada de la herramienta.
      *
      * @return array<string, \Illuminate\JsonSchema\Types\Type>
      */
@@ -387,7 +387,7 @@ use Laravel\Mcp\Server\Tool;
 class CurrentWeatherTool extends Tool
 {
     /**
-     * Get the tool's input schema.
+     * Obtener el esquema de entrada de la herramienta.
      *
      * @return array<string, \Illuminate\JsonSchema\Types\Type>
      */
@@ -423,7 +423,7 @@ use Laravel\Mcp\Server\Tool;
 class CurrentWeatherTool extends Tool
 {
     /**
-     * Get the tool's output schema.
+     * Obtener el esquema de salida de la herramienta.
      *
      * @return array<string, \Illuminate\JsonSchema\Types\Type>
      */
@@ -465,7 +465,7 @@ use Laravel\Mcp\Server\Tool;
 class CurrentWeatherTool extends Tool
 {
     /**
-     * Handle the tool request.
+     * Gestionar la solicitud de la herramienta.
      */
     public function handle(Request $request): Response
     {
@@ -474,7 +474,7 @@ class CurrentWeatherTool extends Tool
             'units' => 'in:celsius,fahrenheit',
         ]);
 
-        // Fetch weather data using the validated arguments...
+        // Obtener datos meteorológicos usando los argumentos validados...
     }
 }
 ```
@@ -507,7 +507,7 @@ use Laravel\Mcp\Server\Tool;
 class CurrentWeatherTool extends Tool
 {
     /**
-     * Create a new tool instance.
+     * Crear una nueva instancia de tool.
      */
     public function __construct(
         protected WeatherRepository $weather,
@@ -532,7 +532,7 @@ use Laravel\Mcp\Server\Tool;
 class CurrentWeatherTool extends Tool
 {
     /**
-     * Handle the tool request.
+     * Gestionar la solicitud de la herramienta.
      */
     public function handle(Request $request, WeatherRepository $weather): Response
     {
@@ -615,7 +615,7 @@ use Laravel\Mcp\Server\Tool;
 class CurrentWeatherTool extends Tool
 {
     /**
-     * Determine if the tool should be registered.
+     * Determinar si se debe registrar el tool.
      */
     public function shouldRegister(Request $request): bool
     {
@@ -638,7 +638,7 @@ use Laravel\Mcp\Request;
 use Laravel\Mcp\Response;
 
 /**
- * Handle the tool request.
+ * Gestionar la solicitud de la herramienta.
  */
 public function handle(Request $request): Response
 {
@@ -686,7 +686,7 @@ use Laravel\Mcp\Request;
 use Laravel\Mcp\Response;
 
 /**
- * Handle the tool request.
+ * Gestionar la solicitud de la herramienta.
  *
  * @return array<int, \Laravel\Mcp\Response>
  */
@@ -743,7 +743,7 @@ use Laravel\Mcp\Server\Tool;
 class CurrentWeatherTool extends Tool
 {
     /**
-     * Handle the tool request.
+     * Gestionar la solicitud de la herramienta.
      *
      * @return \Generator<int, \Laravel\Mcp\Response>
      */
@@ -851,7 +851,7 @@ use Laravel\Mcp\Server\Prompts\Argument;
 class DescribeWeatherPrompt extends Prompt
 {
     /**
-     * Get the prompt's arguments.
+     * Obtener los argumentos del prompt.
      *
      * @return array<int, \Laravel\Mcp\Server\Prompts\Argument>
      */
@@ -887,7 +887,7 @@ use Laravel\Mcp\Server\Prompt;
 class DescribeWeatherPrompt extends Prompt
 {
     /**
-     * Handle the prompt request.
+     * Gestionar la solicitud del prompt.
      */
     public function handle(Request $request): Response
     {
@@ -897,7 +897,7 @@ class DescribeWeatherPrompt extends Prompt
 
         $tone = $validated['tone'];
 
-        // Generate the prompt response using the given tone...
+        // Generar la respuesta al prompt con el tono indicado...
     }
 }
 ```
@@ -928,7 +928,7 @@ use Laravel\Mcp\Server\Prompt;
 class DescribeWeatherPrompt extends Prompt
 {
     /**
-     * Create a new prompt instance.
+     * Crear una nueva instancia de prompt.
      */
     public function __construct(
         protected WeatherRepository $weather,
@@ -953,7 +953,7 @@ use Laravel\Mcp\Server\Prompt;
 class DescribeWeatherPrompt extends Prompt
 {
     /**
-     * Handle the prompt request.
+     * Gestionar la solicitud del prompt.
      */
     public function handle(Request $request, WeatherRepository $weather): Response
     {
@@ -980,7 +980,7 @@ use Laravel\Mcp\Server\Prompt;
 class CurrentWeatherPrompt extends Prompt
 {
     /**
-     * Determine if the prompt should be registered.
+     * Determinar si se debe registrar el prompt.
      */
     public function shouldRegister(Request $request): bool
     {
@@ -1008,7 +1008,7 @@ use Laravel\Mcp\Server\Prompt;
 class DescribeWeatherPrompt extends Prompt
 {
     /**
-     * Handle the prompt request.
+     * Gestionar la solicitud del prompt.
      *
      * @return array<int, \Laravel\Mcp\Response>
      */
@@ -1127,7 +1127,7 @@ use Laravel\Mcp\Support\UriTemplate;
 class UserFileResource extends Resource implements HasUriTemplate
 {
     /**
-     * Get the URI template for this resource.
+     * Obtener la plantilla URI de este resource.
      */
     public function uriTemplate(): UriTemplate
     {
@@ -1135,14 +1135,14 @@ class UserFileResource extends Resource implements HasUriTemplate
     }
 
     /**
-     * Handle the resource request.
+     * Gestionar la solicitud del recurso.
      */
     public function handle(Request $request): Response
     {
         $userId = $request->get('userId');
         $fileId = $request->get('fileId');
 
-        // Fetch and return the file content...
+        // Obtener y devolver el contenido del archivo...
 
         return Response::text($content);
     }
@@ -1187,13 +1187,13 @@ class UserProfileResource extends Resource implements HasUriTemplate
 
     public function handle(Request $request): Response
     {
-        // Access the extracted variable
+        // Acceder a la variable extraída
         $userId = $request->get('userId');
 
-        // Access the full URI if needed
+        // Acceder a la URI completa si es necesario
         $uri = $request->uri();
 
-        // Fetch user profile...
+        // Obtener el perfil del usuario...
 
         return Response::text("Profile for user {$userId}");
     }
@@ -1246,7 +1246,7 @@ use Laravel\Mcp\Server\Resource;
 class WeatherGuidelinesResource extends Resource
 {
     /**
-     * Handle the resource request.
+     * Gestionar la solicitud del recurso.
      */
     public function handle(Request $request): Response
     {
@@ -1271,7 +1271,7 @@ use Laravel\Mcp\Server\Resource;
 class WeatherGuidelinesResource extends Resource
 {
     /**
-     * Create a new resource instance.
+     * Crear una nueva instancia de resource.
      */
     public function __construct(
         protected WeatherRepository $weather,
@@ -1296,7 +1296,7 @@ use Laravel\Mcp\Server\Resource;
 class WeatherGuidelinesResource extends Resource
 {
     /**
-     * Handle the resource request.
+     * Gestionar la solicitud del recurso.
      */
     public function handle(WeatherRepository $weather): Response
     {
@@ -1360,7 +1360,7 @@ use Laravel\Mcp\Server\Resource;
 class WeatherGuidelinesResource extends Resource
 {
     /**
-     * Determine if the resource should be registered.
+     * Determinar si se debe registrar el resource.
      */
     public function shouldRegister(Request $request): bool
     {
@@ -1383,7 +1383,7 @@ use Laravel\Mcp\Request;
 use Laravel\Mcp\Response;
 
 /**
- * Handle the resource request.
+ * Gestionar la solicitud del recurso.
  */
 public function handle(Request $request): Response
 {
@@ -1484,7 +1484,7 @@ use Laravel\Mcp\Server\AppResource;
 class WeatherDashboardApp extends AppResource
 {
     /**
-     * Handle the app resource request.
+     * Gestionar la solicitud de recurso de la app.
      */
     public function handle(Request $request): Response
     {
@@ -1541,7 +1541,7 @@ use Laravel\Mcp\Server\Tool;
 class ShowWeatherDashboard extends Tool
 {
     /**
-     * Handle the tool request.
+     * Gestionar la solicitud de la herramienta.
      */
     public function handle(Request $request): Response
     {
@@ -1614,7 +1614,7 @@ use Laravel\Mcp\Request;
 use Laravel\Mcp\Response;
 
 /**
- * Handle the tool request.
+ * Gestionar la solicitud de la herramienta.
  */
 public function handle(Request $request): Response
 {
@@ -1631,7 +1631,7 @@ use Laravel\Mcp\Response;
 use Laravel\Mcp\ResponseFactory;
 
 /**
- * Handle the tool request.
+ * Gestionar la solicitud de la herramienta.
  */
 public function handle(Request $request): ResponseFactory
 {
@@ -1686,7 +1686,7 @@ use Laravel\Mcp\Schema\Icon;
 class CurrentWeatherTool extends Tool
 {
     /**
-     * Get the tool's icons.
+     * Obtener los iconos de la herramienta.
      *
      * @return array<int, Icon>
      */
@@ -1750,7 +1750,7 @@ Luego, indica a Passport que use esta vista usando el método `Passport::authori
 use Laravel\Passport\Passport;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -1807,7 +1807,7 @@ use Laravel\Mcp\Request;
 use Laravel\Mcp\Response;
 
 /**
- * Handle the tool request.
+ * Gestionar la solicitud de la herramienta.
  */
 public function handle(Request $request): Response
 {
@@ -1988,7 +1988,7 @@ use Laravel\Mcp\Facades\Mcp;
 Mcp::oAuthRoutesFor(
     'projects',
     function (string $client, TokenSet $token) {
-        // Store the token...
+        // Guardar el token...
 
         return redirect('/dashboard');
     },
@@ -2178,7 +2178,7 @@ test('tool', function () {
 
 ```php tab=PHPUnit
 /**
- * Test a tool.
+ * Probar una herramienta.
  */
 public function test_tool(): void
 {

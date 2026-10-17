@@ -1233,12 +1233,12 @@ El método `forget` elimina un elemento de la colección por su clave:
 ```php
 $collection = collect(['name' => 'Taylor', 'framework' => 'Laravel']);
 
-// Forget a single key...
+// Olvidar una sola clave...
 $collection->forget('name');
 
 // ['framework' => 'Laravel']
 
-// Forget multiple keys...
+// Olvidar varias claves...
 $collection->forget(['name', 'framework']);
 
 // []
@@ -1810,7 +1810,7 @@ El método `mapInto()` recorre la colección y crea una nueva instancia de la cl
 class Currency
 {
     /**
-     * Create a new currency instance.
+     * Crear una nueva instancia de currency.
      */
     function __construct(
         public string $code,
@@ -2204,7 +2204,7 @@ El método `pipeInto` crea una nueva instancia de la clase dada y pasa la colecc
 class ResourceCollection
 {
     /**
-     * Create a new ResourceCollection instance.
+     * Crear una nueva instancia de ResourceCollection.
      */
     public function __construct(
         public Collection $collection,
@@ -4151,7 +4151,7 @@ LazyCollection::make(function () {
 })->chunk(4)->map(function (LazyCollection $lines) {
     return LogEntry::fromLines($lines);
 })->each(function (LogEntry $logEntry) {
-    // Process the log entry...
+    // Procesar la entrada del log...
 });
 ```
 

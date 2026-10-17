@@ -44,7 +44,7 @@ use Illuminate\Support\Str;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Run the database seeders.
+     * Ejecutar los seeders de la base de datos.
      */
     public function run(): void
     {
@@ -71,7 +71,7 @@ Por ejemplo, creemos 50 usuarios, cada uno con una publicación relacionada:
 use App\Models\User;
 
 /**
- * Run the database seeders.
+ * Ejecutar los seeders de la base de datos.
  */
 public function run(): void
 {
@@ -89,7 +89,7 @@ Dentro de la clase `DatabaseSeeder`, puedes usar el método `call` para ejecutar
 
 ```php
 /**
- * Run the database seeders.
+ * Ejecutar los seeders de la base de datos.
  */
 public function run(): void
 {
@@ -119,7 +119,7 @@ class DatabaseSeeder extends Seeder
     use WithoutModelEvents;
 
     /**
-     * Run the database seeders.
+     * Ejecutar los seeders de la base de datos.
      */
     public function run(): void
     {

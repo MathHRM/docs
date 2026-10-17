@@ -169,7 +169,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     /**
-     * Determine if the user is an administrator.
+     * Determinar si el usuario es administrador.
      */
     protected function isAdmin(): Attribute
     {
@@ -228,7 +228,7 @@ Puedes personalizar el formato de serialización predeterminado sobrescribiendo 
 
 ```php
 /**
- * Prepare a date for array / JSON serialization.
+ * Preparar una fecha para serializarla como array / JSON.
  */
 protected function serializeDate(DateTimeInterface $date): string
 {

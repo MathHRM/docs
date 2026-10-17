@@ -70,7 +70,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class UserResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transformar el recurso en un array.
      *
      * @return array<string, mixed>
      */
@@ -200,7 +200,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 class UserCollection extends ResourceCollection
 {
     /**
-     * Transform the resource collection into an array.
+     * Transformar la colección de recursos en un array.
      *
      * @return array<int|string, mixed>
      */
@@ -307,7 +307,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class UserResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transformar el recurso en un array.
      *
      * @return array<string, mixed>
      */
@@ -344,7 +344,7 @@ use App\Http\Resources\PostResource;
 use Illuminate\Http\Request;
 
 /**
- * Transform the resource into an array.
+ * Transformar el recurso en un array.
  *
  * @return array<string, mixed>
  */
@@ -390,7 +390,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 class UserCollection extends ResourceCollection
 {
     /**
-     * Transform the resource collection into an array.
+     * Transformar la colección de recursos en un array.
      *
      * @return array<string, mixed>
      */
@@ -460,7 +460,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -468,7 +468,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -497,7 +497,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 class CommentsCollection extends ResourceCollection
 {
     /**
-     * Transform the resource collection into an array.
+     * Transformar la colección de recursos en un array.
      *
      * @return array<string, mixed>
      */
@@ -606,7 +606,7 @@ Si desea personalizar la información incluida en las claves `links` o `meta` de
 
 ```php
 /**
- * Customize the pagination information for the resource.
+ * Personalizar la información de paginación del resource.
  *
  * @param  \Illuminate\Http\Request  $request
  * @param  array  $paginated
@@ -628,7 +628,7 @@ A veces es posible que desee incluir solo un atributo en una respuesta de recurs
 
 ```php
 /**
- * Transform the resource into an array.
+ * Transformar el recurso en un array.
  *
  * @return array<string, mixed>
  */
@@ -674,7 +674,7 @@ A veces es posible que tenga varios atributos que solo deberían incluirse en la
 
 ```php
 /**
- * Transform the resource into an array.
+ * Transformar el recurso en un array.
  *
  * @return array<string, mixed>
  */
@@ -710,7 +710,7 @@ El método `whenLoaded` se puede utilizar para cargar una relación de forma con
 use App\Http\Resources\PostResource;
 
 /**
- * Transform the resource into an array.
+ * Transformar el recurso en un array.
  *
  * @return array<string, mixed>
  */
@@ -742,7 +742,7 @@ El método `whenCounted` se puede utilizar para incluir condicionalmente el recu
 
 ```php
 /**
- * Transform the resource into an array.
+ * Transformar el recurso en un array.
  *
  * @return array<string, mixed>
  */
@@ -777,7 +777,7 @@ Además de incluir condicionalmente información de relaciones en sus respuestas
 
 ```php
 /**
- * Transform the resource into an array.
+ * Transformar el recurso en un array.
  *
  * @return array<string, mixed>
  */
@@ -805,7 +805,7 @@ Si su tabla intermedia utiliza un descriptor de acceso distinto de `pivot`, pued
 
 ```php
 /**
- * Transform the resource into an array.
+ * Transformar el recurso en un array.
  *
  * @return array<string, mixed>
  */
@@ -828,7 +828,7 @@ Algunos estándares de API JSON requieren la adición de metadatos a sus respues
 
 ```php
 /**
- * Transform the resource into an array.
+ * Transformar el recurso en un array.
  *
  * @return array<string, mixed>
  */
@@ -860,7 +860,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 class UserCollection extends ResourceCollection
 {
     /**
-     * Transform the resource collection into an array.
+     * Transformar la colección de recursos en un array.
      *
      * @return array<string, mixed>
      */
@@ -870,7 +870,7 @@ class UserCollection extends ResourceCollection
     }
 
     /**
-     * Get additional data that should be returned with the resource array.
+     * Obtener datos adicionales que deben devolverse con el array del resource.
      *
      * @return array<string, mixed>
      */
@@ -1007,7 +1007,7 @@ O, para tener control total sobre los atributos del recurso, puede anular el mé
 
 ```php
 /**
- * Get the resource's attributes.
+ * Obtener los atributos del resource.
  *
  * @return array<string, mixed>
  */
@@ -1054,7 +1054,7 @@ Alternativamente, puede anular el método `toRelationships` en el recurso:
 
 ```php
 /**
- * Get the resource's relationships.
+ * Obtener las relaciones del resource.
  */
 public function toRelationships(Request $request): array
 {
@@ -1151,7 +1151,7 @@ Si necesita personalizar estos valores, puede anular los métodos `toType` y `to
 
 ```php
 /**
- * Get the resource's type.
+ * Obtener el tipo del resource.
  */
 public function toType(Request $request): string
 {
@@ -1159,7 +1159,7 @@ public function toType(Request $request): string
 }
 
 /**
- * Get the resource's ID.
+ * Obtener el ID del resource.
  */
 public function toId(Request $request): string
 {
@@ -1208,7 +1208,7 @@ Puede agregar enlaces y metainformación a sus objetos de recursos JSON:API anul
 
 ```php
 /**
- * Get the resource's links.
+ * Obtener los enlaces del resource.
  */
 public function toLinks(Request $request): array
 {
@@ -1218,7 +1218,7 @@ public function toLinks(Request $request): array
 }
 
 /**
- * Get the resource's meta information.
+ * Obtener los metadatos del resource.
  */
 public function toMeta(Request $request): array
 {
@@ -1289,7 +1289,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class UserResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transformar el recurso en un array.
      *
      * @return array<string, mixed>
      */
@@ -1301,7 +1301,7 @@ class UserResource extends JsonResource
     }
 
     /**
-     * Customize the outgoing response for the resource.
+     * Personalizar la respuesta saliente del resource.
      */
     public function withResponse(Request $request, JsonResponse $response): void
     {

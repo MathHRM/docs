@@ -168,9 +168,9 @@ Se puede acceder al panel de Horizon a través de la ruta `/horizon`. De forma p
 
 ```php
 /**
- * Register the Horizon gate.
+ * Registrar el gate de Horizon.
  *
- * This gate determines who can access Horizon in non-local environments.
+ * Este gate determina quién puede acceder a Horizon en entornos que no son locales.
  */
 protected function gate(): void
 {
@@ -661,14 +661,14 @@ class RenderVideo implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new job instance.
+     * Crear una nueva instancia de job.
      */
     public function __construct(
         public Video $video,
     ) {}
 
     /**
-     * Execute the job.
+     * Ejecutar el job.
      */
     public function handle(): void
     {
@@ -697,7 +697,7 @@ Si desea definir manualmente las etiquetas para uno de sus objetos en cola, pued
 class RenderVideo implements ShouldQueue
 {
     /**
-     * Get the tags that should be assigned to the job.
+     * Obtener las tags que deben asignarse al job.
      *
      * @return array<int, string>
      */
@@ -717,7 +717,7 @@ Al recuperar las etiquetas para un detector de eventos en cola, Horizon pasará 
 class SendRenderNotifications implements ShouldQueue
 {
     /**
-     * Get the tags that should be assigned to the listener.
+     * Obtener las tags que deben asignarse al listener.
      *
      * @return array<int, string>
      */
@@ -738,7 +738,7 @@ Si desea recibir una notificación cuando una de sus colas tenga un tiempo de es
 
 ```php
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

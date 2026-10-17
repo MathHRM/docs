@@ -215,7 +215,7 @@ use Illuminate\View\View;
 class UserController extends Controller
 {
     /**
-     * Show the profile for the given user.
+     * Mostrar el perfil del usuario indicado.
      */
     public function show(string $id): View
     {
@@ -255,7 +255,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AssignRequestId
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
@@ -292,7 +292,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AssignRequestId
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
@@ -389,7 +389,7 @@ use Monolog\Formatter\LineFormatter;
 class CustomizeFormatter
 {
     /**
-     * Customize the given logger instance.
+     * Personalizar la instancia de logger indicada.
      */
     public function __invoke(Logger $logger): void
     {
@@ -502,7 +502,7 @@ use Monolog\Logger;
 class CreateCustomLogger
 {
     /**
-     * Create a custom Monolog instance.
+     * Crear una instancia personalizada de Monolog.
      */
     public function __invoke(array $config): Logger
     {

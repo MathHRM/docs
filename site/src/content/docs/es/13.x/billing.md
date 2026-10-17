@@ -145,7 +145,7 @@ use App\Models\Cashier\User;
 use Laravel\Cashier\Cashier;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -197,7 +197,7 @@ Gracias a [Stripe Tax](https://stripe.com/tax), es posible calcular automáticam
 use Laravel\Cashier\Cashier;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -241,7 +241,7 @@ use App\Models\Cashier\Subscription;
 use App\Models\Cashier\SubscriptionItem;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -412,12 +412,12 @@ use Symfony\Component\HttpFoundation\Response;
 class Subscribed
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      */
     public function handle(Request $request, Closure $next): Response
     {
         if (! $request->user()?->subscribed()) {
-            // Redirect user to billing page and ask them to subscribe...
+            // Redirigir al usuario a la página de facturación y pedirle que se suscriba...
             return redirect('/billing');
         }
 
@@ -536,14 +536,14 @@ $user->debitBalance(300, 'Bad usage penalty.');
 El método `applyBalance` creará nuevas transacciones de saldo de cliente para el cliente. Puedes recuperar estos registros de transacciones utilizando el método `balanceTransactions`, que puede resultar útil para proporcionar un registro de créditos y débitos para que el cliente lo revise:
 
 ```php
-// Retrieve all transactions...
+// Recuperar todas las transacciones...
 $transactions = $user->balanceTransactions();
 
 foreach ($transactions as $transaction) {
     // Transaction amount...
     $amount = $transaction->amount(); // $2.31
 
-    // Retrieve the related invoice when available...
+    // Recuperar la factura relacionada, si está disponible...
     $invoice = $transaction->invoice();
 }
 ```
@@ -607,7 +607,7 @@ Puedes personalizar las columnas utilizadas para sincronizar la información del
 
 ```php
 /**
- * Get the customer name that should be synced to Stripe.
+ * Obtener el nombre del cliente que debe sincronizarse con Stripe.
  */
 public function stripeName(): string|null
 {
@@ -694,7 +694,7 @@ Monta el elemento de pago utilizando `client_secret` de la intención de configu
         });
 
         if (error) {
-            // Display "error.message" to the user...
+            // Mostrar "error.message" al usuario...
         }
     });
 </script>
@@ -777,7 +777,7 @@ Luego, monta el Elemento de Pago y confirma el pago:
         });
 
         if (error) {
-            // Display "error.message" to the user...
+            // Mostrar "error.message" al usuario...
         }
     });
 </script>
@@ -803,7 +803,7 @@ Route::get('/payment/complete', function (Request $request) {
         $paymentIntent->status === 'succeeded') {
         $order->update(['status' => 'paid']);
 
-        // Fulfill the order...
+        // Completar el pedido...
     }
 
     return redirect('/dashboard');
@@ -1016,10 +1016,10 @@ $user->newSubscription('default', 'price_monthly')
 El ID del código de promoción proporcionado debe ser el ID de la API de Stripe asignado al código de promoción y no el código de promoción de cara al cliente. Si necesitas encontrar un ID de código de promoción basado en un código de promoción determinado para el cliente, puedes utilizar el método `findPromotionCode`:
 
 ```php
-// Find a promotion code ID by its customer facing code...
+// Buscar el ID del código promocional por el código visible para el cliente...
 $promotionCode = $user->findPromotionCode('SUMMERSALE');
 
-// Find an active promotion code ID by its customer facing code...
+// Buscar el ID de un código promocional activo por el código visible para el cliente...
 $promotionCode = $user->findActivePromotionCode('SUMMERSALE');
 ```
 
@@ -1114,7 +1114,7 @@ use Symfony\Component\HttpFoundation\Response;
 class EnsureUserIsSubscribed
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
@@ -1231,7 +1231,7 @@ Si deseas que la suscripción aún se considere activa cuando se encuentra en el
 use Laravel\Cashier\Cashier;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {
@@ -1249,10 +1249,10 @@ public function register(): void
 La mayoría de los estados de suscripción también están disponibles como alcances de consulta para que pueda consultar fácilmente en tu base de datos las suscripciones que se encuentran en un estado determinado:
 
 ```php
-// Get all active subscriptions...
+// Obtener todas las suscripciones activas...
 $subscriptions = Subscription::query()->active()->get();
 
-// Get all of the canceled subscriptions for a user...
+// Obtener todas las suscripciones canceladas de un usuario...
 $subscriptions = $user->subscriptions()->canceled()->get();
 ```
 
@@ -1329,12 +1329,12 @@ $user = User::find(1);
 
 $user->subscription('default')->incrementQuantity();
 
-// Add five to the subscription's current quantity...
+// Sumar cinco a la cantidad actual de la suscripción...
 $user->subscription('default')->incrementQuantity(5);
 
 $user->subscription('default')->decrementQuantity();
 
-// Subtract five from the subscription's current quantity...
+// Restar cinco a la cantidad actual de la suscripción...
 $user->subscription('default')->decrementQuantity(5);
 ```
 
@@ -1497,7 +1497,7 @@ $user = User::find(1);
 
 $subscriptionItem = $user->subscription('default')->items->first();
 
-// Retrieve the Stripe price and quantity for a specific item...
+// Recuperar el precio de Stripe y la cantidad de un artículo específico...
 $stripePrice = $subscriptionItem->stripe_price;
 $quantity = $subscriptionItem->quantity;
 ```
@@ -1892,12 +1892,12 @@ use App\Models\User;
 
 $subscription = User::find(1)->subscription('default');
 
-// End the trial 7 days from now...
+// Finalizar el período de prueba dentro de 7 días...
 $subscription->extendTrial(
     now()->plus(days: 7)
 );
 
-// Add an additional 5 days to the trial...
+// Añadir 5 días más al período de prueba...
 $subscription->extendTrial(
     $subscription->trial_ends_at->plus(days: 5)
 );
@@ -1984,12 +1984,12 @@ use Laravel\Cashier\Events\WebhookReceived;
 class StripeEventListener
 {
     /**
-     * Handle received Stripe webhooks.
+     * Gestionar los webhooks recibidos de Stripe.
      */
     public function handle(WebhookReceived $event): void
     {
         if ($event->payload['type'] === 'invoice.payment_succeeded') {
-            // Handle the incoming event...
+            // Gestionar el evento entrante...
         }
     }
 }
@@ -2262,7 +2262,7 @@ use Laravel\Cashier\Invoice;
 class ApiInvoiceRenderer implements InvoiceRenderer
 {
     /**
-     * Render the given invoice and return the raw PDF bytes.
+     * Renderizar la factura indicada y devolver los bytes sin procesar del PDF.
      */
     public function render(Invoice $invoice, array $data = [], array $options = []): string
     {
@@ -2546,10 +2546,10 @@ use Laravel\Cashier\Exceptions\IncompletePayment;
 try {
     $user->charge(1000, 'pm_card_threeDSecure2Required');
 } catch (IncompletePayment $exception) {
-    // Get the payment intent status...
+    // Obtener el estado del payment intent...
     $exception->payment->status;
 
-    // Check specific conditions...
+    // Comprobar condiciones específicas...
     if ($exception->payment->requiresPaymentMethod()) {
         // ...
     } elseif ($exception->payment->requiresConfirmation()) {

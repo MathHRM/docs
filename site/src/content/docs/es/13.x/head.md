@@ -257,7 +257,7 @@ use Laravel\Head\ErrorPages;
 use Laravel\Head\Facades\Head;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

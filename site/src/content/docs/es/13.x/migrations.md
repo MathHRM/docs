@@ -93,7 +93,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Ejecutar las migraciones.
      */
     public function up(): void
     {
@@ -106,7 +106,7 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Revertir las migrations.
      */
     public function down(): void
     {
@@ -129,7 +129,7 @@ Si su migración interactuará con una conexión de base de datos distinta a la 
 protected $connection = 'pgsql';
 
 /**
- * Run the migrations.
+ * Ejecutar las migraciones.
  */
 public function up(): void
 {
@@ -147,7 +147,7 @@ use App\Models\Flight;
 use Laravel\Pennant\Feature;
 
 /**
- * Determine if this migration should run.
+ * Determinar si se debe ejecutar esta migración.
  */
 public function shouldRun(): bool
 {
@@ -1278,7 +1278,7 @@ use Illuminate\Database\Migrations\Migration;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Ejecutar las migraciones.
      */
     public function up(): void
     {
@@ -1359,10 +1359,10 @@ Schema::table('users', function (Blueprint $table) {
 El método `change` no cambia los índices de la columna. Por lo tanto, puede utilizar modificadores de índice para agregar o eliminar explícitamente un índice al modificar la columna:
 
 ```php
-// Add an index...
+// Añadir un índice...
 $table->bigIncrements('id')->primary()->change();
 
-// Drop an index...
+// Eliminar un índice...
 $table->char('postal_code', 10)->unique(false)->change();
 ```
 

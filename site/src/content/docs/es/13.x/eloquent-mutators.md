@@ -49,7 +49,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     /**
-     * Get the user's first name.
+     * Obtener el nombre del usuario.
      */
     protected function firstName(): Attribute
     {
@@ -85,7 +85,7 @@ use App\Support\Address;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 /**
- * Interact with the user's address.
+ * Interactuar con la dirección del usuario.
  */
 protected function address(): Attribute
 {
@@ -129,7 +129,7 @@ Si desea deshabilitar el comportamiento de almacenamiento en caché de objetos d
 
 ```php
 /**
- * Interact with the user's address.
+ * Interactuar con la dirección del usuario.
  */
 protected function address(): Attribute
 {
@@ -158,7 +158,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     /**
-     * Interact with the user's first name.
+     * Interactuar con el nombre del usuario.
      */
     protected function firstName(): Attribute
     {
@@ -192,7 +192,7 @@ use App\Support\Address;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 /**
- * Interact with the user's address.
+ * Interactuar con la dirección del usuario.
  */
 protected function address(): Attribute
 {
@@ -257,7 +257,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     /**
-     * Get the attributes that should be cast.
+     * Obtener los atributos que deben convertirse.
      *
      * @return array<string, string>
      */
@@ -308,7 +308,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     /**
-     * Get the attributes that should be cast.
+     * Obtener los atributos que deben convertirse.
      *
      * @return array<string, string>
      */
@@ -336,7 +336,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     /**
-     * Get the attributes that should be cast.
+     * Obtener los atributos que deben convertirse.
      *
      * @return array<string, string>
      */
@@ -380,7 +380,7 @@ Si desea almacenar un atributo de matriz como JSON con caracteres Unicode sin es
 
 ```php
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -409,7 +409,7 @@ Para resolver esto, Laravel ofrece una conversión `AsArrayObject` que convierte
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -427,7 +427,7 @@ De manera similar, Laravel ofrece una conversión `AsCollection` que convierte s
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -445,7 +445,7 @@ De forma predeterminada, asignar `null` a una conversión de atributo con `AsArr
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -472,7 +472,7 @@ use App\Collections\OptionCollection;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -491,7 +491,7 @@ use App\ValueObjects\Option;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -520,7 +520,7 @@ class Option implements Arrayable, JsonSerializable
     public bool $isLocked;
 
     /**
-     * Create a new Option instance.
+     * Crear una nueva instancia de Option.
      */
     public function __construct(array $data)
     {
@@ -530,7 +530,7 @@ class Option implements Arrayable, JsonSerializable
     }
 
     /**
-     * Get the instance as an array.
+     * Obtener la instancia como un array.
      *
      * @return array{name: string, data: string, is_locked: bool}
      */
@@ -544,7 +544,7 @@ class Option implements Arrayable, JsonSerializable
     }
 
     /**
-     * Specify the data which should be serialized to JSON.
+     * Especificar los datos que deben serializarse a JSON.
      *
      * @return array{name: string, data: string, is_locked: bool}
      */
@@ -564,7 +564,7 @@ Puede utilizar la clase de conversión `Illuminate\Database\Eloquent\Casts\AsVec
 use Illuminate\Database\Eloquent\Casts\AsVector;
 
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -587,7 +587,7 @@ Si su modelo Eloquent tiene una columna [tipo binario](../migrations/#column-met
 use Illuminate\Database\Eloquent\Casts\AsBinary;
 
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -621,7 +621,7 @@ Al definir una conversión `date` o `datetime`, también puede especificar el fo
 
 ```php
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -639,7 +639,7 @@ Puede personalizar el formato de serialización predeterminado para todas las fe
 
 ```php
 /**
- * Prepare a date for array / JSON serialization.
+ * Preparar una fecha para serializarla como array / JSON.
  */
 protected function serializeDate(DateTimeInterface $date): string
 {
@@ -675,7 +675,7 @@ Eloquent también te permite convertir los valores de tus atributos a PHP [Enums
 use App\Enums\ServerStatus;
 
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -707,7 +707,7 @@ use App\Enums\ServerStatus;
 use Illuminate\Database\Eloquent\Casts\AsEnumCollection;
 
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -781,7 +781,7 @@ use Illuminate\Database\Eloquent\Model;
 class AsJson implements CastsAttributes
 {
     /**
-     * Cast the given value.
+     * Convertir el valor indicado.
      *
      * @param  array<string, mixed>  $attributes
      * @return array<string, mixed>
@@ -796,7 +796,7 @@ class AsJson implements CastsAttributes
     }
 
     /**
-     * Prepare the given value for storage.
+     * Preparar el valor indicado para almacenarlo.
      *
      * @param  array<string, mixed>  $attributes
      */
@@ -824,7 +824,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     /**
-     * Get the attributes that should be cast.
+     * Obtener los atributos que deben convertirse.
      *
      * @return array<string, string>
      */
@@ -857,7 +857,7 @@ use InvalidArgumentException;
 class AsAddress implements CastsAttributes
 {
     /**
-     * Cast the given value.
+     * Convertir el valor indicado.
      *
      * @param  array<string, mixed>  $attributes
      */
@@ -874,7 +874,7 @@ class AsAddress implements CastsAttributes
     }
 
     /**
-     * Prepare the given value for storage.
+     * Preparar el valor indicado para almacenarlo.
      *
      * @param  array<string, mixed>  $attributes
      * @return array<string, string>
@@ -937,7 +937,7 @@ Por lo tanto, puede especificar que su clase de conversión personalizada será 
 
 ```php
 /**
- * Get the serialized representation of the value.
+ * Obtener la representación serializada del valor.
  *
  * @param  array<string, mixed>  $attributes
  */
@@ -975,14 +975,14 @@ use Illuminate\Database\Eloquent\Model;
 class AsHash implements CastsInboundAttributes
 {
     /**
-     * Create a new cast class instance.
+     * Crear una nueva instancia de la clase cast.
      */
     public function __construct(
         protected string|null $algorithm = null,
     ) {}
 
     /**
-     * Prepare the given value for storage.
+     * Preparar el valor indicado para almacenarlo.
      *
      * @param  array<string, mixed>  $attributes
      */
@@ -1006,7 +1006,7 @@ Al adjuntar una conversión personalizada a un modelo, los parámetros de conver
 
 ```php
 /**
- * Get the attributes that should be cast.
+ * Obtener los atributos que deben convertirse.
  *
  * @return array<string, string>
  */
@@ -1027,7 +1027,7 @@ Esta interfaz indica que su clase debe contener un método `compare` que deberí
 
 ```php
 /**
- * Determine if the given values are equal.
+ * Determinar si los valores indicados son iguales.
  *
  * @param  \Illuminate\Database\Eloquent\Model  $model
  * @param  string  $key
@@ -1074,7 +1074,7 @@ use App\Casts\AsAddress;
 class Address implements Castable
 {
     /**
-     * Get the name of the caster class to use when casting from / to this cast target.
+     * Obtener el nombre de la clase caster que se usará para convertir desde / hacia este destino de cast.
      *
      * @param  array<string, mixed>  $arguments
      */
@@ -1116,7 +1116,7 @@ class Address implements Castable
     // ...
 
     /**
-     * Get the caster class to use when casting from / to this cast target.
+     * Obtener la clase caster que se usará para convertir desde / hacia este destino de cast.
      *
      * @param  array<string, mixed>  $arguments
      */

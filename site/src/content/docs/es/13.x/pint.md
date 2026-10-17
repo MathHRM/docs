@@ -196,7 +196,7 @@ Esta regla elimina todos los comentarios y la prosa del bloque de documentos de 
 
 ```php
 /**
- * Get the posts for the user. [tl! remove]
+ * Obtén las publicaciones para el usuario. [tl! remove]
  * [tl! remove]
  * @return HasMany<Post, $this>
  */

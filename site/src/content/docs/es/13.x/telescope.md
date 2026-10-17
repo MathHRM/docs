@@ -78,7 +78,7 @@ Después de ejecutar `telescope:install`, debe eliminar el registro del proveedo
 
 ```php
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {
@@ -169,9 +169,9 @@ Se puede acceder al panel de Laravel Telescope a través de la ruta `/telescope`
 use App\Models\User;
 
 /**
- * Register the Telescope gate.
+ * Registrar el gate de Telescope.
  *
- * This gate determines who can access Telescope in non-local environments.
+ * Este gate determina quién puede acceder a Telescope en entornos que no son locales.
  */
 protected function gate(): void
 {
@@ -222,7 +222,7 @@ use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {
@@ -253,7 +253,7 @@ use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {
@@ -286,7 +286,7 @@ use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {
@@ -501,7 +501,7 @@ use App\Models\User;
 use Laravel\Telescope\Telescope;
 
 /**
- * Register any application services.
+ * Registrar los servicios de la aplicación.
  */
 public function register(): void
 {

@@ -54,7 +54,7 @@ use Illuminate\Support\ServiceProvider;
 class RiakServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -87,7 +87,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * All of the container bindings that should be registered.
+     * Todos los bindings del container que deben registrarse.
      *
      * @var array
      */
@@ -96,7 +96,7 @@ class AppServiceProvider extends ServiceProvider
     ];
 
     /**
-     * All of the container singletons that should be registered.
+     * Todos los singletons del container que deben registrarse.
      *
      * @var array
      */
@@ -123,7 +123,7 @@ use Illuminate\Support\ServiceProvider;
 class ComposerServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -143,7 +143,7 @@ Puedes declarar los tipos de las dependencias en el método `boot` de tu proveed
 use Illuminate\Contracts\Routing\ResponseFactory;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(ResponseFactory $response): void
 {
@@ -199,7 +199,7 @@ use Illuminate\Support\ServiceProvider;
 class RiakServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -209,7 +209,7 @@ class RiakServiceProvider extends ServiceProvider implements DeferrableProvider
     }
 
     /**
-     * Get the services provided by the provider.
+     * Obtener los servicios proporcionados por el provider.
      *
      * @return array<int, string>
      */

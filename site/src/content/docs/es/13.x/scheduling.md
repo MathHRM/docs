@@ -121,7 +121,7 @@ Se pueden proporcionar un segundo y tercer argumento opcionales al método `job`
 use App\Jobs\Heartbeat;
 use Illuminate\Support\Facades\Schedule;
 
-// Dispatch the job to the "heartbeats" queue on the "sqs" connection...
+// Despachar el job a la queue "heartbeats" mediante la conexión "sqs"...
 Schedule::job(new Heartbeat, 'heartbeats', 'sqs')->everyFiveMinutes();
 ```
 
@@ -192,12 +192,12 @@ Estos métodos se pueden combinar con restricciones adicionales para crear progr
 ```php
 use Illuminate\Support\Facades\Schedule;
 
-// Run once per week on Monday at 1 PM...
+// Ejecutar una vez por semana, los lunes a la 1 p. m....
 Schedule::call(function () {
     // ...
 })->weekly()->mondays()->at('13:00');
 
-// Run hourly from 8 AM to 5 PM on weekdays...
+// Ejecutar cada hora de 8 a. m. a 5 p. m. los días laborables...
 Schedule::command('foo')
     ->weekdays()
     ->hourly()

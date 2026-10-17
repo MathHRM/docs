@@ -404,7 +404,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -493,7 +493,7 @@ Si el método `put` (u otras operaciones de "escritura") no puede escribir el ar
 
 ```php
 if (! Storage::put('file.jpg', $contents)) {
-    // The file could not be written to disk...
+    // No se pudo escribir el archivo en el disco...
 }
 ```
 
@@ -560,10 +560,10 @@ La transmisión de archivos al almacenamiento ofrece un uso de memoria significa
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
-// Automatically generate a unique ID for filename...
+// Generar automáticamente un ID único para el nombre del archivo...
 $path = Storage::putFile('photos', new File('/path/to/photo'));
 
-// Manually specify a filename...
+// Especificar manualmente un nombre de archivo...
 $path = Storage::putFileAs('photos', new File('/path/to/photo'), 'photo.jpg');
 ```
 
@@ -590,7 +590,7 @@ use Illuminate\Http\Request;
 class UserAvatarController extends Controller
 {
     /**
-     * Update the avatar for the user.
+     * Actualizar el avatar del usuario.
      */
     public function update(Request $request): string
     {
@@ -832,21 +832,21 @@ test('albums can be uploaded', function () {
         UploadedFile::fake()->image('photo2.jpg')
     ]);
 
-    // Assert one or more files were stored...
+    // Comprobar que se haya almacenado uno o más archivos...
     Storage::disk('photos')->assertExists('photo1.jpg');
     Storage::disk('photos')->assertExists(['photo1.jpg', 'photo2.jpg']);
 
-    // Assert one or more files were not stored...
+    // Comprobar que no se haya almacenado uno o más archivos...
     Storage::disk('photos')->assertMissing('missing.jpg');
     Storage::disk('photos')->assertMissing(['missing.jpg', 'non-existing.jpg']);
 
-    // Assert that the number of files in a given directory matches the expected count...
+    // Comprobar que el número de archivos del directorio indicado coincida con el esperado...
     Storage::disk('photos')->assertCount('/wallpapers', 2);
 
-    // Assert that a given directory is empty...
+    // Comprobar que el directorio indicado esté vacío...
     Storage::disk('photos')->assertDirectoryEmpty('/wallpapers');
 
-    // Assert that the disk contains no files...
+    // Comprobar que el disco no contenga archivos...
     Storage::disk('photos')->assertEmpty();
 });
 ```
@@ -871,21 +871,21 @@ class ExampleTest extends TestCase
             UploadedFile::fake()->image('photo2.jpg')
         ]);
 
-        // Assert one or more files were stored...
+        // Comprobar que se haya almacenado uno o más archivos...
         Storage::disk('photos')->assertExists('photo1.jpg');
         Storage::disk('photos')->assertExists(['photo1.jpg', 'photo2.jpg']);
 
-        // Assert one or more files were not stored...
+        // Comprobar que no se haya almacenado uno o más archivos...
         Storage::disk('photos')->assertMissing('missing.jpg');
         Storage::disk('photos')->assertMissing(['missing.jpg', 'non-existing.jpg']);
 
-        // Assert that the number of files in a given directory matches the expected count...
+        // Comprobar que el número de archivos del directorio indicado coincida con el esperado...
         Storage::disk('photos')->assertCount('/wallpapers', 2);
 
-        // Assert that a given directory is empty...
+        // Comprobar que el directorio indicado esté vacío...
         Storage::disk('photos')->assertDirectoryEmpty('/wallpapers');
 
-        // Assert that the disk contains no files...
+        // Comprobar que el disco no contenga archivos...
         Storage::disk('photos')->assertEmpty();
     }
 }
@@ -925,7 +925,7 @@ use Spatie\FlysystemDropbox\DropboxAdapter;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -933,7 +933,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {

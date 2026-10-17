@@ -251,7 +251,7 @@ $value = Config::get('app.timezone');
 
 $value = config('app.timezone');
 
-// Retrieve a default value if the configuration value does not exist...
+// Recuperar un valor predeterminado si el valor de configuración no existe...
 $value = config('app.timezone', 'Asia/Seoul');
 ```
 

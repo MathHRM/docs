@@ -101,7 +101,7 @@ class InvalidOrderException extends Exception
     // ...
 
     /**
-     * Get the exception's context information.
+     * Obtener la información contextual de la excepción.
      *
      * @return array<string, mixed>
      */
@@ -121,7 +121,7 @@ A veces es posible que necesite informar una excepción pero continuar manejando
 public function isValid(string $value): bool
 {
     try {
-        // Validate the value...
+        // Validar el valor...
     } catch (Throwable $e) {
         report($e);
 
@@ -326,7 +326,7 @@ use Illuminate\Http\Response;
 class InvalidOrderException extends Exception
 {
     /**
-     * Report the exception.
+     * Registrar la excepción.
      */
     public function report(): void
     {
@@ -334,7 +334,7 @@ class InvalidOrderException extends Exception
     }
 
     /**
-     * Render the exception as an HTTP response.
+     * Renderizar la excepción como una respuesta HTTP.
      */
     public function render(Request $request): Response
     {
@@ -347,7 +347,7 @@ Si su excepción extiende una excepción que ya se puede representar, como una e
 
 ```php
 /**
- * Render the exception as an HTTP response.
+ * Renderizar la excepción como una respuesta HTTP.
  */
 public function render(Request $request): Response|bool
 {
@@ -364,7 +364,7 @@ Si su excepción contiene una lógica de informes personalizada que solo es nece
 
 ```php
 /**
- * Report the exception.
+ * Registrar la excepción.
  */
 public function report(): bool
 {

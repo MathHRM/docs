@@ -39,7 +39,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AddContext
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -84,7 +84,7 @@ class ProcessPodcast implements ShouldQueue
     // ...
 
     /**
-     * Execute the job.
+     * Ejecutar el job.
      */
     public function handle(): void
     {
@@ -414,7 +414,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Context;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -440,7 +440,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Context;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

@@ -219,7 +219,7 @@ class Post extends Model
     use Searchable;
 
     /**
-     * Get the indexable data array for the model.
+     * Obtener el array de datos indexables del modelo.
      *
      * @return array<string, mixed>
      */
@@ -227,7 +227,7 @@ class Post extends Model
     {
         $array = $this->toArray();
 
-        // Customize the data array...
+        // Personalizar el array de datos...
 
         return $array;
     }
@@ -254,7 +254,7 @@ class User extends Model
     use Searchable;
 
     /**
-     * Get the engine used to index the model.
+     * Obtener el engine usado para indexar el modelo.
      */
     public function searchableUsing(): Engine
     {
@@ -312,7 +312,7 @@ use Laravel\Scout\Attributes\SearchUsingFullText;
 use Laravel\Scout\Attributes\SearchUsingPrefix;
 
 /**
- * Get the indexable data array for the model.
+ * Obtener el array de datos indexables del modelo.
  *
  * @return array<string, mixed>
  */
@@ -372,7 +372,7 @@ class Post extends Model
     use Searchable;
 
     /**
-     * Get the name of the index associated with the model.
+     * Obtener el nombre del índice asociado al modelo.
      */
     public function searchableAs(): string
     {
@@ -402,7 +402,7 @@ class User extends Model
     use Searchable;
 
     /**
-     * Get the value used to index the model.
+     * Obtener el valor usado para indexar el modelo.
      */
     public function getScoutKey(): mixed
     {
@@ -410,7 +410,7 @@ class User extends Model
     }
 
     /**
-     * Get the key name used to index the model.
+     * Obtener el nombre de clave usado para indexar el modelo.
      */
     public function getScoutKeyName(): mixed
     {
@@ -612,7 +612,7 @@ Al utilizar Typesense, sus modelos de búsqueda deben definir un método `toSear
 
 ```php
 /**
- * Get the indexable data array for the model.
+ * Obtener el array de datos indexables del modelo.
  *
  * @return array<string, mixed>
  */
@@ -869,7 +869,7 @@ use App\Models\Order;
 
 $order = Order::find(1);
 
-// Update the order...
+// Actualizar el pedido...
 
 $order->save();
 ```
@@ -916,7 +916,7 @@ De forma predeterminada, Scout reindexará un modelo actualizado independienteme
 
 ```php
 /**
- * Determine if the search index should be updated.
+ * Determinar si se debe actualizar el índice de búsqueda.
  */
 public function searchIndexShouldBeUpdated(): bool
 {
@@ -981,7 +981,7 @@ A veces es posible que necesites hacer que un modelo solo se pueda buscar bajo c
 
 ```php
 /**
- * Determine if the model should be searchable.
+ * Determinar si el modelo se debe poder buscar.
  */
 public function shouldBeSearchable(): bool
 {
@@ -1249,7 +1249,7 @@ use App\ScoutExtensions\MySqlSearchEngine;
 use Laravel\Scout\EngineManager;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

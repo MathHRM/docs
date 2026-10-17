@@ -215,7 +215,7 @@ A veces es posible que desee redirigir al usuario a su ubicación anterior, como
 
 ```php
 Route::post('/user/profile', function () {
-    // Validate the request...
+    // Validar la solicitud...
 
     return back()->withInput();
 });
@@ -253,7 +253,7 @@ Si desea personalizar el valor que se coloca en el parámetro de ruta, puede esp
 
 ```php
 /**
- * Get the value of the model's route key.
+ * Obtener el valor de la route key del modelo.
  */
 public function getRouteKey(): mixed
 {
@@ -1091,7 +1091,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {

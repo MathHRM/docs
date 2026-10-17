@@ -148,7 +148,7 @@ use Illuminate\Console\Command;
 class SendEmails extends Command
 {
     /**
-     * Execute the console command.
+     * Ejecutar el comando de consola.
      */
     public function handle(DripEmailer $drip): void
     {
@@ -259,7 +259,7 @@ De forma predeterminada, Laravel usará el nombre del comando para generar la cl
 
 ```php
 /**
- * Get the isolatable ID for the command.
+ * Obtener el ID aislable del comando.
  */
 public function isolatableId(): string
 {
@@ -277,7 +277,7 @@ use DateTimeInterface;
 use DateInterval;
 
 /**
- * Determine when an isolation lock expires for the command.
+ * Determinar cuándo vence el lock de aislamiento del comando.
  */
 public function isolationLockExpiresAt(): DateTimeInterface|DateInterval
 {
@@ -530,7 +530,7 @@ Mientras se ejecuta su comando, es probable que necesite acceder a los valores d
 
 ```php
 /**
- * Execute the console command.
+ * Ejecutar el comando de consola.
  */
 public function handle(): void
 {
@@ -547,10 +547,10 @@ $arguments = $this->arguments();
 Las opciones se pueden recuperar tan fácilmente como los argumentos utilizando el método `option`. Para recuperar todas las opciones como una matriz, llame al método `options`:
 
 ```php
-// Retrieve a specific option...
+// Recuperar una opción específica...
 $queueName = $this->option('queue');
 
-// Retrieve all options as an array...
+// Recuperar todas las opciones como un array...
 $options = $this->options();
 ```
 
@@ -560,7 +560,7 @@ Puede utilizar el método `input` para recuperar los argumentos y las opciones d
 use App\Enums\ReportType;
 
 /**
- * Execute the console command.
+ * Ejecutar el comando de consola.
  */
 public function handle(): void
 {
@@ -586,7 +586,7 @@ Además de mostrar el resultado, también puede pedirle al usuario que proporcio
 
 ```php
 /**
- * Execute the console command.
+ * Ejecutar el comando de consola.
  */
 public function handle(): void
 {
@@ -681,7 +681,7 @@ Para enviar resultados a la consola, puede utilizar los métodos `line`, `newLin
 
 ```php
 /**
- * Execute the console command.
+ * Ejecutar el comando de consola.
  */
 public function handle(): void
 {
@@ -868,7 +868,7 @@ A veces es posible que desees llamar a otros comandos desde un comando Artisan e
 
 ```php
 /**
- * Execute the console command.
+ * Ejecutar el comando de consola.
  */
 public function handle(): void
 {
@@ -895,7 +895,7 @@ Como sabrá, los sistemas operativos permiten enviar señales a procesos en ejec
 
 ```php
 /**
- * Execute the console command.
+ * Ejecutar el comando de consola.
  */
 public function handle(): void
 {
@@ -952,7 +952,7 @@ Puede personalizar los procesos que ejecuta el comando `dev` utilizando la clase
 use Illuminate\Foundation\DevCommands;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -1020,7 +1020,7 @@ Puede indicarle al comando `dev` que solo ejecute procesos específicos cuando s
 // Only run the server and vite processes...
 DevCommands::only('server', 'vite');
 
-// Run all processes except the queue worker...
+// Ejecutar todos los procesos excepto el queue worker...
 DevCommands::except('queue');
 ```
 

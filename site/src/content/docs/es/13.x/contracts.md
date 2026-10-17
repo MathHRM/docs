@@ -53,14 +53,14 @@ use Illuminate\Contracts\Redis\Factory;
 class CacheOrderInformation
 {
     /**
-     * Create the event listener.
+     * Crear el listener del evento.
      */
     public function __construct(
         protected Factory $redis,
     ) {}
 
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(OrderWasPlaced $event): void
     {

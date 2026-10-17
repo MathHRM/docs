@@ -88,7 +88,7 @@ use Laravel\Pennant\Feature;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -195,7 +195,7 @@ use Laravel\Pennant\Feature;
 class PodcastController
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar un listado del recurso.
      */
     public function index(Request $request): Response
     {
@@ -219,19 +219,19 @@ return Feature::for($user)->active('new-api')
 Pennant también ofrece algunos métodos convenientes adicionales que pueden resultar útiles al determinar si una función está activa o no:
 
 ```php
-// Determine if all of the given features are active...
+// Determinar si todas las features indicadas están activas...
 Feature::allAreActive(['new-api', 'site-redesign']);
 
-// Determine if any of the given features are active...
+// Determinar si alguna de las features indicadas está activa...
 Feature::someAreActive(['new-api', 'site-redesign']);
 
-// Determine if a feature is inactive...
+// Determinar si una feature está inactiva...
 Feature::inactive('new-api');
 
-// Determine if all of the given features are inactive...
+// Determinar si todas las features indicadas están inactivas...
 Feature::allAreInactive(['new-api', 'site-redesign']);
 
-// Determine if any of the given features are inactive...
+// Determinar si alguna de las features indicadas está inactiva...
 Feature::someAreInactive(['new-api', 'site-redesign']);
 ```
 
@@ -256,7 +256,7 @@ use Laravel\Pennant\Feature;
 class PodcastController
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar un listado del recurso.
      */
     public function index(Request $request): Response
     {
@@ -287,7 +287,7 @@ use Laravel\Pennant\Feature;
 class PodcastController
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar un listado del recurso.
      */
     public function index(Request $request): Response
     {
@@ -409,7 +409,7 @@ use Illuminate\Http\Response;
 use Laravel\Pennant\Middleware\EnsureFeaturesAreActive;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -442,7 +442,7 @@ use Illuminate\Support\Lottery;
 class NewApi
 {
     /**
-     * Run an always-in-memory check before the stored value is retrieved.
+     * Ejecutar una comprobación siempre en memoria antes de recuperar el valor almacenado.
      */
     public function before(User $user): mixed
     {
@@ -478,7 +478,7 @@ use Illuminate\Support\Facades\Config;
 class NewApi
 {
     /**
-     * Run an always-in-memory check before the stored value is retrieved.
+     * Ejecutar una comprobación siempre en memoria antes de recuperar el valor almacenado.
      */
     public function before(User $user): mixed
     {
@@ -579,7 +579,7 @@ use Laravel\Pennant\Feature;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -644,7 +644,7 @@ use Laravel\Pennant\Contracts\FeatureScopeable;
 class User extends Model implements FeatureScopeable
 {
     /**
-     * Cast the object to a feature scope identifier for the given driver.
+     * Convertir el objeto en un identificador de ámbito de feature para el driver indicado.
      */
     public function toFeatureIdentifier(string $driver): mixed
     {
@@ -773,7 +773,7 @@ use Laravel\Pennant\Feature;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -852,10 +852,10 @@ Para lograr esto, puede utilizar los métodos `activate` y `deactivate` para act
 ```php
 use Laravel\Pennant\Feature;
 
-// Activate the feature for the default scope...
+// Activar la feature para el ámbito predeterminado...
 Feature::activate('new-api');
 
-// Deactivate the feature for the given scope...
+// Desactivar la feature para el ámbito indicado...
 Feature::for($user->team)->deactivate('billing-v2');
 ```
 
@@ -1068,7 +1068,7 @@ use Laravel\Pennant\Feature;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registrar los servicios de la aplicación.
      */
     public function register(): void
     {
@@ -1076,7 +1076,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -1118,7 +1118,7 @@ use Laravel\Pennant\Contracts\DefinesFeaturesExternally;
 class FeatureFlagServiceDriver implements Driver, DefinesFeaturesExternally
 {
     /**
-     * Get the features defined for the given scope.
+     * Obtener las features definidas para el ámbito indicado.
      */
     public function definedFeaturesForScope(mixed $scope): array {}
 
@@ -1158,7 +1158,7 @@ use Laravel\Pennant\Events\UnknownFeatureResolved;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -1184,7 +1184,7 @@ use Illuminate\Support\Facades\Log;
 use Laravel\Pennant\Events\UnexpectedNullScopeEncountered;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {

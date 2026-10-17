@@ -71,7 +71,7 @@ use App\Events\PodcastProcessed;
 class SendPodcastNotification
 {
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(PodcastProcessed $event): void
     {
@@ -84,7 +84,7 @@ Puedes escuchar múltiples eventos usando los tipos de unión de PHP:
 
 ```php
 /**
- * Handle the event.
+ * Gestionar el evento.
  */
 public function handle(PodcastProcessed|PodcastPublished $event): void
 {
@@ -130,7 +130,7 @@ use Illuminate\Contracts\Events\ShouldBeDiscovered;
 class SendPodcastNotification implements ShouldBeDiscovered
 {
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(PodcastProcessed $event): void
     {
@@ -138,7 +138,7 @@ class SendPodcastNotification implements ShouldBeDiscovered
     }
 
     /**
-     * Determine if the listener should be discovered.
+     * Determinar si se debe descubrir el listener.
      */
     public static function shouldBeDiscovered(): bool
     {
@@ -158,7 +158,7 @@ use App\Domain\Orders\Listeners\SendPodcastNotification;
 use Illuminate\Support\Facades\Event;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -185,7 +185,7 @@ use App\Events\PodcastProcessed;
 use Illuminate\Support\Facades\Event;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -206,7 +206,7 @@ use function Illuminate\Events\queueable;
 use Illuminate\Support\Facades\Event;
 
 /**
- * Bootstrap any application services.
+ * Inicializar los servicios de la aplicación.
  */
 public function boot(): void
 {
@@ -270,7 +270,7 @@ class OrderShipped
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * Create a new event instance.
+     * Crear una nueva instancia del evento.
      */
     public function __construct(
         public Order $order,
@@ -295,16 +295,16 @@ use App\Events\OrderShipped;
 class SendShipmentNotification
 {
     /**
-     * Create the event listener.
+     * Crear el listener del evento.
      */
     public function __construct() {}
 
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(OrderShipped $event): void
     {
-        // Access the order using $event->order...
+        // Acceder al pedido mediante $event->order...
     }
 }
 ```
@@ -368,7 +368,7 @@ Si desea definir la conexión de cola del oyente, el nombre de la cola o el retr
 
 ```php
 /**
- * Get the name of the listener's queue connection.
+ * Obtener el nombre de la conexión de queue del listener.
  */
 public function viaConnection(): string
 {
@@ -376,7 +376,7 @@ public function viaConnection(): string
 }
 
 /**
- * Get the name of the listener's queue.
+ * Obtener el nombre de la queue del listener.
  */
 public function viaQueue(): string
 {
@@ -384,7 +384,7 @@ public function viaQueue(): string
 }
 
 /**
- * Get the number of seconds before the job should be processed.
+ * Obtener cuántos segundos deben pasar antes de procesar el job.
  */
 public function withDelay(OrderShipped $event): int
 {
@@ -418,7 +418,7 @@ class RewardGiftCard implements ShouldQueue
     }
 
     /**
-     * Determine whether the listener should be queued.
+     * Determinar si el listener debe ponerse en cola.
      */
     public function shouldQueue(OrderCreated $event): bool
     {
@@ -446,7 +446,7 @@ class SendShipmentNotification implements ShouldQueue
     use InteractsWithQueue;
 
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(OrderShipped $event): void
     {
@@ -498,15 +498,15 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class SendShipmentNotification implements ShouldQueue
 {
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(OrderShipped $event): void
     {
-        // Process the event...
+        // Procesar el evento...
     }
 
     /**
-     * Get the middleware the listener should pass through.
+     * Obtener el middleware por el que debe pasar el listener.
      *
      * @return array<int, object>
      */
@@ -591,7 +591,7 @@ class AcquireProductKey implements ShouldQueue, ShouldBeUnique
     }
 
     /**
-     * Get the unique ID for the listener.
+     * Obtener el ID único del listener.
      */
     public function uniqueId(LicenseSaved $event): string
     {
@@ -644,7 +644,7 @@ class AcquireProductKey implements ShouldQueue, ShouldBeUnique
     // ...
 
     /**
-     * Get the cache driver for the unique listener lock.
+     * Obtener el cache driver para el lock único del listener.
      */
     public function uniqueVia(LicenseSaved $event): Repository
     {
@@ -674,15 +674,15 @@ use Illuminate\Queue\Attributes\DebounceFor;
 class UpdateProductSearchIndex implements ShouldQueue
 {
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(ProductUpdated $event): void
     {
-        // Update the product's search index...
+        // Actualizar el índice de búsqueda del producto...
     }
 
     /**
-     * Get the debounce ID for the listener.
+     * Obtener el ID de debounce del listener.
      */
     public function debounceId(ProductUpdated $event): string
     {
@@ -740,7 +740,7 @@ class SendShipmentNotification implements ShouldQueue
     use InteractsWithQueue;
 
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(OrderShipped $event): void
     {
@@ -748,7 +748,7 @@ class SendShipmentNotification implements ShouldQueue
     }
 
     /**
-     * Handle a job failure.
+     * Gestionar el fallo de un job.
      */
     public function failed(OrderShipped $event, Throwable $exception): void
     {
@@ -789,7 +789,7 @@ Como alternativa a definir cuántas veces se puede intentar un escucha antes de 
 use DateTimeInterface;
 
 /**
- * Determine the time at which the listener should timeout.
+ * Determinar cuándo debe agotarse el tiempo de espera del listener.
  */
 public function retryUntil(): DateTimeInterface
 {
@@ -823,7 +823,7 @@ Si necesita una lógica más compleja para determinar el tiempo de espera de los
 
 ```php
 /**
- * Calculate the number of seconds to wait before retrying the queued listener.
+ * Calcular cuántos segundos esperar antes de reintentar el listener en cola.
  */
 public function backoff(OrderShipped $event): int
 {
@@ -835,7 +835,7 @@ Puede configurar fácilmente retrocesos "exponenciales" devolviendo una matriz d
 
 ```php
 /**
- * Calculate the number of seconds to wait before retrying the queued listener.
+ * Calcular cuántos segundos esperar antes de reintentar el listener en cola.
  *
  * @return list<int>
  */
@@ -868,11 +868,11 @@ class SendShipmentNotification implements ShouldQueue
     use InteractsWithQueue;
 
     /**
-     * Handle the event.
+     * Gestionar el evento.
      */
     public function handle(OrderShipped $event): void
     {
-        // Process the event...
+        // Procesar el evento...
     }
 }
 ```
@@ -936,7 +936,7 @@ use Illuminate\Http\Request;
 class OrderShipmentController extends Controller
 {
     /**
-     * Ship the given order.
+     * Enviar el pedido indicado.
      */
     public function store(Request $request): RedirectResponse
     {
@@ -985,7 +985,7 @@ class OrderShipped implements ShouldDispatchAfterCommit
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * Create a new event instance.
+     * Crear una nueva instancia del evento.
      */
     public function __construct(
         public Order $order,
@@ -1046,17 +1046,17 @@ use Illuminate\Events\Dispatcher;
 class UserEventSubscriber
 {
     /**
-     * Handle user login events.
+     * Gestionar los eventos de inicio de sesión del usuario.
      */
     public function handleUserLogin(Login $event): void {}
 
     /**
-     * Handle user logout events.
+     * Gestionar los eventos de cierre de sesión del usuario.
      */
     public function handleUserLogout(Logout $event): void {}
 
     /**
-     * Register the listeners for the subscriber.
+     * Registrar los listeners del subscriber.
      */
     public function subscribe(Dispatcher $events): void
     {
@@ -1087,17 +1087,17 @@ use Illuminate\Events\Dispatcher;
 class UserEventSubscriber
 {
     /**
-     * Handle user login events.
+     * Gestionar los eventos de inicio de sesión del usuario.
      */
     public function handleUserLogin(Login $event): void {}
 
     /**
-     * Handle user logout events.
+     * Gestionar los eventos de cierre de sesión del usuario.
      */
     public function handleUserLogout(Logout $event): void {}
 
     /**
-     * Register the listeners for the subscriber.
+     * Registrar los listeners del subscriber.
      *
      * @return array<string, string>
      */
@@ -1128,7 +1128,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Inicializar los servicios de la aplicación.
      */
     public function boot(): void
     {
@@ -1156,19 +1156,19 @@ test('orders can be shipped', function () {
 
     // Perform order shipping...
 
-    // Assert that an event was dispatched...
+    // Comprobar que se haya despachado un evento...
     Event::assertDispatched(OrderShipped::class);
 
-    // Assert an event was dispatched twice...
+    // Comprobar que se haya despachado un evento dos veces...
     Event::assertDispatched(OrderShipped::class, 2);
 
-    // Assert an event was dispatched once...
+    // Comprobar que se haya despachado un evento una vez...
     Event::assertDispatchedOnce(OrderShipped::class);
 
-    // Assert an event was not dispatched...
+    // Comprobar que no se haya despachado un evento...
     Event::assertNotDispatched(OrderFailedToShip::class);
 
-    // Assert that no events were dispatched...
+    // Comprobar que no se haya despachado ningún evento...
     Event::assertNothingDispatched();
 });
 ```
@@ -1186,7 +1186,7 @@ use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * Test order shipping.
+     * Probar el envío del pedido.
      */
     public function test_orders_can_be_shipped(): void
     {
@@ -1194,19 +1194,19 @@ class ExampleTest extends TestCase
 
         // Perform order shipping...
 
-        // Assert that an event was dispatched...
+        // Comprobar que se haya despachado un evento...
         Event::assertDispatched(OrderShipped::class);
 
-        // Assert an event was dispatched twice...
+        // Comprobar que se haya despachado un evento dos veces...
         Event::assertDispatched(OrderShipped::class, 2);
 
-        // Assert an event was dispatched once...
+        // Comprobar que se haya despachado un evento una vez...
         Event::assertDispatchedOnce(OrderShipped::class);
 
-        // Assert an event was not dispatched...
+        // Comprobar que no se haya despachado un evento...
         Event::assertNotDispatched(OrderFailedToShip::class);
 
-        // Assert that no events were dispatched...
+        // Comprobar que no se haya despachado ningún evento...
         Event::assertNothingDispatched();
     }
 }
@@ -1264,7 +1264,7 @@ test('orders can be processed', function () {
 
 ```php tab=PHPUnit
 /**
- * Test order process.
+ * Probar el proceso del pedido.
  */
 public function test_orders_can_be_processed(): void
 {
@@ -1332,7 +1332,7 @@ use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * Test order process.
+     * Probar el proceso del pedido.
      */
     public function test_orders_can_be_processed(): void
     {

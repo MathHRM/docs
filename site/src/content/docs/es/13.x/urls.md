@@ -72,10 +72,10 @@ echo urldecode($url);
 Si no se proporciona ninguna ruta al asistente `url`, se devuelve una instancia de `Illuminate\Routing\UrlGenerator`, lo que le permite acceder a información sobre la URL actual:
 
 ```php
-// Get the current URL without the query string...
+// Obtener la URL actual sin la cadena de consulta...
 echo url()->current();
 
-// Get the current URL including the query string...
+// Obtener la URL actual, incluida la cadena de consulta...
 echo url()->full();
 ```
 
@@ -93,10 +93,10 @@ echo URL::current();
 A veces es útil saber la URL anterior desde la que visita el usuario. Puede acceder a la URL anterior a través de los métodos `previous` y `previousPath` del asistente `url`:
 
 ```php
-// Get the full URL for the previous request...
+// Obtener la URL completa de la solicitud anterior...
 echo url()->previous();
 
-// Get the path for the previous request...
+// Obtener la ruta de la solicitud anterior...
 echo url()->previousPath();
 ```
 
@@ -283,10 +283,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\InvokableController;
 use Illuminate\Support\Uri;
 
-// Generate a URI instance from the given string...
+// Generar una instancia de URI a partir de la cadena indicada...
 $uri = Uri::of('https://example.com/path');
 
-// Generate URI instances to paths, named routes, or controller actions...
+// Generar instancias de URI para rutas, rutas con nombre o acciones de controladores...
 $uri = Uri::to('/dashboard');
 $uri = Uri::route('users.show', ['user' => 1]);
 $uri = Uri::signedRoute('users.show', ['user' => 1]);
@@ -294,10 +294,10 @@ $uri = Uri::temporarySignedRoute('user.index', now()->plus(minutes: 5));
 $uri = Uri::action([UserController::class, 'index']);
 $uri = Uri::action(InvokableController::class);
 
-// Generate a URI instance from the current request URL...
+// Generar una instancia de URI a partir de la URL de la solicitud actual...
 $uri = $request->uri();
 
-// Generate a URI instance from the previous request URL...
+// Generar una instancia de URI a partir de la URL de la solicitud anterior...
 $uri = $request->session()->previousUri();
 ```
 
@@ -341,7 +341,7 @@ use Symfony\Component\HttpFoundation\Response;
 class SetDefaultLocaleForUrls
 {
     /**
-     * Handle an incoming request.
+     * Gestionar una solicitud entrante.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
