@@ -40,7 +40,7 @@ for (const { version, label } of versions) {
     }),
   })).filter(group => group.items.length);
   const unlisted = slugs.filter(slug => slug && !listed.has(slug));
-  if (unlisted.length) items.push({ label: 'More documentation', collapsed: true, items: unlisted.map(slug => ({ slug: `${version}/${slug}` })) });
+  if (unlisted.length) items.push({ label: 'More documentation', translations: { es: 'Más documentación' }, collapsed: true, items: unlisted.map(slug => ({ slug: `${version}/${slug}` })) });
   sidebar.push({ label, items });
 }
 

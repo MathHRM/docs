@@ -5,17 +5,29 @@
     "items": [
       {
         "label": "Release Notes",
-        "slug": "releases"
+        "slug": "releases",
+        "translations": {
+          "es": "Notas de la versión"
+        }
       },
       {
         "label": "Upgrade Guide",
-        "slug": "upgrade"
+        "slug": "upgrade",
+        "translations": {
+          "es": "Guía de actualización"
+        }
       },
       {
         "label": "Contribution Guide",
-        "slug": "contributions"
+        "slug": "contributions",
+        "translations": {
+          "es": "Guía de contribución"
+        }
       }
-    ]
+    ],
+    "translations": {
+      "es": "Prólogo"
+    }
   },
   {
     "label": "Getting Started",
@@ -23,33 +35,57 @@
     "items": [
       {
         "label": "Installation",
-        "slug": "installation"
+        "slug": "installation",
+        "translations": {
+          "es": "Instalación"
+        }
       },
       {
         "label": "Configuration",
-        "slug": "configuration"
+        "slug": "configuration",
+        "translations": {
+          "es": "Configuración"
+        }
       },
       {
         "label": "Agentic Development",
-        "slug": "ai"
+        "slug": "ai",
+        "translations": {
+          "es": "Desarrollo con agentes"
+        }
       },
       {
         "label": "Directory Structure",
-        "slug": "structure"
+        "slug": "structure",
+        "translations": {
+          "es": "Estructura de directorios"
+        }
       },
       {
         "label": "Frontend",
-        "slug": "frontend"
+        "slug": "frontend",
+        "translations": {
+          "es": "Frontend"
+        }
       },
       {
         "label": "Starter Kits",
-        "slug": "starter-kits"
+        "slug": "starter-kits",
+        "translations": {
+          "es": "Kits de inicio"
+        }
       },
       {
         "label": "Deployment",
-        "slug": "deployment"
+        "slug": "deployment",
+        "translations": {
+          "es": "Despliegue"
+        }
       }
-    ]
+    ],
+    "translations": {
+      "es": "Primeros pasos"
+    }
   },
   {
     "label": "Architecture Concepts",
@@ -57,21 +93,36 @@
     "items": [
       {
         "label": "Request Lifecycle",
-        "slug": "lifecycle"
+        "slug": "lifecycle",
+        "translations": {
+          "es": "Ciclo de vida de una solicitud"
+        }
       },
       {
         "label": "Service Container",
-        "slug": "container"
+        "slug": "container",
+        "translations": {
+          "es": "Contenedor de servicios"
+        }
       },
       {
         "label": "Service Providers",
-        "slug": "providers"
+        "slug": "providers",
+        "translations": {
+          "es": "Proveedores de servicios"
+        }
       },
       {
         "label": "Facades",
-        "slug": "facades"
+        "slug": "facades",
+        "translations": {
+          "es": "Fachadas"
+        }
       }
-    ]
+    ],
+    "translations": {
+      "es": "Conceptos de arquitectura"
+    }
   },
   {
     "label": "The Basics",
@@ -79,61 +130,106 @@
     "items": [
       {
         "label": "Routing",
-        "slug": "routing"
+        "slug": "routing",
+        "translations": {
+          "es": "Enrutamiento"
+        }
       },
       {
         "label": "Middleware",
-        "slug": "middleware"
+        "slug": "middleware",
+        "translations": {
+          "es": "Middleware"
+        }
       },
       {
         "label": "CSRF Protection",
-        "slug": "csrf"
+        "slug": "csrf",
+        "translations": {
+          "es": "Protección CSRF"
+        }
       },
       {
         "label": "Controllers",
-        "slug": "controllers"
+        "slug": "controllers",
+        "translations": {
+          "es": "Controladores"
+        }
       },
       {
         "label": "Requests",
-        "slug": "requests"
+        "slug": "requests",
+        "translations": {
+          "es": "Solicitudes"
+        }
       },
       {
         "label": "Responses",
-        "slug": "responses"
+        "slug": "responses",
+        "translations": {
+          "es": "Respuestas"
+        }
       },
       {
         "label": "Views",
-        "slug": "views"
+        "slug": "views",
+        "translations": {
+          "es": "Vistas"
+        }
       },
       {
         "label": "Blade Templates",
-        "slug": "blade"
+        "slug": "blade",
+        "translations": {
+          "es": "Plantillas Blade"
+        }
       },
       {
         "label": "Asset Bundling",
-        "slug": "vite"
+        "slug": "vite",
+        "translations": {
+          "es": "Compilación de recursos"
+        }
       },
       {
         "label": "URL Generation",
-        "slug": "urls"
+        "slug": "urls",
+        "translations": {
+          "es": "Generación de URLs"
+        }
       },
       {
         "label": "Session",
-        "slug": "session"
+        "slug": "session",
+        "translations": {
+          "es": "Sesión"
+        }
       },
       {
         "label": "Validation",
-        "slug": "validation"
+        "slug": "validation",
+        "translations": {
+          "es": "Validación"
+        }
       },
       {
         "label": "Error Handling",
-        "slug": "errors"
+        "slug": "errors",
+        "translations": {
+          "es": "Gestión de errores"
+        }
       },
       {
         "label": "Logging",
-        "slug": "logging"
+        "slug": "logging",
+        "translations": {
+          "es": "Registro de logs"
+        }
       }
-    ]
+    ],
+    "translations": {
+      "es": "Conceptos básicos"
+    }
   },
   {
     "label": "Digging Deeper",
@@ -141,93 +237,162 @@
     "items": [
       {
         "label": "Artisan Console",
-        "slug": "artisan"
+        "slug": "artisan",
+        "translations": {
+          "es": "Consola Artisan"
+        }
       },
       {
         "label": "Broadcasting",
-        "slug": "broadcasting"
+        "slug": "broadcasting",
+        "translations": {
+          "es": "Difusión de eventos"
+        }
       },
       {
         "label": "Cache",
-        "slug": "cache"
+        "slug": "cache",
+        "translations": {
+          "es": "Caché"
+        }
       },
       {
         "label": "Collections",
-        "slug": "collections"
+        "slug": "collections",
+        "translations": {
+          "es": "Colecciones"
+        }
       },
       {
         "label": "Concurrency",
-        "slug": "concurrency"
+        "slug": "concurrency",
+        "translations": {
+          "es": "Concurrencia"
+        }
       },
       {
         "label": "Context",
-        "slug": "context"
+        "slug": "context",
+        "translations": {
+          "es": "Contexto"
+        }
       },
       {
         "label": "Contracts",
-        "slug": "contracts"
+        "slug": "contracts",
+        "translations": {
+          "es": "Contratos"
+        }
       },
       {
         "label": "Events",
-        "slug": "events"
+        "slug": "events",
+        "translations": {
+          "es": "Eventos"
+        }
       },
       {
         "label": "File Storage",
-        "slug": "filesystem"
+        "slug": "filesystem",
+        "translations": {
+          "es": "Almacenamiento de archivos"
+        }
       },
       {
         "label": "Helpers",
-        "slug": "helpers"
+        "slug": "helpers",
+        "translations": {
+          "es": "Funciones auxiliares"
+        }
       },
       {
         "label": "HTTP Client",
-        "slug": "http-client"
+        "slug": "http-client",
+        "translations": {
+          "es": "Cliente HTTP"
+        }
       },
       {
         "label": "Images",
-        "slug": "images"
+        "slug": "images",
+        "translations": {
+          "es": "Imágenes"
+        }
       },
       {
         "label": "Localization",
-        "slug": "localization"
+        "slug": "localization",
+        "translations": {
+          "es": "Localización"
+        }
       },
       {
         "label": "Mail",
-        "slug": "mail"
+        "slug": "mail",
+        "translations": {
+          "es": "Correo"
+        }
       },
       {
         "label": "Notifications",
-        "slug": "notifications"
+        "slug": "notifications",
+        "translations": {
+          "es": "Notificaciones"
+        }
       },
       {
         "label": "Package Development",
-        "slug": "packages"
+        "slug": "packages",
+        "translations": {
+          "es": "Desarrollo de paquetes"
+        }
       },
       {
         "label": "Processes",
-        "slug": "processes"
+        "slug": "processes",
+        "translations": {
+          "es": "Procesos"
+        }
       },
       {
         "label": "Queues",
-        "slug": "queues"
+        "slug": "queues",
+        "translations": {
+          "es": "Colas"
+        }
       },
       {
         "label": "Rate Limiting",
-        "slug": "rate-limiting"
+        "slug": "rate-limiting",
+        "translations": {
+          "es": "Limitación de frecuencia"
+        }
       },
       {
         "label": "Search",
-        "slug": "search"
+        "slug": "search",
+        "translations": {
+          "es": "Búsqueda"
+        }
       },
       {
         "label": "Strings",
-        "slug": "strings"
+        "slug": "strings",
+        "translations": {
+          "es": "Cadenas de texto"
+        }
       },
       {
         "label": "Task Scheduling",
-        "slug": "scheduling"
+        "slug": "scheduling",
+        "translations": {
+          "es": "Programación de tareas"
+        }
       }
-    ]
+    ],
+    "translations": {
+      "es": "En profundidad"
+    }
   },
   {
     "label": "Security",
@@ -235,29 +400,50 @@
     "items": [
       {
         "label": "Authentication",
-        "slug": "authentication"
+        "slug": "authentication",
+        "translations": {
+          "es": "Autenticación"
+        }
       },
       {
         "label": "Authorization",
-        "slug": "authorization"
+        "slug": "authorization",
+        "translations": {
+          "es": "Autorización"
+        }
       },
       {
         "label": "Email Verification",
-        "slug": "verification"
+        "slug": "verification",
+        "translations": {
+          "es": "Verificación de correo electrónico"
+        }
       },
       {
         "label": "Encryption",
-        "slug": "encryption"
+        "slug": "encryption",
+        "translations": {
+          "es": "Cifrado"
+        }
       },
       {
         "label": "Hashing",
-        "slug": "hashing"
+        "slug": "hashing",
+        "translations": {
+          "es": "Hashing"
+        }
       },
       {
         "label": "Password Reset",
-        "slug": "passwords"
+        "slug": "passwords",
+        "translations": {
+          "es": "Restablecimiento de contraseñas"
+        }
       }
-    ]
+    ],
+    "translations": {
+      "es": "Seguridad"
+    }
   },
   {
     "label": "Database",
@@ -265,33 +451,57 @@
     "items": [
       {
         "label": "Getting Started",
-        "slug": "database"
+        "slug": "database",
+        "translations": {
+          "es": "Primeros pasos"
+        }
       },
       {
         "label": "Query Builder",
-        "slug": "queries"
+        "slug": "queries",
+        "translations": {
+          "es": "Constructor de consultas"
+        }
       },
       {
         "label": "Pagination",
-        "slug": "pagination"
+        "slug": "pagination",
+        "translations": {
+          "es": "Paginación"
+        }
       },
       {
         "label": "Migrations",
-        "slug": "migrations"
+        "slug": "migrations",
+        "translations": {
+          "es": "Migraciones"
+        }
       },
       {
         "label": "Seeding",
-        "slug": "seeding"
+        "slug": "seeding",
+        "translations": {
+          "es": "Población de la base de datos"
+        }
       },
       {
         "label": "Redis",
-        "slug": "redis"
+        "slug": "redis",
+        "translations": {
+          "es": "Redis"
+        }
       },
       {
         "label": "MongoDB",
-        "slug": "mongodb"
+        "slug": "mongodb",
+        "translations": {
+          "es": "MongoDB"
+        }
       }
-    ]
+    ],
+    "translations": {
+      "es": "Base de datos"
+    }
   },
   {
     "label": "Eloquent ORM",
@@ -299,33 +509,57 @@
     "items": [
       {
         "label": "Getting Started",
-        "slug": "eloquent"
+        "slug": "eloquent",
+        "translations": {
+          "es": "Primeros pasos"
+        }
       },
       {
         "label": "Relationships",
-        "slug": "eloquent-relationships"
+        "slug": "eloquent-relationships",
+        "translations": {
+          "es": "Relaciones"
+        }
       },
       {
         "label": "Collections",
-        "slug": "eloquent-collections"
+        "slug": "eloquent-collections",
+        "translations": {
+          "es": "Colecciones"
+        }
       },
       {
         "label": "Mutators / Casts",
-        "slug": "eloquent-mutators"
+        "slug": "eloquent-mutators",
+        "translations": {
+          "es": "Mutadores / Conversiones"
+        }
       },
       {
         "label": "API Resources",
-        "slug": "eloquent-resources"
+        "slug": "eloquent-resources",
+        "translations": {
+          "es": "Recursos de API"
+        }
       },
       {
         "label": "Serialization",
-        "slug": "eloquent-serialization"
+        "slug": "eloquent-serialization",
+        "translations": {
+          "es": "Serialización"
+        }
       },
       {
         "label": "Factories",
-        "slug": "eloquent-factories"
+        "slug": "eloquent-factories",
+        "translations": {
+          "es": "Factorías"
+        }
       }
-    ]
+    ],
+    "translations": {
+      "es": "ORM Eloquent"
+    }
   },
   {
     "label": "AI",
@@ -333,17 +567,29 @@
     "items": [
       {
         "label": "AI SDK",
-        "slug": "ai-sdk"
+        "slug": "ai-sdk",
+        "translations": {
+          "es": "SDK de IA"
+        }
       },
       {
         "label": "MCP",
-        "slug": "mcp"
+        "slug": "mcp",
+        "translations": {
+          "es": "MCP"
+        }
       },
       {
         "label": "Boost",
-        "slug": "boost"
+        "slug": "boost",
+        "translations": {
+          "es": "Boost"
+        }
       }
-    ]
+    ],
+    "translations": {
+      "es": "IA"
+    }
   },
   {
     "label": "Testing",
@@ -351,29 +597,50 @@
     "items": [
       {
         "label": "Getting Started",
-        "slug": "testing"
+        "slug": "testing",
+        "translations": {
+          "es": "Primeros pasos"
+        }
       },
       {
         "label": "HTTP Tests",
-        "slug": "http-tests"
+        "slug": "http-tests",
+        "translations": {
+          "es": "Pruebas HTTP"
+        }
       },
       {
         "label": "Console Tests",
-        "slug": "console-tests"
+        "slug": "console-tests",
+        "translations": {
+          "es": "Pruebas de consola"
+        }
       },
       {
         "label": "Browser Tests",
-        "slug": "dusk"
+        "slug": "dusk",
+        "translations": {
+          "es": "Pruebas de navegador"
+        }
       },
       {
         "label": "Database",
-        "slug": "database-testing"
+        "slug": "database-testing",
+        "translations": {
+          "es": "Base de datos"
+        }
       },
       {
         "label": "Mocking",
-        "slug": "mocking"
+        "slug": "mocking",
+        "translations": {
+          "es": "Simulación de objetos"
+        }
       }
-    ]
+    ],
+    "translations": {
+      "es": "Pruebas"
+    }
   },
   {
     "label": "Packages",
@@ -381,101 +648,176 @@
     "items": [
       {
         "label": "Cashier (Stripe)",
-        "slug": "billing"
+        "slug": "billing",
+        "translations": {
+          "es": "Cashier (Stripe)"
+        }
       },
       {
         "label": "Cashier (Paddle)",
-        "slug": "cashier-paddle"
+        "slug": "cashier-paddle",
+        "translations": {
+          "es": "Cashier (Paddle)"
+        }
       },
       {
         "label": "Dusk",
-        "slug": "dusk"
+        "slug": "dusk",
+        "translations": {
+          "es": "Dusk"
+        }
       },
       {
         "label": "Envoy",
-        "slug": "envoy"
+        "slug": "envoy",
+        "translations": {
+          "es": "Envoy"
+        }
       },
       {
         "label": "Fortify",
-        "slug": "fortify"
+        "slug": "fortify",
+        "translations": {
+          "es": "Fortify"
+        }
       },
       {
         "label": "Folio",
-        "slug": "folio"
+        "slug": "folio",
+        "translations": {
+          "es": "Folio"
+        }
       },
       {
         "label": "Head",
-        "slug": "head"
+        "slug": "head",
+        "translations": {
+          "es": "Head"
+        }
       },
       {
         "label": "Homestead",
-        "slug": "homestead"
+        "slug": "homestead",
+        "translations": {
+          "es": "Homestead"
+        }
       },
       {
         "label": "Horizon",
-        "slug": "horizon"
+        "slug": "horizon",
+        "translations": {
+          "es": "Horizon"
+        }
       },
       {
         "label": "Mix",
-        "slug": "mix"
+        "slug": "mix",
+        "translations": {
+          "es": "Mix"
+        }
       },
       {
         "label": "Octane",
-        "slug": "octane"
+        "slug": "octane",
+        "translations": {
+          "es": "Octane"
+        }
       },
       {
         "label": "Passport",
-        "slug": "passport"
+        "slug": "passport",
+        "translations": {
+          "es": "Passport"
+        }
       },
       {
         "label": "Pennant",
-        "slug": "pennant"
+        "slug": "pennant",
+        "translations": {
+          "es": "Pennant"
+        }
       },
       {
         "label": "Pint",
-        "slug": "pint"
+        "slug": "pint",
+        "translations": {
+          "es": "Pint"
+        }
       },
       {
         "label": "Precognition",
-        "slug": "precognition"
+        "slug": "precognition",
+        "translations": {
+          "es": "Precognition"
+        }
       },
       {
         "label": "Prompts",
-        "slug": "prompts"
+        "slug": "prompts",
+        "translations": {
+          "es": "Prompts"
+        }
       },
       {
         "label": "Pulse",
-        "slug": "pulse"
+        "slug": "pulse",
+        "translations": {
+          "es": "Pulse"
+        }
       },
       {
         "label": "Reverb",
-        "slug": "reverb"
+        "slug": "reverb",
+        "translations": {
+          "es": "Reverb"
+        }
       },
       {
         "label": "Sail",
-        "slug": "sail"
+        "slug": "sail",
+        "translations": {
+          "es": "Sail"
+        }
       },
       {
         "label": "Sanctum",
-        "slug": "sanctum"
+        "slug": "sanctum",
+        "translations": {
+          "es": "Sanctum"
+        }
       },
       {
         "label": "Scout",
-        "slug": "scout"
+        "slug": "scout",
+        "translations": {
+          "es": "Scout"
+        }
       },
       {
         "label": "Socialite",
-        "slug": "socialite"
+        "slug": "socialite",
+        "translations": {
+          "es": "Socialite"
+        }
       },
       {
         "label": "Telescope",
-        "slug": "telescope"
+        "slug": "telescope",
+        "translations": {
+          "es": "Telescope"
+        }
       },
       {
         "label": "Valet",
-        "slug": "valet"
+        "slug": "valet",
+        "translations": {
+          "es": "Valet"
+        }
       }
-    ]
+    ],
+    "translations": {
+      "es": "Paquetes"
+    }
   },
   {
     "label": "More documentation",
@@ -484,6 +826,9 @@
       {
         "slug": "license"
       }
-    ]
+    ],
+    "translations": {
+      "es": "Más documentación"
+    }
   }
 ]
