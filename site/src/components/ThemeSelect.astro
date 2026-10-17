@@ -1,0 +1,61 @@
+---
+import Dropdown from './Dropdown.astro';
+const accessibleLabel = Astro.locals.t('themeSelect.accessibleLabel');
+const items = (['dark', 'light', 'auto'] as const).map(value => ({
+  value,
+  label: Astro.locals.t(`themeSelect.${value}`),
+  current: value === 'auto',
+}));
+---
+
+<docs-theme-select data-label={accessibleLabel}>
+  <Dropdown label={Astro.locals.t('themeSelect.auto')} accessibleLabel={accessibleLabel} icon="laptop" items={items} />
+</docs-theme-select>
+
+<script>
+  type Theme = 'auto' | 'dark' | 'light';
+  const systemTheme = matchMedia('(prefers-color-scheme: light)');
+  const parseTheme = (value: unknown): Theme => value === 'dark' || value === 'light' ? value : 'auto';
+  const loadTheme = (): Theme => {
+    try { return parseTheme(localStorage.getItem('starlight-theme')); }
+    catch { return 'auto'; }
+  };
+
+  class DocsThemeSelect extends HTMLElement {
+    connectedCallback() {
+      this.update(loadTheme());
+      this.addEventListener('click', this.onClick);
+      systemTheme.addEventListener('change', this.onSystemChange);
+      window.addEventListener('storage', this.onStorage);
+    }
+    disconnectedCallback() {
+      this.removeEventListener('click', this.onClick);
+      systemTheme.removeEventListener('change', this.onSystemChange);
+      window.removeEventListener('storage', this.onStorage);
+    }
+    update(theme: Theme) {
+      document.documentElement.dataset.theme = theme === 'auto' ? (systemTheme.matches ? 'light' : 'dark') : theme;
+      this.querySelectorAll<HTMLButtonElement>('button[data-value]').forEach(button => {
+        const selected = button.dataset.value === theme;
+        button.setAttribute('aria-pressed', String(selected));
+        if (selected) {
+          const label = button.textContent?.trim() || '';
+          this.querySelector('[data-dropdown-label]')!.textContent = label;
+          this.querySelector('summary')!.setAttribute('aria-label', `${this.dataset.label}: ${label}`);
+        }
+      });
+    }
+    onClick = (event: MouseEvent) => {
+      const button = (event.target as Element).closest<HTMLButtonElement>('button[data-value]');
+      if (!button) return;
+      const theme = parseTheme(button.dataset.value);
+      try { localStorage.setItem('starlight-theme', theme === 'auto' ? '' : theme); } catch {}
+      document.querySelectorAll<DocsThemeSelect>('docs-theme-select').forEach(picker => picker.update(theme));
+      this.querySelector('details')!.open = false;
+      this.querySelector('summary')!.focus();
+    };
+    onSystemChange = () => { if (loadTheme() === 'auto') this.update('auto'); };
+    onStorage = (event: StorageEvent) => { if (event.key === 'starlight-theme' || event.key === null) this.update(loadTheme()); };
+  }
+  customElements.define('docs-theme-select', DocsThemeSelect);
+</script>

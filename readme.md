@@ -1,4 +1,4 @@
-# Laravel Translations
+# Laravel Docs
 
 Community Laravel documentation and translations, published with Astro Starlight.
 
@@ -7,7 +7,8 @@ All maintained Laravel versions and languages live together on `main`:
 ```text
 site/src/content/docs/
 ├── en/13.x/       # English source documentation
-└── pt-br/13.x/    # Brazilian Portuguese translations
+├── pt-br/13.x/    # Brazilian Portuguese translations
+└── es/13.x/       # Neutral Spanish translations
 ```
 
 Pages use `/<language>/<version>/<page>/`, for example

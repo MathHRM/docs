@@ -1,9 +1,9 @@
 ---
-title: Laravel Translations
+title: Laravel Docs
 description: Community documentation and future translations for Laravel.
 template: splash
 hero:
-  title: Laravel Translations
+  title: Laravel Docs
   tagline: Explore the Laravel documentation. Community translations are coming next.
   actions:
     - text: Read the documentation

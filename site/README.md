@@ -1,4 +1,4 @@
-# Laravel Translations website
+# Laravel Docs website
 
 Astro + Starlight documentation. All maintained languages and Laravel major
 versions live on `main`; feature and translation branches are temporary.
@@ -28,6 +28,7 @@ Canonical URLs are `/<locale>/<version>/<page>/`, for example:
 ```text
 /en/13.x/installation/
 /pt-br/13.x/installation/
+/es/13.x/installation/
 ```
 
 The language selector keeps the version and page. The version selector keeps
@@ -69,9 +70,13 @@ as `site-v1.0.0` may mark a website release containing multiple Laravel versions
 
 ## Add translations and languages
 
-For Portuguese, add Markdown to `src/content/docs/pt-br/13.x/` with the same
-filename as the English source and a `title` frontmatter. For another language,
-register it in `src/locales.json`, then add its translated files. Untranslated
+English (`en`), Brazilian Portuguese (`pt-br`), and neutral Spanish (`es`) are
+registered in `src/locales.json`. Spanish translations use the shared glossary
+in `translations/es-glossary.md`.
+
+For Portuguese or Spanish, add Markdown to `src/content/docs/pt-br/13.x/` or
+`src/content/docs/es/13.x/` with the same filename as the English source and a
+`title` frontmatter. For another language, register it in `src/locales.json`, then add its translated files. Untranslated
 pages fall back to English within the same Laravel version.
 
 Optionally record the English source's last-changing commit in each translation:
@@ -87,6 +92,11 @@ Find that commit with `git log -1 --format=%H --
 site/src/content/docs/en/13.x/installation.md`. Compare the English file against
 that commit when reviewing translation updates. This metadata is a manual
 tracking convention; it does not automatically flag stale translations.
+
+Run `npm run check:es --prefix site` to check Spanish coverage, source commits,
+code blocks, inline code, link destinations, explicit anchors, and heading
+structure. The check also rejects unchanged English prose paragraphs; editorial
+review is still needed to assess translation accuracy.
 
 ## Deploy to Vercel
 

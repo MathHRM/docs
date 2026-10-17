@@ -19,11 +19,14 @@ export default defineConfig({
   redirects,
   site: process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined),
   integrations: [starlight({
-    title: 'Laravel Translations',
+    title: 'Laravel Docs',
     description: 'Community documentation and translations for Laravel.',
     locales,
     defaultLocale: 'en',
-    components: { LanguageSelect: './src/components/LanguageSelect.astro' },
+    components: {
+      LanguageSelect: './src/components/LanguageSelect.astro',
+      ThemeSelect: './src/components/ThemeSelect.astro',
+    },
     routeMiddleware: './src/routeData.ts',
     sidebar,
     expressiveCode: { shiki: { langAlias: { env: 'dotenv' } } },

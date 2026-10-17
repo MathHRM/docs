@@ -51,10 +51,13 @@ for (const { version, label } of versions) {
   })).filter(group => group.items.length);
   const unlisted = slugs.filter(slug => slug && !listed.has(slug));
   if (unlisted.length) items.push({
-    label: portugueseTranslations.groups?.['More documentation'] ?? 'More documentation',
-    translations: portugueseTranslations.groups?.['More documentation']
-      ? { 'pt-BR': portugueseTranslations.groups['More documentation'] }
-      : undefined,
+    label: 'More documentation',
+    translations: {
+      es: 'Más documentación',
+      ...(portugueseTranslations.groups?.['More documentation']
+        ? { 'pt-BR': portugueseTranslations.groups['More documentation'] }
+        : {}),
+    },
     collapsed: true,
     items: unlisted.map(slug => ({ slug: `${version}/${slug}` })),
   });
