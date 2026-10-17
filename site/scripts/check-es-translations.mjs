@@ -14,7 +14,11 @@ const errors = [];
 const capture = (text, regex) => [...text.matchAll(regex)].map(match => match[1]);
 function structure(text) {
   const blocks = [];
-  const prose = text.replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1[^\n]*$/gm, block => { blocks.push(block); return ''; });
+  const prose = text.replace(/^(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1[^\n]*$/gm, block => {
+    // Code examples may translate comments while keeping the executable code unchanged.
+    blocks.push(block.split('\n').filter(line => !/^\s*(?:\/\/|#|\/\*|\*|\*\/|<!--|-->)/.test(line)).join('\n'));
+    return '';
+  });
   return {
     blocks,
     identifiers: capture(prose, /\b([A-Z][A-Za-z0-9_]*(?:\\[A-Za-z_][A-Za-z0-9_]*)+)\b/g).sort(),
