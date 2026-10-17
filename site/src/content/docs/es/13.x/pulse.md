@@ -386,7 +386,7 @@ Si ningún patrón de expresión regular coincide con el SQL de la consulta, se 
 <a id="slow-requests-recorder"></a>
 #### Solicitudes lentas
 
-La grabadora `Requests` captura información sobre las solicitudes realizadas a su aplicación para mostrarlas en las tarjetas [Solicitudes lentas](#slow-requests-card) y [Uso de aplicaciones](#application-usage-card)].
+La grabadora `Requests` captura información sobre las solicitudes realizadas a su aplicación para mostrarlas en las tarjetas [Solicitudes lentas](#slow-requests-card) y [Uso de aplicaciones](#application-usage-card).
 
 Opcionalmente, puede ajustar el umbral de ruta lenta, [tasa de muestreo](#sampling) y las rutas ignoradas.
 
@@ -569,7 +569,7 @@ class TopSellers extends Card
 }
 ```
 
-Al utilizar la función [carga diferida](https://livewire.laravel.com/docs/lazy)] de Livewire, el componente `Card` proporcionará automáticamente un marcador de posición que respete los atributos `cols` y `rows` pasados ​​a su componente.
+Al utilizar la función [carga diferida](https://livewire.laravel.com/docs/lazy) de Livewire, el componente `Card` proporcionará automáticamente un marcador de posición que respete los atributos `cols` y `rows` pasados ​​a su componente.
 
 Al escribir la vista correspondiente de su tarjeta Pulse, puede aprovechar los componentes Blade de Pulse para obtener una apariencia consistente:
 

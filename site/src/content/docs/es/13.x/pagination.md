@@ -178,7 +178,7 @@ Las clases `Paginator` y `CursorPaginator` no necesitan conocer el número total
 En otras palabras, `Paginator` corresponde al método `simplePaginate` en el generador de consultas, `CursorPaginator` corresponde al método `cursorPaginate` y `LengthAwarePaginator` corresponde al método `paginate`.
 
 > **Advertencia:**
-> Al crear manualmente una instancia de paginador, debe "cortar" manualmente la matriz de resultados que pasa al paginador. Si no está seguro de cómo hacer esto, consulte la función PHP [array_slice](https://secure.php.net/manual/en/function.array-slice.php)].
+> Al crear manualmente una instancia de paginador, debe "cortar" manualmente la matriz de resultados que pasa al paginador. Si no está seguro de cómo hacer esto, consulte la función PHP [array_slice](https://secure.php.net/manual/en/function.array-slice.php).
 
 <a id="customizing-pagination-urls"></a>
 ### Personalización de las URL de paginación

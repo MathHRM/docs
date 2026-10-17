@@ -122,7 +122,7 @@ Route::post('/forgot-password', function (Request $request) {
 })->middleware('guest')->name('password.email');
 ```
 
-Antes de continuar, examinemos esta ruta con más detalle. Primero, se valida el atributo `email` de la solicitud. A continuación, utilizaremos el "agente de contraseñas" integrado de Laravel (a través de la fachada `Password`) para enviar un enlace de restablecimiento de contraseña al usuario. El agente de contraseñas se encargará de recuperar al usuario mediante el campo indicado (en este caso, la dirección de correo electrónico) y de enviarle un enlace para restablecer la contraseña a través del [sistema de notificación ](../notifications/)] integrado de Laravel.
+Antes de continuar, examinemos esta ruta con más detalle. Primero, se valida el atributo `email` de la solicitud. A continuación, utilizaremos el "agente de contraseñas" integrado de Laravel (a través de la fachada `Password`) para enviar un enlace de restablecimiento de contraseña al usuario. El agente de contraseñas se encargará de recuperar al usuario mediante el campo indicado (en este caso, la dirección de correo electrónico) y de enviarle un enlace para restablecer la contraseña a través del [sistema de notificación ](../notifications/) integrado de Laravel.
 
 El método `sendResetLink` devuelve un slug de "estado". Este estado se puede traducir utilizando los ayudantes [localization](../localization/) de Laravel para mostrar un mensaje fácil de usar al usuario sobre el estado de su solicitud. La traducción del estado de restablecimiento de contraseña está determinada por el archivo de idioma `lang/{lang}/passwords.php` de su aplicación. Una entrada para cada valor posible del slug de estado se encuentra dentro del archivo de idioma `passwords`.
 

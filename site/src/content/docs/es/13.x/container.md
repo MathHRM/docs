@@ -305,7 +305,7 @@ interface EventPusher
 }
 ```
 
-Además, se pueden aplicar los atributos [Singleton](#singleton-attribute) y [Scoped](#scoped-attribute)] para indicar si los enlaces del contenedor deben resolverse una vez o una vez por solicitud/ciclo de vida del trabajo:
+Además, se pueden aplicar los atributos [Singleton](#singleton-attribute) y [Scoped](#scoped-attribute) para indicar si los enlaces del contenedor deben resolverse una vez o una vez por solicitud/ciclo de vida del trabajo:
 
 ```php
 use App\Services\RedisEventPusher;

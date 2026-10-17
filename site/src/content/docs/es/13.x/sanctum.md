@@ -196,7 +196,7 @@ Route::get('/orders', function () {
 <a id="first-party-ui-initiated-requests"></a>
 #### Solicitudes iniciadas por la interfaz de usuario propia
 
-Para mayor comodidad, el método `tokenCan` siempre devolverá `true` si la solicitud autenticada entrante provino de su SPA propio y está utilizando la [autenticación de SPA](#spa-authentication)] integrada de Sanctum.
+Para mayor comodidad, el método `tokenCan` siempre devolverá `true` si la solicitud autenticada entrante provino de su SPA propio y está utilizando la [autenticación de SPA](#spa-authentication) integrada de Sanctum.
 
 Sin embargo, esto no significa necesariamente que su aplicación deba permitir al usuario realizar la acción. Por lo general, las [políticas de autorización](../authorization/#creating-policies) de su aplicación determinarán si al token se le ha otorgado el permiso para realizar las capacidades y también verificarán que la instancia de usuario en sí debe tener permiso para realizar la acción.
 

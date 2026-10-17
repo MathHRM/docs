@@ -61,7 +61,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 
 [Laravel Cashier Paddle](https://github.com/laravel/cashier-paddle) proporciona una interfaz expresiva y fluida para los servicios de facturación de suscripción de [Paddle's](https://paddle.com). Maneja casi todos los códigos de facturación de suscripción estándar que temes. Además de la gestión básica de suscripciones, Cashier puede gestionar: intercambio de suscripciones, "cantidades" de suscripción, pausa de suscripción, períodos de gracia de cancelación y más.
 
-Antes de profundizar en Cashier Paddle, le recomendamos que también revise las [guías conceptuales ](https://developer.paddle.com/concepts/overview) y la [documentación API](https://developer.paddle.com/api-reference/overview)] de Paddle.
+Antes de profundizar en Cashier Paddle, le recomendamos que también revise las [guías conceptuales ](https://developer.paddle.com/concepts/overview) y la [documentación API](https://developer.paddle.com/api-reference/overview) de Paddle.
 
 <a id="upgrading-cashier"></a>
 ## Actualización de cajero
@@ -446,7 +446,7 @@ Y ahora su suscripción se cancelará al final de su período de facturación.
 
 La mayoría de las operaciones para facturar a los clientes se realizan mediante "pagos" a través del [widget de superposición de pago](https://developer.paddle.com/build/checkout/build-overlay-checkout) de Paddle o mediante el uso de [pago en línea](https://developer.paddle.com/build/checkout/build-branded-inline-checkout).
 
-Antes de procesar pagos con Paddle, debe definir el [enlace de pago predeterminado](https://developer.paddle.com/build/transactions/default-payment-link#set-default-link)] de su aplicación en el panel de configuración de pago de Paddle.
+Antes de procesar pagos con Paddle, debe definir el [enlace de pago predeterminado](https://developer.paddle.com/build/transactions/default-payment-link#set-default-link) de su aplicación en el panel de configuración de pago de Paddle.
 
 <a id="overlay-checkout"></a>
 ### Pago superpuesto
@@ -1372,7 +1372,7 @@ Dado que los webhooks de Paddle deben evitar la protección CSRF](../csrf/) de L
 <a id="webhooks-local-development"></a>
 #### Webhooks y desarrollo local
 
-Para que Paddle pueda enviar webhooks de su aplicación durante el desarrollo local, deberá exponer su aplicación a través de un servicio de sitio compartido como [Ngrok](https://ngrok.com/) o [Expose](https://expose.dev/docs/introduction). Si está desarrollando su aplicación localmente usando [Laravel Sail](../sail/), puede usar el comando para compartir sitio [](../sail/#sharing-your-site)] de Sail.
+Para que Paddle pueda enviar webhooks de su aplicación durante el desarrollo local, deberá exponer su aplicación a través de un servicio de sitio compartido como [Ngrok](https://ngrok.com/) o [Expose](https://expose.dev/docs/introduction). Si está desarrollando su aplicación localmente usando [Laravel Sail](../sail/), puede usar el comando para compartir sitio [](../sail/#sharing-your-site) de Sail.
 
 <a id="defining-webhook-event-handlers"></a>
 ### Definición de controladores de eventos de webhook
@@ -1450,7 +1450,7 @@ Route::get('/buy', function (Request $request) {
 });
 ```
 
-Después de generar la sesión de pago, puede usar el `paddle-button` [componente Blade](#overlay-checkout)] proporcionado por el Cajero para permitir al usuario ver el widget de pago de Paddle y completar la compra:
+Después de generar la sesión de pago, puede usar el `paddle-button` [componente Blade](#overlay-checkout) proporcionado por el Cajero para permitir al usuario ver el widget de pago de Paddle y completar la compra:
 
 ```blade
 <x-paddle-button :checkout="$checkout" class="px-8 py-4">

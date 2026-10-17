@@ -44,7 +44,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 
 Scout se entrega con un motor `database` incorporado que utiliza índices de texto completo MySQL/PostgreSQL y cláusulas `LIKE` para buscar en su base de datos existente, sin necesidad de servicios externos. Para la mayoría de las aplicaciones, esto es todo lo que necesita. Para obtener una descripción general de todas las opciones de búsqueda disponibles en Laravel, consulte la [documentación de búsqueda](../search/).
 
-Scout también incluye controladores para [Algolia](https://www.algolia.com/), [Meilisearch](https://www.meilisearch.com), [Typesense](https://typesense.org) y [Turbopuffer](https://turbopuffer.com)] cuando necesita funciones como tolerancia a errores tipográficos, filtrado por facetas, búsqueda de vectores o búsqueda geográfica a escala masiva. También está disponible un controlador de "colección" para el desarrollo local y usted también puede escribir [motores personalizados](#custom-engines).
+Scout también incluye controladores para [Algolia](https://www.algolia.com/), [Meilisearch](https://www.meilisearch.com), [Typesense](https://typesense.org) y [Turbopuffer](https://turbopuffer.com) cuando necesita funciones como tolerancia a errores tipográficos, filtrado por facetas, búsqueda de vectores o búsqueda geográfica a escala masiva. También está disponible un controlador de "colección" para el desarrollo local y usted también puede escribir [motores personalizados](#custom-engines).
 
 <a id="installation"></a>
 ## Instalación

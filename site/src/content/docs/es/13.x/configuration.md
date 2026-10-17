@@ -48,7 +48,7 @@ php artisan config:show database
 
 A menudo resulta útil tener diferentes valores de configuración según el entorno donde se ejecuta la aplicación. Por ejemplo, es posible que desee utilizar localmente un controlador de caché diferente al que utiliza en su servidor de producción.
 
-Para que esto sea muy fácil, Laravel utiliza la biblioteca PHP [DotEnv](https://github.com/vlucas/phpdotenv)]. En una instalación nueva de Laravel, el directorio raíz de su aplicación contendrá un archivo `.env.example` que define muchas variables de entorno comunes. Durante el proceso de instalación de Laravel, este archivo se copiará automáticamente a `.env`.
+Para que esto sea muy fácil, Laravel utiliza la biblioteca PHP [DotEnv](https://github.com/vlucas/phpdotenv). En una instalación nueva de Laravel, el directorio raíz de su aplicación contendrá un archivo `.env.example` que define muchas variables de entorno comunes. Durante el proceso de instalación de Laravel, este archivo se copiará automáticamente a `.env`.
 
 El archivo `.env` predeterminado de Laravel contiene algunos valores de configuración comunes que pueden diferir según si su aplicación se ejecuta localmente o en un servidor web de producción. Luego, estos valores son leídos por los archivos de configuración dentro del directorio `config` utilizando la función `env` de Laravel.
 

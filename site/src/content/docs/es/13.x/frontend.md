@@ -163,7 +163,7 @@ Si le preocupa sumergirse en Inertia porque su aplicación requiere renderizado 
 <a id="inertia-starter-kits"></a>
 ### Kits de inicio
 
-Si desea crear su interfaz utilizando Inertia y React/Svelte/Vue, puede aprovechar nuestros [kits de inicio de aplicaciones React, Svelte o Vue](../starter-kits/) para impulsar el desarrollo de su aplicación. Todos estos kits de inicio estructuran el flujo de autenticación de backend y frontend de su aplicación utilizando Inertia, React / Svelte / Vue, [Tailwind](https://tailwindcss.com) y [Vite](https://vitejs.dev)] para que pueda comenzar a construir su próxima gran idea.
+Si desea crear su interfaz utilizando Inertia y React/Svelte/Vue, puede aprovechar nuestros [kits de inicio de aplicaciones React, Svelte o Vue](../starter-kits/) para impulsar el desarrollo de su aplicación. Todos estos kits de inicio estructuran el flujo de autenticación de backend y frontend de su aplicación utilizando Inertia, React / Svelte / Vue, [Tailwind](https://tailwindcss.com) y [Vite](https://vitejs.dev) para que pueda comenzar a construir su próxima gran idea.
 
 <a id="bundling-assets"></a>
 ## Agrupación de activos

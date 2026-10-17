@@ -163,7 +163,7 @@ report($caught); // ignored
 <a id="exception-log-levels"></a>
 ### Niveles de registro de excepciones
 
-Cuando los mensajes se escriben en el [logs](../logging/) de su aplicación, los mensajes se escriben en un [nivel de registro](../logging/#log-levels)] específico, que indica la gravedad o importancia del mensaje que se registra.
+Cuando los mensajes se escriben en el [logs](../logging/) de su aplicación, los mensajes se escriben en un [nivel de registro](../logging/#log-levels) específico, que indica la gravedad o importancia del mensaje que se registra.
 
 Como se señaló anteriormente, incluso cuando registra una devolución de llamada de informe de excepción personalizada utilizando el método `report`, Laravel seguirá registrando la excepción utilizando la configuración de registro predeterminada para la aplicación; sin embargo, dado que el nivel de registro a veces puede influir en los canales en los que se registra un mensaje, es posible que desee configurar el nivel de registro en el que se registran ciertas excepciones.
 

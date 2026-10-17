@@ -458,7 +458,7 @@ Esta ruta registrará un recurso anidado al que se puede acceder con URI como el
 <a id="scoping-nested-resources"></a>
 #### Determinación del alcance de los recursos anidados
 
-La función [enlace de modelo implícito](../routing/#implicit-model-binding-scoping)] de Laravel puede abarcar automáticamente los enlaces anidados de modo que se confirme que el modelo secundario resuelto pertenece al modelo principal. Al utilizar el método `scoped` al definir su recurso anidado, puede habilitar el alcance automático e indicarle a Laravel por qué campo se debe recuperar el recurso secundario. Para obtener más información sobre cómo lograr esto, consulte la documentación sobre [alcance de rutas de recursos](#restful-scoping-resource-routes).
+La función [enlace de modelo implícito](../routing/#implicit-model-binding-scoping) de Laravel puede abarcar automáticamente los enlaces anidados de modo que se confirme que el modelo secundario resuelto pertenece al modelo principal. Al utilizar el método `scoped` al definir su recurso anidado, puede habilitar el alcance automático e indicarle a Laravel por qué campo se debe recuperar el recurso secundario. Para obtener más información sobre cómo lograr esto, consulte la documentación sobre [alcance de rutas de recursos](#restful-scoping-resource-routes).
 
 <a id="shallow-nesting"></a>
 #### Anidamiento poco profundo

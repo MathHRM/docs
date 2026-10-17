@@ -39,7 +39,7 @@ Afortunadamente, Laravel proporciona una API unificada y expresiva para varios b
 <a id="configuration"></a>
 ## Configuración
 
-El archivo de configuración de caché de su aplicación se encuentra en `config/cache.php`. En este archivo, puede especificar qué almacén de caché le gustaría que se utilice de forma predeterminada en toda su aplicación. Laravel admite backends de almacenamiento en caché populares como [Memcached](https://memcached.org), [Redis](https://redis.io), [DynamoDB](https://aws.amazon.com/dynamodb)], bases de datos relacionales y discos de sistema de archivos listos para usar. Además, está disponible un controlador de caché basado en archivos, mientras que los controladores de caché `array` y `null` proporcionan backends de caché convenientes para sus pruebas automatizadas.
+El archivo de configuración de caché de su aplicación se encuentra en `config/cache.php`. En este archivo, puede especificar qué almacén de caché le gustaría que se utilice de forma predeterminada en toda su aplicación. Laravel admite backends de almacenamiento en caché populares como [Memcached](https://memcached.org), [Redis](https://redis.io), [DynamoDB](https://aws.amazon.com/dynamodb), bases de datos relacionales y discos de sistema de archivos listos para usar. Además, está disponible un controlador de caché basado en archivos, mientras que los controladores de caché `array` y `null` proporcionan backends de caché convenientes para sus pruebas automatizadas.
 
 El archivo de configuración de caché también contiene una variedad de otras opciones que puede revisar. De forma predeterminada, Laravel está configurado para usar el controlador de caché `database`, que almacena los objetos serializados almacenados en caché en la base de datos de su aplicación.
 

@@ -958,7 +958,7 @@ $view->assertSee('Please provide a valid name.');
 <a id="rendering-blade-and-components"></a>
 ### Renderizado de cuchillas y componentes
 
-Si es necesario, puede utilizar el método `blade` para evaluar y representar una cadena [Blade](../blade/)] sin formato. Al igual que el método `view`, el método `blade` devuelve una instancia de `Illuminate\Testing\TestView`:
+Si es necesario, puede utilizar el método `blade` para evaluar y representar una cadena [Blade](../blade/) sin formato. Al igual que el método `view`, el método `blade` devuelve una instancia de `Illuminate\Testing\TestView`:
 
 ```php
 $view = $this->blade(

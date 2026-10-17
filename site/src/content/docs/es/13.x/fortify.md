@@ -58,7 +58,7 @@ Básicamente, Laravel Fortify toma las rutas y los controladores de nuestros kit
 <a id="when-should-i-use-fortify"></a>
 ### ¿Cuándo debo usar Fortify?
 
-Quizás se pregunte cuándo es apropiado utilizar Laravel Fortify. Primero, si está utilizando uno de los [kits de inicio de aplicaciones](../starter-kits/)] de Laravel, no necesita instalar Laravel Fortify ya que todos los kits de inicio de aplicaciones de Laravel usan Fortify y ya proporcionan una implementación de autenticación completa.
+Quizás se pregunte cuándo es apropiado utilizar Laravel Fortify. Primero, si está utilizando uno de los [kits de inicio de aplicaciones](../starter-kits/) de Laravel, no necesita instalar Laravel Fortify ya que todos los kits de inicio de aplicaciones de Laravel usan Fortify y ya proporcionan una implementación de autenticación completa.
 
 Si no está utilizando un kit de inicio de aplicación y su aplicación necesita funciones de autenticación, tiene dos opciones: implementar manualmente las funciones de autenticación de su aplicación o usar Laravel Fortify para proporcionar la implementación de backend de estas funciones.
 
@@ -277,7 +277,7 @@ class User extends Authenticatable
 
 A continuación, debe crear una pantalla dentro de su aplicación donde los usuarios puedan administrar su configuración de autenticación de dos factores. Esta pantalla debería permitir al usuario habilitar y deshabilitar la autenticación de dos factores, así como regenerar sus códigos de recuperación de autenticación de dos factores.
 
-> De forma predeterminada, la matriz `features` del archivo de configuración `fortify` indica a la configuración de autenticación de dos factores de Fortify que requiera la confirmación de la contraseña antes de la modificación. Por lo tanto, su aplicación debe implementar la función [confirmación de contraseña](#password-confirmation)] de Fortify antes de continuar.
+> De forma predeterminada, la matriz `features` del archivo de configuración `fortify` indica a la configuración de autenticación de dos factores de Fortify que requiera la confirmación de la contraseña antes de la modificación. Por lo tanto, su aplicación debe implementar la función [confirmación de contraseña](#password-confirmation) de Fortify antes de continuar.
 
 <a id="enabling-two-factor-authentication"></a>
 ### Habilitación de la autenticación de dos factores

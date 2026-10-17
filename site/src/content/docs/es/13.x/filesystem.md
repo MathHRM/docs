@@ -373,7 +373,7 @@ Si comenzó a desarrollar su aplicación antes de que se introdujera la compatib
 <a id="s3-request-parameters"></a>
 #### Parámetros de solicitud de S3
 
-Si necesita especificar [parámetros de solicitud de S3](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html#RESTObjectGET-requests)] adicionales, puede pasar la matriz de parámetros de solicitud como tercer argumento del método `temporaryUrl`:
+Si necesita especificar [parámetros de solicitud de S3](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html#RESTObjectGET-requests) adicionales, puede pasar la matriz de parámetros de solicitud como tercer argumento del método `temporaryUrl`:
 
 ```php
 $url = Storage::temporaryUrl(

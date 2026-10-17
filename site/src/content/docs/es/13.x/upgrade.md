@@ -39,8 +39,8 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 - [`JobAttempted` Carga útil de excepción de evento](#jobattempted-event-exception-payload)
 - [Administrador `extend` Enlace de devolución de llamada](#manager-extend-callback-binding)
 - [Consultas MySQL `DELETE` con `JOIN`, `ORDER BY` y `LIMIT`](#mysql-delete-queries-with-join-order-by-and-limit)
-- [Paginación Bootstrap Ver Nombres](#pagination-bootstrap-view-names)
-- [Nombre de tabla dinámica polimórfica Generation](#polymorphic-pivot-table-name-generation)
+- [Nombres de vistas de paginación de Bootstrap](#pagination-bootstrap-view-names)
+- [Generación del nombre de tabla pivote polimórfica](#polymorphic-pivot-table-name-generation)
 - [`QueueBusy` Cambio de nombre de propiedad de evento](#queuebusy-event-property-rename)
 - [Sesión `serialization` Configuración](#session-serialization-configuration)
 - [Restablecimiento de fábricas `Str` entre pruebas](#str-factories-reset-between-tests)
@@ -144,7 +144,7 @@ La configuración predeterminada de la aplicación `cache` ahora incluye una opc
 ],
 ```
 
-Si su aplicación anteriormente dependía de la deseriatización de objetos almacenados en caché arbitrarios, deberá migrar ese uso a listas de clases permitidas explícitas o a cargas útiles de caché que no sean objetos (como matrices).
+Si su aplicación anteriormente dependía de la deserialización de objetos almacenados en caché arbitrarios, deberá migrar ese uso a listas de clases permitidas explícitas o a cargas útiles de caché que no sean objetos (como matrices).
 
 <a id="container"></a>
 ### Contenedor

@@ -151,7 +151,7 @@ Si está actualizando de Valet 3 a Valet 4, siga los siguientes pasos para actua
 <div class="content-list" markdown="1">
 
 - Si ha agregado archivos `.valetphprc` para personalizar la versión PHP de su sitio, cambie el nombre de cada archivo `.valetphprc` a `.valetrc`. Luego, anteponga `php=` al contenido existente del archivo `.valetrc`.
-- Actualice los controladores personalizados para que coincidan con el espacio de nombres, la extensión, las sugerencias de tipo y las sugerencias de tipo de retorno del nuevo sistema de controladores. Puede consultar [SampleValetDriver](https://github.com/laravel/valet/blob/d7787c025e60abc24a5195dc7d4c5c6f2d984339/cli/stubs/SampleValetDriver.php)] de Valet como ejemplo.
+- Actualice los controladores personalizados para que coincidan con el espacio de nombres, la extensión, las sugerencias de tipo y las sugerencias de tipo de retorno del nuevo sistema de controladores. Puede consultar [SampleValetDriver](https://github.com/laravel/valet/blob/d7787c025e60abc24a5195dc7d4c5c6f2d984339/cli/stubs/SampleValetDriver.php) de Valet como ejemplo.
 - Si usa PHP 7.1 - 7.4 para servir sus sitios, asegúrese de seguir usando Homebrew para instalar una versión de PHP que sea 8.0 o superior, ya que Valet usará esta versión, incluso si no es su versión principal vinculada, para ejecutar algunos de sus scripts.
 
 </div>

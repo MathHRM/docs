@@ -404,7 +404,7 @@ use Laravel\Fortify\Features;
 
 Para deshabilitar una función, comente o elimine esa entrada de función de la matriz `features`. Por ejemplo, elimine `Features::registration()` para desactivar el registro público.
 
-Cuando utilice los kits de inicio [React](#react), [Svelte](#svelte) o [Vue](#vue)], también deberá eliminar cualquier referencia a las rutas de la función deshabilitada en su código de interfaz. Por ejemplo, si desactiva la verificación por correo electrónico, debe eliminar las importaciones y referencias a las rutas `verification` en sus componentes React, Svelte o Vue. Esto es necesario porque estos kits de inicio utilizan Wayfinder para enrutamiento con seguridad de tipos, que genera definiciones de ruta en el momento de la compilación. Si hace referencia a rutas que ya no existen, su aplicación no podrá compilarse.
+Cuando utilice los kits de inicio [React](#react), [Svelte](#svelte) o [Vue](#vue), también deberá eliminar cualquier referencia a las rutas de la función deshabilitada en su código de interfaz. Por ejemplo, si desactiva la verificación por correo electrónico, debe eliminar las importaciones y referencias a las rutas `verification` en sus componentes React, Svelte o Vue. Esto es necesario porque estos kits de inicio utilizan Wayfinder para enrutamiento con seguridad de tipos, que genera definiciones de ruta en el momento de la compilación. Si hace referencia a rutas que ya no existen, su aplicación no podrá compilarse.
 
 <a id="customizing-actions"></a>
 ### Personalización de la creación de usuarios y el restablecimiento de contraseñas

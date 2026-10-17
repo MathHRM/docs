@@ -93,7 +93,7 @@ El directorio `storage/app/public` se puede utilizar para almacenar archivos gen
 <a id="the-tests-directory"></a>
 ### El directorio de pruebas
 
-El directorio `tests` contiene sus pruebas automatizadas. Por ejemplo, las pruebas unitarias y de funciones [Pest](https://pestphp.com) o [PHPUnit](https://phpunit.de/)] se proporcionan listas para usar. Cada clase de prueba debe tener como sufijo la palabra `Test`. Puede ejecutar sus pruebas utilizando los comandos `/vendor/bin/pest` o `/vendor/bin/phpunit`. O, si desea una representación más detallada y hermosa de los resultados de sus pruebas, puede ejecutarlas usando el comando `php artisan test` Artisan.
+El directorio `tests` contiene sus pruebas automatizadas. Por ejemplo, las pruebas unitarias y de funciones [Pest](https://pestphp.com) o [PHPUnit](https://phpunit.de/) se proporcionan listas para usar. Cada clase de prueba debe tener como sufijo la palabra `Test`. Puede ejecutar sus pruebas utilizando los comandos `/vendor/bin/pest` o `/vendor/bin/phpunit`. O, si desea una representación más detallada y hermosa de los resultados de sus pruebas, puede ejecutarlas usando el comando `php artisan test` Artisan.
 
 <a id="the-vendor-directory"></a>
 ### El directorio de proveedores

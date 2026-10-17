@@ -1604,7 +1604,7 @@ También se proporciona una sintaxis expresiva alternativa para estas acciones:
 
 </div>
 
-Cualquier [modificador de columna](#column-modifiers)] adicional debe llamarse antes del método `constrained`:
+Cualquier [modificador de columna](#column-modifiers) adicional debe llamarse antes del método `constrained`:
 
 ```php
 $table->foreignId('user_id')

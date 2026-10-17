@@ -50,7 +50,7 @@ Laravel incluye una amplia variedad de reglas de validación convenientes que pu
 <a id="validation-quickstart"></a>
 ## Inicio rápido de validación
 
-Para conocesr las potentes funciones de validación de Laravel, veamos un ejemplo completo de cómo validar un formulario y mostrar los mensajes de error al usuario. Al leer esta descripción general de alto nivel, podrá obtener una buena comprensión general de cómo validar los datos de solicitudes entrantes usando Laravel:
+Para conocer las potentes funciones de validación de Laravel, veamos un ejemplo completo de cómo validar un formulario y mostrar los mensajes de error al usuario. Al leer esta descripción general de alto nivel, podrá obtener una buena comprensión general de cómo validar los datos de solicitudes entrantes usando Laravel:
 
 <a id="quick-defining-the-routes"></a>
 ### Definición de las rutas

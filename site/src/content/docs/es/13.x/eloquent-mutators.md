@@ -722,7 +722,7 @@ protected function casts(): array
 <a id="encrypted-casting"></a>
 ### Conversión cifrada
 
-La conversión `encrypted` cifrará el valor del atributo de un modelo utilizando las funciones [encryption](../encryption/)] integradas de Laravel. Además, las versiones `encrypted:array`, `encrypted:collection`, `encrypted:object`, `AsEncryptedArrayObject` y `AsEncryptedCollection` funcionan como sus contrapartes no cifradas; sin embargo, como es de esperar, el valor subyacente se cifra cuando se almacena en su base de datos.
+La conversión `encrypted` cifrará el valor del atributo de un modelo utilizando las funciones [encryption](../encryption/) integradas de Laravel. Además, las versiones `encrypted:array`, `encrypted:collection`, `encrypted:object`, `AsEncryptedArrayObject` y `AsEncryptedCollection` funcionan como sus contrapartes no cifradas; sin embargo, como es de esperar, el valor subyacente se cifra cuando se almacena en su base de datos.
 
 Como la longitud final del texto cifrado no es predecible y es más larga que su contraparte de texto sin formato, asegúrese de que la columna de la base de datos asociada sea del tipo `TEXT` o mayor. Además, dado que los valores están cifrados en la base de datos, no podrá consultar ni buscar valores de atributos cifrados.
 

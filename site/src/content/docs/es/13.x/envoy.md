@@ -23,7 +23,7 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 <a id="introduction"></a>
 ## Introducción
 
-[Laravel Envoy](https://github.com/laravel/envoy) es una herramienta para ejecutar tareas comunes que ejecuta en sus servidores remotos. Con la sintaxis de estilo [Blade](../blade/)], puede configurar fácilmente tareas para implementación, comandos Artisan y más. Actualmente, Envoy sólo es compatible con los sistemas operativos Mac y Linux. Sin embargo, la compatibilidad con Windows se puede lograr utilizando [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+[Laravel Envoy](https://github.com/laravel/envoy) es una herramienta para ejecutar tareas comunes que ejecuta en sus servidores remotos. Con la sintaxis de estilo [Blade](../blade/), puede configurar fácilmente tareas para implementación, comandos Artisan y más. Actualmente, Envoy sólo es compatible con los sistemas operativos Mac y Linux. Sin embargo, la compatibilidad con Windows se puede lograr utilizando [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 
 <a id="installation"></a>
 ## Instalación

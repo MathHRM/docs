@@ -35,7 +35,7 @@ La clase `Illuminate\Http\Request` de Laravel proporciona una forma orientada a 
 <a id="accessing-the-request"></a>
 ### Accediendo a la Solicitud
 
-Para obtener una instancia de la solicitud HTTP actual mediante inyección de dependencia, debe escribir una sugerencia de la clase `Illuminate\Http\Request` en su método de función anónima de ruta o de controlador. Laravel [contenedor de servicio](../container/)] inyectará automáticamente la instancia de solicitud entrante:
+Para obtener una instancia de la solicitud HTTP actual mediante inyección de dependencia, debe declarar el tipo de la clase `Illuminate\Http\Request` en su función anónima de ruta o método de controlador. El [contenedor de servicios](../container/) de Laravel inyectará automáticamente la instancia de solicitud entrante:
 
 ```php
 <?php
@@ -762,7 +762,7 @@ Si el archivo cargado es una imagen que necesita manipular antes de almacenar, p
 $image = $request->image('photo');
 ```
 
-Para obtener más información sobre la manipulación de imágenes, consulte la [documentación de manipulación de imágenes](../images/)] completa.
+Para obtener más información sobre la manipulación de imágenes, consulte la [documentación de manipulación de imágenes](../images/) completa.
 
 <a id="validating-successful-uploads"></a>
 #### Validación de cargas exitosas
@@ -815,7 +815,7 @@ $path = $request->photo->storeAs('images', 'filename.jpg', 's3');
 ```
 
 > **Nota:**
-> Para obtener más información sobre el almacenamiento de archivos en Laravel, consulte la [documentación de almacenamiento de archivos](../filesystem/)] completa.
+> Para obtener más información sobre el almacenamiento de archivos en Laravel, consulte la [documentación de almacenamiento de archivos](../filesystem/) completa.
 
 <a id="configuring-trusted-proxies"></a>
 ## Configuración de servidores proxy confiables
