@@ -1372,7 +1372,7 @@ $users = DB::table('users')
 
 El método `when` solo ejecuta la función anónima dada cuando el primer argumento es `true`. Si el primer argumento es `false`, no se ejecutará la función anónima. Entonces, en el ejemplo anterior, la función anónima dada al método `when` solo se invocará si el campo `role` está presente en la solicitud entrante y se evalúa como `true`.
 
-Puede pasar otro función anónima como tercer argumento del método `when`. esta función anónima solo se ejecutará si el primer argumento se evalúa como `false`. Para ilustrar cómo se puede utilizar esta característica, la usaremos para configurar el orden predeterminado de una consulta:
+Puede pasar otra función anónima como tercer argumento del método `when`. Esta función anónima solo se ejecutará si el primer argumento se evalúa como `false`. Para ilustrar cómo se puede utilizar esta característica, la usaremos para configurar el orden predeterminado de una consulta:
 
 ```php
 $sortByVotes = $request->boolean('sort_by_votes');

@@ -272,7 +272,7 @@ class PodcastController
 <a id="conditional-execution"></a>
 ### Ejecución condicional
 
-El método `when` se puede utilizar para ejecutar con fluidez una función anónima determinada si una función está activa. Además, se puede proporcionar un segunda función anónima que se ejecutará si la función está inactiva:
+El método `when` se puede utilizar para ejecutar con fluidez una función anónima determinada si una función está activa. Además, se puede proporcionar una segunda función anónima que se ejecutará si la función está inactiva:
 
 ```php
 <?php
@@ -301,7 +301,7 @@ class PodcastController
 }
 ```
 
-El método `unless` sirve como inverso del método `when`, ejecutando el primera función anónima si la característica está inactiva:
+El método `unless` sirve como inverso del método `when`, ejecutando la primera función anónima si la característica está inactiva:
 
 ```php
 return Feature::unless(NewApi::class,

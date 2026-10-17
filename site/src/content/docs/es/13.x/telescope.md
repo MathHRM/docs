@@ -215,7 +215,7 @@ Para mantener los activos actualizados y evitar problemas en futuras actualizaci
 <a id="filtering-entries"></a>
 ### Entradas
 
-Puede filtrar los datos que registra Telescope a través de la función anónima `filter` que está definido en su clase `App\Providers\TelescopeServiceProvider`. De forma predeterminada, esta función anónima registra todos los datos en el entorno `local` y las excepciones, trabajos fallidos, tareas programadas y datos con etiquetas monitoreadas en todos los demás entornos:
+Puede filtrar los datos que registra Telescope a través de la función anónima `filter` que está definida en su clase `App\Providers\TelescopeServiceProvider`. De forma predeterminada, esta función anónima registra todos los datos en el entorno `local` y las excepciones, trabajos fallidos, tareas programadas y datos con etiquetas monitoreadas en todos los demás entornos:
 
 ```php
 use Laravel\Telescope\IncomingEntry;

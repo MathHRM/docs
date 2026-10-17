@@ -170,7 +170,7 @@ class User extends Model
 }
 ```
 
-la función anónima del mutador recibirá el valor que se establece en el atributo, lo que le permitirá manipular el valor y devolver el valor manipulado. Para usar nuestro mutador, solo necesitamos configurar el atributo `first_name` en un modelo Eloquent:
+La función anónima del mutador recibirá el valor que se establece en el atributo, lo que le permitirá manipular el valor y devolver el valor manipulado. Para usar nuestro mutador, solo necesitamos configurar el atributo `first_name` en un modelo Eloquent:
 
 ```php
 use App\Models\User;
