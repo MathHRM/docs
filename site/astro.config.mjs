@@ -23,7 +23,10 @@ export default defineConfig({
     description: 'Community documentation and translations for Laravel.',
     locales,
     defaultLocale: 'en',
-    components: { LanguageSelect: './src/components/LanguageSelect.astro' },
+    components: {
+      LanguageSelect: './src/components/LanguageSelect.astro',
+      ThemeSelect: './src/components/ThemeSelect.astro',
+    },
     routeMiddleware: './src/routeData.ts',
     sidebar,
     expressiveCode: { shiki: { langAlias: { env: 'dotenv' } } },

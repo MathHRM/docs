@@ -3,8 +3,8 @@ import { Icon } from '@astrojs/starlight/components';
 interface Props {
   label: string;
   accessibleLabel: string;
-  icon?: 'translate';
-  items: { label: string; href: string; lang?: string; current?: boolean }[];
+  icon?: 'translate' | 'laptop';
+  items: { label: string; href?: string; value?: string; lang?: string; current?: boolean }[];
 }
 const { label, accessibleLabel, icon, items } = Astro.props;
 ---
@@ -13,12 +13,16 @@ const { label, accessibleLabel, icon, items } = Astro.props;
   <details>
     <summary aria-label={`${accessibleLabel}: ${label}`}>
       {icon && <Icon name={icon} size="1.25rem" />}
-      <span>{label}</span>
+      <span data-dropdown-label>{label}</span>
       <Icon name="down-caret" size="1rem" />
     </summary>
     <ul aria-label={accessibleLabel}>
       {items.map(item => (
-        <li><a href={item.href} lang={item.lang} aria-current={item.current ? 'true' : undefined}>{item.label}</a></li>
+        <li>{item.value ? (
+          <button type="button" data-value={item.value} aria-pressed={Boolean(item.current)}>{item.label}</button>
+        ) : (
+          <a href={item.href} lang={item.lang} aria-current={item.current ? 'true' : undefined}>{item.label}</a>
+        )}</li>
       ))}
     </ul>
   </details>
@@ -39,7 +43,7 @@ const { label, accessibleLabel, icon, items } = Astro.props;
   }
   summary::-webkit-details-marker { display: none; }
   summary:hover { color: var(--sl-color-text-accent); }
-  summary:focus-visible, a:focus-visible {
+  summary:focus-visible, a:focus-visible, button:focus-visible {
     outline: 2px solid var(--sl-color-text-accent);
     outline-offset: 2px;
   }
@@ -59,15 +63,21 @@ const { label, accessibleLabel, icon, items } = Astro.props;
     background: var(--sl-color-bg-nav);
     box-shadow: 0 0.5rem 1.5rem #0003;
   }
-  a {
+  a, button {
     display: block;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    text-align: start;
+    font-family: inherit;
+    cursor: pointer;
     padding: 0.5rem 0.75rem;
     border-radius: 0.25rem;
     color: var(--sl-color-white);
     font-size: var(--sl-text-sm);
     text-decoration: none;
   }
-  a:hover, a[aria-current] {
+  a:hover, a[aria-current], button:hover, button[aria-pressed="true"] {
     background: var(--sl-color-accent-low);
     color: var(--sl-color-text-accent);
   }
