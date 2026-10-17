@@ -1535,7 +1535,7 @@ Queue::route([
 ```
 
 > **Nota:**
-> El trabajo aún puedes anular el enrutamiento de la cola por trabajo.
+> El enrutamiento de la cola aún se puede anular para cada trabajo.
 
 Puedes utilizar el método `forward` para redespachar trabajos de una cola a otra cola y/o conexión. Esto resulta útil cuando necesitas cambiar la infraestructura de la cola sin modificar trabajos individuales o ubicaciones de envío:
 

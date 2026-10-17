@@ -35,32 +35,32 @@ translationSourceCommit: b1924db03c74b31fad5fc2f0d951406ca224a335
 <a id="introduction"></a>
 ## Introducción
 
-Muchas aplicaciones web ofrecen a sus usuarios una forma de autenticarse con la aplicación e "iniciar sesión". Implementar esta característica en aplicaciones web puede ser una tarea compleja y potencialmente riesgosa. Por esta razón, Laravel se esfuerza por brindarle las herramientas que necesita para implementar la autenticación de manera rápida, segura y sencilla.
+Muchas aplicaciones web ofrecen a sus usuarios una forma de autenticarse con la aplicación e "iniciar sesión". Implementar esta característica en aplicaciones web puede ser una tarea compleja y potencialmente riesgosa. Por esta razón, Laravel se esfuerza por brindarte las herramientas que necesitas para implementar la autenticación de manera rápida, segura y sencilla.
 
-En esencia, las instalaciones de autenticación de Laravel están compuestas por "guardias" y "proveedores". Los guardias definen cómo se autentican los usuarios para cada solicitud. Por ejemplo, Laravel se envía con una protección `session` que mantiene el estado mediante almacenamiento de sesión y cookies.
+En esencia, las instalaciones de autenticación de Laravel están compuestas por "guardias" y "proveedores". Los guardias definen cómo se autentican los usuarios para cada solicitud. Por ejemplo, Laravel se envía con una guardia `session` que mantiene el estado mediante almacenamiento de sesión y cookies.
 
-Los proveedores definen cómo se recuperan los usuarios de su almacenamiento persistente. Laravel incluye soporte para recuperar usuarios usando [Eloquent](../eloquent/) y el generador de consultas de base de datos. Sin embargo, usted es libre de definir proveedores adicionales según sea necesario para su aplicación.
+Los proveedores definen cómo se recuperan los usuarios de su almacenamiento persistente. Laravel incluye soporte para recuperar usuarios usando [Eloquent](../eloquent/) y el generador de consultas de base de datos. Sin embargo, puedes definir proveedores adicionales según sea necesario para tu aplicación.
 
-El archivo de configuración de autenticación de su aplicación se encuentra en `config/auth.php`. Este archivo contiene varias opciones bien documentadas para modificar el comportamiento de los servicios de autenticación de Laravel.
+El archivo de configuración de autenticación de tu aplicación se encuentra en `config/auth.php`. Este archivo contiene varias opciones bien documentadas para modificar el comportamiento de los servicios de autenticación de Laravel.
 
 > **Nota:**
-> No se deben confundir los guardias y proveedores con "roles" y "permisos". Para obtener más información sobre cómo autorizar acciones de usuario mediante permisos, consulte la [documentación de autorización](../authorization/).
+> No se deben confundir los guardias y proveedores con "roles" y "permisos". Para obtener más información sobre cómo autorizar acciones de usuario mediante permisos, consulta la [documentación de autorización](../authorization/).
 
 <a id="starter-kits"></a>
 ### Kits de inicio
 
-¿Quieres empezar rápido? Instale un [kit de inicio de aplicación Laravel](../starter-kits/) en una aplicación Laravel nueva. Después de migrar su base de datos, navegue en su navegador hasta `/register` o cualquier otra URL asignada a su aplicación. ¡Los kits de inicio se encargarán de armar todo su sistema de autenticación!
+¿Quieres empezar rápido? Instala un [kit de inicio de aplicación Laravel](../starter-kits/) en una aplicación Laravel nueva. Después de migrar tu base de datos, navega en tu navegador hasta `/register` o cualquier otra URL asignada a tu aplicación. ¡Los kits de inicio se encargarán de armar todo tu sistema de autenticación!
 
-**Incluso si elige no utilizar un kit de inicio en su aplicación final de Laravel, instalar un [kit de inicio](../starter-kits/) puede ser una maravillosa oportunidad para aprender cómo implementar todas las funciones de autenticación de Laravel en un proyecto de Laravel real.** Dado que los kits de inicio de Laravel contienen controladores, rutas y vistas de autenticación para usted, puede examinar el código dentro de estos archivos para aprender cómo se pueden implementar las funciones de autenticación de Laravel.
+**Incluso si eliges no utilizar un kit de inicio en tu aplicación final de Laravel, instalar un [kit de inicio](../starter-kits/) puede ser una maravillosa oportunidad para aprender cómo implementar todas las funciones de autenticación de Laravel en un proyecto de Laravel real.** Dado que los kits de inicio de Laravel contienen controladores, rutas y vistas de autenticación para ti, puedes examinar el código dentro de estos archivos para aprender cómo se pueden implementar las funciones de autenticación de Laravel.
 
 <a id="introduction-database-considerations"></a>
 ### Consideraciones sobre la base de datos
 
-De forma predeterminada, Laravel incluye un `App\Models\User` [modelo Eloquent](../eloquent/) en su directorio `app/Models`. Este modelo se puede utilizar con el controlador de autenticación predeterminado de Eloquent.
+De forma predeterminada, Laravel incluye un `App\Models\User` [modelo Eloquent](../eloquent/) en tu directorio `app/Models`. Este modelo se puede utilizar con el controlador de autenticación predeterminado de Eloquent.
 
-Si su aplicación no utiliza Eloquent, puede utilizar el proveedor de autenticación `database` que utiliza el generador de consultas Laravel. Si su aplicación utiliza MongoDB, consulte la [documentación oficial de MongoDB sobre autenticación de usuarios de Laravel](https://www.mongodb.com/docs/drivers/php/laravel-mongodb/current/user-authentication/).
+Si tu aplicación no utiliza Eloquent, puedes utilizar el proveedor de autenticación `database` que utiliza el generador de consultas Laravel. Si tu aplicación utiliza MongoDB, consulta la [documentación oficial de MongoDB sobre autenticación de usuarios de Laravel](https://www.mongodb.com/docs/drivers/php/laravel-mongodb/current/user-authentication/).
 
-Al crear el esquema de base de datos para el modelo `App\Models\User`, asegúrese de que la columna de contraseña tenga al menos 60 caracteres de longitud. Por supuesto, la migración de la tabla `users` que se incluye en las nuevas aplicaciones de Laravel ya crea una columna que excede esta longitud.
+Al crear el esquema de base de datos para el modelo `App\Models\User`, asegúrate de que la columna de contraseña tenga al menos 60 caracteres de longitud. Por supuesto, la migración de la tabla `users` que se incluye en las nuevas aplicaciones de Laravel ya crea una columna que excede esta longitud.
 
 Además, debe verificar que su tabla `users` (o equivalente) contenga una columna de cadena `remember_token` que acepte valores NULL de 100 caracteres. Esta columna se utilizará para almacenar un token para los usuarios que seleccionen la opción "recordarme" al iniciar sesión en su aplicación. Nuevamente, la migración de tabla predeterminada `users` que se incluye en las nuevas aplicaciones de Laravel ya contiene esta columna.
 
