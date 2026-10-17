@@ -518,7 +518,7 @@ Además, le recomendamos que configure el tiempo de espera de inactividad de su 
 <a id="inertia-ssr"></a>
 ### Inertia SSR
 
-Los kits de inicio React, Svelte y Vue son compatibles con las capacidades de renderizado del lado del servidor ](https://inertiajs.com/server-side-rendering) de Inertia. Para crear un paquete compatible con Inertia SSR para su aplicación, ejecute el comando `build:ssr`:
+Los kits de inicio React, Svelte y Vue son compatibles con las [capacidades de renderizado del lado del servidor](https://inertiajs.com/server-side-rendering) de Inertia. Para crear un paquete compatible con Inertia SSR para su aplicación, ejecute el comando `build:ssr`:
 
 ```shell
 npm run build:ssr
