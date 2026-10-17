@@ -424,7 +424,7 @@ La API de configuración de middleware ahora también proporciona `preventReques
 
 **Probabilidad de impacto: baja**
 
-las funciones anónimas de controladores personalizados registrados mediante los métodos del administrador `extend` ahora están vinculados a la instancia del administrador.
+Las funciones anónimas de controladores personalizados registradas mediante los métodos del administrador `extend` ahora están vinculadas a la instancia del administrador.
 
 Si anteriormente confiaba en otro objeto vinculado (como una instancia de proveedor de servicios) como `$this` dentro de estas devoluciones de llamada, debe mover esos valores a capturas de función anónima usando `use (...)`.
 

@@ -190,7 +190,7 @@ Artisan::command('mail:send {user}', function (string $user) {
 });
 ```
 
-la función anónima está vinculado a la instancia de comando subyacente, por lo que tiene acceso completo a todos los métodos auxiliares a los que normalmente podría acceder en una clase de comando completa.
+La función anónima está vinculada a la instancia del comando subyacente, por lo que tiene acceso completo a todos los métodos auxiliares a los que normalmente podría acceder en una clase de comando completa.
 
 <a id="type-hinting-dependencies"></a>
 #### Dependencias de sugerencias de tipo

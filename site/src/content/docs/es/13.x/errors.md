@@ -236,7 +236,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 <a id="rendering-exceptions"></a>
 ### Excepciones de representación
 
-De forma predeterminada, el controlador de excepciones de Laravel convertirá las excepciones en una respuesta HTTP. Sin embargo, puede registrar una función anónima de representación personalizado para excepciones de un tipo determinado. Puede lograr esto utilizando el método de excepción `render` en el archivo `bootstrap/app.php` de su aplicación.
+De forma predeterminada, el controlador de excepciones de Laravel convertirá las excepciones en una respuesta HTTP. Sin embargo, puede registrar una función anónima de representación personalizada para excepciones de un tipo determinado. Puede lograr esto utilizando el método de excepción `render` en el archivo `bootstrap/app.php` de su aplicación.
 
 La función anónima pasada al método `render` debería devolver una instancia de `Illuminate\Http\Response`, que puede generarse mediante el asistente `response`. Laravel determinará qué tipo de excepción genera la función anónima examinando la sugerencia de tipo de la función anónima:
 

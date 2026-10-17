@@ -94,7 +94,7 @@ Para ver cómo se deben configurar las conexiones de lectura/escritura, veamos e
 ```php
 'mysql' => [
     'driver' => 'mysql',
-    
+
     'read' => [
         'host' => [
             '192.168.1.1',
@@ -107,7 +107,7 @@ Para ver cómo se deben configurar las conexiones de lectura/escritura, veamos e
         ],
     ],
     'sticky' => true,
-    
+
     'port' => env('DB_PORT', '3306'),
     'database' => env('DB_DATABASE', 'laravel'),
     'username' => env('DB_USERNAME', 'root'),
